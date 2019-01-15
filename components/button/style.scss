@@ -1,0 +1,183 @@
+@import '../style/theme/index.scss';
+
+$prefix: '#{$root-prefix}-button';
+.#{$prefix} {
+    line-height: 1.5;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    appearance: none; // border-radius: 4px;
+    user-select: none;
+    position: relative;
+    transition: transform ease-in 0.1s, background 0.3s;
+    &:focus {
+        outline: 0;
+    }
+    &:active {
+        transform: scale(0.9);
+    }
+    /*
+     * $type:按钮类型
+     * $color:按钮初始化时背景色
+     * $activeColor:鼠标滑过时颜色
+     * $plainBgColor:朴素样式时按钮背景色
+     * $plainBorderColor:不素样式时按钮边框色
+    */
+    @each $type, $color, $activeColor, $plainBgColor, $plainBorderColor in 
+    (default, #fff, #ecf5ff, #ecf5ff, #b3d8ff),
+    (primary, #007bff, #0069d9, #ecf5ff, #b3d8ff),
+    (success, #28a745, #218838, #f0f9eb, #c2e7b0),
+    (info, #6c757d, #5a6268, #f4f4f5, #d3d4d6),
+    (warning, #ffc107, #e0a800, #fdf6ec, #f5dab1),
+    (danner, #dc3545, #c82333, #fef0f0, #fbc4c4){
+        &-#{$type} {
+            background-color: $color;
+            @if $type == default {
+                border-color: #dcdfe6;
+                color: #606266;
+            } @else {
+                border-color: $color;
+                color: #fff;
+            }
+            &:hover{
+                @if $type == default {
+                    color: #409eff;
+                    border-color: #c6e2ff;
+                } @else {
+                    color: #fff;
+                    border-color: $activeColor;
+                }
+                background-color: $activeColor;
+            }
+            &.#{$prefix}-plain {
+                @if $type == default{
+                    color: #606266;
+                    border-color: #dcdfe6;
+                    background: #fff;
+                } @else {
+                    color: $color;
+                    border-color: $plainBorderColor;
+                    background: $plainBgColor;
+                }
+                &:hover {
+                    @if $type == default {
+                        background: #fff;
+                        border-color: #409eff;
+                        color: #409eff;
+                    } @else {
+                        background: $color;
+                        border-color: $color;
+                        color: #fff;
+                    }
+                }
+            }
+            &.#{$prefix}-round-small{
+                border-radius: 4px;
+            }
+            &.#{$prefix}-round-large{
+                border-radius: 17px;
+            }
+            &.#{$prefix}-circle{
+                border-radius: 50%;
+                padding: 0;
+                width: 35px;
+                height: 35px;
+            }
+            &.#{$prefix}-large{
+                font-size: 18px;
+                padding: 8px 16px;
+                &.#{$prefix}-round-small{
+                    border-radius: 5px;
+                }
+                &.#{$prefix}-round-large{
+                    border-radius: 22px;
+                }
+                &.#{$prefix}-circle{
+                    padding: 0;
+                    width: 45px;
+                    height: 45px;
+                }
+            }
+            &.#{$prefix}-small{
+                font-size: 12px;
+                padding: 4px 8px;
+                &.#{$prefix}-round-small{
+                    border-radius: 3px;
+                }
+                &.#{$prefix}-round-large{
+                    border-radius: 14px;
+                }
+                &.#{$prefix}-circle{
+                    padding: 0;
+                    width: 28px;
+                    height: 28px;
+                }
+            }
+            &.#{$prefix}-loading {
+                cursor: default;
+                pointer-events: none;
+                opacity: 0.8;
+                @if $type == default {
+                    color: #409eff;
+                    border-color: #c6e2ff;
+                } @else {
+                    color: #fff;
+                    border-color: $activeColor;
+                }
+                background-color: $activeColor;
+                &:active {
+                    transform: none;
+                }
+            }
+        }
+    }
+    &-link {
+        background-color: transparent;
+        border-color: transparent;
+        color: #007bff;
+        &:hover{
+            color: #0056b3;
+            text-decoration: underline;
+            border-color: transparent;
+            background-color: transparent;
+        }
+    }
+    // &-large {
+    //     font-size: 18px;
+    //     padding: 8px 16px;
+    // }
+    // &-small {
+    //     font-size: 12px;
+    //     padding: 4px 8px;
+    // }
+    &-disabled {
+        $disabledColor: rgba(0,0,0,.25);
+        $disabledBackgroundColor: #f5f5f5;
+        $disabledBorderColor: #f5f5f5;
+        background-color: $disabledBackgroundColor;
+        border-color: $disabledBorderColor;
+        color: $disabledColor;
+        cursor: not-allowed;
+        transition: none;
+        pointer-events: none;
+        &:hover{
+            color: $disabledColor;
+            background-color: $disabledBackgroundColor;
+            border-color: $disabledBorderColor;
+        }
+        &:active {
+            transform: none;
+        }
+        &.#{$prefix}-link{
+            background-color: transparent;
+            border-color: transparent;
+        }
+    }
+}

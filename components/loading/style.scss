@@ -1,0 +1,56 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-loading';
+
+.#{$prefix} {
+  @include reset;
+  position: relative;
+  &-full {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 99999;
+  }
+  &-mask {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 998;
+    background: rgba(255, 255, 255, 0.901961);
+    margin: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  &-icon {
+    color: $primary-color;
+    font-size: 24px;
+  }
+  &-text {
+    color: $primary-color;
+    margin-top: 3px;
+    font-size: $font-size;
+  }
+  &-small {
+    .#{$prefix}-icon {
+      font-size: 14px;
+    }
+    .#{$prefix}-text {
+      font-size: $font-size-small;
+    }
+  }
+  &-large {
+    .#{$prefix}-icon {
+      font-size: 32px;
+    }
+    .#{$prefix}-text {
+      font-size: $font-size-large;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-alert';
+
+.#{$prefix} {
+  @include reset;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 4px;
+  position: relative;
+  background-color: red;
+  overflow: hidden;
+  color: #fff;
+  opacity: 1;
+  display: table;
+  transition: opacity .2s;
+  &-icon {
+    display: table-cell;
+    width: 16px;
+    vertical-align: middle;
+    font-size: 16px;
+    &-big {
+      font-size: 28px;
+      width: 28px;
+    }
+  }
+  &-content {
+    display: table-cell;
+    padding: 0 8px;
+  }
+  &-title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  &-desc {
+    color: #fff;
+    font-size: 12px;
+    margin: 5px 0 0;
+  }
+  &-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+  }
+  &-success {
+    background-color: $success-color;
+  }
+  &-info {
+    background-color: $primary-color;
+  }
+  &-warning {
+    background-color: $warning-color;
+  }
+  &-error {
+    background-color: $error-color;
+  }
+}

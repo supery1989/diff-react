@@ -1,0 +1,55 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-toast';
+
+.diff-toast-wrapper {
+  position: fixed;
+  z-index: 998;
+  left: 0;
+  width: 100%;
+}
+.#{$prefix} {
+  @include reset;
+  pointer-events: none;
+  text-align: center;
+  margin-top: 15px;
+  &-content {
+    padding: 10px 16px;
+    border-radius: $border-radius;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background: #fff;
+    display: inline-block;
+    pointer-events: all;
+  }
+  &-icon, &-close {
+    position: relative;
+    top: 1px;
+    margin-right: 5px;
+    color: $primary-color;
+  }
+  &-success {
+    .#{$prefix}-icon {
+      color: $success-color;
+    }
+  }
+  &-error {
+    .#{$prefix}-icon {
+      color: $error-color;
+    }
+  }
+  &-warning {
+    .#{$prefix}-icon {
+      color: $warning-color;
+    }
+  }
+  &-close {
+    margin-right: 0;
+    margin-left: 20px;
+    cursor: pointer;
+    color: $gray-color;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
