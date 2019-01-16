@@ -1,25 +1,9 @@
-
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
+import { setDom, renderItem } from '../notification/func'
 import Canvas from './Canvas'
 
-export default function Toast(props: any={}, type: string) {
-  const dom = document.createElement('div')
-  let messageBox = document.getElementsByClassName('diff-toast-wrapper')[0]
-  if (messageBox) {
-    messageBox.appendChild(dom)
-  } else {
-    messageBox = document.createElement('div')
-    messageBox.className = 'diff-toast-wrapper'
-    messageBox.appendChild(dom)
-    document.body.appendChild(messageBox)
-  }
-
-  if (typeof props === 'string' || React.isValidElement(props)) {
-    props = {
-      message: props
-    }
-  }
+export default function Toast(props: any = {}, type: string) {
+  const prefix = 'diff-toast'
+  const { dom, messageBox } = setDom(prefix)
 
   if (props.position) {
     switch(props.position) {
@@ -40,22 +24,7 @@ export default function Toast(props: any={}, type: string) {
     (messageBox as HTMLElement).style.top = '16px'
   }
 
-  if (type) {
-    props.type = type
-  }
-
-  const component = React.createElement((Canvas as any), Object.assign(props, {
-    willUnmount: () => {
-      ReactDOM.unmountComponentAtNode(dom)
-      messageBox.removeChild(dom)
-
-      if (props.onClose instanceof Function) {
-        props.onClose()
-      }
-    }
-  }))
-
-  ReactDOM.render(component, dom)
+  renderItem(props, type, prefix, messageBox, dom, Canvas)
 }
 
 ['success', 'error', 'warning', 'info'].forEach(type => {

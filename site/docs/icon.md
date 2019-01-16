@@ -1,11 +1,16 @@
 ## Icon 图标
 
+语义化的矢量图形。
+
+### 基本用法
+
+使用Icon组件，指定图标对应的type属性
+
 ::: demo
 ```js
 render() {
   return (
     <div>
-      <Icon type='loading1' style={{color:'red'}} spin />
       <Icon type='adduser' />
     </div>
   )
@@ -13,7 +18,54 @@ render() {
 ```
 :::
 
-### 方向性图标
+### 设置旋转动画
+
+通过使用spin属性来设置
+
+::: demo
+```js
+render() {
+  return (
+    <div>
+      <Icon type='loading' spin />
+    </div>
+  )
+}
+```
+:::
+
+### 点击事件
+
+图标点击时的回调
+
+::: demo
+```js
+render() {
+  return (
+    <div>
+      <Icon type='play' onClick={() => alert("click")} />
+    </div>
+  )
+}
+```
+:::
+
+### Attributes
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| className | 容器类名 | string | — | — |
+| style | 指定样式 | object | - | - |
+| type | 图标类型 | string | - | - |
+| spin | 是否有旋转动画 | boolean | - | false |
+
+### Events
+| 事件名称 | 说明 | 回调参数 |
+|---------- |-------- |---------- |
+| onClick | 点击图标时触发的事件 | — |
+
+### 图标实例
+
+#### 方向性图标
 
 ::: demo
 ```js
@@ -41,7 +93,7 @@ render() {
 ```
 :::
 
-### 提示建议性图标
+#### 提示建议性图标
 
 ::: demo
 ```js
@@ -69,7 +121,7 @@ render() {
 ```
 :::
 
-### 编辑类图标
+#### 编辑类图标
 
 ::: demo
 ```js
@@ -97,7 +149,7 @@ render() {
 ```
 :::
 
-### 数据类图标
+#### 数据类图标
 
 ::: demo
 ```js
@@ -125,7 +177,7 @@ render() {
 ```
 :::
 
-### 网站通用图标
+#### 网站通用图标
 
 ::: demo
 ```js
@@ -153,7 +205,7 @@ render() {
 ```
 :::
 
-### 品牌和标识
+#### 品牌和标识
 
 ::: demo
 ```js

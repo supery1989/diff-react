@@ -12,11 +12,8 @@ class ComponentsRouter extends React.Component {
         <Route exact path="/components/button" component={Demo.Button} />
         <Route exact path="/components/loading" component={Demo.Loading} />
         <Route exact path="/components/toast" component={Demo.Toast} />
-        <Route
-          exact
-          path="/components/transition"
-          component={Demo.Transition}
-        />
+        <Route exact path="/components/notification" component={Demo.Notification} />
+        <Route exact path="/components/transition" component={Demo.Transition} />
       </Switch>
     );
   }

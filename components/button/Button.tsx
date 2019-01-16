@@ -57,7 +57,7 @@ export default class Button extends React.Component<ButtonProps> {
   }
 
   render() {
-    const { type, text, disabled, size, plain, round, circle, icon, loading, nativeType, className, ...rest } = this.props;
+    const { type, text, disabled, size, plain, round, circle, icon, loading, nativeType, ...rest } = this.props;
     const type1 = type ? type : 'default';
     const cls = classnames({
       [`${this.prefix}-${type1}`]: type1,

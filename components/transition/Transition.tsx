@@ -154,7 +154,7 @@ export default class Transition extends React.Component<TransitionProps> {
     console.dir(111)
     console.dir(status)
     return (
-      (status === 'unmounted' ? null : <View config={{...viewProps, cls, sty}}>{Comp}</View>)
+      (status === 'unmounted' ? null : <View config={{...viewProps, prefix: this.prefix, cls, sty}}>{Comp}</View>)
     );
   }
 }

@@ -16,7 +16,8 @@ module.exports = {
   ], //入口
   output: { //出口
       filename: '[hash].bundle.js',
-      path: path.resolve(__dirname, '../dist')
+      path: path.resolve(__dirname, '../dist'),
+      // publicPath: '../dist'
   },
   optimization: {
     runtimeChunk: true,
@@ -115,6 +116,7 @@ module.exports = {
      new HtmlWebpackPlugin({
        title: '标题',//用于生成的HTML文档的标题
        template: '../site/index.html', //默认index.html位置
+       favicon: '../site/assets/favicon.ico' //favicon.ico文件路径
      }),
     //  new MiniCssExtractPlugin({
     //   filename: 'public/css/[name].[contenthash].css',
