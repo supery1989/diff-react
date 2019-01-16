@@ -1,4 +1,3 @@
-
 import * as React from 'react'
 import View from 'libs/view'
 import Transtion from 'components/transition'

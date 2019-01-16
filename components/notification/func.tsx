@@ -1,6 +1,5 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-// import Canvas from './Canvas'
 
 export function setDom(prefix: string) {
   const dom = document.createElement('div')

@@ -3,7 +3,8 @@ import * as React from 'react'
 import Layout from '../components/layout'
 // import Content from './layout/Content'
 import './style/index.scss'
-import ComponentsRouter from './router/componentsRouter';
+import ComponentsRouter from './router/componentsRouter'
+import BackTop from 'components/back-top'
 import Silder from './layout/Silder';
 
 class App extends React.Component {
@@ -13,9 +14,12 @@ class App extends React.Component {
         <Layout.Header />
           <Layout>
             <Layout.Silder collapsible auto><Silder /></Layout.Silder>
-            <Layout.Content auto><div className="content"><ComponentsRouter /></div></Layout.Content>
+            <Layout.Content auto id="demo-content">
+              <div className="content"><ComponentsRouter /></div>
+            </Layout.Content>
           </Layout>
         <Layout.Footer />
+        <BackTop target="demo-content" />
       </Layout>
     )
   }

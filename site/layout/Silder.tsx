@@ -59,7 +59,7 @@ export const MENU_LISTS = [
   {
     type: '其他',
     lists: [
-      { key: 'backtop', name: 'BackTop 返回顶部#@'},
+      { key: 'backtop', name: 'BackTop 返回顶部'},
       { key: 'copy', name: 'Copy 复制#@'},
       { key: 'divider', name: 'Divider 分割线#@'},
     ]
@@ -71,7 +71,7 @@ class Silder extends React.Component {
     return (
       <div className="silder">
         <div className="info">
-          <div>已完成5</div>
+          <div>已完成6</div>
           <div>*进行中3</div>
           <div>#规划中</div>
         </div>

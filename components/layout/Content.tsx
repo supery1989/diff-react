@@ -1,6 +1,8 @@
 
 import * as React from 'react'
 import classnames from 'classnames'
+import omit from 'omit.js'
+import View from 'libs/view'
 
 export interface ContentProps {
   className?: string,
@@ -15,12 +17,13 @@ class Content extends React.Component<ContentProps> {
   }
 
   render() {
-    const { className, style, auto, children } = this.props
-    const cls = classnames(this.prefix, className, {
+    const { auto, children, ...rest } = this.props
+    const cls = classnames({
       [`${this.prefix}-auto`]: auto,
     })
+    const viewProps = omit(rest, ['auto'])
     return (
-      <div className={cls} style={style}>{children}</div>
+      <View config={{...viewProps, prefix: this.prefix, cls}}>{children}</View>
     )
   }
 }

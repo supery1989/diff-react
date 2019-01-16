@@ -1,0 +1,26 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-back-top';
+
+.#{$prefix} {
+  @include reset;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  z-index: 100;
+  &-not-fixed {
+    position: relative;
+    right: unset;
+    bottom: unset;
+  }
+  &-button{
+    margin: 0;
+    display: inline-block;
+    &.diff-button-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
