@@ -53,7 +53,8 @@ export const MENU_LISTS = [
       { key: 'transition', name: 'Transition 动画*'},
       { key: 'loading', name: 'Loading 加载'},
       { key: 'toast', name: 'Toast 消息提示'},
-      { key: 'notification', name: 'Notification 通知' }
+      { key: 'notification', name: 'Notification 通知' },
+      { key: 'popup', name: 'Popup 对话框' }
     ]
   },
   {
@@ -71,7 +72,7 @@ class Silder extends React.Component {
     return (
       <div className="silder">
         <div className="info">
-          <div>已完成6</div>
+          <div>已完成7</div>
           <div>*进行中3</div>
           <div>#规划中</div>
         </div>

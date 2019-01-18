@@ -22,14 +22,16 @@ export interface ButtonProps {
   circle?: boolean,
   icon?: string,
   nativeType?: 'submit' | 'reset',
+  block?: boolean,
 }
 
 export default class Button extends React.Component<ButtonProps> {
   private prefix = 'diff-button';
   static defaultProps = {
     loading: false,
-    type: 'default'
-  };
+    type: 'default',
+    round: true,
+  }
 
   handleClick = (e: any) => {
     e.preventDefault();
@@ -57,20 +59,21 @@ export default class Button extends React.Component<ButtonProps> {
   }
 
   render() {
-    const { type, text, disabled, size, plain, round, circle, icon, loading, nativeType, ...rest } = this.props;
+    const { type, text, disabled, size, plain, round, circle, icon, loading, nativeType, block, ...rest } = this.props
     const type1 = type ? type : 'default';
     const cls = classnames({
       [`${this.prefix}-${type1}`]: type1,
       [`${this.prefix}-${size}`]: size,
       [`${this.prefix}-plain`]: plain,
-      [`${this.prefix}-round-${round}`]: round,
+      [`${this.prefix}-round`]: round,
       [`${this.prefix}-circle`]: circle,
       [`${this.prefix}-disabled`]: disabled,
-      [`${this.prefix}-loading`]: loading
+      [`${this.prefix}-loading`]: loading,
+      [`${this.prefix}-block`]: block
     });
     const Comp = type1 === 'link' ? 'a' : 'button';
     const iconStr  = icon ? icon : '';
-    const iconType = loading ? 'spinner' : iconStr;
+    const iconType = loading ? 'loading' : iconStr;
     const iconSpin = loading ? true : false;
     const IconComp = icon || loading ? <Icon type={iconType} spin={iconSpin} /> : null;
     const text1 = text ? text : '';

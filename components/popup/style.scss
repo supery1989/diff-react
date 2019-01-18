@@ -1,0 +1,119 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-popup';
+
+.#{$prefix}-wrapper {
+  position: absolute;
+  z-index: 999;
+  .#{$prefix}-mask, .#{$prefix}-box {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 1000;
+  }
+  .#{$prefix}-mask {
+    background: #000;
+    opacity: 0.5;
+    z-index: 999;
+  }
+  .#{$prefix}-box {
+    &::after {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 0;
+      vertical-align: middle;
+    }
+    &-top {
+      &::after {
+        display: none;
+      }
+    }
+  }
+  .#{$prefix} {
+    @include reset;
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #fff;
+    width: 420px;
+    border-radius: 3px;
+    font-size: $font-size;
+    overflow: hidden;
+    backface-visibility: hidden;
+    position: relative;
+    &-header {
+      position: relative;
+      padding: 20px 20px 0;
+    }
+    &-title {
+      padding-left: 0;
+      margin-bottom: 0;
+      font-size: $font-size-large;
+      font-weight: 700;
+      color: #333;
+      &-has-icon {
+        margin-left: 25px;
+      }
+    }
+    &-close {
+      position: absolute;
+      top: 19px;
+      right: 20px;
+      background: 0 0;
+      border: none;
+      outline: 0;
+      padding: 0;
+      cursor: pointer;
+      font-size: $font-size-large;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+    &-icon {
+      float: left;
+      font-size: $font-size-large;
+      position: relative;
+      top: 4px;
+      &-success {
+        color: $success-color;
+      }
+      &-info {
+        color: $info-color;
+      }
+      &-error {
+        color: $error-color;
+      }
+      &-warning {
+        color: $warning-color;
+      }
+    }
+    &-content {
+      padding: 15px 20px;
+      color: $font-color;
+      font-size: 14px;
+      position: relative;
+      &-has-icon {
+        margin-left: 25px;
+      }
+    }
+    &-fail {
+      color: $error-color;
+    }
+    &-btns {
+      padding: 10px 20px 15px;
+      text-align: right;
+    }
+    &-btn {
+      margin: 0;
+      margin-left: 15px;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}

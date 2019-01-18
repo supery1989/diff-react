@@ -7,8 +7,8 @@ import View from 'libs/view'
 import Button from 'components/button'
 
 export interface BackTopProps {
-  className?: string;
-  style?: object;
+  className?: string,
+  style?: object,
   during?: number,
   showBelow?: number,
   target?: string,
