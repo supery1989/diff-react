@@ -72,10 +72,20 @@ render() {
 getLists() {
   return ['stepforward', 'stepbackward', 'fastforward', 'fastbackward', 'shrink', 'arrowsalt', 'down', 'up', 'right', 'left', 'caretdown', 'caretup', 'caretright', 'caretleft', 'downcircle', 'downcircle-o', 'upcircle', 'upcircle-o', 'rightcircle', 'rightcircle-o', 'leftcircle', 'leftcircle-o', 'doubleright', 'doubleleft', 'verticleright', 'verticleleft', 'forward', 'banckward', 'enter', 'back', 'retweet', 'swap', 'swapleft', 'swapright', 'arrowdown', 'arrowup', 'arrowright', 'arrowleft', 'play', 'play-o', 'caretcircleoup', 'upsquare', 'upsquare-o', 'downsquare', 'downsquare-o', 'leftsquare', 'leftsquare-o', 'rightsquare', 'rightsquare-o', 'login', 'logout', 'menufold', 'menuunfold', 'menu-fold', 'menu-unfold', 'indentleft', 'indentright']
 }
+
+onCopy = list => {
+  Toast({
+    type: 'success',
+    message: `<Icon type="${list}" />  已复制`
+  })
+}
+
 renderItem = list => {
   return (
     <li key={list}>
-      <Icon type={list} />
+      <Copy value={`<Icon type="${list}" />`} showStatus={false} onCopy={this.onCopy.bind(this, list)}>
+        <Icon type={list} />
+      </Copy>
       <span>{list}</span>
     </li>
   )
@@ -100,10 +110,20 @@ render() {
 getLists() {
   return ['question', 'questioncircle', 'questioncircle-o', 'plus', 'pluscircle', 'pluscircle-o', 'pause', 'pausecircle', 'pausecircle-o', 'minus', 'minuscircle', 'minuscircle-o', 'plussquare', 'plussquare-o', 'minussquare', 'minussquare-o', 'info', 'infocircle', 'infocircle-o', 'warning', 'warningcircle', 'warningcircle-o', 'close', 'closecircle', 'closecircle-o', 'closesquare', 'closesquare-o', 'check', 'checkcircle', 'checkcircle-o', 'checksquare', 'checksquare-o', 'clockcircle', 'clockcircle-o', 'exclamation']
 }
+
+onCopy = list => {
+  Toast({
+    type: 'success',
+    message: `<Icon type="${list}" />  已复制`
+  })
+}
+
 renderItem = list => {
   return (
     <li key={list}>
-      <Icon type={list} />
+      <Copy value={`<Icon type="${list}" />`} showStatus={false} onCopy={this.onCopy.bind(this, list)}>
+        <Icon type={list} />
+      </Copy>
       <span>{list}</span>
     </li>
   )
@@ -128,10 +148,20 @@ render() {
 getLists() {
   return ['edit', 'form', 'copy', 'delete']
 }
+
+onCopy = list => {
+  Toast({
+    type: 'success',
+    message: `<Icon type="${list}" />  已复制`
+  })
+}
+
 renderItem = list => {
   return (
     <li key={list}>
-      <Icon type={list} />
+      <Copy value={`<Icon type="${list}" />`} showStatus={false} onCopy={this.onCopy.bind(this, list)}>
+        <Icon type={list} />
+      </Copy>
       <span>{list}</span>
     </li>
   )
@@ -156,10 +186,20 @@ render() {
 getLists() {
   return ['areachart', 'piechart', 'barchart', 'barschart', 'linechart', 'dotchart']
 }
+
+onCopy = list => {
+  Toast({
+    type: 'success',
+    message: `<Icon type="${list}" />  已复制`
+  })
+}
+
 renderItem = list => {
   return (
     <li key={list}>
-      <Icon type={list} />
+      <Copy value={`<Icon type="${list}" />`} showStatus={false} onCopy={this.onCopy.bind(this, list)}>
+        <Icon type={list} />
+      </Copy>
       <span>{list}</span>
     </li>
   )
@@ -184,10 +224,19 @@ render() {
 getLists() {
   return ['lock', 'unlock', 'bars', 'book', 'calendar', 'cloud', 'cloud-o', 'clouddownload', 'clouddownload-o', 'cloudupload', 'cloudupload-o', 'creditcard', 'desktop', 'download', 'upload', 'ellipsis', 'file', 'filetext', 'filejpg', 'filepdf', 'fileadd', 'fileexcle', 'fileppt', 'fileunknow', 'fileword', 'filemarkdown', 'folder', 'folderadd', 'folderopen', 'hdd', 'frown', 'frown-o', 'meh', 'meh-o', 'smile', 'smile-o', 'inbox', 'laptop', 'appstore', 'appstore-o', 'link', 'mail', 'mobile', 'notification', 'paperclip', 'picture', 'poweroff', 'reload', 'search', 'find', 'setting', 'sharealt', 'shoppingcart', 'tablet', 'tag', 'tag-o', 'tags', 'tags-o', 'totop', 'user', 'videocamera', 'home', 'loading', 'loading2', 'star', 'star-o', 'heart', 'heart-o', 'enviroment', 'enviroment-o', 'eye', 'eye-o', 'camera', 'camera-o', 'save', 'team','solution', 'phone', 'filter', 'exception', 'export', 'export2', 'customerservice', 'qrcode', 'scan', 'like', 'like-o', 'dislike', 'dislike-o', 'message', 'paycircle', 'paycircle-o', 'calculator', 'pushpin', 'pushpin-o', 'bulb', 'select', 'switcher', 'rocket', 'bell', 'disconnect', 'database', 'barcode', 'hourglass', 'key', 'flag', 'layout', 'printer', 'sound', 'USB', 'skin', 'tool', 'sync', 'wifi', 'car', 'adduser', 'addusergroup', 'deleteuser', 'deleteusergroup', 'man', 'woman', 'gift', 'idcard', 'medicinebox', 'redenvelopes', 'copyright', 'trademark', 'safety', 'wallet', 'bank', 'trophy', 'contacts', 'shake', 'api', 'fork', 'dashboard', 'table', 'profile', 'rest', 'earth', 'shop', 'carryout']
 }
+onCopy = list => {
+  Toast({
+    type: 'success',
+    message: `<Icon type="${list}" />  已复制`
+  })
+}
+
 renderItem = list => {
   return (
     <li key={list}>
-      <Icon type={list} />
+      <Copy value={`<Icon type="${list}" />`} showStatus={false} onCopy={this.onCopy.bind(this, list)}>
+        <Icon type={list} />
+      </Copy>
       <span>{list}</span>
     </li>
   )
@@ -212,10 +261,20 @@ render() {
 getLists() {
   return ['apple', 'apple-o', 'android', 'android-o', 'windows', 'windows-o', 'ie', 'chrome', 'github', 'aliwangwang', 'aliwangwang-o', 'dingding', 'dingding-o', 'weibo', 'weibocircle', 'weibosquare', 'taobaocircle', 'taobaosquare', 'html', 'twitter', 'wechat', 'youtube', 'alipaysquare', 'alipaycircle', 'skype', 'qq', 'mediumwordmark', 'gitlab', 'mediummonogram', 'linkedinsquare', 'googleplus', 'google', 'dropbox', 'facebooksquare', 'codepen', 'codepencircle', 'codeSandbox', 'codesquare', 'codesquare-o', 'amazon', 'antdesign', 'aliyun', 'zhihu', 'slack', 'slacksquare', 'behance', 'behancesquare', 'dribbble', 'dribbblesquare', 'instagram', 'yuque']
 }
+
+onCopy = list => {
+  Toast({
+    type: 'success',
+    message: `<Icon type="${list}" />  已复制`
+  })
+}
+
 renderItem = list => {
   return (
     <li key={list}>
-      <Icon type={list} />
+      <Copy value={`<Icon type="${list}" />`} showStatus={false} onCopy={this.onCopy.bind(this, list)}>
+        <Icon type={list} />
+      </Copy>
       <span>{list}</span>
     </li>
   )

@@ -195,6 +195,22 @@ render() {
 ```
 :::
 
+### 倒计时按钮
+
+通过设置during属性来设置倒计时时间。
+
+::: demo
+```js
+render() {
+  return (
+    <div>
+      <Button type="primary" text="可以点击" onClick={() => alert('click')} during={5} />
+    </div>
+  )
+}
+```
+:::
+
 ### Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
@@ -213,6 +229,8 @@ render() {
 | loading | 设置按钮载入状态 | boolean | - | false |
 | nativeType | 原生类型 | submit/reset | - | - |
 | block | 将按钮宽度调整为其父宽度的选项 | boolean | - | false |
+
+| during | 设置后为倒计时按钮，单位：秒 | number | - | - |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |

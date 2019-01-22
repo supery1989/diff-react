@@ -12,7 +12,7 @@ export default class Temp extends React.Component<TempProps> {
   private prefix = 'diff-temp'
 
   render() {
-    const { ...rest } = this.props;
+    const { ...rest } = this.props
     return (
       <View config={{...rest, prefix: this.prefix}}>temp</View>
     );

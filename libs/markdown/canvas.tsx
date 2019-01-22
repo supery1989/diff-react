@@ -46,6 +46,7 @@ export default class Canvas extends React.Component<CanvasProps, any> {
 
   renderSource(value: any) {
     import('../../components').then(Element => {
+      // TODO 组件中通过箭头函数定义的函数无法热更新，因原型链中没有
       const args = ['context', 'React', 'ReactDOM']
       const argv = [this, React, ReactDOM]
 
@@ -70,7 +71,6 @@ export default class Canvas extends React.Component<CanvasProps, any> {
         presets: ['es2015', 'react', 'stage-0']
       }).code
       args.push(code)
-
       new Function(...args).apply(null, argv)
 
       this.source[2] = value

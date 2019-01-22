@@ -16,6 +16,7 @@ class ComponentsRouter extends React.Component {
         <Route exact path="/components/transition" component={Demo.Transition} />
         <Route exact path="/components/backtop" component={Demo.BackTop} />
         <Route exact path="/components/popup" component={Demo.Popup} />
+        <Route exact path="/components/copy" component={Demo.Copy} />
       </Switch>
     );
   }

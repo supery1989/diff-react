@@ -71,7 +71,8 @@ export default function Popup(props: any = {}, type: string) {
     props.type = type
   }
 
-  props = getProps(props, type)
+  props = getProps(props, props.type)
+
   const component = React.createElement(Canvas, Object.assign(props, {
     willUnmount: () => {
       ReactDOM.unmountComponentAtNode(dom)

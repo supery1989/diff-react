@@ -40,15 +40,15 @@ export default class Alert extends React.Component<AlertProps> {
     })
   }
 
-  afterLeave= ()=> {
-    const { onClose } = this.props;
+  afterLeave = ()=> {
+    const { onClose } = this.props
     if (onClose) {
       onClose()
     }
   }
 
   render() {
-    const { type, title, closable, closeText, showIcon, desc, ...rest } = this.props;
+    const { type, title, closable, closeText, showIcon, desc, ...rest } = this.props
     const cls = classnames({
       [`${this.prefix}-${type}`]: !!type
     })

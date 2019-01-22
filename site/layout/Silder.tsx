@@ -61,7 +61,7 @@ export const MENU_LISTS = [
     type: '其他',
     lists: [
       { key: 'backtop', name: 'BackTop 返回顶部'},
-      { key: 'copy', name: 'Copy 复制#@'},
+      { key: 'copy', name: 'Copy 复制'},
       { key: 'divider', name: 'Divider 分割线#@'},
     ]
   }
