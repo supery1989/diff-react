@@ -229,7 +229,6 @@ render() {
 | loading | 设置按钮载入状态 | boolean | - | false |
 | nativeType | 原生类型 | submit/reset | - | - |
 | block | 将按钮宽度调整为其父宽度的选项 | boolean | - | false |
-
 | during | 设置后为倒计时按钮，单位：秒 | number | - | - |
 
 ### Events

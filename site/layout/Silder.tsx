@@ -21,7 +21,7 @@ export const MENU_LISTS = [
     lists: [
       { key: 'breadcrumb', name: 'Breadcrumb 面包屑#@'},
       { key: 'menu', name: 'Menu 菜单#@'},
-      { key: 'steps', name: 'Steps 步骤条#@'},
+      { key: 'steps', name: 'Steps 步骤条'},
       { key: 'progress', name: 'Progress 进度条#@'},
     ]
   },
@@ -72,7 +72,7 @@ class Silder extends React.Component {
     return (
       <div className="silder">
         <div className="info">
-          <div>已完成7</div>
+          <div>已完成9</div>
           <div>*进行中3</div>
           <div>#规划中</div>
         </div>

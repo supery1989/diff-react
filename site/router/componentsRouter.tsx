@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Switch, Route } from "react-router-dom";
-import * as Demo from "../pages";
+import * as Demo from "../pages"
 
 class ComponentsRouter extends React.Component {
   render() {
@@ -17,6 +17,7 @@ class ComponentsRouter extends React.Component {
         <Route exact path="/components/backtop" component={Demo.BackTop} />
         <Route exact path="/components/popup" component={Demo.Popup} />
         <Route exact path="/components/copy" component={Demo.Copy} />
+        <Route exact path="/components/steps" component={Demo.Steps} />
       </Switch>
     );
   }

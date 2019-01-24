@@ -1,0 +1,180 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefixWrapper: '#{$root-prefix}-steps';
+$prefix: '#{$root-prefix}-step';
+
+.#{$prefixWrapper} {
+  &-flex {
+    display: flex;
+    .#{$prefix} {
+      flex: 1;
+      &:last-child{
+        flex: none;
+      }
+    }
+  }
+  &-h {
+    .#{$prefix} {
+      display: inline-block;
+      &-line {
+        top: 15px;
+        height: 2px;
+        left: 32px;
+        right: 0;
+      }
+    }
+  }
+  &-v {
+    &.#{$prefixWrapper}-flex {
+      flex-direction: column;
+      height: 100%;
+    }
+    .#{$prefix} {
+      display: block;
+      &-line {
+        width: 2px;
+        top: 30px;
+        bottom: 0;
+        left: 15px;
+      }
+    }
+  }
+}
+.#{$prefix} {
+  @include reset;
+  position: relative;
+  vertical-align: top;
+  &-head {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: transparent;
+    line-height: 28px;
+    font-size: 28px;
+    vertical-align: top;
+    transition: all 150ms;
+    text-align: center;
+    &-text {
+      color: $gray-color;
+      background-color: $background-color;
+      border-color: $gray-color;
+      font-size: 14px;
+      border-width: 2px;
+      border-style: solid;
+      &.#{$prefix}-head-finish {
+        color: $primary-color;
+        background-color: $background-color;
+        border-color: $primary-color;
+      }
+      &.#{$prefix}-head-going {
+        color: #fff;
+        background-color: $primary-color;
+        border-color: $primary-color;
+      }
+      &.#{$prefix}-head-error {
+        color: $error-color;
+        background-color: $background-color;
+        border-color: $error-color;
+      }
+    }
+    &-icon {
+      right: 4px;
+      &.#{$prefix}-head-finish {
+        color: $primary-color;
+      }
+      &.#{$prefix}-head-going {
+        color: $primary-color;
+      }
+      &.#{$prefix}-head-error {
+        color: $error-color;
+      }
+    }
+  }
+  &-line {
+    position: absolute;
+    border-color: inherit;
+    background-color: $gray-color;
+    &-innder {
+      display: block;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $gray-color;
+      transition: all 1s;
+      box-sizing: border-box;
+      height: 0;
+      transition-delay: 0ms;
+    }
+    &-active {
+      &-finish {
+        border-color: $primary-color;
+      }
+      &-error {
+        border-color: $error-color;
+      }
+    }
+  }
+  &-icon {
+    display: block;
+    line-height: 28px;
+  }
+  &-title {
+    font-size: $font-size;
+    line-height: 32px;
+    display: inline-block;
+  }
+  &-desc {
+    font-size: $font-size-smaller;
+    font-weight: 400;
+    line-height: 14px;
+  }
+  &-content {
+    white-space: normal;
+    padding-right: 10px;
+    text-align: left;
+    &-finish {
+      color: $primary-color;
+      .#{$prefix}-title {
+        font-weight: bold;
+      }
+    }
+    &-going {
+      color: #000;
+      .#{$prefix}-title {
+        font-weight: bold;
+      }
+    }
+    &-error {
+      color: $error-color;
+      .#{$prefix}-title {
+        font-weight: bold;
+      }
+    }
+  }
+  &:last-child {
+    .#{$prefix}-line {
+      display: none;
+    }
+  }
+  &-h {
+    .#{$prefix}-head {
+      display: inline-block;
+    }
+    .#{$prefix}-content {
+      display: inline-block;
+      margin-left: 5px;
+      position: relative;
+    }
+    .#{$prefix}-title {
+      position: absolute;
+      left: 0;
+      top: -4px;
+      background: $background-color;
+      padding-right: 5px;
+    }
+    .#{$prefix}-desc {
+      position: relative;
+      top: 28px;
+    }
+  }
+}

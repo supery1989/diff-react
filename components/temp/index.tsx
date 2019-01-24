@@ -1,5 +1,5 @@
-import Temp from './Temp';
+import Temp from './Temp'
 
 import './style.scss'
 
-export default Temp;
+export default Temp
