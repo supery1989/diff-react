@@ -44,6 +44,7 @@ export const MENU_LISTS = [
       { key: 'avatar', name: 'Avatar 头像#@'},
       { key: 'badge', name: 'Badge 标记#@'},
       { key: 'carousel', name: 'Carousel 走马灯#@'},
+      { key: 'tag', name: 'Tag 标签'},
     ]
   },
   {
@@ -72,7 +73,7 @@ class Silder extends React.Component {
     return (
       <div className="silder">
         <div className="info">
-          <div>已完成9</div>
+          <div>已完成10</div>
           <div>*进行中3</div>
           <div>#规划中</div>
         </div>
