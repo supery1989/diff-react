@@ -14,6 +14,13 @@ $prefix: "#{$root-prefix}-icon";
   text-transform: none;
   line-height: 1;
   vertical-align: baseline;
+  &::after {
+    content: '';
+    height: 100%;
+    width: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
   &-spin {
     display: inline-block;
     animation: rotating 1s linear infinite;

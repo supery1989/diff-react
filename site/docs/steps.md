@@ -112,7 +112,7 @@ render() {
 ```js
 render() {
   return (
-    <Steps current={1} direction="v">
+    <Steps space={200} current={1} direction="v">
       <Steps.Step title="步骤一" desc="这是步骤一的描述" />
       <Steps.Step title="步骤二" desc="这是步骤二的描述" />
       <Steps.Step title="步骤三" desc="这是步骤三的描述" />

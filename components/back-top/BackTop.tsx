@@ -144,7 +144,7 @@ export default class Temp extends React.Component<BackTopProps> {
     const viewProps = omit(rest, ['target', 'useAnimate', 'during', 'showBelow', 'rectangle', 'fixed', 'icon'])
 
     const defaultComp = (
-        <Button circle={!rectangle} icon={icon || "up"} type="primary" className={`${this.prefix}-button`} size="large" />
+        <Button circle={!rectangle} icon={icon || "totop"} type="primary" className={`${this.prefix}-button`} size="large" />
     )
     if (!this.state.show) {
       return null;

@@ -19,6 +19,8 @@ class ComponentsRouter extends React.Component {
         <Route exact path="/components/copy" component={Demo.Copy} />
         <Route exact path="/components/steps" component={Demo.Steps} />
         <Route exact path="/components/tag" component={Demo.Tag} />
+        <Route exact path="/components/select" component={Demo.Select} />
+        <Route exact path="/components/input" component={Demo.Input} />
       </Switch>
     );
   }

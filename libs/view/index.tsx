@@ -5,19 +5,32 @@ export interface ViewProps {
   config?: any,
   tag?: any,
   onClick?: React.MouseEventHandler,
+  onChange?: React.MouseEventHandler,
+  onBlur?: React.MouseEventHandler,
   onMouseEnter?: React.MouseEventHandler,
   onMouseLeave?: React.MouseEventHandler,
+  onKeyDown?: React.MouseEventHandler,
 }
 
 export default class View extends React.Component<ViewProps>{
   onClick = (e: any) => {
+    // e.persist()
     const { onClick } = this.props;
     if (onClick) {
       onClick(e)
     }
   }
 
+  onChange = (e: any) => {
+    // e.persist()
+    const { onChange } = this.props;
+    if (onChange) {
+      onChange(e)
+    }
+  }
+
   onMouseLeave = (e: any) => {
+    // e.persist()
     const { onMouseLeave } = this.props;
     if (onMouseLeave) {
       onMouseLeave(e)
@@ -25,10 +38,21 @@ export default class View extends React.Component<ViewProps>{
   }
 
   onMouseEnter = (e: any) => {
+    // e.persist()
     const { onMouseEnter } = this.props;
     if (onMouseEnter) {
       onMouseEnter(e)
     }
+  }
+
+  onBlur = (e: any) => {
+    const { onBlur } = this.props
+    onBlur && onBlur(e)
+  }
+
+  onKeyDown = (e: any) => {
+    const { onKeyDown } = this.props
+    onKeyDown && onKeyDown(e)
   }
 
   render() {
@@ -45,9 +69,13 @@ export default class View extends React.Component<ViewProps>{
         className={viewCls}
         style={viewStyle}
         {...rest}
+        ref='viewRef'
         onMouseLeave={this.onMouseLeave}
         onMouseEnter={this.onMouseEnter}
         onClick={this.onClick}
+        onKeyDown={this.onKeyDown}
+        onChange={this.onChange}
+        onBlur={this.onBlur}
       >{children}</Comp>
     )
   }
