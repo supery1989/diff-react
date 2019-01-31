@@ -12,6 +12,8 @@ export interface ViewProps {
   onKeyDown?: React.MouseEventHandler,
 }
 
+export const ROOT_PREFIX = 'diff'
+
 export default class View extends React.Component<ViewProps>{
   onClick = (e: any) => {
     // e.persist()

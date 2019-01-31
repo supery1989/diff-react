@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import "./style.scss";
-import MENU_LISTS from './Menu'
+import MENU_LISTS, { MENU_LISTS_TOTAL } from './Menu'
 
 
 class Silder extends React.Component {
@@ -9,9 +9,9 @@ class Silder extends React.Component {
     return (
       <div className="silder">
         <div className="info">
-          <div>已完成11</div>
+          <div>总计：{MENU_LISTS_TOTAL}</div>
+          <div>已完成12</div>
           <div>*进行中3</div>
-          <div>#规划中</div>
         </div>
         <ul>
           {MENU_LISTS.map(list => {

@@ -1,7 +1,7 @@
 import * as React from 'react'
 // import classnames from 'classnames'
 // import omit from 'omit.js'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 
 export interface TempProps {
   className?: string,
@@ -9,7 +9,7 @@ export interface TempProps {
 }
 
 export default class Temp extends React.Component<TempProps> {
-  private prefix = 'diff-temp'
+  private prefix = `${ROOT_PREFIX}-temp`
 
   render() {
     const { ...rest } = this.props

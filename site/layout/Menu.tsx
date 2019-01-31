@@ -28,12 +28,14 @@ const MENU_LISTS = [
     lists: [
       { key: 'rate', name: 'Rate 评分#@'},
       { key: 'input', name: 'Input 输入框'},
-      { key: 'radio', name: 'Radio 单选框#@2'},
+      { key: 'radio', name: 'Radio 单选框'},
       { key: 'colorPicker', name: 'ColorPicker 颜色选择器#@'},
       { key: 'checkbox', name: 'Checkbox 复选框#@2'},
       { key: 'switch', name: 'Switch 开关#@'},
       { key: 'select', name: 'Select 下拉框#@2'},
       { key: 'timepicker', name: 'Time Picker 时间选择框2'},
+      { key: 'inputnumber', name: 'Time Picker 数字输入框'},
+      { key: 'textarea', name: 'Time Picker 文本域'},
     ]
   },
   {
@@ -66,5 +68,10 @@ const MENU_LISTS = [
     ]
   }
 ]
+
+export let MENU_LISTS_TOTAL = 0
+MENU_LISTS.map(items => {
+  MENU_LISTS_TOTAL += items.lists.length
+})
 
 export default MENU_LISTS
