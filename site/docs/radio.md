@@ -146,18 +146,72 @@ render() {
 ```
 :::
 
+### 圆形样式
+
+::: demo
+```js
+state = {
+  value: 2
+}
+
+onChange(value) {
+  this.setState({ value })
+}
+
+render() {
+  const options = [
+    { label: '西瓜', value: 1 },
+    { label: '土豆', value: 2 }
+  ]
+  return (
+    <div>
+      <Radio.Group options={options} circle value={this.state.value} onChange={this.onChange.bind(this)} />
+    </div>
+  )
+}
+```
+:::
+
+### 垂直形式
+
+::: demo
+```js
+state = {
+  value: 2
+}
+
+onChange(value) {
+  this.setState({ value })
+}
+
+render() {
+  const options = [
+    { label: '西瓜', value: 1 },
+    { label: '土豆', value: 2 }
+  ]
+  return (
+    <div>
+      <Radio.Group options={options} direction='v' value={this.state.value} onChange={this.onChange.bind(this)} />
+    </div>
+  )
+}
+```
+:::
+
 ### Radio Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | className | 容器类名 | string | — | — |
 | style | 指定样式 | object | — | — |
 | value | 根据 value 进行比较，判断是否选中 | string/number/boolean | — | — |
+| label | 复选框显示的值 | string | - | - |
 | checked | 指定当前是否选中 | boolean | — | — |
 | disabled | 指定当前是否禁用 | boolean | — | — |
 | fill | 按钮激活时的填充色和边框色 | string | — | — |
 | color | 按钮激活时的文本颜色 | string | — | — |
 | type | 单选框展示类型 | button/default | — | 原生 |
 | buttonStyle | 单选框为按钮类型时的样式，填充还是描边 | solid/outline | — | outline |
+| circle | 是否为圆形对号形式 | boolean | - | false |
 
 ### Radio.Group Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
@@ -170,6 +224,8 @@ render() {
 | color | 按钮激活时的文本颜色 | string | — | — |
 | buttonStyle | 单选框为按钮类型时的样式，填充还是描边 | solid/outline | — | outline |
 | options | 以配置形式设置子元素 | Array<{ label: string, value: string/number,boolean, disabled?: boolean }> | — | — |
+| direction | 设置按钮组的方向，默认为水平方向 | v/h | - | h |
+| circle | 是否为圆形对号形式 | boolean | - | false |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |

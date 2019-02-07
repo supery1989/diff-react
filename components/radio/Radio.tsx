@@ -7,11 +7,13 @@ export interface RadioProps {
   className?: string,
   style?: object,
   value?: string | number | boolean,
+  label?: string,
   checked?: boolean,
   disabled?: boolean,
   fill?: string,
   color?: string,
   type?: 'button',
+  circle?: boolean,
   buttonStyle?: 'solid' | 'outline',
   onChange?: (value: any) => void
 }
@@ -47,16 +49,18 @@ export default class Radio extends React.Component<RadioProps> {
   }
 
   render() {
-    const { children, value, disabled, className, fill, color, type, buttonStyle, ...rest } = this.props
-    const viewProps = omit(rest, ['checked', 'onChange', 'disabled', 'className'])
+    const { children, value, disabled, className, fill, color, type, buttonStyle, label, style, circle, ...rest } = this.props
+    const viewProps = omit(rest, ['checked', 'onChange', 'disabled', 'className', 'style'])
     const { checked } = this.state
-    const wrapperCls = classnames(`${this.prefix}-wrapper`, {
+    const wrapperCls = classnames(className, `${this.prefix}-wrapper`, {
       [`${this.prefix}-wrapper-${type}`]: !!type,
       [`${this.prefix}-wrapper-${type}-checked`]: !!type && checked,
       [`${this.prefix}-wrapper-${type}-disabled`]: !!type && disabled,
+      [`${this.prefix}-wrapper-circle`]: !!circle,
       [`${this.prefix}-wrapper-${type}-solid`]: !!type && buttonStyle === 'solid',
     })
-    const cls = classnames(className, this.prefix, `${this.prefix}-box`, {
+    const cls = classnames(this.prefix, `${this.prefix}-box`, {
+      [`${this.prefix}-${type}`]: !!type,
       [`${this.prefix}-checked`]: !!checked,
       [`${this.prefix}-disabled`]: !!disabled
     })
@@ -84,12 +88,12 @@ export default class Radio extends React.Component<RadioProps> {
       }
     }
     return (
-      <label className={wrapperCls} style={wrapperStyle}>
+      <label className={wrapperCls} style={{...style, ...wrapperStyle}}>
         <span className={cls}>
           <span className={`${this.prefix}-inner`} style={innerStyle} />
           <View config={{...viewProps, cls: `${this.prefix}-input`, checked, type: 'radio', disabled }} tag='input' onChange={this.handleChange.bind(this)} />
         </span>
-        <span className={`${this.prefix}-label`} style={textStyle}>{ children || value }</span>
+        <span className={`${this.prefix}-label`} style={textStyle}>{ label || children || value }</span>
       </label>
     )
   }

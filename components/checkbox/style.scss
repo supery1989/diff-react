@@ -1,62 +1,93 @@
 @import '../style/theme/index.scss';
 @import '../style/mixins/reset.scss';
 
-$prefix: '#{$root-prefix}-radio';
+$prefix: '#{$root-prefix}-checkbox';
 
 .#{$prefix}-wrapper {
+  font-size: $font-size;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  color: $font-color;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  line-height: unset;
+  cursor: pointer;
+  display: inline-block;
+  $checkbox-size: 16px;
   .#{$prefix} {
     @include reset;
-    position: relative;
+    white-space: nowrap;
+    outline: none;
     display: inline-block;
     line-height: 1;
+    position: relative;
     vertical-align: middle;
-    white-space: nowrap;
-    cursor: pointer;
-    outline: 0;
+    top: -0.09em;
     &-inner {
-      border: 1px solid $border-color;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      cursor: pointer;
-      box-sizing: border-box;
-      background-color: $background-color;
       position: relative;
-      display: inline-block;
-      &::after {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background-color: $background-color;
-        content: "";
+      top: 0;
+      left: 0;
+      display: block;
+      width: $checkbox-size;
+      height: $checkbox-size;
+      border: 1px solid $border-color;
+      border-radius: 2px;
+      background-color: $background-color;
+      -webkit-transition: all .3s;
+      transition: all .3s;
+      border-collapse: separate;
+      &:after {
+        $check-width: ($checkbox-size / 14) * 5;
+        $check-height: ($checkbox-size / 14) * 8;
+        transform: rotate(45deg) scale(0);
         position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%) scale(0);
-        transition: transform .15s cubic-bezier(.71,-.46,.88,.6);
+        left: ($checkbox-size - $check-width) / 2;
+        top: ($checkbox-size - $check-height) / 2 - 1 * ($checkbox-size / 14);
+        display: table;
+        width: $check-width - 2;
+        height: $check-height - 2;
+        border: 2px solid #fff;
+        border-top: 0;
+        border-left: 0;
+        content: ' ';
+        transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+        opacity: 0;
       }
     }
     &-input {
-      opacity: 0;
-      outline: 0;
+      box-sizing: border-box;
+      padding: 0;
       position: absolute;
-      z-index: -1;
-      top: 0;
       left: 0;
-      right: 0;
+      z-index: 1;
+      cursor: pointer;
+      opacity: 0;
+      top: 0;
       bottom: 0;
-      margin: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
     }
     &-label {
-      font-size: $font-size;
-      padding-left: 5px;
+      padding-left: 8px;
+      padding-right: 8px;
     }
     &-checked {
       .#{$prefix}-inner {
         border-color: $primary-color;
         background-color: $primary-color;
-        &::after {
-          transform: translate(-50%,-50%) scale(1);
+        &:after {
+          transform: rotate(45deg) scale(1);
+          position: absolute;
+          display: table;
+          border: 2px solid $background-color;
+          border-top: 0;
+          border-left: 0;
+          content: ' ';
+          transition: all .2s cubic-bezier(0.12, 0.4, 0.29, 1.46) .1s;
+          opacity: 1;
         }
       }
       &:after {
@@ -66,21 +97,29 @@ $prefix: '#{$root-prefix}-radio';
         left: 0;
         width: 100%;
         height: 100%;
+        border-radius: 2px;
         border: 1px solid $primary-color;
         content: '';
         animation: CheckboxEffect 0.36s ease-in-out;
         animation-fill-mode: both;
-        border-radius: 50%;
       }
     }
-    &-disabled {
+    &-indeterminate {
       .#{$prefix}-inner {
-        border-color: $disabled-color;
-        background-color: $disabled-bg-color;
-        cursor: not-allowed;
-        &::after {
-          background-color: $disabled-color;
-          cursor: not-allowed;
+        border-color: $primary-color;
+        background-color: $primary-color;
+        &:before {
+          content: " ";
+          position: absolute;
+          display: block;
+          margin-top: -1px;
+          left: 3px;
+          right: 3px;
+          top: 50%;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(255, 255, 255);
+          border-image: initial;
         }
       }
     }
@@ -157,43 +196,45 @@ $prefix: '#{$root-prefix}-radio';
   }
   &-circle {
     .#{$prefix}-inner {
-      $radio-size: 16px;
-      &:after {
-        border-radius: unset;
-        background-color: unset;
-        $radio-width: ($radio-size / 14) * 5;
-        $radio-height: ($radio-size / 14) * 8;
-        transform: rotate(45deg) scale(0);
-        position: absolute;
-        left: ($radio-size - $radio-width) / 2;
-        top: ($radio-size - $radio-height) / 2 - 1 * ($radio-size / 14);
-        display: table;
-        width: $radio-width - 2;
-        height: $radio-height - 2;
-        border: 2px solid #fff;
-        border-top: 0;
-        border-left: 0;
-        content: ' ';
-        transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
-        opacity: 0;
-      }
+      border-radius: 50%;
     }
     .#{$prefix}-checked {
-      .#{$prefix}-inner {
-        &:after {
-          transform: rotate(45deg) scale(1);
-          position: absolute;
-          display: table;
-          border: 2px solid $background-color;
-          border-top: 0;
-          border-left: 0;
-          content: ' ';
-          transition: all .2s cubic-bezier(0.12, 0.4, 0.29, 1.46) .1s;
-          opacity: 1;
-        }
+      &:after {
+        border-radius: 50%;
       }
     }
   }
+  &:hover {
+    .#{$prefix}-inner {
+      border-color: $primary-color;
+    }
+  }
+  &-disabled {
+    cursor: not-allowed;
+    .#{$prefix}-inner {
+      border-color: $border-color;
+      background-color: $disabled-bg-color;
+    }
+    .#{$prefix}-input {
+      cursor: not-allowed;
+    }
+    .#{$prefix}-checked {
+      .#{$prefix}-inner {
+        border-color: $border-color;
+        background-color: $disabled-bg-color;
+        &:after {
+          border-color: $disabled-color;
+        }
+      }
+    }
+    &:hover {
+      .#{$prefix}-inner {
+        border-color: $border-color;
+        background-color: $disabled-bg-color;
+      }
+    }
+  }
+  
   @keyframes CheckboxEffect {
     0% {
       transform: scale(1);
@@ -206,20 +247,10 @@ $prefix: '#{$root-prefix}-radio';
   }
 }
 .#{$prefix}-group {
-  .#{$prefix}-wrapper {
-    margin-left: 15px;
-    &:first-child {
-      margin-left: 0;
-    }
-    &-button {
-      margin-left: 0;
-    }
-  }
   &-v {
     .#{$prefix}-wrapper {
       display: block;
       margin-bottom: 10px;
-      margin-left: 0;
       &:last-child {
         margin-bottom: 0;
       }

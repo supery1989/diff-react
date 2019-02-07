@@ -1,5 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import Popup from 'components/popup'
 
 export function setDom(prefix: string) {
   const dom = document.createElement('div')
@@ -20,6 +21,13 @@ export function setProps(props: any, type: string, prefix: string) {
     props = {
       message: props
     }
+  } else {
+    Popup({
+      title: '警告',
+      message: '参数类型不对，应为string或者react元素',
+      showOkBtn: false
+    }, 'warning')
+    return { fail: true }
   }
 
   if (type) {
@@ -55,7 +63,10 @@ export function setComp(props: any, prefix: string, messageBox: any, dom: any, C
 
 export function renderItem(props: any, type: string, prefix: string, messageBox: any, dom: any, Canvas: any) {
   const tempProps = setProps(props, type, prefix)
+  if (tempProps.fail) {
+    return null
+  }
   const component = setComp(tempProps, prefix, messageBox, dom, Canvas)
   
-  ReactDOM.render(component, dom)
+  return ReactDOM.render(component, dom)
 }

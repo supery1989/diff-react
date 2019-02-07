@@ -30,7 +30,7 @@ const MENU_LISTS = [
       { key: 'input', name: 'Input 输入框'},
       { key: 'radio', name: 'Radio 单选框'},
       { key: 'colorPicker', name: 'ColorPicker 颜色选择器#@'},
-      { key: 'checkbox', name: 'Checkbox 复选框#@2'},
+      { key: 'checkbox', name: 'Checkbox 复选框'},
       { key: 'switch', name: 'Switch 开关#@'},
       { key: 'select', name: 'Select 下拉框#@2'},
       { key: 'timepicker', name: 'Time Picker 时间选择框2'},
