@@ -8,7 +8,7 @@ $prefix: '#{$root-prefix}-back-top';
   position: fixed;
   right: 50px;
   bottom: 50px;
-  z-index: 100;
+  z-index: 1001;
   &-not-fixed {
     position: relative;
     right: unset;

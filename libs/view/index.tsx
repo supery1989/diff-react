@@ -10,6 +10,7 @@ export interface ViewProps {
   onMouseEnter?: React.MouseEventHandler,
   onMouseLeave?: React.MouseEventHandler,
   onKeyDown?: React.MouseEventHandler,
+  onMouseUp?: React.MouseEventHandler,
 }
 
 export const ROOT_PREFIX = 'diff'
@@ -47,6 +48,11 @@ export default class View extends React.Component<ViewProps>{
     }
   }
 
+  onMouseUp = (e: any) => {
+    const { onMouseUp } = this.props
+    onMouseUp && onMouseUp(e)
+  }
+
   onBlur = (e: any) => {
     const { onBlur } = this.props
     onBlur && onBlur(e)
@@ -76,6 +82,7 @@ export default class View extends React.Component<ViewProps>{
         onMouseEnter={this.onMouseEnter}
         onClick={this.onClick}
         onKeyDown={this.onKeyDown}
+        onMouseUp={this.onMouseUp}
         onChange={this.onChange}
         onBlur={this.onBlur}
       >{children}</Comp>

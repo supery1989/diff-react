@@ -17,14 +17,17 @@ export function setDom(prefix: string) {
 }
 
 export function setProps(props: any, type: string, prefix: string) {
-  if (typeof props === 'string' || React.isValidElement(props)) {
+  if (typeof props === 'string' || typeof props === 'boolean' || React.isValidElement(props)) {
+    if (typeof props === 'boolean') {
+      props = String(props)
+    }
     props = {
       message: props
     }
   } else {
     Popup({
       title: '警告',
-      message: '参数类型不对，应为string或者react元素',
+      message: '参数类型不对，应为string、boolean或者react元素',
       showOkBtn: false
     }, 'warning')
     return { fail: true }
