@@ -15,7 +15,7 @@ const MENU_LISTS = [
   {
     type: '导航',
     lists: [
-      { key: 'breadcrumb', name: 'Breadcrumb 面包屑#@2'},
+      { key: 'breadcrumb', name: 'Breadcrumb 面包屑'},
       { key: 'menu', name: 'Menu 菜单#@'},
       { key: 'steps', name: 'Steps 步骤条'},
       { key: 'progress', name: 'Progress 进度条#@'},

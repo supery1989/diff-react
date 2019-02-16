@@ -1,0 +1,33 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+$prefix: '#{$root-prefix}-breadcrumb';
+
+.#{$prefix} {
+  @include reset;
+  font-size: $font-size;
+  line-height: 1;
+  &-item {
+    &-separator {
+      margin: 0 9px;
+      font-weight: 700;
+      color: $gray-color;
+    }
+    &:last-child {
+      .#{$prefix}-item-separator {
+        display: none;
+      }
+    }
+    &-item {
+      text-decoration: none;
+      color: $gray-color;
+    }
+    &-link {
+      transition: color .2s cubic-bezier(.645, .045, .355, 1);
+      color: $font-color;
+      &:hover {
+        color: $primary-color;
+        cursor: pointer;
+      }
+    }
+  }
+}

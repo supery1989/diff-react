@@ -24,6 +24,7 @@ class ComponentsRouter extends React.Component {
         <Route exact path="/components/radio" component={Demo.Radio} />
         <Route exact path="/components/checkbox" component={Demo.Checkbox} />
         <Route exact path="/components/switch" component={Demo.Switch} />
+        <Route exact path="/components/breadcrumb" component={Demo.Breadcrumb} />
       </Switch>
     );
   }

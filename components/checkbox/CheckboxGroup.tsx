@@ -108,7 +108,7 @@ export default class CheckboxGroup extends React.Component<CheckboxGroupProps> {
 
   render() {
     const { values, children, options, direction, ...rest } = this.props
-    const viewProps = omit(rest, ['onChange', 'disabled', 'fill', 'color', 'buttonStyle', 'direction'])
+    const viewProps = omit(rest, ['onChange', 'disabled', 'fill', 'color', 'buttonStyle', 'direction', 'circle'])
     const cls = classnames(`${this.prefix}-${direction}`)
     return (
       <View config={{...viewProps, prefix: this.prefix, cls}}>
