@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import omit from 'omit.js'
 import classnames from 'classnames'
 import View, { ROOT_PREFIX } from 'libs/view'
-import Checkbox from './Checkbox';
+import Checkbox from './Checkbox'
 
 export interface CheckboxGroupProps {
   className?: string,

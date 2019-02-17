@@ -1,0 +1,200 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-menu';
+
+.#{$prefix} {
+  @include reset;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  color: $font-color;
+  background: $background-color;
+  line-height: 0;
+  transition: background .3s,width .2s;
+  zoom: 1;
+  .#{$root-prefix}-icon {
+    margin-right: 10px;
+  }
+  .#{$prefix}-submenu-arrow {
+    margin-right: 0;
+  }
+  &-item, &-submenu-title {
+    cursor: pointer;
+    margin: 0;
+    padding: 0 20px;
+    position: relative;
+    display: block;
+    white-space: nowrap;
+    transition: color .3s cubic-bezier(.645, .045, .355, 1),border-color .3s cubic-bezier(.645, .045, .355, 1),background .3s cubic-bezier(.645, .045, .355, 1),padding .15s cubic-bezier(.645, .045, .355, 1);
+  }
+  &-v {
+    box-shadow: 0 1px 2px $border-color;
+    width: 250px;
+    border: 1px solid $border-color;
+    .#{$prefix} {
+      &-inner {
+        transition: all .5s cubic-bezier(0, 1, 0.5, 1);
+      }
+      &-item, &-submenu-title {
+        position: relative;
+        padding: 0 16px;
+        font-size: $font-size;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 40px;
+        height: 40px;
+        &:hover {
+          color: $primary-color;
+        }
+        &-selected {
+          color: $primary-color;
+          background-color: lighten($primary-color, 35%);
+        }
+        &-disabled {
+          color: $disabled-color;
+          &:hover {
+            cursor: not-allowed;
+            color: $disabled-color;
+          }
+        }
+      }
+      &-submenu {
+        &-arrow {
+          position: absolute;
+          right: 16px;
+          top: 50%;
+          margin-top: -8px;
+        }
+      }
+    }
+    &.#{$prefix}-inline {
+      .#{$prefix}-submenu {
+        overflow: hidden;
+      }
+    }
+  }
+  &-popup {
+    .#{$prefix}-submenu {
+      position: relative;
+      .#{$prefix}-popup {
+        position: absolute;
+        left: 100%;
+        margin-left: 5px;
+        min-width: 100%;
+        top: 0;
+        color: $font-color;
+        background: $background-color;
+        box-shadow: 0 1px 2px $border-color;
+        border: 1px solid $border-color;
+        z-index: 2;
+        &-group {
+          position: unset;
+          margin-left: unset;
+          border: unset;
+          box-shadow: unset;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+  &-h {
+    border: 0;
+    border-bottom: 1px solid $border-color;
+    box-shadow: none;
+    line-height: 46px;
+    white-space: nowrap;
+    .#{$prefix} {
+      &-item, &-submenu {
+        margin-top: -1px;
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        vertical-align: bottom;
+        border-bottom: 2px solid transparent;
+        &-selected, &:hover {
+          border-bottom: 2px solid $primary-color;
+          color: $primary-color;
+        }
+        &-disabled {
+          color: $disabled-color;
+          &:hover {
+            cursor: not-allowed;
+            border-bottom: 2px solid $border-color;
+            color: $disabled-color;
+          }
+        }
+      }
+      &-submenu {
+        &-arrow {
+          margin-left: 5px;
+        }
+        .#{$prefix}-v {
+          position: absolute;
+          left: 0;
+          top: 48px;
+          z-index: 2;
+        }
+        .#{$prefix}-item {
+          display: block;
+          border-bottom: unset;
+          &:hover {
+            border-bottom: unset;
+          }
+        }
+      }
+    }
+    &.#{$prefix}-popup {
+      .#{$prefix}-submenu {
+        .#{$prefix}-submenu {
+          width: 100%;
+          border-bottom: unset;
+        }
+        .#{$prefix}-popup {
+          width: auto;
+        }
+        .#{$prefix}-popup-1 {
+          // width: 150px;
+          top: 50px;
+          left: 0;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  &-group-title {
+    color: $gray-color;
+    &:hover {
+      color: $gray-color !important;
+    }
+  }
+  &-dark {
+    color: rgba(255,255,255,0.65);
+    background: #001529;
+    &.#{$prefix}-v {
+      .#{$prefix}-inner {
+        background-color: #000c17;
+      }
+      .#{$prefix}-item, .#{$prefix}-submenu-title {
+        &-selected {
+          color: $background-color;
+          background-color: $primary-color;
+        }
+        &:hover {
+          color: $background-color;
+        }
+      }
+    }
+  }
+  &-collapsed {
+    width: 50px;
+    .#{$prefix}-item, .#{$prefix}-submenu-title {
+      text-overflow: unset;
+      overflow: hidden;
+    }
+    .#{$prefix}-submenu-arrow {
+      opacity: 0;
+    }
+    span {
+      opacity: 0;
+    }
+  }
+}

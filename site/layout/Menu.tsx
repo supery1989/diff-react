@@ -16,11 +16,11 @@ const MENU_LISTS = [
     type: '导航',
     lists: [
       { key: 'breadcrumb', name: 'Breadcrumb 面包屑'},
-      { key: 'menu', name: 'Menu 菜单#@'},
+      { key: 'menu', name: 'Menu 菜单#@2'},
       { key: 'steps', name: 'Steps 步骤条'},
       { key: 'progress', name: 'Progress 进度条#@'},
       { key: 'page', name: 'Page 分页2'},
-      { key: 'dropdowm', name: 'Dropdown 下拉菜单2'},
+      { key: 'dropdown', name: 'Dropdown 下拉菜单'},
     ]
   },
   {
