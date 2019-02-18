@@ -66,7 +66,7 @@ export default class View extends React.Component<ViewProps>{
   render() {
     const { config, tag, children } = this.props
     const { prefix, className, style, cls, sty, ...rest } = config
-    const viewCls = classnames(prefix, className, cls)
+    const viewCls = classnames(prefix, cls, className)
     const viewStyle = {
       ...style,
       ...sty

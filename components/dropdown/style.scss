@@ -5,4 +5,42 @@ $prefix: '#{$root-prefix}-dropdown';
 
 .#{$prefix} {
   @include reset;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  &-menu {
+    position: absolute;
+    z-index: 2;
+  }
+  &-arrow {
+    margin-left: 5px;
+  }
+  &:hover {
+    color: $primary-color;
+  }
+  &-disabled {
+    color: $disabled-color;
+    cursor: not-allowed;
+    &:hover {
+      color: $disabled-color;
+    }
+  }
+  &-inner {
+    display: inline-block;
+  }
+  &-button {
+    &-title {
+      margin-right: 0;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+    &-icon {
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+      border-left: 1px solid $gray-color;
+      &:hover {
+        border-left: 1px solid $gray-color;
+      }
+    }
+  }
 }

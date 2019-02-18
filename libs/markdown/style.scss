@@ -6,3 +6,11 @@
 .diff-button {
   margin-right: 15px;
 }
+.demo-dropdown {
+  .diff-button {
+    margin-right: 0;
+  }
+  .diff-dropdown {
+    margin-right: 15px;
+  }
+}
