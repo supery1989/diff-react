@@ -16,12 +16,14 @@ export interface ButtonProps {
   disabled?: boolean,
   onClick?: React.MouseEventHandler,
   onMouseLeave?: React.MouseEventHandler,
+  onMouseEnter?: React.MouseEventHandler,
   text?: string,
   size?: 'large' | 'small',
   plain?: boolean,
   round?: boolean,
   circle?: boolean,
   icon?: string,
+  iconPosition?: 'left' | 'right',
   nativeType?: 'submit' | 'reset',
   block?: boolean,
   during?: number
@@ -35,6 +37,7 @@ export default class Button extends React.Component<ButtonProps> {
     loading: false,
     type: 'default',
     round: true,
+    iconPosition: 'left',
     disabled: false
   }
 
@@ -107,10 +110,24 @@ export default class Button extends React.Component<ButtonProps> {
     }
   }
 
+  handleMouseEnter = (e: any) => {
+    if (this.props.onMouseEnter) {
+      this.props.onMouseEnter(e);
+    }
+  }
+
+  renderContent(IconComp: any, text3: any) {
+    const { iconPosition } = this.props
+    if (iconPosition === 'right') {
+      return <span>{text3}{IconComp}</span>
+    }
+    return <span>{IconComp}{text3}</span>
+  }
+
   render() {
-    const { type, text, size, plain, round, circle, icon, loading, nativeType, block, during, ...rest } = this.props
+    const { type, text, size, plain, round, circle, icon, loading, nativeType, block, during, iconPosition, ...rest } = this.props
     const { sec, disabled } = this.state
-    const viewProps = omit(rest, 'during', 'disabled')
+    const viewProps = omit(rest, 'during', 'disabled', 'onMouseEnter', 'onMouseLeave', 'onClick')
     const type1 = type ? type : 'default';
     const cls = classnames({
       [`${this.prefix}-${type1}`]: type1,
@@ -129,10 +146,23 @@ export default class Button extends React.Component<ButtonProps> {
     const IconComp = icon || loading ? <Icon type={iconType} spin={iconSpin} /> : null
     const text1 = text ? text : ''
     const text2 = sec > 0 ? `${sec}秒后${text1}` : text1
-    const text3 = icon || loading ? ` ${text2}` : text2
+    let text3
+    if (loading) {
+      text3 = ` ${text2}`
+    } else if (icon) {
+      if (iconPosition === 'right') {
+        text3 = `${text2} `
+      } else {
+        text3 = ` ${text2}`
+      }
+    } else {
+      text3 = text2
+    }
 
     return (
-      <View config={{...viewProps, prefix: this.prefix, tag: Comp, cls, type: nativeType}} onClick={this.handleClick} onMouseLeave={this.handleMouseLeave}>{IconComp}{text3}</View>
+      <View config={{...viewProps, prefix: this.prefix, tag: Comp, cls, type: nativeType}} onClick={this.handleClick} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
+        {this.renderContent(IconComp, text3)}
+      </View>
     )
   }
 }

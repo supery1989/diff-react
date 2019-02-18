@@ -10,7 +10,7 @@ class Silder extends React.Component {
       <div className="silder">
         <div className="info">
           <div>总计：{MENU_LISTS_TOTAL}</div>
-          <div>已完成15</div>
+          <div>已完成16</div>
           <div>*进行中3</div>
         </div>
         <ul>

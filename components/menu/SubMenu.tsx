@@ -61,12 +61,8 @@ export default class SubMenu extends React.Component<SubMenuProps> {
   }
 
   componentWillUnmount() {
-    if (this.enterTimer) {
-      clearTimeout(this.enterTimer)
-    }
-    if (this.leaveTimer) {
-      clearTimeout(this.leaveTimer)
-    }
+    clearTimeout(this.enterTimer)
+    clearTimeout(this.leaveTimer)
   }
 
   isExpandHandle(expandKeys: string[], specKey: string, defaultExpandKeys: string[], index: string) {

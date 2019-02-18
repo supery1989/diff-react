@@ -142,6 +142,7 @@ render() {
     <div>
       <Button type="primary" icon="user" text="用户" />
       <Button type="primary" icon="arrowleft" />
+      <Button type="primary" icon="arrowleft" iconPosition="right" text="箭头" />
     </div>
   )
 }

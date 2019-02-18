@@ -41,7 +41,7 @@ export default class MenuItem extends React.Component<MenuItemProps> {
     const cls = classnames({
       // [`${this.prefix}-active`]: index === this.context.rootCmd.state.active,
       [`${this.prefix}-disabled`]: !!disabled,
-      [`${this.prefix}-selected`]: (isInline || direction === 'h') && (selectedKey === specKey || defaultSelectedKey === index)
+      [`${this.prefix}-selected`]: (isInline || direction === 'h') && (selectedKey === specKey || (defaultSelectedKey && defaultSelectedKey === index))
     })
     const sty = GetExtraStyle(isInline, depth, inlineIndent)
     return (
