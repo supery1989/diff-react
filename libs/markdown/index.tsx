@@ -19,7 +19,7 @@ export default class Markdown extends React.Component {
     this.renderer = new marked.Renderer();
     this.renderer.table = (header: any, body: any) => {
       return `<table class="grid"><thead>${header}</thead><tbody>${body}</tbody></table>`;
-    };
+    }
   }
 
   componentDidMount() {
@@ -49,11 +49,12 @@ export default class Markdown extends React.Component {
   document() {}
 
   render() {
-    const document: any = this.document()
-    if (typeof document === 'string') {
+    const markDocument: any = this.document()
+    document.title = markDocument.split('\n')[0].substr(3)
+    if (typeof markDocument === 'string') {
       this.components.clear();
 
-      const html = marked(document.replace(/:::\s?demo\s?([^]+?):::/g, (match, p1, offset) => {
+      const html = marked(markDocument.replace(/:::\s?demo\s?([^]+?):::/g, (match, p1, offset) => {
         const namespace = '1b671a64-40d5-491e-99b0-da01ff1f3341'
         // 使用offset定位生成id会导致最后一个demo无法热更新
         const id = uuidv5(p1, namespace)
