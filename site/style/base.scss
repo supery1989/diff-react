@@ -5,6 +5,21 @@ $successActiveColor: #218838;
   margin: 0;
   padding: 0;
 }
+::-webkit-scrollbar {
+  display: block;
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track-piece {
+  background: #fff;
+}
+::-webkit-scrollbar-track {
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #cbe6ff;
+}
 
 html, body {
   height: 100%;

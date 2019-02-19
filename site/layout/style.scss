@@ -1,30 +1,25 @@
+@import '../../components/style/theme/index.scss';
+
 .silder {
   .info {
     color: #f5222d;
     padding: 10px 15px;
     font-size: 12px;
   }
-  ul {
-    list-style: none;
-    .type {
-      .name {
-        height: 30px;
-        line-height: 30px;
-        padding-left: 15px;
-        color: #fff;
+  .site-menu {
+    a {
+      text-decoration: none;
+      color: $font-color;
+      font-size: $font-size;
+      display: block;
+      cursor: pointer;
+      &:hover {
+        color: $primary-color;
       }
-      .item {
-        height: 30px;
-        line-height: 30px;
-        padding-left: 30px;
-        a {
-          text-decoration: none;
-          color: #fff;
-          font-size: 16px;
-          &:hover {
-            color: #20a0ff;
-          }
-        }
+    }
+    .diff-menu-item-selected {
+      a {
+        color: $primary-color;
       }
     }
   }

@@ -13,7 +13,7 @@ class App extends React.Component {
       <Layout className="app">
         <Layout.Header />
           <Layout>
-            <Layout.Silder collapsible auto><Silder /></Layout.Silder>
+            <Layout.Silder width='250px' auto><Silder /></Layout.Silder>
             <Layout.Content auto id="demo-content">
               <div className="content"><ComponentsRouter /></div>
             </Layout.Content>

@@ -1,7 +1,9 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
-import "./style.scss";
-import MENU_LISTS, { MENU_LISTS_TOTAL } from './Menu'
+import * as React from "react"
+import { Link } from "react-router-dom"
+import uuid from 'uuid'
+import "./style.scss"
+import MENU_LISTS, { MENU_LISTS_TOTAL, COMPLETE_MENU_TOTAL } from './Menu'
+import Menu from 'components/menu'
 
 
 class Silder extends React.Component {
@@ -9,28 +11,21 @@ class Silder extends React.Component {
     return (
       <div className="silder">
         <div className="info">
-          <div>总计：{MENU_LISTS_TOTAL}</div>
-          <div>已完成18</div>
-          <div>*进行中3</div>
+          <div>{COMPLETE_MENU_TOTAL} / {MENU_LISTS_TOTAL}</div>
         </div>
-        <ul>
-          {MENU_LISTS.map(list => {
+        <Menu expandKeys={['0', '1', '2', '3', '4', '5', '6']} className='site-menu'>
+          {MENU_LISTS.map((list: any, key: number) => {
             return (
-              <li key={list.type} className="type">
-                <div className="name">{list.type} {list.lists.length}</div>
-                <ul>
-                  {list.lists.map(menu => {
-                    return (
-                      <li key={menu.key} className="item">
-                        <Link to={`/components/${menu.key}`}>{menu.name}</Link>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </li>
+              <Menu.SubMenu key={uuid.v1()} index={String(key)} title={`${list.type} (${list.complete}/${list.total})`}>
+                {list.lists.map((menu: any) => {
+                  return (
+                    <Menu.Item key={uuid.v1()}><Link to={`/components/${menu.key}`}>{menu.name}</Link></Menu.Item>
+                  )
+                })}
+              </Menu.SubMenu>
             )
           })}
-        </ul>
+        </Menu>
       </div>
     );
   }
