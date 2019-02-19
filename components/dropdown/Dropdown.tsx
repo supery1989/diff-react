@@ -236,6 +236,6 @@ export default class Dropdown extends React.Component<DropdownProps> {
           {this.returnContent(menu)}
         </OutsideClickHandler>
       </View>
-    );
+    )
   }
 }

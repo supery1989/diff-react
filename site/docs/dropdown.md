@@ -10,8 +10,8 @@ render() {
   const menu = [
     { node: '菜单1' },
     { node: <span>菜单2</span>, props: { disabled: true} },
-    { node: <span><Icon type='user' />菜单3</span> },
-    { node: <span>菜单4</span> },
+    { node: <span>菜单3</span> },
+    { node: <span>菜单4</span>, props: { divided: true } },
   ]
   return (
     <Dropdown menu={menu}>下拉菜单</Dropdown>
@@ -210,7 +210,17 @@ render() {
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | className | 容器类名 | string | — | — |
 | style | 指定样式 | object | — | — |
+| menu | 菜单，按Menu组件属性配置 | [{ node: 菜单标题, props: 菜单属性(按照Menu组件进行配置), submenu: 多级菜单 }] | - | - |
+| show | 是否显示菜单 | boolean | - | false |
+| width | 下拉菜单宽度，单位px | number | - | 100 |
+| trigger | 触发下拉的行为 | string | hover/click | hover |
+| hideOnClick | 是否在点击菜单项后隐藏菜单 | boolean | - | true |
+| disabled | 菜单是否禁用 | boolean | - | false |
+| button | 触发元素是否按钮形式，按Button组件属性配置 | Button | - | - |
+| splitButton | 下拉触发元素呈现为按钮组 | boolean | - | false |
+| placement | 菜单弹出位置 | string | bottomleft/bottomcenter/bottomright/topleft/topcenter/topright | bottomleft |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
+| onClick | 下拉菜单点击回调，回调参数为内部生成key和传入的index值 | (insideKey: string, key?: string) => void |
