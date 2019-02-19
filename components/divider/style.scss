@@ -1,0 +1,71 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+$prefix: '#{$root-prefix}-divider';
+.#{$prefix} {
+  @include reset;
+  background: $disabled-color;
+  vertical-align: middle;
+  position: relative;
+  top: -.06em;
+  &-h {
+    display: block;
+    height: 1px;
+    width: 100%;
+    margin: 15px 0;
+  }
+  &-with-text-center,
+  &-with-text-left,
+  &-with-text-right {
+    display: table;
+    white-space: nowrap;
+    text-align: center;
+    background: transparent;
+    font-weight: 500;
+    color: #52575c;
+    font-size: 16px;
+    margin: 16px 0;
+    &::before,
+    &::after {
+      content: "";
+      display: table-cell;
+      position: relative;
+      top: 50%;
+      width: 50%;
+      border-top: 1px solid #e8e8e8;
+      transform: translateY(50%);
+      box-sizing: border-box;
+    }
+  }
+  &-with-text-left {
+    &::before {
+      width: 5%;
+    }
+    &::after {
+      width: 95%;
+      ;
+    }
+  }
+  &-with-text-right {
+    &::before {
+      width: 95%;
+    }
+    &::after {
+      width: 5%;
+      ;
+    }
+  }
+  &-v {
+    margin: 0 8px;
+    display: inline-block;
+    height: .9em;
+    width: 1px;
+  }
+  &-text {
+    display: inline-block;
+    padding: 0 24px;
+  }
+  &-dashed {
+    background: none;
+    border-top: 1px dashed $disabled-color;
+  }
+}
