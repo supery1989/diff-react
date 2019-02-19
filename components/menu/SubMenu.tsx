@@ -14,6 +14,7 @@ export interface SubMenuProps {
   index: string,
   disabled: boolean,
   isGroup: boolean,
+  divided: boolean,
   // 以下通过父组件传入
   specKey: string,
   handleSelect: (key: string) => void,
@@ -230,10 +231,11 @@ export default class SubMenu extends React.Component<SubMenuProps> {
   }
 
   render() {
-    const { title, children, specKey, handleSelect, selectedKey, defaultSelectedKey, isInline, depth, inlineIndent, disabled, expandKeys, onClick, toggleExpand, expandSingle, index, isGroup, eventType, direction, defaultExpandKeys, ...rest } = this.props
+    const { title, children, specKey, handleSelect, selectedKey, defaultSelectedKey, isInline, depth, inlineIndent, disabled, expandKeys, onClick, toggleExpand, expandSingle, index, isGroup, eventType, direction, defaultExpandKeys, divided, ...rest } = this.props
     const viewProps = omit(rest, ['index'])
     const titleCls = classnames(`${this.prefix}-title`, {
       [`${this.prefix}-title-disabled`]: !!disabled,
+      [`${this.prefix}-title-divided`]: !!divided,
       [`${ROOT_PREFIX}-menu-group-title`]: !!isGroup,
     })
     const eventHander = this.getEventHandle(disabled, isInline)

@@ -8,6 +8,7 @@ export interface MenuItemProps {
   style?: object,
   index?: string,
   disabled?: boolean,
+  divided?: boolean,
   // 以下属性通过父组件传入
   specKey: string,
   selectedKey?: string,
@@ -37,15 +38,18 @@ export default class MenuItem extends React.Component<MenuItemProps> {
   }
 
   render() {
-    const { children, disabled, specKey, selectedKey, defaultSelectedKey, onClick, handleSelect, isInline, inlineIndent, depth, expandKeys, index, eventType, direction, ...rest } = this.props
+    const { children, disabled, specKey, selectedKey, defaultSelectedKey, onClick, handleSelect, isInline, inlineIndent, depth, expandKeys, index, eventType, direction, divided, ...rest } = this.props
     const cls = classnames({
       // [`${this.prefix}-active`]: index === this.context.rootCmd.state.active,
       [`${this.prefix}-disabled`]: !!disabled,
+      [`${this.prefix}-divided`]: !!divided,
       [`${this.prefix}-selected`]: (isInline || direction === 'h') && (selectedKey === specKey || (defaultSelectedKey && defaultSelectedKey === index))
     })
     const sty = GetExtraStyle(isInline, depth, inlineIndent)
     return (
-      <View config={{...rest, prefix: this.prefix, cls, sty}} tag='li' onClick={this.handleClick.bind(this)}>{children}</View>
+      <View config={{...rest, prefix: this.prefix, cls, sty}} tag='li' onClick={this.handleClick.bind(this)}>
+        {children}
+      </View>
     )
   }
 }

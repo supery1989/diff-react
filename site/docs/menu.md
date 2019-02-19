@@ -300,6 +300,7 @@ render() {
 | index | 子菜单标识，可用来匹配是否默认展开或选中 | string | - | - |
 | disabled | 子菜单是否不可用状态 | boolean | - | false |
 | isGroup | 是否定义为分组形式 | boolean | - | false |
+| divided | 是否在子菜单元素上显示分割线 | boolean | - | false |
 
 ### MenuItem Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
@@ -308,6 +309,7 @@ render() {
 | style | 指定样式 | object | — | — |
 | index | 菜单标识，可用来匹配是否默认展开或选中 | string | - | - |
 | disabled | 菜单是否不可用状态 | boolean | - | false |
+| divided | 是否在子菜单元素上显示分割线 | boolean | - | false |
 
 ### Menu Events
 | 事件名称 | 说明 | 回调参数 |
