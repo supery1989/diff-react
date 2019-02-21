@@ -1,0 +1,26 @@
+@import 'components/style/theme/index.scss';
+@import 'components/style/mixins/reset.scss';
+.demo-grid {
+  .#{$root-prefix}-row {
+    margin-bottom: 15px;
+    .#{$root-prefix}-col {
+      .demo-grid-box {
+        background: $primary-color;
+        color: #fff;
+        text-align: center;
+        font-size: $font-size;
+        height: 30px;
+        line-height: 30px;
+        &-big {
+          height: 60px;
+          line-height: 60px;
+        }
+      }
+      &:nth-child(2n) {
+        .demo-grid-box {
+          background: lighten($primary-color, 20%);
+        }
+      }
+    }
+  }
+}

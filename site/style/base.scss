@@ -19,6 +19,9 @@ $successActiveColor: #218838;
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background: #cbe6ff;
+  &:hover {
+    background: #1890ff;
+  }
 }
 
 html, body {

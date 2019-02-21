@@ -1,0 +1,117 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefixRow: '#{$root-prefix}-row';
+$prefixCol: '#{$root-prefix}-col';
+
+.#{$prefixRow} {
+  &-float {
+    position: relative;
+    height: auto;
+    margin-right: 0;
+    margin-left: 0;
+    zoom: 1;
+    display: block;
+    box-sizing: border-box;
+    &::after {
+      clear: both;
+      content: '';
+      display: table;
+    }
+  }
+  &-flex {
+    display: flex;
+    flex-flow: row wrap;
+    &::before, &::after {
+      display: flex;
+    }
+  }
+  @each $type in (flex-start), (flex-end), (center), (space-between), (space-around), (space-evenly) {
+    &-justify-#{$type} {
+      justify-content: $type;
+    }
+  }
+  @each $type in stretch, center, flex-start, flex-end, baseline {
+    &-align-#{$type} {
+      align-items: $type;
+    }
+  }
+}
+
+@mixin make-col($name) {
+  $length: 24;
+  .#{$prefixCol}-float {
+    @for $index from 1 through $length {
+      &.#{$name}-#{$index} {
+        width: (100% / $length) * $index;
+      }
+    }
+  }
+  .#{$prefixCol}-flex {
+    @for $index from 1 through $length {
+      &.#{$name}-#{$index} {
+        flex-basis: (100% / $length) * $index;
+        max-width: (100% / $length) * $index;
+      }
+    }
+  }
+  @for $index from 1 through $length {
+    &.#{$name}-offset-#{$index} {
+      margin-left: (100% / $length) * $index;
+    }
+    &.#{$name}-pull-#{$index} {
+      right: (100% / $length) * $index;
+    }
+    &.#{$name}-push-#{$index} {
+      left: (100% / $length) * $index;
+    }
+  }
+}
+.#{$prefixCol} {
+  $length: 24;
+  position: relative;
+  &-float {
+    display: block;
+    box-sizing: border-box;
+    float: left;
+  }
+  &-flex {
+    min-width: 0;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+  @for $index from 1 through $length {
+    &-order-#{$index} {
+      order: $index;
+    }
+  }
+}
+@include make-col($prefixCol);
+
+$screen-xs: 480px;
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+$screen-xxl: 1600px;
+@media (max-width: $screen-xs) {
+  @include make-col(#{$prefixCol}-xs);
+}
+@media (min-width: $screen-sm) {
+  @include make-col(#{$prefixCol}-sm);
+}
+@media (min-width: $screen-md) {
+  @include make-col(#{$prefixCol}-md);
+}
+@media (min-width: $screen-lg) {
+  @include make-col(#{$prefixCol}-lg);
+}
+@media (min-width: $screen-xl) {
+  @include make-col(#{$prefixCol}-xl);
+}
+@media (min-width: $screen-xxl) {
+  @include make-col(#{$prefixCol}-xxl);
+}
