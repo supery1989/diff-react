@@ -39,6 +39,7 @@ export default class SubMenu extends React.Component<SubMenuProps> {
     isGroup: false,
     index: ''
   }
+  static displayName = 'SubMenu'
   state: any
   enterTimer: any
   leaveTimer: any
@@ -169,7 +170,7 @@ export default class SubMenu extends React.Component<SubMenuProps> {
       expandKeys,
       // onSubMenuClick: this.props.onSubMenuClick,
     }
-    if (component.type.displayName === 'SubMenu') {
+    if (component.type.name === 'SubMenu') {
       extraProps.expandKeys = expandKeys
       extraProps.toggleExpand = toggleExpand
       extraProps.expandSingle = expandSingle

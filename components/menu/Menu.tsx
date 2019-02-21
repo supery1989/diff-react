@@ -14,7 +14,7 @@ export interface MenuProps {
   selectedKey?: string,
   inlineIndent?: number,
   collapsed?: boolean,
-  expandKeys?: string[],
+  expandKeys: string[],
   expandSingle: boolean,
   onClick?: (insideKey: string, key?: string) => void
 }
