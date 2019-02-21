@@ -6,7 +6,8 @@ import classnames from 'classnames'
 import * as PropTypes from 'prop-types'
 import uuid from 'uuid'
 import omit from 'omit.js'
-import View from '../../libs/view'
+import View from 'libs/view'
+import Icon from 'components/icon'
 
 export interface SilderProps {
   className?: string,
@@ -34,9 +35,9 @@ class Silder extends React.Component<SilderProps> {
     collapsedWidth: '80px',
     style: {}
   }
-  state: any;
+  state: any
   constructor(props: SilderProps) {
-    super(props);
+    super(props)
     this.state = {
       collapsed: props.collapsed
     }
@@ -51,6 +52,14 @@ class Silder extends React.Component<SilderProps> {
   componentWillMount() {
     if (this.context.removeSilder) {
       this.context.silderHook.removeSilder(this.uid)
+    }
+  }
+
+  componentWillReceiveProps(nextProps: SilderProps) {
+    if (this.props.collapsed !== nextProps.collapsed) {
+      this.setState({
+        collapsed: nextProps.collapsed
+      })
     }
   }
 
@@ -77,18 +86,19 @@ class Silder extends React.Component<SilderProps> {
       [`${this.prefix}-has-trigger`]: collapsible,
       [`${this.prefix}-auto`]: auto,
     })
-    const w = collapsed ? collapsedWidth : width;
+    const w = collapsed ? collapsedWidth : width
     const sty = {
       flex: `0 0 ${w}`,
       maxWidth: w, // Fix width transition bug in IE11
       minWidth: w,
       width: w,
     }
-    const viewProps = omit(rest, ['onCollapse', 'collapsed']);
+    const viewProps = omit(rest, ['onCollapse', 'collapsed'])
+    const iconType = collapsed ? 'right' : 'left'
     return (
       <View config={{...viewProps, prefix: this.prefix, cls, sty}}>
         <div className={`${this.prefix}-children`}>{children}</div>
-        {collapsible && <div className={`${this.prefix}-trigger`} onClick={this.toggle}>trigger</div>}
+        {collapsible && <div className={`${this.prefix}-trigger`} onClick={this.toggle}><Icon type={iconType} /></div>}
       </View>
     )
   }

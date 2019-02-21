@@ -2,6 +2,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import * as PropTypes from 'prop-types'
+import View from 'libs/view'
 
 export interface LayoutProps {
   className?: string,
@@ -41,12 +42,12 @@ class Layout extends React.Component<LayoutProps> {
   }
 
   render() {
-    const { className, style, children } = this.props
-    const cls = classnames(this.prefix, className, {
+    const { children, ...rest } = this.props
+    const cls = classnames({
       [`${this.prefix}-has-silder`]: this.state.silders.length > 0
     })
     return (
-      <div className={cls} style={style}>{children}</div>
+      <View config={{...rest, prefix: this.prefix, cls}}>{children}</View>
     )
   }
 }

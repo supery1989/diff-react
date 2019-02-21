@@ -71,7 +71,7 @@ render() {
 ```
 :::
 
-固定头部。
+### 固定头部
 
 ::: demo
 ```js
@@ -91,7 +91,7 @@ render() {
 ```
 :::
 
-固定侧边栏。
+### 固定侧边栏
 
 ::: demo
 ```js
@@ -110,7 +110,7 @@ render() {
 ```
 :::
 
-固定头底部。
+### 固定头底部
 
 ::: demo
 ```js
@@ -129,13 +129,10 @@ render() {
 ```
 :::
 
-可收缩。
+### 可收缩
 
 ::: demo
 ```js
-constructor() {
-  super()
-}
 onCollapse = (collapsed, type) => {
   console.dir(collapsed)
   console.dir(type)
@@ -155,6 +152,38 @@ render() {
 ```
 :::
 
+### 自定义收缩触发器
+
+::: demo
+```js
+state = {
+  collapsed: false,
+  icon: 'indentleft'
+}
+
+handleClick() {
+  this.setState({
+    collapsed: !this.state.collapsed,
+    icon: this.state.collapsed ? 'indentleft' : 'indentright'
+  })
+}
+
+render() {
+  return (
+    <Layout style={{height: '200px'}}>
+      <Layout.Header style={{lineHeight: '64px', paddingLeft: '30px', color: '#fff'}}>
+        <Icon type={this.state.icon} onClick={this.handleClick.bind(this)} />
+      </Layout.Header>
+      <Layout>
+        <Layout.Silder collapsed={this.state.collapsed} width="150px" style={{alignItems: 'center', display: 'flex', justifyContent: 'center'}} onCollapse={this.onCollapse}>silder</Layout.Silder>
+        <Layout.Content style={{alignItems: 'center', display: 'flex', justifyContent: 'center'}}>content</Layout.Content>
+      </Layout>
+      <Layout.Footer style={{textAlign: 'center'}}>footer</Layout.Footer>
+    </Layout>
+  )
+}
+```
+:::
 
 ### Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |

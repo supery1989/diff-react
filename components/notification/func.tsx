@@ -17,12 +17,14 @@ export function setDom(prefix: string) {
 }
 
 export function setProps(props: any, type: string, prefix: string) {
-  if (typeof props === 'string' || typeof props === 'boolean' || React.isValidElement(props)) {
-    if (typeof props === 'boolean') {
-      props = String(props)
-    }
-    props = {
-      message: props
+  if (typeof props === 'string' || typeof props === 'object' || typeof props === 'boolean' || React.isValidElement(props)) {
+    if (typeof props !== 'object') {
+      if (typeof props === 'boolean') {
+        props = String(props)
+      }
+      props = {
+        message: props
+      }
     }
   } else {
     Popup({

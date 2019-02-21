@@ -13,7 +13,7 @@ export interface ContentProps {
 class Content extends React.Component<ContentProps> {
   public prefix = 'diff-layout-content'
   constructor(props: ContentProps) {
-    super(props);
+    super(props)
   }
 
   render() {

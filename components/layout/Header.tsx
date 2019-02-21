@@ -1,6 +1,6 @@
 
 import * as React from 'react'
-import classnames from 'classnames'
+import View from 'libs/view'
 
 export interface HeaderProps {
   className?: string,
@@ -14,10 +14,9 @@ class Header extends React.Component<HeaderProps> {
   }
 
   render() {
-    const { className, style, children } = this.props
-    const cls = classnames(this.prefix, className)
+    const { children, ...rest } = this.props
     return (
-      <div className={cls} style={style}>{children}</div>
+      <View config={{...rest, prefix: this.prefix}}>{children}</View>
     )
   }
 }
