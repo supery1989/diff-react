@@ -23,6 +23,18 @@ export interface InputProps {
   onBlur?: (value: any) => void,
   onKeyDown?: (value: any) => void,
   onEnter?: (value: any) => void,
+  onClick?: (e: any) => void,
+  onClear?: (e: any) => void,
+  // 以下为原生属性
+  readOnly?: boolean,
+  maxLength?: number,
+  minLength?: number,
+  autoComplete?: boolean,
+  name?: string,
+  id?: string,
+  max?: number,
+  min?: number,
+  autoFocus?: boolean
 }
 
 export default class Input extends React.Component<InputProps> {
@@ -32,6 +44,7 @@ export default class Input extends React.Component<InputProps> {
     value: '',
     trim: true,
     type: 'text',
+    placeholder: '请输入内容'
   }
   state: any;
   input: any;
@@ -44,7 +57,24 @@ export default class Input extends React.Component<InputProps> {
       trim: props.trim && props.type !== 'password',
       type: props.type,
       suffix: props.suffix,
-      placeholder: props.type === 'password' ? '请输入密码' : '请输入内容'
+      placeholder: props.type === 'password' ? '请输入密码' : props.placeholder
+    }
+  }
+
+  componentWillReceiveProps(nextProps: InputProps) {
+    if (this.props.suffix !== nextProps.suffix) {
+      this.setState({
+        suffix: nextProps.suffix
+      })
+    }
+    if (this.props.value !== nextProps.value) {
+      this.setState({
+        value: nextProps.value
+      }, () => {
+        this.setState({
+          showClose: false
+        })
+      })
     }
   }
 
@@ -60,10 +90,9 @@ export default class Input extends React.Component<InputProps> {
     })
   }
 
-  handleChange(e: any) {
+  handleChange(v: any) {
     const { onChange } = this.props
     const { trim } = this.state
-    let v = e.target.value
     if (v !== undefined && v !== '') {
       this.setState({
         showClose: true,
@@ -82,19 +111,26 @@ export default class Input extends React.Component<InputProps> {
     onChange && onChange(tempV)
   }
 
+  beforeHandleChange(e: any) {
+    const v = e.target.value
+    this.handleChange(v)
+  }
+
   handleBlur(e: any) {
     const { onBlur} = this.props
     onBlur && onBlur(e)
-    this.handleChange(e)
+    this.beforeHandleChange(e)
   }
 
   handleClear(e: any) {
     if (e.currentTarget.className.indexOf('close') > -1) {
-      // (this.refs.input as any).refs.viewRef.value = ''
+      const { onClear } = this.props
       this.setState({
         showClose: false,
         value: '',
       })
+      this.handleChange('')
+      onClear && onClear(e)
       this.focus()
     }
   }
@@ -106,6 +142,25 @@ export default class Input extends React.Component<InputProps> {
     } else {
       onKeyDown && onKeyDown(this.state.value)
     }
+  }
+
+  handleClick(e: any) {
+    const { onClick } = this.props
+    onClick && onClick(e)
+  }
+
+  handleMouseEnter(e: any) {
+    if (e.target.value) {
+      this.setState({
+        showClose: true
+      })
+    }
+  }
+
+  handleMouseLeave() {
+    this.setState({
+      showClose: false
+    })
   }
 
   showPwd(show = true) {
@@ -134,15 +189,16 @@ export default class Input extends React.Component<InputProps> {
       ref='input'
       config={{...tempProps, prefix: this.prefix, cls, sty}}
       tag='input'
-      onChange={this.handleChange.bind(this)}
+      onChange={this.beforeHandleChange.bind(this)}
       onKeyDown={this.handleKeyDown.bind(this)}
       onBlur={this.handleBlur.bind(this)}
+      onClick={this.handleClick.bind(this)}
     />
   }
 
   render() {
     const { disabled, size, prefix, prepend, append, clearable } = this.props
-    const viewProps = omit(this.props, ['size', 'prefix', 'suffix', 'prepend', 'append', 'clearable', 'trim', 'onChange', 'onBlur', 'onKeyDown', 'onEnter'])
+    const viewProps = omit(this.props, ['size', 'prefix', 'suffix', 'prepend', 'append', 'clearable', 'trim', 'onChange', 'onBlur', 'onKeyDown', 'onEnter', 'onClick', 'onClear'])
     const { showClose, type, suffix } = this.state
     const cls = classnames({
       [`${this.prefix}-disabled`]: !!disabled,
@@ -176,7 +232,11 @@ export default class Input extends React.Component<InputProps> {
     })
     const wrapperProps = omit(viewProps, ['className'])
     return (
-      <div className={wrapperCls}>
+      <div
+        className={wrapperCls}
+        onMouseEnter={this.handleMouseEnter.bind(this)}
+        onMouseLeave={this.handleMouseLeave.bind(this)}
+      >
         {prepend && <div className={`${this.prefix}-prepend`}>{prepend}</div>}
         <div className={`${this.prefix}-box`}>
           {this.renderInput(wrapperProps, cls, inputStyle)}

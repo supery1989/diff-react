@@ -137,8 +137,9 @@ render() {
 | append | 设置后置标签 | string/ReactNode | - | - |
 | clearable | 是否显示清空按钮 | boolean | - | true |
 | trim | 是否自动清除首尾空格 | boolean | - | true |
+| readOnly | 是否只读 | boolean | - | false |
 
-除表格所列属性外，还支持所有原生输入框属性，比如maxLength、minLength、placeholder、autoComplete、name、id、readOnly、max、min、autoFocus等
+除表格所列属性外，还支持所有原生输入框属性，比如maxLength、minLength、placeholder、autoComplete、name、id、max、min、autoFocus等
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
@@ -147,3 +148,5 @@ render() {
 | onEnter | 按下回车的回调 | （value） => void |
 | onKeyDown | 键盘事件的回调 | （value） => void |
 | onBlur | 输入框失焦时的回调 | (event) => void |
+| onClick | 输入框点击时的回调 | (event) => void |
+| onClear | 输入框清空按钮点击时的回调 | (event) => void |
