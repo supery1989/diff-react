@@ -24,6 +24,10 @@ export default function Toast(props: any = {}, type: string) {
     (messageBox as HTMLElement).style.top = '16px'
   }
 
+  if (typeof(props) === 'object') {
+    props = Object.assign({}, props)
+  }
+
   renderItem(props, type, prefix, messageBox, dom, Canvas)
 }
 

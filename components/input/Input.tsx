@@ -76,6 +76,11 @@ export default class Input extends React.Component<InputProps> {
         })
       })
     }
+    if (this.props.placeholder !== nextProps.placeholder) {
+      this.setState({
+        placeholder: nextProps.placeholder
+      })
+    }
   }
 
   focus() {

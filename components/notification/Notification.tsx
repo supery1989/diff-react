@@ -27,6 +27,10 @@ export default function Notification(props: any = {}, type: string) {
     (messageBox as HTMLElement).setAttribute("style", "top: 16px; bottom: unset; left: unset; right: 16px;")
   }
 
+  if (typeof(props) === 'object') {
+    props = Object.assign({}, props)
+  }
+
   renderItem(props, type, prefix, messageBox, dom, Canvas)
 }
 

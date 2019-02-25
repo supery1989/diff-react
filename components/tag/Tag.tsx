@@ -13,8 +13,9 @@ export interface TagProps {
   color?: string,
   checkbox?: boolean,
   checked: boolean,
-  onClose?: (e: any) => void,
-  onChange?: () => void
+  onClose?: (label: any, e: any) => void,
+  onClick?: (e: any) => void,
+  onChange?: () => void,
 }
 
 export default class Tag extends React.Component<TagProps> {
@@ -35,16 +36,21 @@ export default class Tag extends React.Component<TagProps> {
     }
   }
 
-  handleClick(e: any) {
+  handleClose(e: any) {
     this.setState({
       show: false
     })
-    const { onClose } = this.props
-    onClose && onClose(e)
+    const { onClose, children } = this.props
+    onClose && onClose(children, e)
   }
 
-  handleChange() {
-    const { checkbox, onChange } = this.props
+  handleChange(e: any) {
+    if (e.target.className.indexOf('close') > -1) {
+      this.handleClose(e)
+      return
+    }
+    const { checkbox, onChange, onClick } = this.props
+    onClick && onClick(e)
     if (!checkbox) {
       return
     }
@@ -57,7 +63,7 @@ export default class Tag extends React.Component<TagProps> {
   render() {
     const { children, type, closable, color, checkbox, ...rest } = this.props
     const { show, checked } = this.state
-    const viewProps = omit(rest, ['onClose', 'show', 'onChange', 'checked'])
+    const viewProps = omit(rest, ['onClose', 'show', 'onChange', 'checked', 'onClick'])
     const cls = classnames({
       [`${this.prefix}-${type}`]: type,
       [`${this.prefix}-checkbox`]: !!checkbox,
@@ -70,7 +76,7 @@ export default class Tag extends React.Component<TagProps> {
     return (
       <View config={{...viewProps, prefix: this.prefix, cls, sty}} tag='span' onClick={this.handleChange.bind(this)}>
         {children}
-        {closable && <Icon className={`${this.prefix}-close`} type='close' onClick={this.handleClick.bind(this)} />}
+        {closable && <Icon className={`${this.prefix}-close`} type='close' />}
       </View>
     );
   }

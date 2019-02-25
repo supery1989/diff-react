@@ -87,5 +87,6 @@ render() {
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
-| onClose | 关闭标签时触发的事件 | (event) => void |
+| onClose | 关闭标签时触发的事件 | (label, event) => void |
 | onChange | 当设置为checkbox时，背景色变化时的回调 | () => void |
+| onClick | 标签点击时触发的事件 | (event) => void |
