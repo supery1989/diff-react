@@ -5,4 +5,95 @@ $prefix: '#{$root-prefix}-select';
 
 .#{$prefix} {
   @include reset;
+  width: 240px;
+  position: relative;
+  &-inner {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    color: $font-color;
+    background: $background-color;
+    line-height: 0;
+    transition: background .3s,width .2s;
+    zoom: 1;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    &-auto {
+      overflow: auto !important;
+    }
+  }
+  &-tags {
+    position: absolute;
+    z-index: 2;
+    left: 5px;
+    top: 4px;
+    right: 30px;
+  }
+  &-tag {
+    margin-bottom: 4px;
+  }
+  &-option, &-group-title, &-empty {
+    cursor: pointer;
+    margin: 0;
+    white-space: nowrap;
+    transition: color .3s cubic-bezier(.645, .045, .355, 1),border-color .3s cubic-bezier(.645, .045, .355, 1),background .3s cubic-bezier(.645, .045, .355, 1),padding .15s cubic-bezier(.645, .045, .355, 1);
+    position: relative;
+    padding: 0 16px;
+    font-size: $font-size;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 40px;
+    height: 40px;
+    &:hover {
+      color: $primary-color;
+    }
+    &-selected {
+      color: $primary-color;
+      background-color: lighten($primary-color, 35%);
+    }
+    &-disabled {
+      color: $disabled-color;
+      &:hover {
+        color: $disabled-color;
+        cursor: not-allowed;
+      }
+    }
+    &-check {
+      position: absolute;
+      right: 16px;
+      top: 12px;
+    }
+  }
+  &-empty {
+    text-align: center;
+    &:hover {
+      color: $font-color;
+    }
+  }
+  &-group {
+    &-title {
+      color: $gray-color;
+      &:hover {
+        color: $gray-color;
+      }
+    }
+    .#{$prefix}-option {
+      padding-left: 26px;
+    }
+  }
+  &-multiple {
+    .#{$prefix}-option {
+      &-selected {
+        background-color: #fff;
+        &:hover {
+          background-color: lighten($primary-color, 35%);
+        }
+      }
+    }
+    .#{$prefix}-input {
+      .#{$root-prefix}-input {
+        transition: unset;
+      }
+    }
+  }
 }

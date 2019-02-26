@@ -35,7 +35,7 @@ const MENU_LISTS = [
       { key: 'colorPicker', name: 'ColorPicker 颜色选择器*1'},
       { key: 'checkbox', name: 'Checkbox 复选框'},
       { key: 'switch', name: 'Switch 开关'},
-      { key: 'select', name: 'Select 下拉框*13'},
+      { key: 'select', name: 'Select 下拉框'},
       { key: 'timepicker', name: 'Time Picker 时间选择框*3'},
       { key: 'inputnumber', name: 'Time Picker 数字输入框*99'},
       { key: 'textarea', name: 'Time Picker 文本域*3'},
