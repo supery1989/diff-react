@@ -1,12 +1,11 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-// import { ICON_TYPE_MAP } from 'libs/utils'
 import View from 'libs/view'
 import Icon from 'components/icon'
 import Button from 'components/button'
 import { ButtonProps } from 'components/button/Button'
-import Transtion from 'components/transition'
+import Transition from 'components/transition'
 
 export interface CanvasProps {
   className?: string,
@@ -174,7 +173,7 @@ export default class Canvas extends React.Component<CanvasProps> {
     })
 
     return (
-      <Transtion type="fade" show={show} unmount init onEnd={this.afterLeave}>
+      <Transition type="fade" show={show} unmount init onEnd={this.afterLeave}>
         <div className={`${this.prefix}-wrapper`}>
           <div className={boxCls} onClick={this.onMaskClick}>
             <View config={{...viewProps, prefix: this.prefix, sty}}>
@@ -185,7 +184,7 @@ export default class Canvas extends React.Component<CanvasProps> {
           </div>
           <div className={`${this.prefix}-mask`} style={maskStyle}></div>
         </div>
-      </Transtion>
+      </Transition>
     );
   }
 }

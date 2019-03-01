@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import omit from 'omit.js'
 import View from 'libs/view'
 import Icon from 'components/icon'
-import Transtion from 'components/transition'
+import Transition from 'components/transition'
 import { ICON_TYPE_MAP } from 'libs/utils'
 
 export interface AlertProps {
@@ -61,7 +61,7 @@ export default class Alert extends React.Component<AlertProps> {
     })
     const iconComp = showIcon && <Icon type={ICON_TYPE_MAP[type]} className={iconCls} />;
     return (
-      <Transtion type="fade" show={this.state.show} unmount onEnd={this.afterLeave}>
+      <Transition type="fade" show={this.state.show} unmount onEnd={this.afterLeave}>
         <View config = {{ ...viewProps, prefix: this.prefix, cls }}>
           {iconComp}
           <div className={`${this.prefix}-content`}>
@@ -72,7 +72,7 @@ export default class Alert extends React.Component<AlertProps> {
             { closable && closeComp}
           </div>
         </View>
-      </Transtion>
+      </Transition>
     )
   }
 }

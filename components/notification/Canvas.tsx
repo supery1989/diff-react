@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import View from 'libs/view'
-import Transtion from 'components/transition'
+import Transition from 'components/transition'
 import Icon from 'components/icon'
 import Base from './Base'
 
@@ -26,7 +26,7 @@ export default class Canvas extends Base {
     }
 
     return (
-      <Transtion type="fade" show={this.state.show} unmount init onEnd={this.afterLeave.bind(this)}>
+      <Transition type="fade" show={this.state.show} unmount init onEnd={this.afterLeave.bind(this)}>
         <View config = {{ ...viewProps, prefix, cls }} onMouseEnter={this.stopTimer} onMouseLeave={this.startTimer}>
           {iconComp}
           <div className={contentCls}>
@@ -36,7 +36,7 @@ export default class Canvas extends Base {
             <Icon type='close' className={`${prefix}-close`} onClick={this.onClose} />
           </div>
         </View>
-      </Transtion>
+      </Transition>
     )
   }
 }

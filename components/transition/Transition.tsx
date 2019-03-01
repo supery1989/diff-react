@@ -53,7 +53,6 @@ export default class Transition extends React.Component<TransitionProps> {
       infinite,
       onEnd
     } = this.props;
-    console.dir(this.props)
     let unmountStatus: string;
     if (isShow || !transfer) {
       unmountStatus = "entered";
@@ -69,7 +68,6 @@ export default class Transition extends React.Component<TransitionProps> {
     }
 
     if (unmountStatus === "unmounted") {
-      console.dir(777)
       this.unmountTimer = setTimeout(() => {
         this.setState(
           {
@@ -151,8 +149,6 @@ export default class Transition extends React.Component<TransitionProps> {
     }
     const sty = { animationDuration: `${(during as number) / 1000}s` }
     const viewProps = omit(rest, ['children', 'during', 'unmount', 'transfer', 'infinite', 'onEnd', 'show']);
-    console.dir(111)
-    console.dir(status)
     return (
       (status === 'unmounted' ? null : <View config={{...viewProps, prefix: this.prefix, cls, sty}}>{Comp}</View>)
     );

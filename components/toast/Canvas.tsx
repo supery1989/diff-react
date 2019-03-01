@@ -1,6 +1,6 @@
 import * as React from 'react'
 import View from 'libs/view'
-import Transtion from 'components/transition'
+import Transition from 'components/transition'
 import Icon from 'components/icon'
 import Base from '../notification/Base'
 
@@ -13,7 +13,7 @@ export default class Canvas extends Base {
     const { viewProps, iconComp, cls } = this.clacPorps()
 
     return (
-      <Transtion type="fade" show={this.state.show} unmount init onEnd={this.afterLeave.bind(this)}>
+      <Transition type="fade" show={this.state.show} unmount init onEnd={this.afterLeave.bind(this)}>
         <View config = {{ ...viewProps, prefix, cls }} onMouseEnter={this.stopTimer} onMouseLeave={this.startTimer}>
           <div className={`${prefix}-content`}>
             {iconComp}
@@ -21,7 +21,7 @@ export default class Canvas extends Base {
             {showClose && <Icon type='close' className={`${prefix}-close`} onClick={this.onClose} />}
           </div>
         </View>
-      </Transtion>
+      </Transition>
     )
   }
 }
