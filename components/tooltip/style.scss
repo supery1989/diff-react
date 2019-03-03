@@ -1,0 +1,107 @@
+@import "../style/theme/index.scss";
+@import "../style/mixins/reset.scss";
+
+$prefix: "#{$root-prefix}-tooltip";
+
+.#{$prefix}-wrapper {
+  @include reset;
+  position: relative;
+  display: inline-block;
+  .#{$prefix} {
+    position: absolute;
+    display: inline-block;
+    padding: 0;
+    color: #fff;
+    z-index: 99;
+    &-arrow {
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      margin-top: -5px;
+      border-width: 5px;
+    }
+    &-content {
+      font-size: 12px;
+      max-width: 250px;
+      padding: 5px 10px;
+      display: block;
+      color: #fff;
+      text-align: left;
+      text-decoration: none;
+      background-color: rgba(0, 0, 0, 0.75);
+      white-space: nowrap;
+      border-radius: 4px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    }
+    &.#{$prefix}-light {
+      .#{$prefix}-arrow::before {
+        content: "";
+        display: inline-block;
+        height: 6px;
+        width: 6px;
+        position: absolute;
+        transform: rotate(45deg);
+        background-color: #fff
+      }
+      .#{$prefix}-content {
+        background-color: hsla(0, 0%, 100%, .75);
+        color: rgba(0, 0, 0, .75);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .46);
+      }
+    }
+  }
+  /*
+    * $placement:tooltip位置
+    * $xType:x轴类型
+    * $left:x轴位置
+    * $yType:y轴类型
+    * $top:y轴位置
+    * $marPos:外边距位置
+    * $marginLeft:外边距
+    * $borderPos:边框位置
+    * $padPos:内边距位置
+    * $arrowLeft:箭头x位置
+    * $arrowTop:箭头y位置
+  */
+  @each $placement, $xType ,$left, $yType, $top, $marPos, $marginLeft, $borderPos, $padPos, $arrowLeft, $arrowTop in
+  ('topLeft', 'left', 5px, 'top', 100%, 'left', 0, 'top', 'bottom', -3px, -8px),
+  ('top', 'left', 50%, 'top', 100%, 'left', -5px, 'top', 'bottom', -3px, -8px),
+  ('topRight', 'right', 5px, 'top', 100%, 'left', -5px, 'top', 'bottom', -3px, -8px),
+  ('rightTop', 'left', -5px, 'top', 10px, 'bottom', 0, 'right', 'left', 2px, -3px),
+  ('right', 'left', -5px, 'top', 50%, 'top', -5px, 'right', 'left', 2px, -3px),
+  ('rightBottom', 'left', -5px, 'top', 100%, 'top', -15px, 'right', 'left', 2px, -3px),
+  ('bottomRight', 'right', 5px, 'top', 0, 'top', -5px, 'bottom', 'top', -3px, 2px),
+  ('bottom', 'left', 50%, 'top', 0, 'left', -5px, 'bottom', 'top', -3px, 2px),
+  ('bottomLeft', 'left', 5px, 'top', 0, 'top', -5px, 'bottom', 'top', -3px, 2px),
+  ('leftBottom', 'left', 100%, 'top', 100%, 'top', -15px, 'left', 'right', -8px, -3px),
+  ('left', 'left', 100%, 'top', 50%, 'top', -5px, 'left', 'right', -8px, -3px),
+  ('leftTop', 'left', 100%, 'top', 10px, 'left', -5px, 'left', 'right', -8px, -3px) {
+    .#{$prefix}-placement-#{$placement} {
+      padding-#{$padPos}: 5px;
+      .#{$prefix}-arrow {
+        #{$yType}: $top;
+        #{$xType}: $left;
+        margin-#{$marPos}: $marginLeft;
+        border-#{$borderPos}-color: rgba(0, 0, 0, .75);
+        @if $placement == 'leftBottom'{
+          margin-left: -5px;
+        }
+        @if $placement == 'left'{
+          margin-left: -5px;
+        }
+        &::before{
+          top: $arrowTop;
+          left: $arrowLeft;
+        }
+      }
+      &.#{$prefix}-light {
+        .#{$prefix}-arrow {
+          border-#{$borderPos}-color: rgba(0, 0, 0, .25) !important;
+        }
+      }
+    }
+  }
+}

@@ -4,8 +4,8 @@ import * as React from 'react'
 import View, { ROOT_PREFIX } from 'libs/view'
 
 export interface TempProps {
-  className?: string,
-  style?: object,
+  className?: string
+  style?: object
 }
 
 export default class Temp extends React.Component<TempProps> {

@@ -44,7 +44,7 @@ const MENU_LISTS = [
   {
     type: '展示',
     lists: [
-      { key: 'tooltip', name: 'Tooltip 文字提示*13'},
+      { key: 'tooltip', name: 'Tooltip 文字提示'},
       { key: 'avatar', name: 'Avatar 头像*1'},
       { key: 'badge', name: 'Badge 标记*1'},
       { key: 'carousel', name: 'Carousel 走马灯*1'},
