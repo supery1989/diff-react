@@ -1,0 +1,69 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-page';
+
+.#{$prefix} {
+  @include reset;
+  white-space: nowrap;
+  padding: 2px 5px;
+  color: $font-color;
+  &-total {
+    margin-right: 10px;
+  }
+  &-jumper {
+    display: inline-block;
+    &-input {
+      width: 34px;
+      .#{$root-prefix}-input {
+        padding-left: 0;
+        text-align: center;
+      }
+    }
+  }
+  &-sizes {
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin-right: 10px;
+  }
+  &-item {
+    display: inline-block;
+    min-width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    font-family: Arial;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    list-style: none;
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    outline: 0;
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+    &-selected {
+      background-color: $primary-color;
+      color: $background-color;
+      border-color: $primary-color;
+      cursor: auto;
+      &:hover {
+        color: #fff;
+      }
+    }
+    &-disabled {
+      border-color: $disabled-color;
+      color: $disabled-color;
+      cursor: not-allowed;
+      &:hover {
+        border-color: $disabled-color;
+        color: $disabled-color;
+      }
+    }
+  }
+}

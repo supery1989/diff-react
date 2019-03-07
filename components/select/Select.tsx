@@ -12,19 +12,21 @@ import Tag from 'components/tag'
 import Icon from 'components/icon'
 
 export interface SelectProps {
-  className?: string,
-  style?: object,
-  placeholder: string,
-  disabled?: boolean,
-  line?: number,
-  multiple?: boolean,
-  filter?: boolean,
-  getLabel?: boolean,
-  remote?: boolean,
-  loading?: boolean,
-  notFoundText?: string,
-  onChange?: (value: any) => void,
-  remoteFn?: (value: any) => void,
+  className?: string
+  style?: object
+  placeholder: string
+  disabled?: boolean
+  line?: number
+  multiple?: boolean
+  filter?: boolean
+  clearable?: boolean
+  getLabel?: boolean
+  remote?: boolean
+  loading?: boolean
+  notFoundText?: string
+  value?: any
+  onChange?: (value: any) => void
+  remoteFn?: (value: any) => void
 }
 
 export default class Select extends React.Component<SelectProps> {
@@ -202,7 +204,7 @@ export default class Select extends React.Component<SelectProps> {
       return null
     }
     const { selected, filterStr } = this.state
-    const { multiple, filter, notFoundText } = this.props
+    const { multiple, filter, notFoundText, value } = this.props
     if (filter) {
       const { children } =  component.props
       let child: any
@@ -232,12 +234,13 @@ export default class Select extends React.Component<SelectProps> {
       ...component.props,
       selected: multiple ? selected : selected.value,
       multiple,
+      initValue: value,
       onSelect: this.onSelect.bind(this)
     })
   }
 
   renderSingle() {
-    const { disabled, filter, remote } = this.props
+    const { disabled, filter, remote, clearable } = this.props
     const { showOption, placeholder, selected} = this.state
     return <Input
       suffix={showOption ? 'caretup' : 'caretdown'}
@@ -245,6 +248,7 @@ export default class Select extends React.Component<SelectProps> {
       placeholder={placeholder}
       value={selected.label}
       disabled={disabled}
+      clearable={clearable}
       onClear={this.handleClear.bind(this)}
       onClick={this.handleClick.bind(this)}
       className={`${this.prefix}-input`}
@@ -308,7 +312,7 @@ export default class Select extends React.Component<SelectProps> {
 
   render() {
     const { children, multiple, line, ...rest } = this.props
-    const viewProps = omit(rest, ['placeholder', 'disabled', 'filter', 'getLabel', 'loading', 'remote', 'remoteFn', 'notFoundText'])
+    const viewProps = omit(rest, ['placeholder', 'disabled', 'filter', 'getLabel', 'loading', 'remote', 'remoteFn', 'notFoundText', 'clearable', 'value'])
     const { showOption, innerPos } = this.state
     const cls = classnames({
       [`${this.prefix}-multiple`]: !!multiple

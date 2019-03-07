@@ -9,10 +9,12 @@ export interface OptionProps {
   style?: object,
   value: number | string,
   disabled?: boolean,
+  label?: string,
   // 以下通过父组件获取
   onSelect?: (value: number | string, label: any) => void,
   selected: any,
   multiple: boolean,
+  initValue: any
 }
 
 export default class Option extends React.Component<OptionProps> {
@@ -21,9 +23,16 @@ export default class Option extends React.Component<OptionProps> {
     value: ''
   }
 
+  componentDidMount() {
+    const { initValue, value, children, onSelect, label } = this.props
+    if (initValue === value) {
+      onSelect && onSelect(value, label || children)
+    }
+  }
+
   handleClick() {
-    const { value, onSelect, children } = this.props
-    onSelect && onSelect(value, children)
+    const { value, onSelect, children, label } = this.props
+    onSelect && onSelect(value, label || children)
   }
 
   isSelected() {
@@ -35,15 +44,15 @@ export default class Option extends React.Component<OptionProps> {
   }
 
   render() {
-    const { children, disabled, multiple, ...rest } = this.props
-    const viewProps = omit(rest, ['onSelect', 'value', 'selected', 'multiple'])
+    const { children, disabled, multiple, label, ...rest } = this.props
+    const viewProps = omit(rest, ['onSelect', 'value', 'selected', 'multiple', 'initValue'])
     const cls = classnames({
       [`${this.prefix}-selected`]: this.isSelected(),
       [`${this.prefix}-disabled`]: disabled,
     })
     return (
       <View config={{...viewProps, prefix: this.prefix, cls}} onClick={this.handleClick.bind(this)}>
-        {children}
+        {label || children}
         {multiple && this.isSelected() && <Icon type='check' className={`${this.prefix}-check`} />}
       </View>
     )

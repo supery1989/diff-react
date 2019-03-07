@@ -20,9 +20,9 @@ const MENU_LISTS = [
       { key: 'menu', name: 'Menu 导航菜单'},
       { key: 'steps', name: 'Steps 步骤条'},
       { key: 'progress', name: 'Progress 进度条*1'},
-      { key: 'page', name: 'Page 分页*3'},
+      { key: 'page', name: 'Page 分页'},
       { key: 'dropdown', name: 'Dropdown 下拉菜单'},
-      { key: 'tabs', name: 'Tabs 标签页*3', from: 'element'},
+      { key: 'tabs', name: 'Tabs 标签页*99', from: 'element'},
       { key: 'tree', name: 'Tree 树形控件*99', from: 'element'},
     ]
   },
@@ -50,7 +50,7 @@ const MENU_LISTS = [
       { key: 'carousel', name: 'Carousel 走马灯*1'},
       { key: 'tag', name: 'Tag 标签'},
       { key: 'blockheader', name: 'BlockHeader 标题*3', from: 'youzan'},
-      { key: 'card', name: 'Card 卡片*99', from: 'element'},
+      { key: 'card', name: 'Card 卡片*3', from: 'element'},
       { key: 'collapse', name: 'Collapse 卡片*99', from: 'element'},
       { key: 'table', name: 'Table 表格*99' }
     ]
@@ -73,7 +73,7 @@ const MENU_LISTS = [
       { key: 'backtop', name: 'BackTop 返回顶部'},
       { key: 'copy', name: 'Copy 复制'},
       { key: 'divider', name: 'Divider 分割线'},
-      { key: 'timestamp', name: 'Timestamp 时间戳*3', from: 'uiw'},
+      { key: 'time', name: 'Time 时间戳*3', from: 'uiw'},
       { key: 'countdown', name: 'Countdown 倒计时*3'},
       { key: 'copyright', name: 'Copyright 版权*99'},
     ]

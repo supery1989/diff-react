@@ -15,7 +15,7 @@ render() {
     <Select onChange={this.handleChange.bind(this)}>
       <Select.Option value='张三'>张三label</Select.Option>
       <Select.Option value='李四'>李四label</Select.Option>
-      <Select.Option disabled value='赵武'>赵武label</Select.Option>
+      <Select.Option disabled value='赵武'>赵武label</Select.Option>    
     </Select>
   )
 }
@@ -229,6 +229,8 @@ render() {
 | remote | 是否支持远程搜索 | boolean | - | false |
 | loading | 是否正在从远程获取数据 | boolean | - | false |
 | notFoundText | 当下拉列表为空时显示的内容 | string | - | 无可匹配项 |
+| clearable | 是否显示清空按钮 | boolean | - | true |
+| value | 下拉框的值 | number/string | - | - |
 
 ### Select.OptionGroup Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
@@ -244,6 +246,7 @@ render() {
 | style | 指定样式 | object | — | — |
 | value | 选项的值 | number/string | - | - |
 | disabled | 是否禁用 | boolean | - | false |
+| label | 选项的显示内容 | string | - | - |
 
 ### Select Events
 | 事件名称 | 说明 | 回调参数 |

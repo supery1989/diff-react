@@ -10,6 +10,7 @@ export interface OptionGroupProps {
   // 以下通过父组件传入
   selected: any,
   multiple: boolean,
+  initValue: any,
   onSelect: (value: any, label: any) => void
 }
 
@@ -20,18 +21,19 @@ export default class OptionGroup extends React.Component<OptionGroupProps> {
     if (!component) {
       return null
     }
-    const { selected, multiple, onSelect } = this.props
+    const { selected, multiple, onSelect, initValue } = this.props
     return React.cloneElement(component, {
       ...component.props,
       selected,
       multiple,
-      onSelect
+      onSelect,
+      initValue
     })
   }
 
   render() {
     const { label, children, ...rest } = this.props
-    const viewProps = omit(rest, ['selected', 'multiple', 'onSelect'])
+    const viewProps = omit(rest, ['selected', 'multiple', 'onSelect', 'initValue'])
     return (
       <View config={{...viewProps, prefix: this.prefix}}>
         <div className={`${this.prefix}-title`}>{label}</div>
