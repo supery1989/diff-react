@@ -1,0 +1,56 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-card';
+
+.#{$prefix} {
+  @include reset;
+  width: 250px;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  background-color: $background-color;
+  overflow: hidden;
+  transition: all .3s;
+  &:hover, &-active {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+  }
+  &-head {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 14px;
+    zoom: 1;
+    border-bottom: 1px solid $border-color;
+    position: relative;
+    &-title {
+      font-size: $font-size;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      color: $font-color;
+      font-weight: 500;
+      display: inline-block;
+    }
+    &-extra {
+      position: absolute;
+      right: 16px;
+      top: 0;
+      color: $primary-color;
+    }
+  }
+  &-body {
+    padding: 20px;
+  }
+  &-footer {
+    border-top: 1px solid $border-color;
+    padding: 8px 10px;
+  }
+  &-noBorder {
+    border: unset;
+  }
+  &-noHover {
+    &:hover {
+      box-shadow: unset;
+    }
+  }
+}

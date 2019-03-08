@@ -8,6 +8,7 @@ import Canvas from './canvas';
 import './style.scss'
 
 export default class Markdown extends React.Component {
+  static defaultProps: any
   components: any;
   renderer: any;
   // document: any;

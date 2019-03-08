@@ -50,7 +50,7 @@ const MENU_LISTS = [
       { key: 'carousel', name: 'Carousel 走马灯*1'},
       { key: 'tag', name: 'Tag 标签'},
       { key: 'blockheader', name: 'BlockHeader 标题*3', from: 'youzan'},
-      { key: 'card', name: 'Card 卡片*3', from: 'element'},
+      { key: 'card', name: 'Card 卡片'},
       { key: 'collapse', name: 'Collapse 卡片*99', from: 'element'},
       { key: 'table', name: 'Table 表格*99' }
     ]

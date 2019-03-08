@@ -33,7 +33,7 @@ $prefix: '#{$root-prefix}-page';
     height: 32px;
     margin-right: 8px;
     font-family: Arial;
-    line-height: 30px;
+    line-height: 32px;
     text-align: center;
     vertical-align: middle;
     list-style: none;
@@ -64,6 +64,14 @@ $prefix: '#{$root-prefix}-page';
         border-color: $disabled-color;
         color: $disabled-color;
       }
+    }
+  }
+  &-small {
+    .#{$prefix}-item {
+      min-width: 22px;
+      height: 22px;
+      line-height: 22px;
+      border: unset;
     }
   }
 }
