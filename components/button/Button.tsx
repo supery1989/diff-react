@@ -3,7 +3,8 @@ import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
 import View from '../../libs/view'
-import Icon from '../icon'
+import Icon from 'components/icon'
+import CountDown from 'components/countdown'
 
 export interface ButtonProps {
   className?: string,
@@ -26,7 +27,8 @@ export interface ButtonProps {
   iconPosition?: 'left' | 'right',
   nativeType?: 'submit' | 'reset',
   block?: boolean,
-  during?: number
+  during?: number,
+  initDuring?: boolean
 }
 
 export default class Button extends React.Component<ButtonProps> {
@@ -44,15 +46,21 @@ export default class Button extends React.Component<ButtonProps> {
   constructor(props: ButtonProps) {
     super(props)
     this.state = {
-      sec: -1,
       disabled: props.disabled,
-      during: props.during
+      during: 0
     }
   }
 
   componentWillUnmount() {
     if (this.timer) {
       clearInterval(this.timer)
+    }
+  }
+
+  componentDidMount() {
+    const { initDuring, during } = this.props
+    if (during && initDuring) {
+      this.countStart(during)
     }
   }
 
@@ -74,31 +82,13 @@ export default class Button extends React.Component<ButtonProps> {
 
   handleClick = (e: any) => {
     e.preventDefault()
-    const { loading } = this.props
-    const { during, disabled } = this.state
+    const { loading, during } = this.props
+    const { disabled } = this.state
     if (loading || disabled) {
       return
     }
     if (during) {
-      this.setState({
-        sec: during,
-        disabled: true
-      }, () => {
-        this.timer = setInterval(() => {
-          if (this.state.sec < 2) {
-            clearInterval(this.timer)
-            this.setState({
-              disabled: false,
-              sec: -1,
-              during: 0,
-            })
-            return
-          }
-          this.setState({
-            sec: this.state.sec - 1,
-          })
-        }, 1000)
-      })
+      this.countStart(during)
     } else {
       this.clickFn(e)
     }
@@ -116,18 +106,54 @@ export default class Button extends React.Component<ButtonProps> {
     }
   }
 
-  renderContent(IconComp: any, text3: any) {
-    const { iconPosition } = this.props
-    if (iconPosition === 'right') {
-      return <span>{text3}{IconComp}</span>
+  countStart(during: number) {
+    this.setState({
+      during,
+      disabled: true
+    })
+  }
+
+  countEnd() {
+    this.setState({
+      during: 0,
+      disabled: false
+    })
+  }
+
+  renderText() {
+    const { text, loading, icon, iconPosition, children } = this.props
+    const { during } = this.state
+    const leftSpace = (loading || (icon && iconPosition === 'left')) ? ' ' : ''
+    const rightSpace = icon && iconPosition === 'right' ? ' ' : ''
+    const title = text || children || ''
+    if (during && during > 0) {
+      return (
+        <span>
+          {leftSpace}
+          <CountDown during={during} onEnd={this.countEnd.bind(this)} />
+          秒后{title}
+          {rightSpace}
+        </span>
+      )
     }
-    return <span>{IconComp}{text3}</span>
+    return `${leftSpace}${title}${rightSpace}`
+  }
+
+  renderContent(IconComp: any) {
+    if (IconComp) {
+      const { iconPosition } = this.props
+      if (iconPosition === 'right') {
+        return <span>{this.renderText()}{IconComp}</span>
+      }
+      return <span>{IconComp}{this.renderText()}</span>
+    }
+    return this.renderText()
   }
 
   render() {
-    const { type, text, size, plain, round, circle, icon, loading, nativeType, block, during, iconPosition, ...rest } = this.props
-    const { sec, disabled } = this.state
-    const viewProps = omit(rest, 'during', 'disabled', 'onMouseEnter', 'onMouseLeave', 'onClick')
+    const { type, size, plain, round, circle, icon, loading, nativeType, block, ...rest } = this.props
+    const { disabled } = this.state
+    const viewProps = omit(rest, ['during', 'disabled', 'onMouseEnter', 'onMouseLeave', 'onClick', 'text', 'iconPosition', 'initDuring'])
     const type1 = type ? type : 'default';
     const cls = classnames({
       [`${this.prefix}-${type1}`]: type1,
@@ -144,24 +170,10 @@ export default class Button extends React.Component<ButtonProps> {
     const iconType = loading ? 'loading' : iconStr
     const iconSpin = loading ? true : false
     const IconComp = icon || loading ? <Icon type={iconType} spin={iconSpin} /> : null
-    const text1 = text ? text : ''
-    const text2 = sec > 0 ? `${sec}秒后${text1}` : text1
-    let text3
-    if (loading) {
-      text3 = ` ${text2}`
-    } else if (icon) {
-      if (iconPosition === 'right') {
-        text3 = `${text2} `
-      } else {
-        text3 = ` ${text2}`
-      }
-    } else {
-      text3 = text2
-    }
 
     return (
       <View config={{...viewProps, prefix: this.prefix, tag: Comp, cls, type: nativeType}} onClick={this.handleClick} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
-        {this.renderContent(IconComp, text3)}
+        {this.renderContent(IconComp)}
       </View>
     )
   }

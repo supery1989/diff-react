@@ -231,6 +231,7 @@ render() {
 | nativeType | 原生类型 | submit/reset | - | - |
 | block | 将按钮宽度调整为其父宽度的选项 | boolean | - | false |
 | during | 设置后为倒计时按钮，单位：秒 | number | - | - |
+| initDuring | 是否在组件加载完成后立即开启倒计时 | boolean | - | false |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |

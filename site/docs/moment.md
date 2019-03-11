@@ -35,6 +35,8 @@ render() {
       <div>当前月份天数:{Moment.daysInMonth()}</div>
       <Divider />
       <div>当前是今年第{Moment.getYearWeek()}周</div>
+      <Divider />
+      <div>当前是否闰年:{Moment.isLeapYear() ? '是' : '否'}</div>
     </div>
   )
 }
@@ -69,3 +71,4 @@ render() {
 | Moment.tzc(date, zone) | 时区转换 | Date或者时间戳，时区(东八区即为8，西八区-8) |
 | Moment.daysInMonth(date?) | 获取当前月份天数 | Date或者时间戳 |
 | Moment.getYearWeek(date?) | 获取当前是今年第几周 | Date或者时间戳 |
+| Moment.isLeapYear(date?) | 判断当前是否闰年 | Date或者时间戳 |

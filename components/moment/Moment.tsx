@@ -9,6 +9,7 @@ function initDate(date: any) {
         date = String(date).replace(/^(\d{4})(\d{2})(\d{2})$/, "$1/$2/$3")
         date = new Date(date)
       } else {
+        date = Number(date)
         date = new Date(date)
       }
     }
@@ -47,9 +48,14 @@ Moment.utc = (date: any, str: any) => {
 }
 
 Moment.isLeapYear = (date?: any) => {
-  date = initDate(date)
-  const y = date.getFullYear()
-  return (0 === y%4 && ((y%100 !==0) || (y%400 ===0 )))
+  let y
+  if (date && String(date).length === 4) {
+    y = date
+  } else {
+    date = initDate(date)
+    y = date.getFullYear()
+  }
+  return (0 === y%4 && ((y%100 !== 0) || (y%400 === 0)))
 }
 
 Moment.unix = (date?: any) => {
