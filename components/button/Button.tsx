@@ -11,7 +11,7 @@ export interface ButtonProps {
   style?: object,
   loading?: boolean,
   ghost?: boolean,
-  type?: 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danner' | 'link',
+  type?: 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'link',
   href?: string,
   target?: '' | '_blank',
   disabled?: boolean,
@@ -33,6 +33,7 @@ export interface ButtonProps {
 
 export default class Button extends React.Component<ButtonProps> {
   private prefix = 'diff-button'
+  static Group: any
   timer: any
   state: any
   static defaultProps = {

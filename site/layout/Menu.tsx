@@ -2,7 +2,7 @@ const MENU_LISTS = [
   {
     type: '通用',
     lists: [
-      { key: 'button', name: 'Button 按钮*03' },
+      { key: 'button', name: 'Button 按钮' },
       { key: 'icon', name: 'Icon 图标'}
     ] 
   },

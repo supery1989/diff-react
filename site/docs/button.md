@@ -8,7 +8,7 @@
 ```js
 render() {
   return (
-    <Button text="按钮" />
+    <Button>按钮</Button>
   )
 }
 ```
@@ -16,7 +16,7 @@ render() {
 
 ### 按钮类型
 
-通过type设置按钮类型，内置了default/primary/success/info/warning/danner/link 七种类型，默认为default
+通过type设置按钮类型，内置了default/primary/success/info/warning/danger/link 七种类型，默认为default
 
 ::: demo type为link时可以通过href属性设置调整链接
 ```js
@@ -28,7 +28,7 @@ render() {
       <Button type="success" text="成功按钮" />
       <Button type="info" text="提示按钮" />
       <Button type="warning" text="警告按钮" />
-      <Button type="danner" text="危险按钮" />
+      <Button type="danger" text="危险按钮" />
       <Button type="link" text="链接按钮" />
     </div>
   )
@@ -68,7 +68,7 @@ render() {
       <Button type="success" text="成功按钮" disabled />
       <Button type="info" text="提示按钮" disabled />
       <Button type="warning" text="警告按钮" disabled />
-      <Button type="danner" text="危险按钮" disabled />
+      <Button type="danger" text="危险按钮" disabled />
       <Button type="link" text="链接按钮" disabled />
     </div>
   )
@@ -123,7 +123,7 @@ render() {
       <Button type="success" text="成功按钮" plain />
       <Button type="info" text="提示按钮" plain />
       <Button type="warning" text="警告按钮" plain />
-      <Button type="danner" text="危险按钮" plain />
+      <Button type="danger" text="危险按钮" plain />
       <Button type="link" text="链接按钮" plain />
     </div>
   )
@@ -212,26 +212,49 @@ render() {
 ```
 :::
 
-### Attributes
+### 按钮组合
+
+::: demo
+```js
+render() {
+  return (
+    <Button.Group size='large'>
+      <Button>按钮1</Button>
+      <Button>按钮2</Button>
+      <Button type='primary'>按钮3</Button>
+    </Button.Group>
+  )
+}
+```
+:::
+
+### Button Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | className | 容器类名 | string | — | — |
-| style | 指定样式 | object | - | - |
-| text | 按钮的文本 | string | - | - |
-| type | 设置按钮类型 | string | default/primary/success/info/warning/danner/link | default |
-| href | 点击跳转的地址，type为link时可设置 | string | — | - |
-| target | 相当于 a 链接的 target 属性，href 存在时生效 | string | — | - |
-| size | 设置按钮大小，可选值为 small large 或者不设 | string | - | - |
+| style | 指定样式 | object | — | — |
+| text | 按钮的文本 | string | — | — |
+| type | 设置按钮类型 | string | default/primary/success/info/warning/danger/link | default |
+| href | 点击跳转的地址，type为link时可设置 | string | — | — |
+| target | 相当于 a 链接的 target 属性，href 存在时生效 | string | — | — |
+| size | 设置按钮大小，可选值为 small large 或者不设 | string | — | — |
 | disabled | 按钮失效状态 | boolean | — | false |
-| round | 是否圆角 | boolean | - | false |
-| circle | 是否圆形 | boolean | - | false |
-| plain | 是否为朴素 | boolean | - | false |
-| icon | 设置按钮的图标类型 | string | - | - |
-| loading | 设置按钮载入状态 | boolean | - | false |
-| nativeType | 原生类型 | submit/reset | - | - |
-| block | 将按钮宽度调整为其父宽度的选项 | boolean | - | false |
-| during | 设置后为倒计时按钮，单位：秒 | number | - | - |
-| initDuring | 是否在组件加载完成后立即开启倒计时 | boolean | - | false |
+| round | 是否圆角 | boolean | — | false |
+| circle | 是否圆形 | boolean | — | false |
+| plain | 是否为朴素 | boolean | — | false |
+| icon | 设置按钮的图标类型 | string | — | — |
+| loading | 设置按钮载入状态 | boolean | — | false |
+| nativeType | 原生类型 | submit/reset | — | — |
+| block | 将按钮宽度调整为其父宽度的选项 | boolean | — | false |
+| during | 设置后为倒计时按钮，单位：秒 | number | — | — |
+| initDuring | 是否在组件加载完成后立即开启倒计时 | boolean | — | false |
+
+### Button Group Attributes
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| className | 容器类名 | string | — | — |
+| style | 指定样式 | object | — | — |
+| size | 设置按钮大小，可选值为 small large 或者不设 | string | — | — |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
