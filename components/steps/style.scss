@@ -20,7 +20,6 @@ $prefix: '#{$root-prefix}-step';
       &-line {
         top: 15px;
         height: 2px;
-        left: 32px;
         right: 0;
       }
     }
@@ -36,7 +35,6 @@ $prefix: '#{$root-prefix}-step';
         width: 2px;
         top: 30px;
         bottom: 0;
-        left: 15px;
       }
     }
   }
@@ -169,7 +167,6 @@ $prefix: '#{$root-prefix}-step';
       position: absolute;
       left: 0;
       top: -4px;
-      background: $background-color;
       padding-right: 5px;
     }
     .#{$prefix}-desc {
