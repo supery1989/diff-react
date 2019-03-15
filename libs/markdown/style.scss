@@ -164,6 +164,36 @@
       }
     }
   }
+  .demo-block-nav {
+    .demo-nav {
+      height: 40px;
+      line-height: 40px;
+      display: inline-block;
+      color: $font-color;
+      font-size: $font-size;
+      width: 50%;
+      text-align: left;
+      &:last-child {
+        text-align: right;
+      }
+      .demo-nav-item {
+        a {
+          text-decoration: none;
+          padding: 0 5px;
+          color: $font-color;
+        }
+        .demo-nav-icon {
+          font-size: $font-size;
+        }
+        &:hover {
+          color: $primary-color;
+          a {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
 }
 
 .diff-button {

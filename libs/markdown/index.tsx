@@ -1,10 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom'
 import marked from 'marked';
 import prism from 'prismjs';
 import uuidv5 from 'uuid/v5'
 
 import Canvas from './canvas';
+import { MENU_LISTS_ARR, MENU_LISTS_TOTAL } from '../../site/layout/Menu'
+import Icon from 'components/icon'
 import './style.scss'
 
 export default class Markdown extends React.Component {
@@ -53,6 +56,38 @@ export default class Markdown extends React.Component {
     prism.highlightAll();
   }
 
+  setPrevAndNext(title: string) {
+    const index = MENU_LISTS_ARR.findIndex((item: any) => item.name === title)
+    const isFirst = index === 0
+    const isLast = index === MENU_LISTS_TOTAL - 1
+    let prev: any = null;
+    let next: any = null;
+    if (!isFirst) {
+      const prevItem = MENU_LISTS_ARR[index - 1]
+      prev = (
+        <span className='demo-nav-item'>
+          <Icon className='demo-nav-icon' type='left' />
+          <Link to={`/components/${prevItem.key}`}>{prevItem.name}</Link>
+        </span>
+      )
+    }
+    if (!isLast) {
+      const nextItem = MENU_LISTS_ARR[index + 1]
+      next = (
+        <span className='demo-nav-item'>
+          <Link className='demo-nav-icon' to={`/components/${nextItem.key}`}>{nextItem.name}</Link>
+          <Icon type='right' />
+        </span>
+      )
+    }
+    return (
+      <div className='demo-block-nav'>
+        <div className='demo-nav'>{prev}</div>
+        <div className='demo-nav'>{next}</div>
+      </div>
+    )
+  }
+
   document() {}
 
   render() {
@@ -73,9 +108,12 @@ export default class Markdown extends React.Component {
       }), { renderer: this.renderer });
 
       return (
-        <div dangerouslySetInnerHTML={{
-          __html: html
-        }} />
+        <div>
+          <div dangerouslySetInnerHTML={{
+            __html: html
+          }} />
+          {this.setPrevAndNext(document.title)}
+        </div>
       )
     } else {
       return <span />

@@ -84,11 +84,14 @@ const MENU_LISTS = [
 export let MENU_LISTS_TOTAL = 0
 // 已完成组件数量
 export let COMPLETE_MENU_TOTAL = 0
+// 所有组件列表格式化为数组格式
+export let MENU_LISTS_ARR:any = []
 MENU_LISTS.map((items: any) => {
   items.total = items.lists.length
   items.complete = 0
   MENU_LISTS_TOTAL += items.total
   items.lists.map((item: any) => {
+    MENU_LISTS_ARR.push(item)
     if (item.name.indexOf('*') === -1) {
       COMPLETE_MENU_TOTAL++
       items.complete ++
