@@ -64,7 +64,7 @@ const MENU_LISTS = [
       { key: 'toast', name: 'Toast 消息提示'},
       { key: 'notification', name: 'Notification 通知' },
       { key: 'popup', name: 'Popup 对话框' },
-      { key: 'popover', name: 'Popover 弹出框*99', from: 'element' },
+      { key: 'popover', name: 'Popover 弹出框' },
     ]
   },
   {

@@ -1,0 +1,104 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-popover';
+
+.#{$prefix} {
+  @include reset;
+  position: relative;
+  display: inline-block;
+  &-pop {
+    z-index: 998;
+  }
+  &-body {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #fff;
+    border-radius: 4px;
+    min-width: 100px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .46);
+    &.#{$prefix}-has-arrow {
+      margin-bottom: 10px;
+    }
+  }
+  &-title {
+    font-weight: bold;
+  }
+  &-arrow {
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    margin-top: -5px;
+    border-width: 5px;
+    margin-left: 0;
+    &::before {
+      content: "";
+      display: inline-block;
+      height: 6px;
+      width: 6px;
+      position: absolute;
+      transform: rotate(45deg);
+      background-color: #fff;
+    }
+  }
+  &-pop[x-placement^=bottom] {
+    margin-top: 2px;
+    &.#{$prefix}-has-arrow {
+      margin-top: 7px;
+    }
+    .#{$prefix}-arrow {
+      border-bottom-color: rgba(0, 0, 0, 0.25);
+      top: -5px;
+      &::before {
+        // top: -8px;
+        top: 2px;
+        left: -3px;
+      }
+    }
+  }
+  &-pop[x-placement^=top] {
+    margin-bottom: 3px;
+    &.#{$prefix}-has-arrow {
+      margin-bottom: 7px;
+    }
+    .#{$prefix}-arrow {
+      border-top-color: rgba(0, 0, 0, 0.25);
+      bottom: -10px;
+      &::before {
+        top: -8px;
+        left: -3px;
+      }
+    }
+  }
+  &-pop[x-placement^=left] {
+    margin-right: 4px;
+    &.#{$prefix}-has-arrow {
+      margin-right: 9px;
+    }
+    .#{$prefix}-arrow {
+      border-left-color: rgba(0, 0, 0, 0.25);
+      right: -11px;
+      &::before {
+        left: -8px;
+        bottom: -3px;
+      }
+    }
+  }
+  &-pop[x-placement^=right] {
+    margin-left: 4px;
+    &.#{$prefix}-has-arrow {
+      margin-left: 9px;
+    }
+    .#{$prefix}-arrow {
+      border-right-color: rgba(0, 0, 0, 0.25);
+      left: -11px;
+      &::before {
+        right: -8px;
+        bottom: -3px;
+      }
+    }
+  }
+}
