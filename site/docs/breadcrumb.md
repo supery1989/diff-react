@@ -17,6 +17,7 @@ render() {
   )
 }
 ```
+white
 :::
 
 ### 通过配置使用
@@ -35,6 +36,7 @@ render() {
   )
 }
 ```
+white
 :::
 
 ### 自定义分隔符
@@ -56,6 +58,7 @@ render() {
   )
 }
 ```
+white
 :::
 
 ### Breadcrumb Attributes

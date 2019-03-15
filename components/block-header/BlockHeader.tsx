@@ -17,7 +17,7 @@ export interface BlockHeaderProps {
   infoTitle: string,
   icon: 'question' | 'info'
   infoType: 'tooltip' | 'popup'
-  trigger: 'hover' | 'click' | 'focus'
+  trigger?: 'hover' | 'click' | 'focus'
   onClick?: () => void
 }
 

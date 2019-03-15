@@ -15,7 +15,7 @@ class App extends React.Component {
           <Layout>
             <Layout.Silder width='250px' auto><Silder /></Layout.Silder>
             <Layout.Content auto id="demo-content">
-              <div className="content"><ComponentsRouter /></div>
+              <div className='markdown-content'><ComponentsRouter /></div>
             </Layout.Content>
           </Layout>
         <Layout.Footer />

@@ -21,6 +21,7 @@ render() {
   )
 }
 ```
+white
 :::
 
 ### 垂直分割线
@@ -42,6 +43,7 @@ render() {
   )
 }
 ```
+white
 :::
 
 ### 嵌入文字
@@ -65,6 +67,7 @@ render() {
   )
 }
 ```
+white
 :::
 
 ### Divider Attributes

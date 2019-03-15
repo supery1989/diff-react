@@ -21,6 +21,12 @@ export default class Markdown extends React.Component {
     this.renderer.table = (header: any, body: any) => {
       return `<table class="grid"><thead>${header}</thead><tbody>${body}</tbody></table>`;
     }
+    // this.renderer.heading = function (text:any, level: number) {
+    //   console.dir(text)
+    //   var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+    //   console.dir(escapedText)
+    //   return `<BlockHeader title='${escapedText}' />`;
+    // };
   }
 
   componentDidMount() {
