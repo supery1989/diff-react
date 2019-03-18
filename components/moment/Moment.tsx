@@ -128,28 +128,43 @@ Moment.year = (date?: any) => {
   return Moment(date, 'YYYY')
 }
 
-Moment.month = (date?: any) => {
+Moment.month = (date: any = new Date(), type?: string) => {
   date = initDate(date)
+  if (type === 'fill') {
+    return Moment(date, 'MM')
+  }
   return Number(Moment(date, 'MM'))
 }
 
-Moment.date = (date?: any) => {
+Moment.date = (date: any = new Date(), type?: string) => {
   date = initDate(date)
+  if (type === 'fill') {
+    return Moment(date, 'DD')
+  }
   return Number(Moment(date, 'DD'))
 }
 
-Moment.hour = (date?: any) => {
+Moment.hour = (date: any = new Date(), type?: string) => {
   date = initDate(date)
+  if (type === 'fill') {
+    return Moment(date, 'HH')
+  }
   return Number(Moment(date, 'HH'))
 }
 
-Moment.minute = (date?: any) => {
+Moment.minute = (date: any = new Date(), type?: string) => {
   date = initDate(date)
+  if (type === 'fill') {
+    return Moment(date, 'mm')
+  }
   return Number(Moment(date, 'mm'))
 }
 
-Moment.second = (date?: any) => {
+Moment.second = (date: any = new Date(), type?: string) => {
   date = initDate(date)
+  if (type === 'fill') {
+    return Moment(date, 'ss')
+  }
   return Number(Moment(date, 'ss'))
 }
 

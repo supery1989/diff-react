@@ -10,33 +10,33 @@ render() {
   const test = Moment.add(new Date(), 1)
   return (
     <div>
-      <div>格式化Date:{Moment(new Date(1551681623848))}</div>
+      <div>格式化Date Moment(new Date(1551681623848)) : {Moment(new Date(1551681623848))}</div>
       <Divider />
-      <div>格式化时间戳:{Moment(1551681623848)}</div>
+      <div>格式化时间戳 Moment(1551681623848) : {Moment(1551681623848)}</div>
       <Divider />
-      <div>格式化字符串:{Moment(20190304)}</div>
+      <div>格式化字符串 Moment(20190304) : {Moment(20190304)}</div>
       <Divider />
-      <div>自定义格式:{Moment(1551681623848, 'HH/mm/ss')}</div>
+      <div>自定义格式 Moment(1551681623848, 'HH/mm/ss') : {Moment(1551681623848, 'HH/mm/ss')}</div>
       <Divider />
-      <div>获取年:{Moment.year(new Date())}</div>
+      <div>获取年 Moment.year(new Date()) : {Moment.year(new Date())}</div>
       <Divider />
-      <div>获取年简写:{Moment(new Date(), 'YY')}</div>
+      <div>获取年简写 Moment(new Date(), 'YY') : {Moment(new Date(), 'YY')}</div>
       <Divider />
-      <div>获取utc:{Moment.utc()}</div>
+      <div>获取utc Moment.utc() : {Moment.utc()}</div>
       <Divider />
-      <div>获取时间戳:{Moment.unix()}</div>
+      <div>获取时间戳 Moment.unix() : {Moment.unix()}</div>
       <Divider />
-      <div>日期计算:{Moment.add(new Date(), 1)}</div>
+      <div>日期计算 Moment.add(new Date(), 1) : {Moment.add(new Date(), 1)}</div>
       <Divider />
-      <div>比较日期差:{Moment.diff(new Date(), test)}</div>
+      <div>比较日期差 Moment.diff(new Date(), test) : {Moment.diff(new Date(), test)}</div>
       <Divider />
-      <div>时区转换:{Moment.tzc(new Date(), 8)}</div>
+      <div>时区转换 Moment.tzc(new Date(), 8) : {Moment.tzc(new Date(), 8)}</div>
       <Divider />
-      <div>当前月份天数:{Moment.daysInMonth()}</div>
+      <div>当前月份天数 Moment.daysInMonth() : {Moment.daysInMonth()}</div>
       <Divider />
-      <div>当前是今年第{Moment.getYearWeek()}周</div>
+      <div>当前是今年第{Moment.getYearWeek()}周 Moment.getYearWeek()</div>
       <Divider />
-      <div>当前是否闰年:{Moment.isLeapYear() ? '是' : '否'}</div>
+      <div>当前是否闰年 Moment.isLeapYear() : {Moment.isLeapYear() ? '是' : '否'}</div>
     </div>
   )
 }
@@ -59,11 +59,11 @@ render() {
 |---------- |-------- |---------- |
 | Moment(date, format = 'YYYY-MM-DD') | 格式化时间 | 接受时间戳和Date两种，默认格式化为YYYY-MM-DDD |
 | Moment.year(date) | 获取年 | Date或者时间戳 |
-| Moment.month(date) | 获取月 | Date或者时间戳 |
-| Moment.date(date) | 获取日 | Date或者时间戳 |
-| Moment.hour(date) | 获取小时 | Date或者时间戳 |
-| Moment.minute(date) | 获取分钟 | Date或者时间戳 |
-| Moment.second(date) | 获取秒 | Date或者时间戳 |
+| Moment.month(date, type) | 获取月，type为fill时获取08形式的月 | Date或者时间戳 |
+| Moment.date(date, type) | 获取日，type为fill时获取08形式的日 | Date或者时间戳 |
+| Moment.hour(date, type) | 获取小时，type为fill时获取08形式的小时 | Date或者时间戳 |
+| Moment.minute(date, type) | 获取分钟，type为fill时获取08形式的分钟 | Date或者时间戳 |
+| Moment.second(date, type) | 获取秒，type为fill时获取08形式的秒 | Date或者时间戳 |
 | Moment.utc(date) | 获取utc时间 | Date或者时间戳 |
 | Moment.unix(date) | 获取时间戳 | Date或者时间戳 |
 | Moment.add(date, number, type = 'D') | 计算时间 | Date或者时间戳，差值，默认类型为天/D |
