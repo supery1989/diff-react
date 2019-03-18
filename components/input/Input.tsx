@@ -85,7 +85,9 @@ export default class Input extends React.Component<InputProps> {
 
   focus() {
     setTimeout(() => {
-      (this.refs.input as any).refs.viewRef.focus()
+      if (this.refs.input) {
+        (this.refs.input as any).refs.viewRef.focus()
+      }
     })
   }
 
@@ -202,8 +204,8 @@ export default class Input extends React.Component<InputProps> {
   }
 
   render() {
-    const { disabled, size, prefix, prepend, append, clearable } = this.props
-    const viewProps = omit(this.props, ['size', 'prefix', 'suffix', 'prepend', 'append', 'clearable', 'trim', 'onChange', 'onBlur', 'onKeyDown', 'onEnter', 'onClick', 'onClear'])
+    const { disabled, size, prefix, prepend, append, clearable, style } = this.props
+    const viewProps = omit(this.props, ['size', 'prefix', 'suffix', 'prepend', 'append', 'clearable', 'trim', 'onChange', 'onBlur', 'onKeyDown', 'onEnter', 'onClick', 'onClear', 'style'])
     const { showClose, type, suffix } = this.state
     const cls = classnames({
       [`${this.prefix}-disabled`]: !!disabled,
@@ -239,6 +241,7 @@ export default class Input extends React.Component<InputProps> {
     return (
       <div
         className={wrapperCls}
+        style={style}
         onMouseEnter={this.handleMouseEnter.bind(this)}
         onMouseLeave={this.handleMouseLeave.bind(this)}
       >
@@ -247,7 +250,7 @@ export default class Input extends React.Component<InputProps> {
           {this.renderInput(wrapperProps, cls, inputStyle)}
           {prefix && <Icon type={prefix} className={`${this.prefix}-icon`} />}
           {this.renderSuffix(suffix)}
-          {isClose && <Icon type='close' style={closeIconStyle} className={`${this.prefix}-close`} onClick={this.handleClear.bind(this)} />}
+          {isClose && !disabled && <Icon type='close' style={closeIconStyle} className={`${this.prefix}-close`} onClick={this.handleClear.bind(this)} />}
           {type === 'password' && <Icon type='eye-o' className={`${this.prefix}-password`} onClick={this.showPwd.bind(this, false)} />}
         </div>
         {append && <div className={`${this.prefix}-append`}>{append}</div>}
