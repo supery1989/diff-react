@@ -43,9 +43,9 @@ export default class Popover extends React.Component<PopoverProps> {
   }
 
   componentWillReceiveProps(nextProps: PopoverProps) {
-    if (this.props.show !== nextProps.show || this.state.show !== nextProps.show) {
+    if (this.props.show !== nextProps.show) {
       if (!nextProps.show) {
-        this.hidePop()
+        this.hide()
       } else {
         this.showPop()
       }
@@ -58,16 +58,16 @@ export default class Popover extends React.Component<PopoverProps> {
     if (!this.target) return 
     if (trigger === 'hover') {
       this.target.addEventListener('mouseenter', this.showPop.bind(this))
-      this.target.addEventListener('mouseleave', this.hidePop.bind(this))
+      this.target.addEventListener('mouseleave', this.hide.bind(this))
     } else if (trigger === 'click') {
       this.target.addEventListener('click', this.showPop.bind(this))
-    } else {
+    } else if (trigger === 'focus') {
       if (this.target.nodeName === 'INPUT' || this.target.nodeName === 'TEXTAREA') {
         this.target.addEventListener('focus', this.showPop.bind(this))
-        this.target.addEventListener('blur', this.hidePop.bind(this))
+        this.target.addEventListener('blur', this.hide.bind(this))
       } else {
         this.target.addEventListener('mousedown', this.showPop.bind(this))
-        this.target.addEventListener('mouseup', this.hidePop.bind(this))
+        this.target.addEventListener('mouseup', this.hide.bind(this))
       }
     }
   }
@@ -92,12 +92,12 @@ export default class Popover extends React.Component<PopoverProps> {
       })
       if (this.props.trigger === 'hover') {
         this.refs.popper.addEventListener('mouseenter', this.showPop.bind(this))
-        this.refs.popper.addEventListener('mouseleave', this.hidePop.bind(this))
+        this.refs.popper.addEventListener('mouseleave', this.hide.bind(this))
       }
     })
   }
 
-  hidePop() {
+  hide() {
     this.setState({
       showPopper: false
     })
@@ -106,13 +106,13 @@ export default class Popover extends React.Component<PopoverProps> {
   handleClickOutside() {
     const { trigger } = this.props
     if (trigger === 'click' && this.state.showPopper) {
-      this.hidePop()
+      this.hide()
     }
   }
 
   handleEnd() {
     if (!this.state.showPopper) {
-      this.popperJS.destroy()
+      this.popperJS && this.popperJS.destroy()
     }
   }
 

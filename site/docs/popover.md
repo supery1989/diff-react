@@ -1,4 +1,4 @@
-## Popover 弹层
+## Popover 弹出框
 
 通用的触发式弹层组件, 可以自定义定位算法、触发方式以及弹层显示方式。
 
@@ -87,17 +87,12 @@ render() {
 
 ::: demo 
 ```js
-state = {
-  show: false
-}
 handleClick() {
-  this.setState({
-    show: false
-  })
+  this.refs.pop.hide()
 }
 render() {
   return (
-    <Popover show={this.state.show} trigger='click' width={150} content={
+    <Popover ref='pop' trigger='click' width={150} content={
       <div>
         <p>确定删除吗？</p>
         <div style={{textAlign: 'right', margin: 0}}>
@@ -127,3 +122,8 @@ render() {
 | width | 自定义浮窗宽度 | number | — | 默认最小宽度100px |
 | show | 是否显示浮窗 | boolean | — | false |
 | placement | 浮窗出现的位置 | string | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom |
+
+### Events
+| 事件名称 | 说明 | 回调参数 |
+|---------- |-------- |---------- |
+| hide | 通过ref调用实例的hide方法，可以手动关闭弹出框 | () => void |
