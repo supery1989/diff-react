@@ -87,7 +87,7 @@ export default class Popover extends React.Component<PopoverProps> {
           //   gpuAcceleration: false
           // },
           // TODO 父级某个元素设置了overflow !== initial后就会导致弹窗一直显示
-          // preventOverflow: { enabled: false },
+          preventOverflow: { enabled: false },
         }
       })
       if (this.props.trigger === 'hover') {
@@ -128,7 +128,7 @@ export default class Popover extends React.Component<PopoverProps> {
     return (
       <span className={popCls} ref='popper'>
         <OutsideClickHandler onOutsideClick={this.handleClickOutside.bind(this)}>
-          <Transition type='fade' show={showPopper} unmount onEnd={this.handleEnd.bind(this)}>
+          <Transition during={300} type='fade' show={showPopper} unmount onEnd={this.handleEnd.bind(this)}>
             <div className={cls} style={sty}>
               {title && <div className={`${this.prefix}-title`}>{title}</div>}
               {content}

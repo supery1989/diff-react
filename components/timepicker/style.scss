@@ -1,0 +1,28 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-time-picker';
+$range_prefix: '#{$root-prefix}-time-range-picker';
+
+.#{$prefix}-popover {
+  padding: 0;
+}
+.#{$prefix} {
+  @include reset;
+  &-panel {
+    &-header {
+      border-bottom: 1px solid $border-color;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    &-content {
+      padding: 10px 15px;
+    }
+  }
+}
+.#{$range_prefix} {
+  @include reset;
+  &-to {
+    margin: 0 5px;
+  }
+}

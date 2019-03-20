@@ -1,0 +1,53 @@
+@import '../../../style/theme/index.scss';
+@import '../../../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-time-cell';
+
+.#{$prefix} {
+  @include reset;
+  &-tr {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  &-td {
+    box-sizing: border-box;
+    font-size: $font-size;
+    display: inline-block;
+    text-align: center;
+    &-time {
+      $width: 32px;
+      width: $width;
+      height: $width;
+      line-height: 32px;
+    }
+    &:hover {
+      color: $primary-color;
+      cursor: pointer;
+    }
+  }
+  &-selected {
+    color: $primary-color;
+    border: 1px solid $primary-color;
+    border-radius: 50%;
+    line-height: 30px;
+    background-color: lighten($primary-color, 40%)
+  }
+  &-current {
+    color: #fff;
+    border-radius: 50%;
+    background-color: $primary-color;
+    &:hover {
+      color: #fff;
+    }
+  }
+  &-disabled {
+    color: $disabled-color;
+    cursor: not-allowed;
+    &:hover {
+      cursor: not-allowed;
+      color: $disabled-color;
+    }
+  }
+}

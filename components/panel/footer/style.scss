@@ -1,0 +1,22 @@
+@import '../../style/theme/index.scss';
+@import '../../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-panel-footer';
+
+.#{$prefix} {
+  @include reset;
+  padding: 6px 0;
+  text-align: right;
+  &-now {
+    float: left;
+  }
+  &-error {
+    font-size: $font-size-smaller;
+    color: $error-color;
+    text-align: center;
+    &-icon {
+      margin-right: 5px;
+      font-size: $font-size-smaller;
+    }
+  }
+}
