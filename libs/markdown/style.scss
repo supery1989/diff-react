@@ -80,10 +80,15 @@
       right: 0;
       top: 0;
     }
+
+    .demo-source {
+      position: relative;
+    }
   
     .source {
       position: relative;
       padding: 24px;
+      margin-right: 36px;
     }
   
     .meta {
@@ -129,47 +134,66 @@
     }
   
     .demo-block-control {
-      $height: 36px;
-      border-top: solid 1px #eaeefb;
-      height: $height;
+      // $height: 36px;
+      // border-top: solid 1px #eaeefb;
+      // height: $height;
+      position: absolute;
+      width: 36px;
+      top: 0;
+      bottom: 0;
+      right: 0;
       box-sizing: border-box;
       background-color: #f9fafc;
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px;
+      // border-bottom-left-radius: 4px;
+      // border-bottom-right-radius: 4px;
       text-align: center;
-      margin-top: -1px;
+      // margin-top: -1px;
       color: $font-color;
-      transition: .2s;
-      position: relative;
+      // transition: .2s;
+      // position: relative;
       .demo-control-btn {
-        display: inline-block;
-        line-height: $height;
-        margin: 0 5px;
-        transform: translateX(40px);
-        font-size: 14px;
+        display: block;
+        margin: 10px auto;
+        height: $font-size-large;
+      }
+      .demo-control-btn-code, .demo-control-btn-bg {
+        // display: inline-block;
+        // line-height: $height;
+        
+        // transform: translateX(40px);
+        font-size: $font-size-large;
         transition: .3s;
-        opacity: 0;
+        // opacity: 0;
+        color: $primary-color;
+        font-weight: bold;
         cursor: pointer;
-        &:hover {
-          color: $primary-color;
+        // &:hover {
+          // font-weight: bold;
+          // color: $primary-color;
           // background-color: #f9fafc;
-        }
+        // }
+      }
+      .demo-control-btn-bg {
+        width: $font-size-large;
+        height: $font-size-large;
+        background: $primary-color;
+        margin: 0 auto;
       }
     }
   
-    .demo-block-control:hover {
-      .demo-control-btn {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
+    // .demo-block-control:hover {
+    //   .demo-control-btn {
+        // opacity: 1;
+        // transform: translateX(0);
+      // }
+    // }
   }
   .demo-block-nav {
     .demo-nav {
       height: 40px;
       line-height: 40px;
       display: inline-block;
-      color: $font-color;
+      color: $primary-color;
       font-size: $font-size;
       width: 50%;
       text-align: left;
@@ -180,19 +204,24 @@
         a {
           text-decoration: none;
           padding: 0 5px;
-          color: $font-color;
+          color: $primary-color;
         }
         .demo-nav-icon {
           font-size: $font-size;
         }
         &:hover {
-          color: $primary-color;
           a {
-            color: $primary-color;
+            text-decoration: underline;
           }
         }
       }
     }
+  }
+}
+
+.demo {
+  &-section {
+    margin-bottom: 15px;
   }
 }
 

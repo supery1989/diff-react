@@ -2,6 +2,8 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import marked from 'marked'
 import { transform } from 'babel-standalone'
+import Icon from 'components/icon'
+import Tooltip from 'components/tooltip'
 
 import Editor from '../editor'
 
@@ -107,7 +109,19 @@ export default class Canvas extends React.Component<CanvasProps, any> {
             </svg>
           </div>
         )}
-        <div className="source" id={this.playerId} />
+        <div className="demo-source">
+          <div className="source" id={this.playerId} />
+          <div className="demo-block-control">
+            {/* <div className='demo-control-btn' onClick={this.backgroundControl.bind(this)}>切换背景</div> */}
+            <Tooltip placement='left' content={showBlock ? '隐藏代码' : '显示代码'} wrapperClass='demo-control-btn'>
+              <Icon className='demo-control-btn-code' onClick={this.blockControl.bind(this)} type={showBlock ? 'shrink' : 'arrowsalt'} />
+            </Tooltip>
+            <Tooltip placement='left' content='切换背景' wrapperClass='demo-control-btn'>
+              <div className='demo-control-btn-bg' onClick={this.backgroundControl.bind(this)}></div>
+            </Tooltip>
+          </div>
+        </div>
+        
         {
           showBlock && (
             <div className="meta">
@@ -127,10 +141,10 @@ export default class Canvas extends React.Component<CanvasProps, any> {
             </div>
           )
         }
-        <div className="demo-block-control">
+        {/* <div className="demo-block-control">
           <div className='demo-control-btn' onClick={this.backgroundControl.bind(this)}>切换背景</div>
           <div className='demo-control-btn' onClick={this.blockControl.bind(this)}>{ showBlock ? '隐藏代码' : '显示代码'}</div>
-        </div>
+        </div> */}
       </div>
     )
   }
