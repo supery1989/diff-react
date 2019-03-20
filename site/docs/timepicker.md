@@ -119,21 +119,21 @@ render() {
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | className | picker面板类名 | string | — | — |
 | style | picker面板指定样式 | object | — | — |
-| hourStep | 显示的小时步长 | number | @ | 1 |
-| minuteStep | 显示的分钟步长 | number | @ | 1 |
-| secondStep | 显示的秒步长 | number | @ | 1 |
-| min | 可选日期的最小值 | date/时间戳/YYYYMMDD | @ | @ |
-| max | 可选日期的最大值 | date/时间戳/YYYYMMDD | @ | @ |
-| showNow | 是否显示此刻按钮 | boolean | @ | true |
-| showReset | 是否显示重置按钮 | boolean| @ | true |
-| nowText | 此刻按钮文案 | string | @ | 此刻 |
-| resetText | 重置按钮文案 | string | @ | 重置 |
-| confirmText | 确认按钮文案 | string | @ | 确认 |
-| width | 时间文本框宽度 | number | @ | 200 |
-| disabled | 是否禁用状态 | boolean | @ | false |
-| showSecond | 是否显示秒的选择 | boolean | @ | true |
-| format | 显示和返回值格式 | string | @ | HH:mm:ss |
-| showError | 是否显示错误提示 | boolean | @ | true |
+| hourStep | 显示的小时步长 | number | — | 1 |
+| minuteStep | 显示的分钟步长 | number | — | 1 |
+| secondStep | 显示的秒步长 | number | — | 1 |
+| min | 可选日期的最小值 | date/时间戳/YYYYMMDD | — | — |
+| max | 可选日期的最大值 | date/时间戳/YYYYMMDD | — | — |
+| showNow | 是否显示此刻按钮 | boolean | — | true |
+| showReset | 是否显示重置按钮 | boolean| — | true |
+| nowText | 此刻按钮文案 | string | — | 此刻 |
+| resetText | 重置按钮文案 | string | — | 重置 |
+| confirmText | 确认按钮文案 | string | — | 确认 |
+| width | 时间文本框宽度 | number | — | 200 |
+| disabled | 是否禁用状态 | boolean | — | false |
+| showSecond | 是否显示秒的选择 | boolean | — | true |
+| format | 显示和返回值格式 | string | — | HH:mm:ss |
+| showError | 是否显示错误提示 | boolean | — | true |
 
 ### 共同的 Events
 | 事件名称 | 说明 | 回调参数 |
@@ -146,7 +146,7 @@ render() {
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | value | 文本框的值 | date/时间戳/YYYYMMDD | — | — |
-| placeholder | 文本框的占位 | string | @ | 请选择时间 |
+| placeholder | 文本框的占位 | string | — | 请选择时间 |
 
 ### TimePicker Events
 | 事件名称 | 说明 | 回调参数 |
@@ -156,11 +156,11 @@ render() {
 ### TimePicker.Range Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| wrapperClassName | 容器类名 | string | @ | @ |
-| wrapperStyle | 指定容器样式 | object | @ | @ |
-| placeholder | picker文本框占位 | string[] | @ | ['开始时间', '结束时间'] |
-| value | picker文本框的值 | date/时间戳/YYYYMMDD[] | @ | @ |
-| toText | picker文本框之间的说明 | string/React.ReactNode | @ | 至 |
+| wrapperClassName | 容器类名 | string | — | — |
+| wrapperStyle | 指定容器样式 | object | — | — |
+| placeholder | picker文本框占位 | string[] | — | ['开始时间', '结束时间'] |
+| value | picker文本框的值 | date/时间戳/YYYYMMDD[] | — | — |
+| toText | picker文本框之间的说明 | string/React.ReactNode | — | 至 |
 
 ### TimePicker.Range Events
 | 事件名称 | 说明 | 回调参数 |

@@ -1,0 +1,59 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-badge';
+$wrapperPrefix: '#{$prefix}-wrapper';
+
+.#{$wrapperPrefix} {
+  @include reset;
+  display: inline-block;
+  position: relative;
+  line-height: unset;
+  .#{$prefix} {
+    @include reset;
+    &-dot {
+      display: inline-block;
+      height: 8px;
+      width: 8px;
+      border-radius: 50%;
+      background: $error-color;
+      font-size: 0;
+    }
+    &-count {
+      background: $error-color;
+      border-radius: 10px;
+      color: #fff;
+      display: inline-block;
+      font-size: $font-size;
+      height: 20px;
+      line-height: 18px;
+      padding: 0 6px;
+      text-align: center;
+      border: 1px solid #fff;
+    }
+  }
+  &-has-content {
+    .#{$prefix} {
+      &-dot {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+      }
+      &-count {
+        position: absolute;
+        top: -8px;
+        left: 100%;
+        margin-left: -5px;
+      }
+    }
+  }
+  &-no-content {
+    .#{$prefix} {
+      &-dot, &-count {
+        position: relative;
+        top: -1px;
+        margin: 0 5px;
+      }
+    }
+  }
+}

@@ -44,14 +44,14 @@ const MENU_LISTS = [
   {
     type: '展示',
     lists: [
-      { key: 'avatar', name: 'Avatar 头像*14'},
-      { key: 'badge', name: 'Badge 标记*14'},
+      { key: 'avatar', name: 'Avatar 头像*', badge: '14'},
+      { key: 'badge', name: 'Badge 标记'},
       { key: 'blockheader', name: 'BlockHeader 标题'},
       { key: 'card', name: 'Card 卡片'},
       { key: 'carousel', name: 'Carousel 走马灯*14'},
       { key: 'collapse', name: 'Collapse 折叠面板*99', from: 'element'},
       { key: 'tag', name: 'Tag 标签'},
-      { key: 'table', name: 'Table 表格*99' },
+      { key: 'table', name: 'Table 表格*4' },
       { key: 'tooltip', name: 'Tooltip 文字提示'},
     ]
   },
@@ -93,7 +93,7 @@ MENU_LISTS.map((items: any) => {
   MENU_LISTS_TOTAL += items.total
   items.lists.map((item: any) => {
     MENU_LISTS_ARR.push(item)
-    if (item.name.indexOf('*') === -1) {
+    if (item.name.indexOf('*') === -1 && !item.badge) {
       COMPLETE_MENU_TOTAL++
       items.complete ++
     }
