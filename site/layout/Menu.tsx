@@ -73,7 +73,7 @@ const MENU_LISTS = [
     lists: [
       { key: 'backtop', name: 'BackTop 返回顶部'},
       { key: 'copy', name: 'Copy 复制'},
-      { key: 'copyright', name: 'Copyright 版权*4'},
+      { key: 'copyright', name: 'Copyright 版权'},
       { key: 'countdown', name: 'Countdown 倒计时'},
       { key: 'divider', name: 'Divider 分割线'},
       { key: 'moment', name: 'Moment 时刻'},
