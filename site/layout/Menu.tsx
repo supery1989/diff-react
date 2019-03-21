@@ -20,7 +20,7 @@ const MENU_LISTS = [
       { key: 'dropdown', name: 'Dropdown 下拉菜单'},
       { key: 'menu', name: 'Menu 导航菜单'},
       { key: 'page', name: 'Page 分页'},
-      { key: 'progress', name: 'Progress 进度条*14'},
+      { key: 'progress', name: 'Progress 进度条'},
       { key: 'steps', name: 'Steps 步骤条'},
       { key: 'tabs', name: 'Tabs 标签页*99', from: 'element'},
       { key: 'tree', name: 'Tree 树形控件*99', from: 'element'},
@@ -31,6 +31,8 @@ const MENU_LISTS = [
     lists: [
       { key: 'checkbox', name: 'Checkbox 复选框'},
       { key: 'colorPicker', name: 'ColorPicker 颜色选择器*1'},
+      { key: 'datepicker', name: 'DatePicker 日期选择器', badge: '*99'},
+      { key: 'editor', name: 'Editor 富文本编辑器', badge: '*99'},
       { key: 'input', name: 'Input 输入框'},
       { key: 'inputnumber', name: 'inputNumber 数字输入框*4'},
       { key: 'radio', name: 'Radio 单选框'},

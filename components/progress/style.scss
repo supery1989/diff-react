@@ -1,0 +1,129 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-progress';
+
+.#{$prefix} {
+  @include reset;
+  position: relative;
+  line-height: $line-height;
+  display: inline-block;
+  &-line {
+    font-size: $font-size-smaller;
+    width: 100%;
+    &-wrapper {
+      display: inline-block;
+      width: 100%;
+      vertical-align: middle;
+      box-sizing: border-box;
+    }
+    &-bar {
+      height: 100%;
+      width: 100%;
+      border-radius: 100px;
+    }
+    &-progress {
+      border-radius: 100px;
+      background-color: $primary-color;
+      transition: all .4s cubic-bezier(.08, .82, .17, 1) 0s;
+      position: relative;
+    }
+  }
+  &-show-text {
+    .#{$prefix}-line-wrapper {
+      margin-right: -50px;
+      padding-right: 50px;
+    }
+    .#{$prefix}-text {
+      color: $font-color;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 10px;
+      line-height: 1;
+    }
+  }
+  &-status-error {
+    .#{$prefix}-line-progress {
+      background-color: $error-color;
+    }
+    .#{$prefix}-text {
+      color: $error-color;
+    }
+  }
+  &-status-success {
+    .#{$prefix}-line-progress {
+      background-color: $success-color;
+    }
+    .#{$prefix}-text {
+      color: $success-color;
+    }
+  }
+  &-status-active {
+    .#{$prefix}-line-progress {
+      background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+      background-size: 12px 12px;
+      animation: progress-bar 1s linear infinite;
+      &:before {
+        content: " ";
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        border-radius: 10px;
+        animation: progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+      }
+    }
+  }
+  &-text-inside {
+    .#{$prefix}-line-wrapper {
+      padding-right: 0;
+    }
+    .#{$prefix}-line-progress {
+      text-align: right;
+    }
+    .#{$prefix}-text {
+      color: #fff;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 5px;
+      line-height: 1;
+    }
+  }
+  &-circle,
+  &-dashboard {
+    .#{$prefix}-text {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      transform: translateY(-50%);
+    }
+  }
+  @keyframes progress-bar {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 24px 0;
+    }
+  }
+  @keyframes progress-active {
+    0% {
+      opacity: 0.1;
+      width: 0;
+    }
+    20% {
+      opacity: 0.5;
+      width: 0;
+    }
+    100% {
+      opacity: 0;
+      width: 100%;
+    }
+  }
+}
