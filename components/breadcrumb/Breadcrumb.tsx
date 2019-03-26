@@ -27,8 +27,9 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps> {
       if (!element) {
         return
       }
-      return React.cloneElement(element, Object.assign({}, this.props, element.props, {
-        key: index
+      return React.cloneElement(element, Object.assign({}, element.props, {
+        key: index,
+        separator: this.props.separator
       }))
     })
   }

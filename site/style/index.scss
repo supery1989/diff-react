@@ -5,4 +5,25 @@
   position: absolute;
   left: 0;
   right: 0;
+  &-slider {
+    border-right: 1px solid #ddd;
+  }
+  &-footer {
+    position: relative;
+    .demo-footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      box-shadow: 0 -2px 5px #f0f1f2;
+      text-align: center;
+      &-copyright {
+        margin-right: 200px;
+      }
+      &-nav {
+        display: inline-block;
+      }
+    }
+  }
 }

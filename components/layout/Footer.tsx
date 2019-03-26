@@ -14,8 +14,9 @@ class Footer extends React.Component<FooterProps> {
   }
 
   render() {
+    const { children, ...rest } = this.props
     return (
-      <View config={{...this.props, prefix: this.prefix}} />
+      <View config={{...rest, prefix: this.prefix}}>{children}</View>
     )
   }
 }

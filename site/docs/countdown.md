@@ -1,4 +1,4 @@
-## CountDown 倒计时
+## Countdown 倒计时
 
 用于显示倒计时。
 
