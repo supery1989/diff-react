@@ -118,13 +118,14 @@ export default class Checkbox extends React.Component<CheckboxProps> {
         color
       }
     }
+    const labelValue = label || children || value || ''
     return (
       <label className={wrapperCls} style={{ ...style, ...wrapperStyle }}>
         <span className={cls}>
           <span className={`${this.prefix}-inner`} style={innerStyle} />
           <View config={{...viewProps, cls: `${this.prefix}-input`, type: 'checkbox', checked, disabled }} tag='input' onChange={this.onChange.bind(this)} />
         </span>
-        <span className={`${this.prefix}-label`} style={labelStyle}>{ label || children || value }</span>
+        {labelValue && <span className={`${this.prefix}-label`} style={labelStyle}>{labelValue}</span>}
       </label>
     );
   }
