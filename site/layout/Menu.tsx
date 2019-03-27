@@ -53,7 +53,7 @@ const MENU_LISTS = [
       { key: 'carousel', name: 'Carousel 走马灯*14'},
       { key: 'collapse', name: 'Collapse 折叠面板*99', from: 'element'},
       { key: 'tag', name: 'Tag 标签'},
-      { key: 'table', name: 'Table 表格*4' },
+      { key: 'table', name: 'Table 表格' },
       { key: 'tooltip', name: 'Tooltip 文字提示'},
     ]
   },

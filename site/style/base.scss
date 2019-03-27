@@ -7,8 +7,8 @@ $successActiveColor: #218838;
 }
 ::-webkit-scrollbar {
   display: block;
-  width: 5px;
-  height: 5px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track-piece {
   background: #fff;
@@ -17,7 +17,7 @@ $successActiveColor: #218838;
   display: none;
 }
 ::-webkit-scrollbar-thumb {
-  border-radius: 5px;
+  border-radius: 4px;
   background: #cbe6ff;
   &:hover {
     background: #1890ff;

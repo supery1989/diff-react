@@ -1,0 +1,221 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-table';
+
+.#{$prefix} {
+  @include reset;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  background-color: $td-background;
+  border: 1px solid $border-color;
+  font-size: $font-size;
+  color: $font-color;
+  border-bottom-width: 0;
+  &-sort-arrow {
+    font-size: $font-size;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all 0.1 s;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+  &-expand-arrow {
+    cursor: pointer;
+    transition: all 0.1 s;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+  th, td {
+    box-sizing: border-box;
+    position: relative;
+    height: 40px;
+    min-width: 0;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    border-bottom: 1px solid $border-color;
+    &.is-hidden {
+      * {
+        visibility: hidden;
+      }
+    }
+    &.is-hover {
+      background: $hover-background !important;
+    }
+    &.is-current {
+      background: $primary-color !important;
+      color: #fff;
+    }
+    &.is-sort {
+      .#{$prefix}-sort-arrow {
+        color: $primary-color;
+      }
+    }
+    &.align-left {
+      text-align: left;
+    }
+    &.align-center {
+      text-align: center;
+    }
+    &.align-right {
+      text-align: right;
+    }
+  }
+  &-stripe {
+    .#{$prefix}-body {
+      tr {
+        &:nth-child(even) {
+          td {
+            background: $even-background;
+          }
+        }
+        &:nth-child(odd) {
+          td {
+            background: $odd-background;
+          }
+        }
+      }
+    }
+  }
+  &-gutter {
+    position: absolute;
+    right: 0;
+    top: 0;
+    box-sizing: border-box;
+    border-right: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    background: $th-background;
+  }
+  &-header {
+    width: 100%;
+    &-wrapper {
+      overflow: hidden;
+      width: 100%;
+    }
+    th {
+      white-space: nowrap;
+      overflow: hidden;
+      background-color: $th-background;
+      text-align: left;
+    }
+  }
+  .#{$prefix}-body {
+    width: 100%;
+    &-wrapper {
+      overflow: auto;
+      position: relative;
+      width: 100%;
+    }
+    tr {
+      background: $td-background;
+      td {
+        transition: background-color .25s ease;
+      }
+      &.tr-error {
+        td {
+          background: $error-color;
+        }
+      }
+      &.tr-warning {
+        td {
+          background: $warning-color;
+        }
+      }
+      &.tr-success {
+        td {
+          background: $success-color;
+        }
+      }
+      &.tr-info {
+        td {
+          background: $info-color;
+        }
+      }
+    }
+  }
+  &-cell {
+    padding: 0 15px;
+    overflow: hidden;
+    white-space: normal;
+    word-break: break-all;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    line-height: 30px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &-fixed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    box-shadow: 1px 0 8px $border-color;
+    overflow: hidden;
+    &-header-wrapper {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 3;
+    }
+    &-body-wrapper {
+      position: absolute;
+      left: 0;
+      overflow: hidden;
+      z-index: 3;
+    }
+  }
+  &-fixed-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    box-shadow: -2px 0 8px $border-color;
+    overflow: hidden;
+    &-header-wrapper {
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 3;
+    }
+    &-body-wrapper {
+      position: absolute;
+      right: 0;
+      overflow: hidden;
+      z-index: 3;
+    }
+  }
+  &-resize-proxy {
+    position: absolute;
+    left: 200px;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-left: 1px solid $border-color;
+    z-index: 10;
+  }
+  &-border {
+    border-right: 0;
+    th, td {
+      border-right: 1px solid $border-color;
+    }
+  }
+  &-empty {
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-loading {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+}
