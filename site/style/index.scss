@@ -1,3 +1,6 @@
+@import '../../components/style/theme/index.scss';
+$prefix: '#{$root-prefix}';
+
 .app{
   display: flex;
   height: 100%;
@@ -7,10 +10,68 @@
   right: 0;
   &-slider {
     border-right: 1px solid #ddd;
+    &-wrapper {
+      overflow: hidden;
+      .site-menu {
+        border: unset;
+        a {
+          text-decoration: none;
+          color: $font-color;
+          font-size: $font-size;
+          display: block;
+          cursor: pointer;
+          &:hover {
+            color: $primary-color;
+          }
+        }
+        .#{$prefix}-menu-item-selected {
+          a {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+  &-header {
+    position: relative;
+    &-wrapper {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 5px;
+      box-shadow: 0 5px 5px #f0f1f2;
+      text-align: center;
+    }
+    &-logo {
+      height: 100%;
+      float: left;
+      font-size: 36px;
+      color: $primary-color;
+      font-weight: bold;
+      width: 250px;
+      text-align: center;
+      line-height: 58px;
+    }
+    &-summary {
+      float: left;
+      font-size: 16px;
+      margin-top: 38px;
+      color: #666;
+    }
+    &-menu {
+      height: 58px;
+      border: unset !important;
+      line-height: 58px !important;
+      width: 300px;
+      text-align: right;
+      float: right;
+      margin-right: 200px !important;
+    }
   }
   &-footer {
     position: relative;
-    .demo-footer {
+    &-wrapper {
       position: absolute;
       left: 0;
       right: 0;
@@ -18,12 +79,12 @@
       bottom: 0;
       box-shadow: 0 -2px 5px #f0f1f2;
       text-align: center;
-      &-copyright {
-        margin-right: 200px;
-      }
-      &-nav {
-        display: inline-block;
-      }
+    }
+    &-copyright {
+      margin-right: 200px;
+    }
+    &-nav {
+      display: inline-block;
     }
   }
 }

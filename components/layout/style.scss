@@ -9,7 +9,7 @@ $prefix: '#{$root-prefix}-layout';
   min-height: 0;
   position: relative;
   &-header {
-    background: #20a0ff;
+    background: $background-color;;
     height: 64px;
     flex: 0 0 auto;
   }

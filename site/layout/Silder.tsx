@@ -1,18 +1,14 @@
 import * as React from "react"
 import { Link } from "react-router-dom"
 import uuid from 'uuid'
-import "./style.scss"
-import MENU_LISTS, { MENU_LISTS_TOTAL, COMPLETE_MENU_TOTAL } from './Menu'
+import MENU_LISTS from './Menu'
 import Menu from 'components/menu'
 
 
 class Silder extends React.Component {
   render() {
     return (
-      <div className="silder">
-        <div className="info">
-          <div>{COMPLETE_MENU_TOTAL} / {MENU_LISTS_TOTAL}</div>
-        </div>
+      <div className='app-slider-wrapper'>
         <Menu expandKeys={['0', '1', '2', '3', '4', '5', '6']} className='site-menu'>
           {MENU_LISTS.map((list: any, key: number) => {
             return (
