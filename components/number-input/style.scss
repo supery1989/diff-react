@@ -1,0 +1,54 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-number-input';
+
+.#{$prefix} {
+  @include reset;
+  &-arrows {
+    .#{$prefix}-arrow {
+      &-icon {
+        font-size: $font-size;
+        &-disabled {
+          color: $disabled-color;
+          cursor: not-allowed;
+        }
+      }
+      &:hover {
+        .#{$prefix}-arrow-icon {
+          color: $primary-color;
+          cursor: pointer;
+          &-disabled {
+            color: $disabled-color;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+  &-counts {
+    width: 44px;
+    .#{$prefix}-count {
+      display: inline-block;
+      height: 32px;
+      width: 50%;
+      text-align: center;
+      &-icon {
+        &-disabled {
+          color: $disabled-color;
+          cursor: not-allowed;
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        .#{$prefix}-count-icon {
+          color: $primary-color;
+          &-disabled {
+            color: $disabled-color;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+}

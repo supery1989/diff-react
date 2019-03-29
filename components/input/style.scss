@@ -56,6 +56,7 @@ $prefix: '#{$root-prefix}-input';
 .#{$prefix}-wrapper {
   display: inline-block;
   width: 100%;
+  user-select: none;
   .#{$prefix}-box {
     position: relative;
   }
@@ -111,6 +112,9 @@ $prefix: '#{$root-prefix}-input';
       padding: 0 10px;
       width: 1px;
       white-space: nowrap;
+      &-disabled {
+        background: $disabled-bg-color;
+      }
     }
     .#{$prefix}-prepend {
       border-right: 0;

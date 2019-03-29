@@ -741,19 +741,19 @@ render() {
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | className | 容器类名 | string | — | — |
 | style | 指定样式 | object | — | — |
-| showHeader | 是否显示表头 | boolean | @ | true |
-| data | 显示的数据 | array | @ | @ |
-| columns | 表格列的配置描述，具体项见下表 | array | @ | @ |
-| height | table 的高度，默认高度为空，即自动高度，单位 px | number | @ | @ |
-| maxHeight | Table 的最大高度 | number | @ | @ |
-| stripe | 是否为斑马纹 table | boolean | @ | true |
-| border | 是否带有纵向边框 | boolean | @ | true |
-| highlightCurrentRow | 是否要高亮当前行 | boolean | @ | false |
-| rowClassName | 行的 className 的回调，或者类名 | ((row: object, index: number) => string)/string | @ | @ |
-| rowStyle | 行的 style 的回调方法，或者样式 | ((row: object, index: number) => object)/object | @ | @ |
-| emptyText | 空数据时显示的文本内容 | string/React.ReactNode | @ | 暂无数据 |
-| defaultSort | 默认的排序列的prop和顺序。它的prop属性指定默认的排序的列，order指定默认排序的顺序 | {prop: string, order?: desc/asc} | @ | @ |
-| loading | 是否加载状态 | boolean | @ | false |
+| showHeader | 是否显示表头 | boolean | — | true |
+| data | 显示的数据 | array | — | — |
+| columns | 表格列的配置描述，具体项见下表 | array | — | — |
+| height | table 的高度，默认高度为空，即自动高度，单位 px | number | — | — |
+| maxHeight | Table 的最大高度 | number | — | — |
+| stripe | 是否为斑马纹 table | boolean | — | true |
+| border | 是否带有纵向边框 | boolean | — | true |
+| highlightCurrentRow | 是否要高亮当前行 | boolean | — | false |
+| rowClassName | 行的 className 的回调，或者类名 | ((row: object, index: number) => string)/string | — | — |
+| rowStyle | 行的 style 的回调方法，或者样式 | ((row: object, index: number) => object)/object | — | — |
+| emptyText | 空数据时显示的文本内容 | string/React.ReactNode | — | 暂无数据 |
+| defaultSort | 默认的排序列的prop和顺序。它的prop属性指定默认的排序的列，order指定默认排序的顺序 | {prop: string, order?: desc/asc} | — | — |
+| loading | 是否加载状态 | boolean | — | false |
 
 ### Table Events
 | 事件名称 | 说明 | 回调参数 |
@@ -768,17 +768,17 @@ render() {
 ### Table-column Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| type | 对应列的类型。如果设置了 selection 则显示多选框；如果设置了 index 则显示该行的索引（从 1 开始计算）；如果设置了 expand 则显示为一个可展开的按钮 | string | selection/index/expand | @ |
-| label | 显示的标题 | string | @ | @ |
-| prop | 对应列内容的字段名 | string | @ | @ |
-| width | 对应列的宽度 | number | @ | @ |
-| fixed | 列是否固定在左侧或者右侧，true 表示固定在左侧 | string/boolean | left/right/true | @ |
-| sort | 对应列是否可以排序，需要配合onSort事件使用 | boolean | @ | false |
-| notResize | 对应列是否可以通过拖动改变宽度 | boolean | @ | false |
+| type | 对应列的类型。如果设置了 selection 则显示多选框；如果设置了 index 则显示该行的索引（从 1 开始计算）；如果设置了 expand 则显示为一个可展开的按钮 | string | selection/index/expand | — |
+| label | 显示的标题 | string | — | — |
+| prop | 对应列内容的字段名 | string | — | — |
+| width | 对应列的宽度 | number | — | — |
+| fixed | 列是否固定在左侧或者右侧，true 表示固定在左侧 | string/boolean | left/right/true | — |
+| sort | 对应列是否可以排序，需要配合onSort事件使用 | boolean | — | false |
+| notResize | 对应列是否可以通过拖动改变宽度 | boolean | — | false |
 | align | 对齐方式 | string | left/right/center | left |
 | headerAlign | 表头对齐方式，若不设置该项，则使用表格的对齐方式 | string | left/right/center | left |
-| className | 列的 className | string | @ | @ |
-| disabled | 所在行是否可以被选 | boolean | @ | false |
+| className | 列的 className | string | — | — |
+| disabled | 所在行是否可以被选 | boolean | — | false |
 
 ### Table-column Events
 | 事件名称 | 说明 | 回调参数 |

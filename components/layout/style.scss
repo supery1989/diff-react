@@ -26,7 +26,7 @@ $prefix: '#{$root-prefix}-layout';
     }
   }
   &-silder {
-    background: #001529;
+    background: $background-color;
     transition: all .2s;
     position: relative;
     color: #fff;

@@ -10,7 +10,7 @@ export interface InputProps {
   disabled?: boolean,
   size?: 'large' | 'small' | 'mini',
   prepend?: string | React.ReactElement<any>,
-  append?: string | React.ReactElement<any>,
+  append?: string | React.ReactElement<any> | null,
   clearable: boolean,
   value: any,
   trim: boolean,
@@ -71,9 +71,11 @@ export default class Input extends React.Component<InputProps> {
       this.setState({
         value: nextProps.value
       }, () => {
-        this.setState({
-          showClose: false
-        })
+        if (this.state.value === null || this.state.value === undefined || this.state.value === '') {
+          this.setState({
+            showClose: false
+          })
+        }
       })
     }
     if (this.props.placeholder !== nextProps.placeholder) {
@@ -253,7 +255,7 @@ export default class Input extends React.Component<InputProps> {
           {isClose && !disabled && <Icon type='close' style={closeIconStyle} className={`${this.prefix}-close`} onClick={this.handleClear.bind(this)} />}
           {type === 'password' && <Icon type='eye-o' className={`${this.prefix}-password`} onClick={this.showPwd.bind(this, false)} />}
         </div>
-        {append && <div className={`${this.prefix}-append`}>{append}</div>}
+        {append && <div className={classnames(`${this.prefix}-append`, {[`${this.prefix}-append-disabled`]: !!disabled,})}>{append}</div>}
       </div>
     )
   }
