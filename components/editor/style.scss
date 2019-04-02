@@ -1,0 +1,20 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-editor';
+
+.#{$prefix} {
+  @include reset;
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+  background: $background-color;
+  &-disabled {
+    background-color: $disabled-bg-color;
+    border-color: $disabled-color;
+    color: #bbb;
+    cursor: not-allowed;
+    &:hover {
+      border-color: $disabled-color;
+    } 
+  }
+}

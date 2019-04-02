@@ -65,6 +65,8 @@ function getProps(props: any, type: string) {
 
 export default function Popup(props: any = {}, type: string) {
   const dom = document.createElement('div')
+  dom.style.position = 'absolute'
+  dom.style.zIndex = '1'
   document.body.appendChild(dom)
 
   if (type) {

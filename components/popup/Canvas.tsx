@@ -46,6 +46,7 @@ export default class Canvas extends React.Component<CanvasProps> {
   }
 
   state: any
+  bodyHeight: number
 
   constructor(props: CanvasProps) {
     super(props)
@@ -54,6 +55,7 @@ export default class Canvas extends React.Component<CanvasProps> {
       loading: false,
       errorInfo: ''
     }
+    this.bodyHeight = document.body.clientHeight
   }
 
   componentDidMount() {
@@ -135,8 +137,10 @@ export default class Canvas extends React.Component<CanvasProps> {
     const cls = classnames(`${this.prefix}-content`, {
       [`${this.prefix}-title-has-icon`]: !!icon
     })
+    // 为避免发生抖动，暂时固定头尾最大100，此外内边距30，上下边距40
+    const maxHeight = this.bodyHeight - 170
     return (
-      <div className={cls}>
+      <div className={cls} style={{ maxHeight: `${maxHeight}px` }}>
         {message && <div className={`${this.prefix}-message`}>{message}</div>}
         {errorInfo && <div className={`${this.prefix}-fail`}>{errorInfo}</div>}
       </div>
@@ -167,7 +171,7 @@ export default class Canvas extends React.Component<CanvasProps> {
     const { width, maskStyle, top, ...rest } = this.props
     const viewProps = omit(rest, ['title', 'closable', 'showCancelBtn', 'showOkBtn', 'okBtnText', 'cancelBtnText', 'message', 'icon', 'cancelBtnStyle', 'okBtnStyle', 'willUnmount', 'confirmLoading', 'onOk', 'onCancel', 'okBtnProps', 'cancelBtnProps', 'maskClosable', 'width', 'maskStyle', 'top'])
     const { show } = this.state
-    const sty = { width: `${width}px`, top: `${top}px` }
+    const sty = { width, top: `${top}px` }
     const boxCls = classnames(`${this.prefix}-box`, {
       [`${this.prefix}-box-top`]: top
     })
