@@ -67,7 +67,7 @@ const MENU_LISTS = [
       { key: 'popover', name: 'Popover 弹出框' },
       { key: 'popup', name: 'Popup 对话框' },
       { key: 'toast', name: 'Toast 消息提示'},
-      { key: 'transition', name: 'Transition 动画*04'},
+      { key: 'transition', name: 'Transition 动画'},
     ]
   },
   {

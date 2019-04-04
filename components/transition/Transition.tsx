@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View from '../../libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 
 export interface TransitionProps {
   className?: string;
@@ -17,7 +17,7 @@ export interface TransitionProps {
 }
 
 export default class Transition extends React.Component<TransitionProps> {
-  private prefix = 'diff-transition';
+  private prefix = `${ROOT_PREFIX}-transition`
   static defaultProps = {
     unmount: true,
     during: 1000,
@@ -97,7 +97,7 @@ export default class Transition extends React.Component<TransitionProps> {
   }
 
   setTransitionClass = (props: TransitionProps) => {
-    const { type, show, infinite, transfer } = props;
+    const { type, show, infinite, transfer } = props
     let animateType;
     if (transfer) {
       if (show) {
@@ -111,8 +111,9 @@ export default class Transition extends React.Component<TransitionProps> {
     const cls = classnames({
       [`${this.prefix}-infinite`]: infinite,
       [`${this.prefix}-${animateType}`]: animateType
-    });
-    return cls;
+    })
+    console.dir(cls)
+    return cls
   };
 
   componentWillUnmount() {

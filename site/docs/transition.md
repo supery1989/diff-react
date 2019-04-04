@@ -1,5 +1,88 @@
 ## Transition 动画
 
+一些简单的过渡效果。
+
+### 基本用法
+
+::: demo
+```js
+state = {
+  show: false
+}
+
+handleClick() {
+  this.setState({
+    show: !this.state.show
+  })
+}
+
+render() {
+  return (
+    <div className="demo" onClick={this.handleClick.bind(this)}>
+      <span className="name">点我</span>
+      <Transition type='fade' show={this.state.show} className="transitionDemo"><div /></Transition>
+    </div>
+  )
+}
+```
+:::
+
+### 设置循环动画
+
+::: demo
+```js
+state = {
+  show: false
+}
+
+handleClick() {
+  this.setState({
+    show: !this.state.show
+  })
+}
+
+render() {
+  return (
+    <div className="demo" onClick={this.handleClick.bind(this)}>
+      <Transition type='fade' infinite show={this.state.show} className="transitionDemo"><div /></Transition>
+    </div>
+  )
+}
+```
+:::
+
+### 动画结束后的回调
+
+::: demo
+```js
+state = {
+  show: false
+}
+
+handleClick() {
+  this.setState({
+    show: !this.state.show
+  })
+}
+
+end() {
+  console.log('end')
+}
+
+render() {
+  return (
+    <div className="demo" onClick={this.handleClick.bind(this)}>
+      <Transition onEnd={this.end.bind(this)} type='fade' show={this.state.show} className="transitionDemo"><div /></Transition>
+    </div>
+  )
+}
+```
+:::
+
+### 动画列表
+
+点击方块即可实时查看动画效果。
+
 ::: demo
 
 ```js
@@ -63,16 +146,17 @@ render() {
 ### Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| className | 动画组件类名，用于定制动画组件样式 | string | 无 | 无 |
-| type | 动画形式 | string | 无 | 无 |
-| infinite| 是否循环动画 | boolean | true/false | false |
-| unmount | 动画结束后是否卸载组件 | boolean | true/false | true |
-| show | 显示动画，值发生变化动画就会启用 | boolean | true/false | false |
-| during | 动画持续时间，单位ms | number | -- | 1000 |
-| transfer | 是否转场动画 | boolean | true/false | true |
-| init | 是否在组件第一次渲染时加载动画(因在createElement时不能加载动画进行适配) | boolean | true/false | false |
+| className | 动画组件类名，用于定制动画组件样式 | string | — | — |
+| style | 指定样式 | object | — | — |
+| type | 动画形式 | string | — | — |
+| infinite| 是否循环动画 | boolean | — | false |
+| unmount | 动画结束后是否卸载组件 | boolean | — | true |
+| show | 显示动画，值发生变化动画就会启用 | boolean | — | false |
+| during | 动画持续时间，单位ms | number | — | 1000 |
+| transfer | 是否转场动画 | boolean | — | true |
+| init | 是否在组件第一次渲染时加载动画(因在createElement时不能加载动画进行适配) | boolean | — | false |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | -- |
-| onEnd | 动画结束后的回调 | -- |
+| onEnd | 动画结束后的回调 | () => void |
