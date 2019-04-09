@@ -14,7 +14,6 @@ export default class Markdown extends React.Component {
   static defaultProps: any
   components: any;
   renderer: any;
-  // document: any;
   constructor(props: any) {
     super(props);
 

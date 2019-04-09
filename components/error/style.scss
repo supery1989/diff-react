@@ -1,0 +1,16 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-error';
+
+.#{$prefix} {
+  @include reset;
+  color: $error-color;
+  &-icon {
+    margin-right: 5px;
+    color: $error-color;
+  }
+  &-tip {
+    white-space: pre !important;
+  }
+}

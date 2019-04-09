@@ -7,6 +7,7 @@ import Transition from 'components/transition'
 export interface TooltipProps {
   className?: string
   wrapperClass?: string
+  contentClass?: string
   style?: object
   content?: string | React.ReactNode
   placement: 'leftTop' | 'left' | 'leftBottom' | 'topLeft' | 'top' | 'topRight' | 'rightTop' | 'right' | 'rightBottom' | 'bottomLeft' | 'bottom' | 'bottomRight'
@@ -227,7 +228,7 @@ export default class Tooltip extends React.Component<TooltipProps> {
   }
 
   render() {
-    const { content, children, placement, theme, wrapperClass, ...rest } = this.props
+    const { content, children, placement, theme, wrapperClass, contentClass, ...rest } = this.props
     const viewProps = omit(rest, [
       'trigger',
       'show',
@@ -240,6 +241,7 @@ export default class Tooltip extends React.Component<TooltipProps> {
       [`${this.prefix}-${theme}`]: theme
     })
     const wrapperCls = classnames(wrapperClass, `${this.prefix}-wrapper`)
+    const contentCls = classnames(`${this.prefix}-content`, contentClass)
     const events = this.getEvents()
     return (
       <div className={wrapperCls} {...events}>
@@ -251,7 +253,7 @@ export default class Tooltip extends React.Component<TooltipProps> {
           <Transition type='fade' show={show} unmount init>
             <div>
               <i className={`${this.prefix}-arrow`} />
-              <div className={`${this.prefix}-content`}>{content}</div>
+              <div className={contentCls}>{content}</div>
             </div>
           </Transition>
         </View>

@@ -107,6 +107,7 @@ render() {
 | className | 容器类名 | string | — | — |
 | style | 指定样式 | object | — | — |
 | wrapperClass | 包裹的容器类名 | string | - | - |
+| contentClass | 提示内容的类名 | string | - | - |
 | content| 提示的内容 | string/React.ReactNode | - | - |
 | placement | Tooltip 的出现位置 | string | leftTop/left/leftBottom/topLeft/top/topRight/rightTop/right/rightBottom/bottomLeft/bottom/bottomRight | topLeft |
 | show | 是否显示提示 | boolean | - | false |

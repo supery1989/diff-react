@@ -61,7 +61,7 @@ const MENU_LISTS = [
     type: '反馈',
     lists: [
       { key: 'alert', name: 'Alert 警告'},
-      { key: 'errorboundary', name: 'ErrorBoundary 错误隔离*4', from: 'youzan'},
+      { key: 'error', name: 'Error 错误'},
       { key: 'loading', name: 'Loading 加载'},
       { key: 'notification', name: 'Notification 通知' },
       { key: 'popover', name: 'Popover 弹出框' },

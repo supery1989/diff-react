@@ -112,7 +112,6 @@ export default class Transition extends React.Component<TransitionProps> {
       [`${this.prefix}-infinite`]: infinite,
       [`${this.prefix}-${animateType}`]: animateType
     })
-    console.dir(cls)
     return cls
   };
 
