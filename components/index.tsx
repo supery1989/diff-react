@@ -1,6 +1,7 @@
 
 import './style/index.scss'
 export { default as Alert } from './alert'
+export { default as Avatar } from './avatar'
 export { default as Layout } from './layout'
 export { default as Icon } from './icon'
 export { default as Button } from './button'

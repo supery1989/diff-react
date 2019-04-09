@@ -46,7 +46,7 @@ const MENU_LISTS = [
   {
     type: '展示',
     lists: [
-      { key: 'avatar', name: 'Avatar 头像*', badge: '14'},
+      { key: 'avatar', name: 'Avatar 头像'},
       { key: 'badge', name: 'Badge 标记'},
       { key: 'blockheader', name: 'BlockHeader 标题'},
       { key: 'card', name: 'Card 卡片'},
