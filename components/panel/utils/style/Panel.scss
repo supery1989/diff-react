@@ -3,12 +3,13 @@
 
 $prefix1: '#{$root-prefix}-time-picker';
 $prefix2: '#{$root-prefix}-date-picker';
+$prefix3: '#{$root-prefix}-month-picker';
 $month_prefix: '#{$root-prefix}-month';
 $year_prefix: '#{$root-prefix}-year';
 $range_prefix1: '#{$root-prefix}-time-range-picker';
 $range_prefix2: '#{$root-prefix}-date-range-picker';
 
-.#{$prefix1}-popover, .#{$prefix2}-popover {
+.#{$prefix1}-popover, .#{$prefix2}-popover, .#{$prefix3}-popover {
   padding: 0;
 }
 .#{$prefix1}, .#{$prefix2}, .#{$month_prefix}, .#{$year_prefix} {
@@ -19,10 +20,23 @@ $range_prefix2: '#{$root-prefix}-date-range-picker';
       border-bottom: 1px solid $border-color;
       padding: 10px 20px;
       text-align: center;
+      user-select: none;
     }
     &-content {
       padding: 10px 15px;
     }
+  }
+}
+.#{$prefix3} {
+  position: relative;
+  width: 250px;
+  padding-bottom: 15px;
+  .#{$year_prefix}-panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
   }
 }
 .#{$range_prefix1}, .#{$range_prefix2} {
