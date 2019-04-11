@@ -19,6 +19,7 @@ export interface PopoverProps {
   popClass?: string
   popStyle?: object
   placement: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'
+  onClose?: () => void
 }
 
 export default class Popover extends React.Component<PopoverProps> {
@@ -112,7 +113,9 @@ export default class Popover extends React.Component<PopoverProps> {
 
   handleEnd() {
     if (!this.state.showPopper) {
+      const { onClose } = this.props
       this.popperJS && this.popperJS.destroy()
+      onClose && onClose()
     }
   }
 
@@ -142,7 +145,7 @@ export default class Popover extends React.Component<PopoverProps> {
 
   render() {
     const { children, ...rest } = this.props
-    const viewProps = omit(rest, ['content', 'trigger', 'arrow', 'title', 'width', 'show', 'popClass', 'popStyle', 'placement'])
+    const viewProps = omit(rest, ['content', 'trigger', 'arrow', 'title', 'width', 'show', 'popClass', 'popStyle', 'placement', 'onClose'])
     return (
       <View config={{...viewProps, prefix: this.prefix}} tag='span'>
         {this.renderPopper()}
