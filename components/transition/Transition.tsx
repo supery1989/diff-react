@@ -63,9 +63,7 @@ export default class Transition extends React.Component<TransitionProps> {
         unmountStatus = "exited";
       }
     }
-    if (this.unmountTimer) {
-      clearTimeout(this.unmountTimer);
-    }
+    clearTimeout(this.unmountTimer);
 
     if (unmountStatus === "unmounted") {
       this.unmountTimer = setTimeout(() => {
@@ -124,8 +122,8 @@ export default class Transition extends React.Component<TransitionProps> {
       this.setState({
         cls: this.setTransitionClass(nextProps)
       });
+      this.handleUnmount(nextProps.show)
     }
-    this.handleUnmount(nextProps.show);
   }
 
   componentDidMount() {
