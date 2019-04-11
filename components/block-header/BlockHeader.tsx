@@ -18,6 +18,7 @@ export interface BlockHeaderProps {
   icon: 'question' | 'info'
   infoType: 'tooltip' | 'popup'
   trigger?: 'hover' | 'click' | 'focus'
+  showBackground?: boolean | string
   onClick?: () => void
 }
 
@@ -27,7 +28,8 @@ export default class BlockHeader extends React.Component<BlockHeaderProps> {
     align: 'right',
     icon: 'question',
     infoType: 'tooltip',
-    infoTitle: '温馨提示'
+    infoTitle: '温馨提示',
+    showBackground: true
   }
 
   popupClick() {
@@ -58,14 +60,24 @@ export default class BlockHeader extends React.Component<BlockHeaderProps> {
   }
 
   render() {
-    const { title, extra, align, subTitle, ...rest } = this.props
+    const { title, extra, align, subTitle, showBackground, ...rest } = this.props
     const viewProps = omit(rest, ['infoType', 'icon', 'info', 'infoTitle', 'trigger', 'onClick'])
     const contentCls = classnames(`${this.prefix}-right`, {
       [`${this.prefix}-right-${align}`]: align
     })
+    let sty = {}
+    if (!showBackground) {
+      sty = {
+        background: 'unset'
+      }
+    } else if (typeof showBackground === 'string') {
+      sty = {
+        background: showBackground
+      }
+    }
     
     return (
-      <View config={{...viewProps, prefix: this.prefix}}>
+      <View config={{...viewProps, prefix: this.prefix, sty}}>
         {title && <div className={`${this.prefix}-left`}><div className={`${this.prefix}-title`}>{title}</div></div>}
         {subTitle && <div className={`${this.prefix}-sub-title`}>{title}</div>}
         {this.renderInfo()}

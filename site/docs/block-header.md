@@ -37,6 +37,7 @@ render() {
 | icon | 信息提示图标的类型 | string | question/info | question |
 | infoType | 信息提示的类型 | string | tooltip/popup' | tooltip |
 | trigger | 信息提示为tooltip时的触发类型 | string | hover/click/focus | hover |
+| showBackground | 指定背景色 | boolean/string | — | — |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
