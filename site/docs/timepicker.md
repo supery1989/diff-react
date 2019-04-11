@@ -1,6 +1,6 @@
 ## TimePicker 时间选择器
 
-时间选择组件, 提供基础的时间、日期筛选功能。
+时间选择组件, 提供基础的时间筛选功能。
 
 ### 基本用法
 
@@ -90,16 +90,6 @@ handleChange(moment, time) {
     time
   })
 }
-disabledTime() {
-  const disabledHour = val => val % 2 === 0
-  const disabledMinute = val => val > 30
-  const disabledSecond = val => val % 30 === 0
-  return {
-    disabledHour,
-    disabledMinute,
-    disabledSecond,
-  }
-}
 render() {
   return (
     <div>
@@ -109,6 +99,18 @@ render() {
       <div className='demo-section'>选择的结束时间:{this.state.time[1]}</div>
       <TimePicker.Range onChange={this.handleChange.bind(this)} />
     </div>
+  )
+}
+```
+:::
+
+### 自定义时间格式
+
+::: demo
+```js
+render() {
+  return (
+    <TimePicker value={new Date()} format='HH/mm/ss' />
   )
 }
 ```

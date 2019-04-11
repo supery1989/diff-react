@@ -58,6 +58,13 @@ export default class TimePicker extends React.Component<TimePickerProps> {
     }
   }
 
+  handleClose() {
+    this.setState({
+      tab: this.types.HOUR,
+      errorText: ''
+    })
+  }
+
   initTime() {
     return Moment.unix(this.props.value || CURRENT)
   }
@@ -287,7 +294,7 @@ export default class TimePicker extends React.Component<TimePickerProps> {
     const { showPop } = this.state
     if (showPop) {
       return (
-        <Popover ref='timepicker' popClass={`${this.prefix}-popover`} trigger='click' content={this.panelContent()}>
+        <Popover ref='timepicker' popClass={`${this.prefix}-popover`} trigger='click' content={this.panelContent()} onClose={this.handleClose.bind(this)}>
           {this.renderInput()}
         </Popover>
       )
