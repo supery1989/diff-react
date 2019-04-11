@@ -1,0 +1,24 @@
+@import '../../style/theme/index.scss';
+@import '../../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-panel-header';
+
+.#{$prefix} {
+  @include reset;
+  &-prev, &-next {
+    &:hover {
+      cursor: pointer;
+      color: $primary-color;
+    }
+  }
+  &-icon {
+    font-size: 14px;
+  }
+  &-title {
+    margin: 0 15px;
+    &:hover {
+      cursor: pointer;
+      color: $primary-color;
+    }
+  }
+}

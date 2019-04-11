@@ -3,11 +3,11 @@ import Moment from 'components/moment'
 import { ROOT_PREFIX } from 'libs/view'
 import { CURRENT, FillValue } from './util'
 
-function isSelected(type: string, val: number, selected: any) {
+export function IsSelected(type: string, val: number, selected: any) {
   return Moment[type](selected) === val
 }
 
-function isCurrent(type: string, val: number) {
+export function IsCurrent(type: string, val: number) {
   return Moment[type](CURRENT) === val
 }
 
@@ -19,8 +19,8 @@ export function GetCells(type: string, row: number, col: number, end: number, pr
     for (let k = 0; k < col && i < end; k++) {
       const isDisabled = disabled && disabled(i)
       const cls = classnames({
-        [`${ROOT_PREFIX}-time-cell-current`]: isCurrent(type, i),
-        [`${ROOT_PREFIX}-time-cell-selected`]: isSelected(type, i, selected),
+        [`${ROOT_PREFIX}-time-cell-current`]: IsCurrent(type, i),
+        [`${ROOT_PREFIX}-time-cell-selected`]: IsSelected(type, i, selected),
         [`${ROOT_PREFIX}-time-cell-disabled`]: isDisabled,
       })
       cells[j] = cells[j] || []
@@ -36,26 +36,46 @@ export function GetCells(type: string, row: number, col: number, end: number, pr
   return cells
 }
 
-export interface TimeCommonProps {
+// datePicker timePicker 共有属性
+export interface DTCommonProps {
   className?: string
   style?: object
   value?: any
+  min?: any
+  max?: any
+  showNow?: boolean
+  nowText?: string
+  confirmText?: string
+  width: number
+  disabled?: boolean
+  format?: string
+  showError?: boolean
+  onBeforeClear?: () => boolean
+  onBeforeConfirm?: () => boolean
+}
+
+// rangePicker 共有属性
+export interface RangeCommonProps extends DTCommonProps {
+  wrapperClassName?: string,
+  wrapperStyle?: object
+  placeholder: string[]
+  // value: any[]
+  onChange?: (moment: any[], time: string[]) => void
+  toText: string | React.ReactNode
+}
+
+// timePicker 共有属性
+export interface TimeCommonProps extends DTCommonProps {
   hourStep?: number
   minuteStep?: number
   secondStep?: number
   disabledTime?: () => {}
-  min?: any
-  max?: any
-  showNow?: boolean
   showReset?: boolean
-  nowText?: string
   resetText?: string
-  confirmText?: string
-  width: number
-  disabled?: boolean
-  onBeforeClear?: () => boolean
-  onBeforeConfirm?: () => boolean
   showSecond?: boolean
-  format?: string
-  showError?: boolean
+}
+
+// datePicker 共有属性
+export interface DateCommonProps extends DTCommonProps {
+  disabledDate?: (val: any) => void
 }

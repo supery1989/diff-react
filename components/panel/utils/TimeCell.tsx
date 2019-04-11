@@ -26,16 +26,14 @@ export default class TimeCell extends React.Component<TimeCellProps> {
     if (cells && cells.length > 0) {
       return cells.map((row: any, i: number) => {
         let tds = row.map((col: any, j: number) => {
-          const tdCls = classnames(`${this.prefix}-td`, {
-            [`${this.prefix}-td-${type}`]: !!type
-          }, col.className)
+          const tdCls = classnames(`${this.prefix}-td`, col.className)
           return (
             <li
               className={tdCls}
               key={j}
               onClick={this.handleClick.bind(this, col)}
             >
-              {col.text}
+              <div className={`${this.prefix}-td-${type}`}>{col.text}</div>
             </li>
           )
         })

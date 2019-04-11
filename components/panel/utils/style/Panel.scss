@@ -1,0 +1,45 @@
+@import 'components/style/theme/index.scss';
+@import 'components/style/mixins/reset.scss';
+
+$prefix1: '#{$root-prefix}-time-picker';
+$prefix2: '#{$root-prefix}-date-picker';
+$month_prefix: '#{$root-prefix}-month';
+$year_prefix: '#{$root-prefix}-year';
+$range_prefix1: '#{$root-prefix}-time-range-picker';
+$range_prefix2: '#{$root-prefix}-date-range-picker';
+
+.#{$prefix1}-popover, .#{$prefix2}-popover {
+  padding: 0;
+}
+.#{$prefix1}, .#{$prefix2}, .#{$month_prefix}, .#{$year_prefix} {
+  @include reset;
+  position: relative;
+  &-panel {
+    &-header {
+      border-bottom: 1px solid $border-color;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    &-content {
+      padding: 10px 15px;
+    }
+  }
+}
+.#{$range_prefix1}, .#{$range_prefix2} {
+  @include reset;
+  &-to {
+    margin: 0 5px;
+  }
+}
+.#{$prefix2} {
+  .#{$month_prefix}-panel, .#{$year_prefix}-panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+.#{$month_prefix}-panel, .#{$year_prefix}-panel {
+  background: #fff;
+}
