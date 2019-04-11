@@ -1,7 +1,6 @@
 import * as React from 'react'
 import omit from 'omit.js'
 import View, { ROOT_PREFIX } from 'libs/view'
-import Input from 'components/input'
 import Popover from 'components/popover'
 import Moment from 'components/moment'
 import PanelHeader from '../panel/header/PanelHeader'
@@ -9,22 +8,19 @@ import PanelFooter from '../panel/footer/PanelFooter'
 import DatePanel from '../panel/date/DatePanel'
 import MonthPanel from '../panel/month/MonthPanel'
 import { DateCommonProps } from '../panel/utils/TimeBase'
-import { CURRENT } from '../panel/utils/util'
+import BasePicker from '../panel/base/BasePicker'
 
 export interface DatePickerProps extends DateCommonProps {
   placeholder: string
   onChange?: (moment: any, time: string) => void
 }
 
-export default class DatePicker extends React.Component<DatePickerProps> {
-  static Range: any
-  private prefix = `${ROOT_PREFIX}-date-picker`
+export default class DatePicker extends BasePicker<DatePickerProps> {
+  protected prefix = `${ROOT_PREFIX}-date-picker`
   static defaultProps = {
     placeholder: '请选择日期',
     width: 200,
   }
-  state: any
-  format: string
 
   constructor(props: DatePickerProps) {
     super(props)
@@ -54,10 +50,6 @@ export default class DatePicker extends React.Component<DatePickerProps> {
       showMonth: false,
       errorText: ''
     })
-  }
-
-  initTime() {
-    return Moment.unix(this.props.value || CURRENT)
   }
 
   // 日期选择器顶部左右箭头
@@ -100,69 +92,6 @@ export default class DatePicker extends React.Component<DatePickerProps> {
         showPop: true
       })
     })
-  }
-
-  onConfirm(e: any, now?: boolean) {
-    const { min, onChange, onBeforeConfirm } = this.props
-    if (onBeforeConfirm && !onBeforeConfirm()) return
-    let value
-    if (now) {
-      value = new Date()
-    } else {
-      value = this.state.value
-    }
-    if (this.isDisabled(value)) {
-      this.setState({
-        errorText: '选择了不允许选择的时间!'
-      })
-      return
-    }
-    let temp = value
-    if (min) {
-      if (temp < Moment.unix(min)) {
-        temp = Moment.unix(min)
-      }
-    }
-    this.setState({
-      value: temp,
-      selected: value,
-      inputValue: Moment(temp, this.format),
-      errorText: '',
-      showPop: false
-    }, () => {
-      this.setState({
-        showPop: true
-      })
-      onChange && onChange(Moment.unix(temp), this.state.inputValue)
-    })
-  }
-
-  onNow(e: any) {
-    this.onConfirm(e, true)
-  }
-
-  handleClear() {
-    const { onChange, onBeforeClear } = this.props
-    if (onBeforeClear && !onBeforeClear()) return
-    this.setState({
-      inputValue: '',
-      value: this.initTime(),
-      showPop: false
-    }, () => {
-      this.setState({
-        showPop: true
-      })
-    })
-    onChange && onChange('', '')
-  }
-
-  isDisabled(val: any) {
-    const { disabledDate, min, max } = this.props
-    if (disabledDate && disabledDate(val)) return true
-    const format = 'YYYYMMDD'
-    if (min && Moment(val, format) < Moment(min, format)) return true
-    if (max && Moment(val, format) > Moment(max, format)) return true
-    return false
   }
 
   renderMonthPanel() {
@@ -215,19 +144,6 @@ export default class DatePicker extends React.Component<DatePickerProps> {
         {showMonth && this.renderMonthPanel()}
       </View>
     )
-  }
-
-  renderInput() {
-    const { placeholder, width, disabled } = this.props
-    return <Input
-      style={{ width: `${width}px` }}
-      placeholder={placeholder}
-      readOnly
-      disabled={disabled}
-      suffix='calendar'
-      value={this.state.inputValue}
-      onClear={this.handleClear.bind(this)}
-    />
   }
 
   render() {

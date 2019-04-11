@@ -11,6 +11,8 @@ export default class Footer extends React.Component {
           <Breadcrumb.Item href='javascript:;'>Github</Breadcrumb.Item>
           <Breadcrumb.Item href='javascript:;'>快速上手</Breadcrumb.Item>
           <Breadcrumb.Item href='javascript:;'>意见反馈</Breadcrumb.Item>
+          <Breadcrumb.Item  href='http://super-y.gitee.io/diff-react/#/' target='_blank'>首页</Breadcrumb.Item>
+          <Breadcrumb.Item  href='https://gitee.com/super-y/diff-react' target='_blank'>码云</Breadcrumb.Item>
         </Breadcrumb>
       </div>
     )

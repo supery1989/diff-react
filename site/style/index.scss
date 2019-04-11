@@ -81,7 +81,7 @@ $prefix: '#{$root-prefix}';
       text-align: center;
     }
     &-copyright {
-      margin-right: 200px;
+      margin-right: 200px !important;
     }
     &-nav {
       display: inline-block;
