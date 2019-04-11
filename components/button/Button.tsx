@@ -141,6 +141,10 @@ export default class Button extends React.Component<ButtonProps> {
   }
 
   renderContent(IconComp: any) {
+    const { children } = this.props
+    if (children && typeof children === 'object') {
+      return children
+    }
     if (IconComp) {
       const { iconPosition } = this.props
       if (iconPosition === 'right') {
