@@ -1,18 +1,14 @@
-## Temp 模板
+## Tree 树形控件
 
-用于快速生成目录文件。
+树形控件，展示文件结构、组织架构、地理信息等分层数据的控件。
 
 ### 基本用法
 
-demo
-
-::: demo demo
+::: demo
 ```js
 render() {
   return (
-    <Loading className="demo-loading">
-      <div className="demo1" />
-    </Loading>
+    <Tree />
   )
 }
 ```

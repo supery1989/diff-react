@@ -1,18 +1,14 @@
-## Temp 模板
+## Rate 评分
 
-用于快速生成目录文件。
+评分组件。
 
 ### 基本用法
 
-demo
-
-::: demo demo
+::: demo
 ```js
 render() {
   return (
-    <Loading className="demo-loading">
-      <div className="demo1" />
-    </Loading>
+    <Rate />
   )
 }
 ```

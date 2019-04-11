@@ -3,13 +3,13 @@ import * as React from 'react'
 // import omit from 'omit.js'
 import View, { ROOT_PREFIX } from 'libs/view'
 
-export interface TempProps {
+export interface TabsProps {
   className?: string
   style?: object
 }
 
-export default class Temp extends React.Component<TempProps> {
-  private prefix = `${ROOT_PREFIX}-temp`
+export default class Tabs extends React.Component<TabsProps> {
+  private prefix = `${ROOT_PREFIX}-tabs`
 
   render() {
     const { ...rest } = this.props

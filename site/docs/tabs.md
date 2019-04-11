@@ -1,18 +1,14 @@
-## Temp 模板
+## Tabs 标签页
 
-用于快速生成目录文件。
+分隔内容上有关联但属于不同类别的数据集合。
 
 ### 基本用法
 
-demo
-
-::: demo demo
+::: demo
 ```js
 render() {
   return (
-    <Loading className="demo-loading">
-      <div className="demo1" />
-    </Loading>
+    <Tabs />
   )
 }
 ```

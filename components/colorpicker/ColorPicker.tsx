@@ -3,13 +3,13 @@ import * as React from 'react'
 // import omit from 'omit.js'
 import View, { ROOT_PREFIX } from 'libs/view'
 
-export interface TempProps {
+export interface ColorPickerProps {
   className?: string
   style?: object
 }
 
-export default class Temp extends React.Component<TempProps> {
-  private prefix = `${ROOT_PREFIX}-temp`
+export default class ColorPicker extends React.Component<ColorPickerProps> {
+  private prefix = `${ROOT_PREFIX}-color-picker`
 
   render() {
     const { ...rest } = this.props

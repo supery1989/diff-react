@@ -1,0 +1,8 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-color-picker';
+
+.#{$prefix} {
+  @include reset;
+}

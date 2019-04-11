@@ -1,18 +1,14 @@
-## Temp 模板
+## Carousel 走马灯
 
-用于快速生成目录文件。
+在有限空间内，循环播放同一类型的图片、文字等内容。
 
 ### 基本用法
-
-demo
 
 ::: demo demo
 ```js
 render() {
   return (
-    <Loading className="demo-loading">
-      <div className="demo1" />
-    </Loading>
+    <Carousel />
   )
 }
 ```

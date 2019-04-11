@@ -15,7 +15,7 @@ class Silder extends React.Component {
               <Menu.SubMenu key={uuid.v1()} index={String(key)} title={`${list.type} (${list.complete}/${list.total})`}>
                 {list.lists.map((menu: any) => {
                   return (
-                    <Menu.Item key={uuid.v1()}><Link to={`/components/${menu.key}`}>{menu.name}</Link></Menu.Item>
+                    <Menu.Item key={uuid.v1()}><Link className={menu.badge ? 'undone' : ''} to={`/components/${menu.key}`}>{menu.name}</Link></Menu.Item>
                   )
                 })}
               </Menu.SubMenu>

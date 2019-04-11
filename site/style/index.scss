@@ -23,6 +23,12 @@ $prefix: '#{$root-prefix}';
           &:hover {
             color: $primary-color;
           }
+          &.undone {
+            color: $error-color;
+            &:hover {
+              color: $error-color;
+            }
+          }
         }
         .#{$prefix}-menu-item-selected {
           a {
