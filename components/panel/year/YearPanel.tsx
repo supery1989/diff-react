@@ -26,8 +26,6 @@ export default class YearPanel extends React.Component<YearPanelProps> {
   }
 
   isSelected(val: number, cur: any) {
-    // const { actived } = this.props
-    // const year = Moment.year(actived)
     return (
       val - Moment.year(cur) === 0
     )
@@ -35,6 +33,7 @@ export default class YearPanel extends React.Component<YearPanelProps> {
 
   // 顶部左右箭头
   onChangeYears(type: string) {
+    console.dir(888)
     const { actived, onChange } = this.props
     const step = type === 'prev' ? -12 : 12
     const temp = Moment.add(actived, step, 'Y')

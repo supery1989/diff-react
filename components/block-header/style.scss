@@ -7,9 +7,8 @@ $prefix: '#{$root-prefix}-block-header';
   @include reset;
   position: relative;
   margin-bottom: 20px;
-  padding: 15px;
+  padding: 10px 15px;
   background-color: lighten($primary-color, 40%);
-  height: 50px;
   &-left {
     display: inline-block;
     &::before {

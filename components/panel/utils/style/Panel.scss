@@ -4,12 +4,13 @@
 $prefix1: '#{$root-prefix}-time-picker';
 $prefix2: '#{$root-prefix}-date-picker';
 $prefix3: '#{$root-prefix}-month-picker';
+$prefix4: '#{$root-prefix}-year-picker';
 $month_prefix: '#{$root-prefix}-month';
 $year_prefix: '#{$root-prefix}-year';
 $range_prefix1: '#{$root-prefix}-time-range-picker';
 $range_prefix2: '#{$root-prefix}-date-range-picker';
 
-.#{$prefix1}-popover, .#{$prefix2}-popover, .#{$prefix3}-popover {
+.#{$prefix1}-popover, .#{$prefix2}-popover, .#{$prefix3}-popover, .#{$prefix4}-popover {
   padding: 0;
 }
 .#{$prefix1}, .#{$prefix2}, .#{$month_prefix}, .#{$year_prefix} {
@@ -38,6 +39,11 @@ $range_prefix2: '#{$root-prefix}-date-range-picker';
     right: 0;
     bottom: 0;
   }
+}
+.#{$prefix4} {
+  position: relative;
+  width: 250px;
+  padding-bottom: 15px;
 }
 .#{$range_prefix1}, .#{$range_prefix2} {
   @include reset;

@@ -3,30 +3,30 @@ import omit from 'omit.js'
 import Popover from 'components/popover'
 import Moment from 'components/moment'
 import View, { ROOT_PREFIX } from 'libs/view'
-import MonthPanel from '../panel/month/MonthPanel'
+import YearPanel from '../panel/year/YearPanel'
 import PanelFooter from '../panel/footer/PanelFooter'
 import { DateCommonProps } from '../panel/utils/TimeBase'
 import BasePicker from '../panel/base/BasePicker'
 
-export interface MonthPickerProps extends DateCommonProps {
+export interface YearPickerProps extends DateCommonProps {
   placeholder: string
   onChange?: (moment: any, time: string) => void
 }
 
-export default class MonthPicker extends BasePicker<MonthPickerProps> {
-  protected prefix = `${ROOT_PREFIX}-month-picker`
+export default class YearPicker extends BasePicker<YearPickerProps> {
+  protected prefix = `${ROOT_PREFIX}-year-picker`
   static defaultProps = {
-    placeholder: '请选择月份',
+    placeholder: '请选择年份',
     width: 200,
   }
 
-  constructor(props: MonthPickerProps) {
+  constructor(props: YearPickerProps) {
     super(props)
 
     if (props.format) {
       this.format = props.format
     } else {
-      this.format = 'YYYY-MM'
+      this.format = 'YYYY'
     }
 
     this.state = {
@@ -41,7 +41,7 @@ export default class MonthPicker extends BasePicker<MonthPickerProps> {
     }
   }
 
-  // 选中月份
+  // 选中年份
   changeMonth(val: number, hide: boolean) {
     const { onChange, onBeforeConfirm } = this.props
     if (onBeforeConfirm && !onBeforeConfirm()) return
@@ -59,16 +59,31 @@ export default class MonthPicker extends BasePicker<MonthPickerProps> {
     })
   }
 
-  onSelectMonth(val: number, hide: boolean) {
+  // 选中年份
+  onSelectYear(val: number, hide: boolean) {
+    const { onChange, onBeforeConfirm } = this.props
+    const { value } = this.state
+    const temp = new Date(value).setFullYear(val)
+    if (onBeforeConfirm && !onBeforeConfirm()) return
     this.setState({
-      showPop: hide || false,
-      value: val,
+      value: temp,
+      selected: temp,
+      showPop: false,
+      inputValue: Moment(temp, this.format)
     }, () => {
-      if (!this.state.showPop) {
-        this.setState({
-          showPop: true
-        })
-      }
+      onChange && onChange(Moment.unix(temp), this.state.inputValue)
+      this.setState({
+        showPop: true
+      })
+    })
+  }
+
+  // 改版年的范围
+  changeYear(year: number, hide: boolean) {
+    const { value } = this.state
+    const temp = new Date(value).setFullYear(year)
+    this.setState({
+      value: temp
     })
   }
 
@@ -85,11 +100,11 @@ export default class MonthPicker extends BasePicker<MonthPickerProps> {
     const { value, selected } = this.state
     return (
       <View config={{...viewProps, prefix: this.prefix}}>
-        <MonthPanel
+        <YearPanel
           actived={value}
           selected={selected}
-          onChange={this.onSelectMonth.bind(this)}
-          onSelect={this.changeMonth.bind(this)}
+          onChange={this.changeYear.bind(this)}
+          onSelect={this.onSelectYear.bind(this)}
           isDisabled={this.isDisabled.bind(this)}
         />
         <div className={`${this.prefix}-panel-footer`}>
