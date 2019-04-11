@@ -4,7 +4,7 @@ function initDate(date: any) {
   } else {
     if (date instanceof Date) {
       date = date
-    } else if (date > 0) {
+    } else if (typeof date === 'number') {
       if (String(date).length === 8) {
         date = String(date).replace(/^(\d{4})(\d{2})(\d{2})$/, "$1/$2/$3")
         date = new Date(date)
