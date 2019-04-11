@@ -30,8 +30,7 @@ const MENU_LISTS = [
     type: '数据录入',
     lists: [
       { key: 'checkbox', name: 'Checkbox 复选框'},
-      { key: 'colorPicker', name: 'ColorPicker 颜色选择器*199'},
-      { key: 'datepicker', name: 'DatePicker 日期选择器'},
+      { key: 'colorpicker', name: 'ColorPicker 颜色选择器*199'},
       { key: 'editor', name: 'Editor 富文本编辑器'},
       { key: 'input', name: 'Input 输入框'},
       { key: 'numberinput', name: 'NumberInput 数字输入框'},
@@ -40,6 +39,16 @@ const MENU_LISTS = [
       { key: 'select', name: 'Select 下拉框'},
       { key: 'switch', name: 'Switch 开关'},
       { key: 'textarea', name: 'Textarea 文本域'},
+    ]
+  },
+  {
+    type: '时间日期',
+    lists: [
+      { key: 'datepicker', name: 'DatePicker 日期选择器'},
+      { key: 'datetimepicker', name: 'DateTimePicker 日期时间选择器', badge: '*5'},
+      { key: 'monthpicker', name: 'MonthPicker 月份选择器'},
+      { key: 'yearpicker', name: 'YearPicker 年份选择器'},
+      { key: 'moment', name: 'Moment 时刻'},
       { key: 'timepicker', name: 'TimePicker 时间选择器'},
     ]
   },
@@ -78,7 +87,6 @@ const MENU_LISTS = [
       { key: 'copyright', name: 'Copyright 版权'},
       { key: 'countdown', name: 'Countdown 倒计时'},
       { key: 'divider', name: 'Divider 分割线'},
-      { key: 'moment', name: 'Moment 时刻'},
     ]
   }
 ]

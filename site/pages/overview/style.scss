@@ -1,0 +1,20 @@
+@import 'components/style/theme/index.scss';
+$prefix: 'overview';
+
+.#{$prefix} {
+  &-title {
+    font-size: 28px !important;
+    font-weight: bold !important;
+    margin-bottom: 20px !important;
+  }
+  &-total {
+    color: red;
+  }
+  &-button {
+    margin: 0 15px 15px 0;
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}
