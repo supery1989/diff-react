@@ -93,7 +93,7 @@ export default class DatePanel extends React.Component<DatePanelProps> {
         <div className={`${this.prefix}-table`}>
           <ul className={classnames(`${this.prefix}-table-head`, `${ROOT_PREFIX}-time-cell-tr`)}>
             {names.map((name, i) => (
-              <li key={i} className={classnames(`${ROOT_PREFIX}-time-cell-td`, `${ROOT_PREFIX}-time-cell-td-time`)}>{name}</li>
+              <li key={i} className={`${ROOT_PREFIX}-time-cell-td`}><div className={`${ROOT_PREFIX}-time-cell-td-time`}>{name}</div></li>
             ))}
           </ul>
           <TimeCell type='time' cells={cells} onSelect={onSelect} />

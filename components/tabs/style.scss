@@ -5,4 +5,190 @@ $prefix: '#{$root-prefix}-tabs';
 
 .#{$prefix} {
   @include reset;
+  &-header {
+    border-bottom: 1px solid $border-color;
+    padding: 0;
+    position: relative;
+    margin: 0 0 15px;
+  }
+  &-nav-wrap {
+    overflow: hidden;
+    margin-bottom: -1px;
+    position: relative;
+    white-space: nowrap;
+  }
+  &-nav-scrollable {
+    padding: 0 18px;
+  }
+  &-nav-scroll {
+    overflow: hidden;
+    &::after {
+      content: '';
+      clear: both;
+    }
+  }
+  &-nav {
+    position: relative;
+    transition: transform .3s;
+    float: left;
+  }
+  &-item {
+    padding: 0 16px;
+    height: 42px;
+    box-sizing: border-box;
+    line-height: 42px;
+    display: inline-block;
+    list-style: none;
+    font-size: 14px;
+    color: $font-color;
+    position: relative;
+    border: 1px solid transparent;
+    &:hover {
+      color: $primary-color;
+      cursor: pointer;
+    }
+    &-disabled {
+      color: $disabled-color;
+      cursor: not-allowed;
+      &:hover {
+        color: $disabled-color;
+        cursor: not-allowed;
+      }
+    }
+    &-closable {
+      .#{$prefix}-close {
+        margin-left: 5px;
+        visibility: hidden;
+        &:hover {
+          background: $primary-color;
+          border-radius: 50%;
+          color: #fff;
+        }
+      }
+      &:hover {
+        .#{$prefix}-close {
+          visibility: visible;
+        }
+      }
+    }
+    &-current {
+      color: $primary-color;
+      .#{$prefix}-close {
+        visibility: visible;
+      }
+    }
+  }
+  &-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: $primary-color;
+    z-index: 1;
+    transition: transform .3s cubic-bezier(.645,.045,.355,1);
+    list-style: none;
+  }
+  &-right {
+    float: right;
+    margin: 12px 0 0 10px;
+    display: flex;
+    &-add {
+      text-align: center;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all .15s;
+      &:hover {
+        color: #fff;
+        background: $primary-color;
+      }
+    }
+    &-extra {
+      margin-right: 5px;
+    }
+  }
+  // &-add {
+  //   float: right;
+  //   margin: 12px 0 0 10px;
+  //   text-align: center;
+  //   font-size: 20px;
+  //   cursor: pointer;
+  //   transition: all .15s;
+  //   &:hover {
+  //     color: #fff;
+  //     background: $primary-color;
+  //   }
+  // }
+  // &-extra {
+  //   position: absolute;
+  //   right: 0;
+  // }
+  &-scroll-btn {
+    position: absolute;
+    cursor: pointer;
+    line-height: 46px;
+    color: $font-color;
+    width: 18px;
+    &:hover {
+      color: $primary-color;
+    }
+    &-disabled {
+      color: $disabled-color;
+      cursor: not-allowed;
+      &:hover {
+        color: $disabled-color;
+      }
+    }
+  }
+  &-prev-btn {
+    left: 0;
+    text-align: left;
+    box-shadow: 6px 0 15px -7px rgba(0,0,0,.3);
+  }
+  &-next-btn {
+    right: 0;
+    text-align: right;
+    box-shadow: -6px 0 15px -7px rgba(0,0,0,.3);
+  }
+  &-tab {
+    .#{$prefix}-item-current {
+      border: 1px solid $border-color;
+      border-bottom-color: #fff;
+      border-radius: 4px 4px 0 0;
+    }
+    .#{$prefix}-bar {
+      display: none;
+    }
+    .#{$prefix}-item {
+      transition: all .3s cubic-bezier(.645,.045,.355,1);
+    }
+  }
+  &-card {
+    background: #fff;
+    border: 1px solid $border-color;
+    transition: all .3s;
+    &:hover {
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+    }
+    .#{$prefix} {
+      &-header {
+        background-color: $gray-bg-color;
+        margin: 0;
+      }
+      &-item {
+        transition: all .3s cubic-bezier(.645,.045,.355,1);
+        border: 1px solid transparent;
+        border-top: 0;
+        margin-right: -1px;
+        margin-left: -1px;
+      }
+      &-item-current {
+        background-color: #fff;
+        border-right-color: $border-color;
+        border-left-color: $border-color;
+      }
+      &-content {
+        padding: 15px;
+      }
+    }
+  }
 }

@@ -22,7 +22,7 @@ const MENU_LISTS = [
       { key: 'page', name: 'Page 分页'},
       { key: 'progress', name: 'Progress 进度条'},
       { key: 'steps', name: 'Steps 步骤条'},
-      { key: 'tabs', name: 'Tabs 标签页', from: 'element', badge: '*5'},
+      { key: 'tabs', name: 'Tabs 标签页'},
       { key: 'tree', name: 'Tree 树形控件', from: 'element', badge: '*99'},
     ]
   },
