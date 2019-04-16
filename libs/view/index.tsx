@@ -7,6 +7,7 @@ export interface ViewProps {
   onClick?: React.MouseEventHandler,
   onChange?: React.MouseEventHandler,
   onBlur?: React.MouseEventHandler,
+  onFocus?: React.MouseEventHandler,
   onMouseEnter?: React.MouseEventHandler,
   onMouseLeave?: React.MouseEventHandler,
   onKeyDown?: React.MouseEventHandler,
@@ -58,6 +59,11 @@ export default class View extends React.Component<ViewProps>{
     onBlur && onBlur(e)
   }
 
+  onFocus(e: any) {
+    const { onFocus } = this.props
+    onFocus && onFocus(e)
+  }
+
   onKeyDown = (e: any) => {
     const { onKeyDown } = this.props
     onKeyDown && onKeyDown(e)
@@ -85,6 +91,7 @@ export default class View extends React.Component<ViewProps>{
         onMouseUp={this.onMouseUp}
         onChange={this.onChange}
         onBlur={this.onBlur}
+        onFocus={this.onFocus.bind(this)}
       >{children}</Comp>
     )
   }

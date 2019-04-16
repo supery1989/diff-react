@@ -5,4 +5,74 @@ $prefix: '#{$root-prefix}-rate';
 
 .#{$prefix} {
   @include reset;
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: normal;
+  font-style: normal;
+  outline: none;
+  font-size: 18px;
+  &-star {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin-right: 8px;
+    position: relative;
+    transition: all .3s;
+    color: $gray-color;
+    cursor: pointer;
+    line-height: 1.5;
+    &-score{
+      display: inline-block;
+    }
+    &-first {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      opacity: 0;
+    }
+    &-first,
+    &-second {
+      transition: all .3s;
+    }
+    &-focused,
+    &:hover {
+      transform: scale(1.1);
+    }
+    &-first {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      opacity: 0;
+    }
+    &-half &-first,
+    &-half &-second {
+      opacity: 1;
+    }
+    &-half &-first,
+    &-full &-second {
+      color: $warning-color;
+    }
+    &-half:hover &-first,
+    &-full:hover &-second {
+      color: lighten($warning-color, 10%);
+    }
+  }
+  &-disabled {
+    .#{$prefix}-star {
+      cursor: default;
+      &:hover {
+        transform: scale(1);
+      }
+    }
+    .#{$prefix}-star-half:hover .#{$prefix}-star-first,
+    .#{$prefix}-star-full:hover .#{$prefix}-star-second {
+      color: #f5a623;
+    }
+  }
 }

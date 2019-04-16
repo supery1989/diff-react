@@ -35,7 +35,7 @@ const MENU_LISTS = [
       { key: 'input', name: 'Input 输入框'},
       { key: 'numberinput', name: 'NumberInput 数字输入框'},
       { key: 'radio', name: 'Radio 单选框'},
-      { key: 'rate', name: 'Rate 评分', badge: '*15'},
+      { key: 'rate', name: 'Rate 评分'},
       { key: 'select', name: 'Select 下拉框'},
       { key: 'switch', name: 'Switch 开关'},
       { key: 'textarea', name: 'Textarea 文本域'},
