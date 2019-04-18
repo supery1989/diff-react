@@ -1,15 +1,13 @@
 import * as React from 'react'
-// import classnames from 'classnames'
-// import omit from 'omit.js'
-// import { ROOT_PREFIX } from 'libs/view'
 import DatePicker from 'components/datepicker'
-// import Moment from 'components/moment'
+import Moment from 'components/moment'
 import { DateCommonProps } from '../panel/utils/TimeBase'
 import TimePanel from 'components/panel/time/TimePanel'
 
 export interface DateTimePickerProps extends DateCommonProps {
   placeholder: string
   onChange?: (moment: any, time: string) => void
+  disabledTime?: () => {}
 }
 
 export default class DateTimePicker extends DatePicker<DateTimePickerProps> {
@@ -37,10 +35,26 @@ export default class DateTimePicker extends DatePicker<DateTimePickerProps> {
     })
   }
 
+  isDisabled(val: any) {
+    const { min, max } = this.props
+    if (min && Moment.unix(val) < Moment.unix(min)) return true
+    if (max && Moment.unix(val) > Moment.unix(max)) return true
+    return false
+  }
+
+  // 选中日期
+  changeDate(value: number) {
+    this.setState({
+      value,
+      selected: value,
+    })
+  }
+
   renderTimePanel() {
     const { selected, value, current } = this.state
+    const { disabledTime, min, max } = this.props
     return (
-      <TimePanel actived={value} selected={selected || current} current={current} onSelect={this.changeTime.bind(this)} />
+      <TimePanel actived={value} selected={selected || current} current={current} onSelect={this.changeTime.bind(this)} disabledTime={disabledTime} min={min} max={max} />
     )
   }
 

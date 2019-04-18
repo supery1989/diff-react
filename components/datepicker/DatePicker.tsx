@@ -128,7 +128,7 @@ export default class DatePicker<T> extends BasePicker<DatePickerProps> {
   panelContent() {
     const { showNow, nowText, confirmText, showError, ...rest } = this.props
     const { value, selected, showMonth, errorText, current } = this.state
-    const viewProps = omit(rest, ['min', 'max', 'placeholder', 'width', 'disabled', 'onBeforeClear', 'onBeforeConfirm', 'format', 'value', 'disabledDate'])
+    const viewProps = omit(rest, ['min', 'max', 'placeholder', 'width', 'disabled', 'onBeforeClear', 'onBeforeConfirm', 'format', 'value', 'disabledDate', 'disabledTime'])
     return (
       <View config={{...viewProps, prefix: this.prefix}}>
         <div className={`${this.prefix}-panel-header`}>

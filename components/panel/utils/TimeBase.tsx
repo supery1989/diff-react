@@ -78,4 +78,5 @@ export interface TimeCommonProps extends DTCommonProps {
 // datePicker 共有属性
 export interface DateCommonProps extends DTCommonProps {
   disabledDate?: (val: any) => void
+  disabledTime?: () => {}
 }

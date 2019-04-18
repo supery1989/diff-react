@@ -14,11 +14,19 @@ export interface TimePanelProps {
   current: number
   actived: number
   selected: number
+  min?: any
+  max?: any
   onSelect: (value: number, type: string) => void
+  disabledTime?: () => {}
 }
 
 export default class TimePanel extends React.Component<TimePanelProps> {
   private prefix = `${ROOT_PREFIX}-time-panel`
+  private disabledMap: any = {
+    hour: 'disabledHour',
+    minute: 'disabledMinute',
+    second: 'disabledSecond'
+  }
   state: any
 
   constructor(props: TimePanelProps){
@@ -48,6 +56,54 @@ export default class TimePanel extends React.Component<TimePanelProps> {
     this.hidePanel(type)
   }
 
+  isSameDate(val: number, current: number) {
+    return (
+      Moment.year(val) === Moment.year(current) &&
+      Moment.month(val) === Moment.month(current) &&
+      Moment.date(val) === Moment.date(current)
+    )
+  }
+
+  handleDisabled() {
+    const { min, max, actived } = this.props
+    let unix = null
+    let minHour = 0
+    let minMinute = 0
+    let minSecond = 0
+    let maxHour = 23
+    let maxMinute = 59
+    let maxSecond = 59
+    if (min && this.isSameDate(min, actived)) {
+      unix = Moment.unix(min)
+      minHour = Moment.hour(unix)
+      minMinute = Moment.minute(unix)
+      minSecond = Moment.second(unix)
+    }
+    if (max && this.isSameDate(max, actived)) {
+      unix = Moment.unix(max)
+      maxHour = Moment.hour(unix)
+      maxMinute = Moment.minute(unix)
+      maxSecond = Moment.second(unix)
+    }
+    return {
+      hour: (h: number) => h < minHour || h > maxHour,
+      minute: (m: number) =>
+        (Moment.hour(actived) === minHour && m < minMinute) ||
+        (Moment.hour(actived) === maxHour && m > maxMinute),
+      second: (s: number) =>
+        (Moment.hour(actived) === minHour && Moment.minute(actived) === minMinute && s < minSecond) ||
+        (Moment.hour(actived) === maxHour && Moment.minute(actived) === maxMinute && s > maxSecond)
+    }
+  }
+
+  isDisabled(type: string) {
+    const { disabledTime } = this.props
+    if (disabledTime) {
+      return disabledTime[this.disabledMap[type]]
+    }
+    return this.handleDisabled()[type]
+  }
+
   renderTimePanel() {
     const { selected, current } = this.props
     const { openHour, openMinute, openSecond } = this.state
@@ -59,7 +115,7 @@ export default class TimePanel extends React.Component<TimePanelProps> {
               selected={selected}
               hidePanel={this.hidePanel.bind(this, 'Hour')}
               onSelect={this.onSelectTime.bind(this, 'Hour')}
-              // disabled={this.isCellDisabled(this.types.HOUR)}
+              disabled={this.isDisabled('hour')}
             />
           )}
           {openMinute && (
@@ -67,6 +123,7 @@ export default class TimePanel extends React.Component<TimePanelProps> {
               selected={selected}
               hidePanel={this.hidePanel.bind(this, 'Minute')}
               onSelect={this.onSelectTime.bind(this, 'Minute')}
+              disabled={this.isDisabled('minute')}
             />
           )}
           {openSecond && (
@@ -75,6 +132,7 @@ export default class TimePanel extends React.Component<TimePanelProps> {
               current={current}
               hidePanel={this.hidePanel.bind(this, 'Second')}
               onSelect={this.onSelectTime.bind(this, 'Second')}
+              disabled={this.isDisabled('second')}
             />
           )}
         </div>
@@ -85,7 +143,7 @@ export default class TimePanel extends React.Component<TimePanelProps> {
 
   render() {
     const { selected, ...rest } = this.props
-    const viewProps = omit(rest, ['onChange', 'onSelect', 'selected', 'isDisabled'])
+    const viewProps = omit(rest, ['onChange', 'onSelect', 'selected', 'isDisabled', 'disabledTime'])
     return (
       <View config={{...viewProps, prefix: this.prefix}}>
         <Button.Group style={{ textAlign: 'center' }}>

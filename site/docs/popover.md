@@ -128,3 +128,4 @@ render() {
 |---------- |-------- |---------- |
 | hide | 通过ref调用实例的hide方法，可以手动关闭弹出框 | () => void |
 | onClose | 关闭弹出框的回调，变更content时会用到 | () => void |
+| onShow | 打开弹出框的回调，变更content时会用到 | () => void |

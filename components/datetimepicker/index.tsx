@@ -1,5 +1,6 @@
 import DateTimePicker from './DateTimePicker'
+import DateTimeRangePicker from './DateTimeRangePicker'
 
-import './style.scss'
+DateTimePicker.Range = DateTimeRangePicker
 
 export default DateTimePicker
