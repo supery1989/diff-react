@@ -250,9 +250,9 @@ export default class TimePicker extends React.Component<TimePickerProps> {
       <View config={{...viewProps, prefix: this.prefix}}>
         <div className={`${this.prefix}-panel-header`}>
           <Radio.Group value={tab} buttonStyle='solid' onChange={this.switchTab.bind(this)}>
-            <Radio.Button value={this.types.HOUR} checked>{Moment[this.types.HOUR](value, 'fill')}时</Radio.Button>
-            <Radio.Button value={this.types.MINUTE} checked>{Moment[this.types.MINUTE](value, 'fill')}分</Radio.Button>
-            {showSecond &&<Radio.Button value={this.types.SECOND} checked>{Moment[this.types.SECOND](value, 'fill')}秒</Radio.Button>}
+            <Radio.Button value={this.types.HOUR}>{Moment[this.types.HOUR](value, 'fill')}时</Radio.Button>
+            <Radio.Button value={this.types.MINUTE}>{Moment[this.types.MINUTE](value, 'fill')}分</Radio.Button>
+            {showSecond &&<Radio.Button value={this.types.SECOND}>{Moment[this.types.SECOND](value, 'fill')}秒</Radio.Button>}
           </Radio.Group>
         </div>
         <div className={`${this.prefix}-panel-content`}>

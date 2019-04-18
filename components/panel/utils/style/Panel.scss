@@ -5,6 +5,7 @@ $prefix1: '#{$root-prefix}-time-picker';
 $prefix2: '#{$root-prefix}-date-picker';
 $prefix3: '#{$root-prefix}-month-picker';
 $prefix4: '#{$root-prefix}-year-picker';
+$prefix5: '#{$root-prefix}-time-panel';
 $month_prefix: '#{$root-prefix}-month';
 $year_prefix: '#{$root-prefix}-year';
 $range_prefix1: '#{$root-prefix}-time-range-picker';
@@ -62,4 +63,18 @@ $range_prefix2: '#{$root-prefix}-date-range-picker';
 }
 .#{$month_prefix}-panel, .#{$year_prefix}-panel {
   background: #fff;
+}
+.#{$prefix5} {
+  &-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 2;
+    .#{$root-prefix}-hour-panel-table, .#{$root-prefix}-minute-panel-table, .#{$root-prefix}-second-panel-table {
+      padding: 10px 15px;
+    }
+  }
 }

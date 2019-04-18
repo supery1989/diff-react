@@ -9,7 +9,7 @@ class Silder extends React.Component {
   render() {
     return (
       <div className='app-slider-wrapper'>
-        <Menu expandKeys={['0', '1', '2', '3', '4', '5', '6']} className='site-menu'>
+        <Menu expandKeys={['0', '1', '2', '3', '4', '5', '6', '7']} className='site-menu'>
           {MENU_LISTS.map((list: any, key: number) => {
             return (
               <Menu.SubMenu key={uuid.v1()} index={String(key)} title={`${list.type} (${list.complete}/${list.total})`}>

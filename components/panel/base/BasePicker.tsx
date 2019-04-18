@@ -2,7 +2,7 @@ import * as React from 'react'
 import { ROOT_PREFIX } from 'libs/view'
 import Moment from 'components/moment'
 import Input from 'components/input'
-import { CURRENT } from '../utils/util'
+// import { CURRENT } from '../utils/util'
 import { DateCommonProps } from '../utils/TimeBase'
 
 export interface BasePickerProps extends DateCommonProps {
@@ -17,7 +17,7 @@ export default class BasePicker<T> extends React.Component<BasePickerProps> {
   format: string
 
   initTime() {
-    return Moment.unix(this.props.value || CURRENT)
+    return Moment.unix(this.props.value || new Date())
   }
 
   handleClear() {

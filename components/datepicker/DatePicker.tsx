@@ -15,21 +15,18 @@ export interface DatePickerProps extends DateCommonProps {
   onChange?: (moment: any, time: string) => void
 }
 
-export default class DatePicker extends BasePicker<DatePickerProps> {
+export default class DatePicker<T> extends BasePicker<DatePickerProps> {
   protected prefix = `${ROOT_PREFIX}-date-picker`
   static defaultProps = {
     placeholder: '请选择日期',
     width: 200,
+    nowText: '今天'
   }
 
   constructor(props: DatePickerProps) {
     super(props)
 
-    if (props.format) {
-      this.format = props.format
-    } else {
-      this.format = 'YYYY-MM-DD'
-    }
+    this.setFormat()
 
     this.state = {
       showPop: props.disabled ? false : true,
@@ -45,10 +42,26 @@ export default class DatePicker extends BasePicker<DatePickerProps> {
     }
   }
 
+  setFormat() {
+    if (this.props.format) {
+      this.format = this.props.format
+    } else {
+      this.format = 'YYYY-MM-DD'
+    }
+  }
+
   handleClose() {
     this.setState({
       showMonth: false,
       errorText: ''
+    })
+  }
+
+  handleShow() {
+    this.setState({
+      value: this.initTime()
+    }, () => {
+      console.dir(this.state.value)
     })
   }
 
@@ -107,6 +120,10 @@ export default class DatePicker extends BasePicker<DatePickerProps> {
     )
   }
 
+  renderTimePanel(): any {
+    return null
+  }
+
   panelContent() {
     const { showNow, nowText, confirmText, showError, ...rest } = this.props
     const { value, selected, showMonth, errorText } = this.state
@@ -128,12 +145,13 @@ export default class DatePicker extends BasePicker<DatePickerProps> {
             onSelect={this.changeDate.bind(this)}
             isDisabled={this.isDisabled.bind(this)}
           />
+          {this.renderTimePanel()}
         </div>
         <div className={`${this.prefix}-panel-footer`}>
           <PanelFooter
             showNow={showNow}
             showReset={false}
-            nowText='今天'
+            nowText={nowText}
             confirmText={confirmText}
             errorText={errorText}
             showError={showError}
@@ -150,7 +168,7 @@ export default class DatePicker extends BasePicker<DatePickerProps> {
     const { showPop } = this.state
     if (showPop) {
       return (
-        <Popover ref='timepicker' popClass={`${this.prefix}-popover`} trigger='click' content={this.panelContent()} onClose={this.handleClose.bind(this)}>
+        <Popover ref='timepicker' popClass={`${this.prefix}-popover`} trigger='click' content={this.panelContent()} onClose={this.handleClose.bind(this)} onShow={this.handleShow.bind(this)}>
           {this.renderInput()}
         </Popover>
       )

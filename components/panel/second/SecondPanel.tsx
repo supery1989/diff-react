@@ -3,6 +3,7 @@ import omit from 'omit.js'
 import View, { ROOT_PREFIX } from 'libs/view'
 import TimeCell from '../utils/TimeCell'
 import { GetCells } from '../utils/TimeBase'
+import PanelHeader from '../header/PanelHeader'
 
 export interface SecondPanelProps {
   className?: string
@@ -12,6 +13,7 @@ export interface SecondPanelProps {
   selected: any
   disabled?: () => void
   hideHeader?: boolean
+  hidePanel?: () => void
 }
 
 const ROW = 9
@@ -23,12 +25,20 @@ export default class SecondPanel extends React.Component<SecondPanelProps> {
   }
 
   render() {
-    const { onSelect, step, selected, ...rest } = this.props
+    const { onSelect, step, selected, hidePanel, hideHeader, ...rest } = this.props
     const cells = GetCells('second', ROW, COL, 60, this.props)
-    const viewProps = omit(rest, ['disabled', 'hideHeader'])
+    const viewProps = omit(rest, ['disabled'])
     return (
-      // hideHeader
       <View config={{...viewProps, prefix: this.prefix}}>
+      {!hideHeader && (
+          <div className={`${ROOT_PREFIX}-date-picker-panel-header`}>
+            <PanelHeader
+              title='选择秒'
+              prev={hidePanel}
+              showNext={false}
+            />
+          </div>
+        )}
         <div className={`${this.prefix}-table`}>
           <TimeCell type='time' cells={cells} onSelect={onSelect} />
         </div>

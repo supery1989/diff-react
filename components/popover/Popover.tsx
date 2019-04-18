@@ -20,6 +20,7 @@ export interface PopoverProps {
   popStyle?: object
   placement: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'
   onClose?: () => void
+  onShow?: () => void
 }
 
 export default class Popover extends React.Component<PopoverProps> {
@@ -77,6 +78,7 @@ export default class Popover extends React.Component<PopoverProps> {
     this.setState({
       showPopper: true
     }, () => {
+      const { onShow } = this.props
       if (this.refs.arrow) {
         this.refs.arrow.setAttribute('x-arrow', '');
       }
@@ -95,6 +97,7 @@ export default class Popover extends React.Component<PopoverProps> {
         this.refs.popper.addEventListener('mouseenter', this.showPop.bind(this))
         this.refs.popper.addEventListener('mouseleave', this.hide.bind(this))
       }
+      onShow && onShow()
     })
   }
 
@@ -145,7 +148,7 @@ export default class Popover extends React.Component<PopoverProps> {
 
   render() {
     const { children, ...rest } = this.props
-    const viewProps = omit(rest, ['content', 'trigger', 'arrow', 'title', 'width', 'show', 'popClass', 'popStyle', 'placement', 'onClose'])
+    const viewProps = omit(rest, ['content', 'trigger', 'arrow', 'title', 'width', 'show', 'popClass', 'popStyle', 'placement', 'onClose', 'onShow'])
     return (
       <View config={{...viewProps, prefix: this.prefix}} tag='span'>
         {this.renderPopper()}
