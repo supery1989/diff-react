@@ -7,7 +7,6 @@ import Radio from 'components/radio'
 import PanelFooter from 'components/panel/footer/PanelFooter'
 import { HourPanel, MinutePanel, SecondPanel } from 'components/panel'
 import Moment from 'components/moment'
-import { CURRENT } from '../panel/utils/util'
 import { TimeCommonProps } from '../panel/utils/TimeBase'
 
 export interface TimePickerProps extends TimeCommonProps {
@@ -51,7 +50,8 @@ export default class TimePicker extends React.Component<TimePickerProps> {
     }
     
     this.state = {
-      value: this.initTime(),
+      current: this.initTime(),
+      value: null,
       tab: this.types.HOUR,
       inputValue: props.value ? Moment(this.initTime(), this.format) : '',
       showPop: props.disabled ? false : true,
@@ -65,8 +65,14 @@ export default class TimePicker extends React.Component<TimePickerProps> {
     })
   }
 
+  handleShow() {
+    this.setState({
+      current: this.initTime()
+    })
+  }
+
   initTime() {
-    return Moment.unix(this.props.value || CURRENT)
+    return Moment.unix(this.props.value || new Date())
   }
 
   changeTime(type: string, val: number) {
@@ -129,13 +135,14 @@ export default class TimePicker extends React.Component<TimePickerProps> {
 
   renderPanelContent() {
     const { hourStep, minuteStep, secondStep } = this.props
-    const { value, tab } = this.state
+    const { value, tab, current } = this.state
     switch(tab) {
       case this.types.HOUR:
         return (
           <HourPanel
             step={hourStep}
-            selected={value}
+            current={current}
+            selected={value || current}
             onSelect={this.changeTime.bind(this, this.types.HOUR)}
             disabled={this.isCellDisabled(this.types.HOUR)}
             hideHeader
@@ -145,7 +152,8 @@ export default class TimePicker extends React.Component<TimePickerProps> {
         return (
           <MinutePanel
             step={minuteStep}
-            selected={value}
+            current={current}
+            selected={value || current}
             onSelect={this.changeTime.bind(this, this.types.MINUTE)}
             disabled={this.isCellDisabled(this.types.MINUTE)}
             hideHeader
@@ -155,7 +163,8 @@ export default class TimePicker extends React.Component<TimePickerProps> {
         return (
           <SecondPanel
             step={secondStep}
-            selected={value}
+            current={current}
+            selected={value || current}
             onSelect={this.changeTime.bind(this, this.types.SECOND)}
             disabled={this.isCellDisabled(this.types.SECOND)}
             hideHeader
@@ -294,7 +303,7 @@ export default class TimePicker extends React.Component<TimePickerProps> {
     const { showPop } = this.state
     if (showPop) {
       return (
-        <Popover ref='timepicker' popClass={`${this.prefix}-popover`} trigger='click' content={this.panelContent()} onClose={this.handleClose.bind(this)}>
+        <Popover ref='timepicker' popClass={`${this.prefix}-popover`} trigger='click' content={this.panelContent()} onClose={this.handleClose.bind(this)} onShow={this.handleShow.bind(this)}>
           {this.renderInput()}
         </Popover>
       )

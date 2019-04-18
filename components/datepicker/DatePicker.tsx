@@ -30,10 +30,12 @@ export default class DatePicker<T> extends BasePicker<DatePickerProps> {
 
     this.state = {
       showPop: props.disabled ? false : true,
-      // 当前的时间
+      // 当前的世界
+      current: this.initTime(),
+      // 临时存储的时间
       value: this.initTime(),
       // 选择的时间
-      selected: this.initTime(),
+      selected: null,
       // 文本框显示的内容
       inputValue: props.value ? Moment(this.initTime(), this.format) : '',
       // 显示月份选择器
@@ -59,9 +61,7 @@ export default class DatePicker<T> extends BasePicker<DatePickerProps> {
 
   handleShow() {
     this.setState({
-      value: this.initTime()
-    }, () => {
-      console.dir(this.state.value)
+      current: this.initTime()
     })
   }
 
@@ -108,11 +108,12 @@ export default class DatePicker<T> extends BasePicker<DatePickerProps> {
   }
 
   renderMonthPanel() {
-    const { value, selected } = this.state
+    const { value, selected, current } = this.state
     return (
       <MonthPanel
+        current={current}
         actived={value}
-        selected={selected}
+        selected={selected || current}
         onChange={this.onSelectMonth.bind(this)}
         onSelect={this.onSelectMonth.bind(this)}
         isDisabled={this.isDisabled.bind(this)}
@@ -126,7 +127,7 @@ export default class DatePicker<T> extends BasePicker<DatePickerProps> {
 
   panelContent() {
     const { showNow, nowText, confirmText, showError, ...rest } = this.props
-    const { value, selected, showMonth, errorText } = this.state
+    const { value, selected, showMonth, errorText, current } = this.state
     const viewProps = omit(rest, ['min', 'max', 'placeholder', 'width', 'disabled', 'onBeforeClear', 'onBeforeConfirm', 'format', 'value', 'disabledDate'])
     return (
       <View config={{...viewProps, prefix: this.prefix}}>
@@ -141,7 +142,8 @@ export default class DatePicker<T> extends BasePicker<DatePickerProps> {
         <div className={`${this.prefix}-panel-content`}>
           <DatePanel
             actived={value}
-            selected={selected}
+            current={current}
+            selected={selected || current}
             onSelect={this.changeDate.bind(this)}
             isDisabled={this.isDisabled.bind(this)}
           />

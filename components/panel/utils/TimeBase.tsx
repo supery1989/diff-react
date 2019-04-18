@@ -1,14 +1,14 @@
 import classnames from 'classnames'
 import Moment from 'components/moment'
 import { ROOT_PREFIX } from 'libs/view'
-import { CURRENT, FillValue } from './util'
+import { FillValue } from './util'
 
 export function IsSelected(type: string, val: number, selected: any) {
   return Moment[type](selected) === val
 }
 
-export function IsCurrent(type: string, val: number) {
-  return Moment[type](CURRENT) === val
+export function IsCurrent(type: string, val: number, current: number) {
+  return Moment[type](current) === val
 }
 
 export function GetCells(type: string, row: number, col: number, end: number, props: any) {
@@ -19,7 +19,7 @@ export function GetCells(type: string, row: number, col: number, end: number, pr
     for (let k = 0; k < col && i < end; k++) {
       const isDisabled = disabled && disabled(i)
       const cls = classnames({
-        [`${ROOT_PREFIX}-time-cell-current`]: IsCurrent(type, i),
+        [`${ROOT_PREFIX}-time-cell-current`]: IsCurrent(type, i, props.current),
         [`${ROOT_PREFIX}-time-cell-selected`]: IsSelected(type, i, selected),
         [`${ROOT_PREFIX}-time-cell-disabled`]: isDisabled,
       })

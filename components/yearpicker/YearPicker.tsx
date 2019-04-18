@@ -31,10 +31,12 @@ export default class YearPicker extends BasePicker<YearPickerProps> {
 
     this.state = {
       showPop: props.disabled ? false : true,
-      // 当前的时间
+      // 当前的世界
+      current: this.initTime(),
+      // 临时存储的时间
       value: this.initTime(),
       // 选择的时间
-      selected: this.initTime(),
+      selected: null,
       // 文本框显示的内容
       inputValue: props.value ? Moment(this.initTime(), this.format) : '',
       errorText: ''
@@ -93,16 +95,22 @@ export default class YearPicker extends BasePicker<YearPickerProps> {
     })
   }
 
+  handleShow() {
+    this.setState({
+      current: this.initTime()
+    })
+  }
+
   panelContent() {
     const { showNow, nowText, confirmText, showError, ...rest } = this.props
-    const { errorText } = this.state
+    const { errorText, current, value, selected } = this.state
     const viewProps = omit(rest, ['min', 'max', 'placeholder', 'width', 'disabled', 'onBeforeClear', 'onBeforeConfirm', 'format', 'value', 'disabledDate'])
-    const { value, selected } = this.state
     return (
       <View config={{...viewProps, prefix: this.prefix}}>
         <YearPanel
+          current={current}
           actived={value}
-          selected={selected}
+          selected={selected || current}
           onChange={this.changeYear.bind(this)}
           onSelect={this.onSelectYear.bind(this)}
           isDisabled={this.isDisabled.bind(this)}
@@ -127,7 +135,7 @@ export default class YearPicker extends BasePicker<YearPickerProps> {
     const { showPop } = this.state
     if (showPop) {
       return (
-        <Popover ref='timepicker' popClass={`${this.prefix}-popover`} trigger='click' content={this.panelContent()} onClose={this.handleClose.bind(this)}>
+        <Popover ref='timepicker' popClass={`${this.prefix}-popover`} trigger='click' content={this.panelContent()} onClose={this.handleClose.bind(this)} onShow={this.handleShow.bind(this)}>
           {this.renderInput()}
         </Popover>
       )

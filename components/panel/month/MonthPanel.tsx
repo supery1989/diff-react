@@ -6,11 +6,11 @@ import Moment from 'components/moment'
 import PanelHeader from '../header/PanelHeader'
 import YearPanel from '../year/YearPanel'
 import TimeCell from '../utils/TimeCell'
-import { CURRENT } from '../utils/util'
 
 export interface MonthPanelProps {
   className?: string
   style?: object
+  current: number,
   actived: number
   selected: number
   onChange: (acitved: number, hide: boolean) => void
@@ -58,7 +58,7 @@ export default class MonthPanel extends React.Component<MonthPanelProps> {
   }
 
   getMonths() {
-    const { selected, actived, isDisabled } = this.props
+    const { selected, actived, isDisabled, current } = this.props
     const months: any = []
     let index = 0
     for (let rowIndex = 0; rowIndex < ROW; rowIndex++) {
@@ -66,7 +66,7 @@ export default class MonthPanel extends React.Component<MonthPanelProps> {
       for (let colIndex = 0; colIndex < COL; colIndex++) {
         const disabled = isDisabled && isDisabled(new Date(actived).setMonth(index))
         const className = classnames(`${ROOT_PREFIX}-time-cell-td-month`, {
-          [`${ROOT_PREFIX}-time-cell-current`]: this.isSelected(index, CURRENT),
+          [`${ROOT_PREFIX}-time-cell-current`]: this.isSelected(index, current),
           [`${ROOT_PREFIX}-time-cell-selected`]: this.isSelected(index, selected),
           [`${ROOT_PREFIX}-time-cell-disabled`]: disabled,
         })
@@ -100,9 +100,10 @@ export default class MonthPanel extends React.Component<MonthPanelProps> {
   }
 
   renderYearPanel() {
-    const { actived, selected, isDisabled } = this.props
+    const { actived, selected, isDisabled, current } = this.props
     return (
       <YearPanel
+        current={current}
         actived={actived}
         selected={selected}
         onChange={this.onSelectYear.bind(this)}
@@ -114,7 +115,7 @@ export default class MonthPanel extends React.Component<MonthPanelProps> {
 
   render() {
     const { actived, ...rest } = this.props
-    const viewProps = omit(rest, ['onChange', 'onSelect', 'selected', 'isDisabled'])
+    const viewProps = omit(rest, ['onChange', 'onSelect', 'selected', 'isDisabled', 'current'])
     const { showYear } = this.state
     return (
       <View config={{...viewProps, prefix: this.prefix}}>

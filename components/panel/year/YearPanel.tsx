@@ -5,11 +5,11 @@ import View, { ROOT_PREFIX } from 'libs/view'
 import Moment from 'components/moment'
 import PanelHeader from '../header/PanelHeader'
 import TimeCell from '../utils/TimeCell'
-import { CURRENT } from '../utils/util'
 
 export interface YearPanelProps {
   className?: string
   style?: object
+  current: number
   actived: number
   selected: number
   onChange: (acitved: number, hide: boolean) => void
@@ -33,7 +33,6 @@ export default class YearPanel extends React.Component<YearPanelProps> {
 
   // 顶部左右箭头
   onChangeYears(type: string) {
-    console.dir(888)
     const { actived, onChange } = this.props
     const step = type === 'prev' ? -12 : 12
     const temp = Moment.add(actived, step, 'Y')
@@ -43,7 +42,7 @@ export default class YearPanel extends React.Component<YearPanelProps> {
   getYears() {
     const years: any = []
     let index = 0
-    const { actived, selected, isDisabled } = this.props;
+    const { actived, selected, isDisabled, current } = this.props;
     const beginYear = Moment.year(actived)-4;
     for (let rowIndex = 0; rowIndex < ROW; rowIndex++) {
       years[rowIndex] = [];
@@ -51,7 +50,7 @@ export default class YearPanel extends React.Component<YearPanelProps> {
         const val = beginYear + index
         const disabled = isDisabled && isDisabled(new Date(actived).setFullYear(val))
         const className = classnames(`${ROOT_PREFIX}-time-cell-td-month`, {
-          [`${ROOT_PREFIX}-time-cell-current`]: this.isSelected(val, CURRENT),
+          [`${ROOT_PREFIX}-time-cell-current`]: this.isSelected(val, current),
           [`${ROOT_PREFIX}-time-cell-selected`]: this.isSelected(val, selected),
           [`${ROOT_PREFIX}-time-cell-disabled`]: disabled,
         })
@@ -69,7 +68,7 @@ export default class YearPanel extends React.Component<YearPanelProps> {
 
   render() {
     const { actived, onSelect, ...rest } = this.props
-    const viewProps = omit(rest, ['onChange', 'selected', 'isDisabled'])
+    const viewProps = omit(rest, ['onChange', 'selected', 'isDisabled', 'current'])
     return (
       <View config={{...viewProps, prefix: this.prefix}}>
         <div className={`${this.prefix}-header`}>

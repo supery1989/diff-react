@@ -10,6 +10,7 @@ export interface MinutePanelProps {
   style?: object
   onSelect?: (value: any) => void
   step: number
+  current?: number,
   selected: any
   disabled?: () => void
   hideHeader?: boolean

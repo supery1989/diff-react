@@ -4,11 +4,11 @@ import omit from 'omit.js'
 import View, { ROOT_PREFIX } from 'libs/view'
 import Moment from 'components/moment'
 import TimeCell from '../utils/TimeCell'
-import { CURRENT } from '../utils/util'
 
 export interface DatePanelProps {
   className?: string
   style?: object
+  current: number
   actived: number
   selected: number
   onSelect?: (value: any) => void
@@ -50,8 +50,7 @@ export default class DatePanel extends React.Component<DatePanelProps> {
   }
 
   getDays() {
-    // todo disabledDate
-    const { actived, selected, isDisabled } = this.props
+    const { actived, selected, isDisabled, current } = this.props
     const days: any = []
     const temp = new Date(actived)
     const firstDay = new Date(temp.setDate(1))
@@ -67,7 +66,7 @@ export default class DatePanel extends React.Component<DatePanelProps> {
         const disabled = isDisabled && isDisabled(val)
         const className = classnames({
           [`${ROOT_PREFIX}-time-cell-different`]: isBefore || isAfter,
-          [`${ROOT_PREFIX}-time-cell-current`]: this.isSelected(val, CURRENT),
+          [`${ROOT_PREFIX}-time-cell-current`]: this.isSelected(val, current),
           [`${ROOT_PREFIX}-time-cell-selected`]: this.isSelected(val, selected),
           [`${ROOT_PREFIX}-time-cell-disabled`]: disabled,
         })

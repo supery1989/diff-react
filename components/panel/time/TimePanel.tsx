@@ -7,13 +7,11 @@ import Button from 'components/button'
 import HourPanel from '../hour/HourPanel'
 import MinutePanel from '../minute/MinutePanel'
 import SecondPanel from '../second/SecondPanel'
-// import PanelHeader from '../header/PanelHeader'
-// import TimeCell from '../utils/TimeCell'
-// import { CURRENT } from '../utils/util'
 
 export interface TimePanelProps {
   className?: string
   style?: object
+  current: number
   actived: number
   selected: number
   onSelect: (value: number, type: string) => void
@@ -46,14 +44,12 @@ export default class TimePanel extends React.Component<TimePanelProps> {
   }
 
   onSelectTime(type: any, value: any) {
-    console.dir(value)
-    console.dir(type)
     this.props.onSelect(value, type)
     this.hidePanel(type)
   }
 
   renderTimePanel() {
-    const { selected } = this.props
+    const { selected, current } = this.props
     const { openHour, openMinute, openSecond } = this.state
     if (openHour || openMinute || openSecond) {
       return (
@@ -76,6 +72,7 @@ export default class TimePanel extends React.Component<TimePanelProps> {
           {openSecond && (
             <SecondPanel
               selected={selected}
+              current={current}
               hidePanel={this.hidePanel.bind(this, 'Second')}
               onSelect={this.onSelectTime.bind(this, 'Second')}
             />

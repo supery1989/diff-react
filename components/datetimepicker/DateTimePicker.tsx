@@ -38,9 +38,9 @@ export default class DateTimePicker extends DatePicker<DateTimePickerProps> {
   }
 
   renderTimePanel() {
-    const { selected, value } = this.state
+    const { selected, value, current } = this.state
     return (
-      <TimePanel actived={value} selected={selected} onSelect={this.changeTime.bind(this)} />
+      <TimePanel actived={value} selected={selected || current} current={current} onSelect={this.changeTime.bind(this)} />
     )
   }
 
