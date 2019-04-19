@@ -33,7 +33,7 @@ export default function Toast(props: any = {}, type: string) {
 }
 
 ['success', 'error', 'warning', 'info'].forEach(type => {
-  Toast[type] = (options = {}) => {
+  Toast[type] = (options: any = {}) => {
     return Toast(options, type)
   }
 })

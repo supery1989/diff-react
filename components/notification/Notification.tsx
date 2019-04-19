@@ -36,7 +36,7 @@ export default function Notification(props: any = {}, type: string) {
 }
 
 ['success', 'error', 'warning', 'info'].forEach(type => {
-  Notification[type] = (options = {}) => {
+  Notification[type] = (options: any = {}) => {
     return Notification(options, type)
   }
 })
