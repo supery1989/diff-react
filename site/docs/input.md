@@ -132,7 +132,7 @@ render() {
 | placeholder | 输入框占位文本 | string | - | - |
 | size | 输入框的尺寸 | string | large/default/small/mini | default |
 | prefix | 输入框前置图标 | string | - | - |
-| suffix | 输入框前置图标 | string | - | - |
+| suffix | 输入框前置图标 | string/boolean | - | - |
 | prepend | 设置前置标签 | string/ReactNode | - | - |
 | append | 设置后置标签 | string/ReactNode | - | - |
 | clearable | 是否显示清空按钮 | boolean | - | true |

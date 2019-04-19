@@ -16,7 +16,7 @@ export interface InputProps {
   trim: boolean,
   type: string,
   prefix?: string,
-  suffix?: string,
+  suffix?: string | boolean,
   placeholder?: string,
   // 大小写
   onChange?: (value: any) => void,
@@ -83,6 +83,13 @@ export default class Input extends React.Component<InputProps> {
         placeholder: nextProps.placeholder
       })
     }
+  }
+
+  clear() {
+    this.setState({
+      showClose: false,
+      value: '',
+    })
   }
 
   focus() {
