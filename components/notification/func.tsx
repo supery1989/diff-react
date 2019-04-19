@@ -1,5 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import { ROOT_PREFIX } from 'libs/view'
 import Popup from 'components/popup'
 
 export function setDom(prefix: string) {
@@ -39,7 +40,7 @@ export function setProps(props: any, type: string, prefix: string) {
     props.type = type
   } else {
     if (!props.type) {
-      if (prefix === 'diff-toast') {
+      if (prefix === `${ROOT_PREFIX}-toast`) {
         props.type = 'info'
       }
     }

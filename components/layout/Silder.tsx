@@ -6,7 +6,7 @@ import classnames from 'classnames'
 import * as PropTypes from 'prop-types'
 import uuid from 'uuid'
 import omit from 'omit.js'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 import Icon from 'components/icon'
 
 export interface SilderProps {
@@ -23,7 +23,7 @@ export interface SilderProps {
 export type CollapseType = 'clickTrigger' | 'responsive'
 
 class Silder extends React.Component<SilderProps> {
-  public prefix = 'diff-layout-silder'
+  public prefix = `${ROOT_PREFIX}-layout-silder`
   private uid = uuid.v1();
   static contextTypes = {
     silderHook: PropTypes.object

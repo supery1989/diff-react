@@ -2,7 +2,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import * as PropTypes from 'prop-types'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 
 export interface LayoutProps {
   className?: string,
@@ -18,7 +18,7 @@ class Layout extends React.Component<LayoutProps> {
     silderHook: PropTypes.object,
     removeSilder: PropTypes.object
   }
-  public prefix = 'diff-layout'
+  public prefix = `${ROOT_PREFIX}-layout`
   state = { silders: [] }
   constructor(props: LayoutProps) {
     super(props);

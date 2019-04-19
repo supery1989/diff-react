@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import omit from 'omit.js'
 import addEventListener from 'add-dom-event-listener'
 import raf from 'raf'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 import Button from 'components/button'
 
 export interface BackTopProps {
@@ -31,7 +31,7 @@ const EaseInOutAnimate = (t: any, b: any, c: any, d: any) => {
 }
 
 export default class Temp extends React.Component<BackTopProps> {
-  private prefix = 'diff-back-top'
+  private prefix = `${ROOT_PREFIX}-back-top`
   static defaultProps = {
     during: 450,
     showBelow: 100,

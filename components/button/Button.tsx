@@ -2,7 +2,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View from '../../libs/view'
+import View, { ROOT_PREFIX } from '../../libs/view'
 import Icon from 'components/icon'
 import CountDown from 'components/countdown'
 
@@ -32,7 +32,7 @@ export interface ButtonProps {
 }
 
 export default class Button extends React.Component<ButtonProps> {
-  private prefix = 'diff-button'
+  private prefix = `${ROOT_PREFIX}-button`
   static Group: any
   timer: any
   state: any

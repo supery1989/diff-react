@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 import Icon from 'components/icon'
 
 export interface InputProps {
@@ -38,7 +38,7 @@ export interface InputProps {
 }
 
 export default class Input extends React.Component<InputProps> {
-  private prefix = 'diff-input'
+  private prefix = `${ROOT_PREFIX}-input`
   static defaultProps = {
     clearable: true,
     value: '',

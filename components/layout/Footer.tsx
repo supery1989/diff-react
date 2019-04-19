@@ -1,6 +1,6 @@
 
 import * as React from 'react'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 
 interface FooterProps {
   className?: string,
@@ -8,7 +8,7 @@ interface FooterProps {
 }
 
 class Footer extends React.Component<FooterProps> {
-  public prefix = 'diff-layout-footer'
+  public prefix = `${ROOT_PREFIX}-layout-footer`
   constructor(props: FooterProps) {
     super(props)
   }

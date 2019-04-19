@@ -1,8 +1,9 @@
+import { ROOT_PREFIX } from 'libs/view'
 import { setDom, renderItem } from '../notification/func'
 import Canvas from './Canvas'
 
 export default function Toast(props: any = {}, type: string) {
-  const prefix = 'diff-toast'
+  const prefix = `${ROOT_PREFIX}-toast`
   const { dom, messageBox } = setDom(prefix)
 
   if (props.position) {

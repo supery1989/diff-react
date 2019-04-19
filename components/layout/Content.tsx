@@ -2,7 +2,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 
 export interface ContentProps {
   className?: string,
@@ -11,7 +11,7 @@ export interface ContentProps {
 }
 
 class Content extends React.Component<ContentProps> {
-  public prefix = 'diff-layout-content'
+  public prefix = `${ROOT_PREFIX}-layout-content`
   constructor(props: ContentProps) {
     super(props)
   }

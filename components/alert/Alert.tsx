@@ -2,7 +2,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 import Icon from 'components/icon'
 import Transition from 'components/transition'
 import { ICON_TYPE_MAP } from 'libs/utils'
@@ -20,7 +20,7 @@ export interface AlertProps {
 }
 
 export default class Alert extends React.Component<AlertProps> {
-  private prefix = 'diff-alert'
+  private prefix = `${ROOT_PREFIX}-alert`
   static defaultProps = {
     closable: true,
     type: 'info',

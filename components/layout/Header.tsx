@@ -1,6 +1,6 @@
 
 import * as React from 'react'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 
 export interface HeaderProps {
   className?: string,
@@ -8,7 +8,7 @@ export interface HeaderProps {
 }
 
 class Header extends React.Component<HeaderProps> {
-  public prefix = 'diff-layout-header'
+  public prefix = `${ROOT_PREFIX}-layout-header`
   constructor(props: HeaderProps) {
     super(props);
   }

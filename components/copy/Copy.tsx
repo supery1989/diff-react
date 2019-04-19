@@ -1,8 +1,7 @@
 import * as React from 'react'
-// import classnames from 'classnames'
 import omit from 'omit.js'
-import View from 'libs/view'
-import { Popup } from 'components'
+import View, { ROOT_PREFIX } from 'libs/view'
+import Popup from 'components/popup'
 
 export interface CopyProps {
   className?: string,
@@ -13,7 +12,7 @@ export interface CopyProps {
 }
 
 export default class Copy extends React.Component<CopyProps> {
-  private prefix = 'diff-copy'
+  private prefix = `${ROOT_PREFIX}-copy`
   static defaultProps = {
     showStatus: true
   }

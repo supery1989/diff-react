@@ -1,7 +1,7 @@
 
 import * as React from 'react'
 import classnames from 'classnames'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 import Icon from 'components/icon'
 
 export type CustomType = React.ReactElement<any>;
@@ -17,7 +17,7 @@ export interface LoadingProps {
 }
 
 export default class Loading extends React.Component<LoadingProps> {
-  private prefix = 'diff-loading'
+  private prefix = `${ROOT_PREFIX}-loading`
   static defaultProps = {
     loading: true,
     size: 'default'

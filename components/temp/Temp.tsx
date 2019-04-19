@@ -14,7 +14,7 @@ export default class Temp extends React.Component<TempProps> {
   render() {
     const { ...rest } = this.props
     return (
-      <View config={{...rest, prefix: this.prefix}}>开发中...</View>
+      <View config={{...rest, prefix: this.prefix}}>敬请期待...</View>
     )
   }
 }

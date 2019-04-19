@@ -1,6 +1,6 @@
 import * as React from 'react'
 import omit from 'omit.js'
-import View from '../../libs/view'
+import View, { ROOT_PREFIX } from '../../libs/view'
 
 export interface IconProps {
   className?: string,
@@ -11,7 +11,7 @@ export interface IconProps {
 }
 
 export default class Icon extends React.Component<IconProps> {
-  private prefix = 'diff-icon';
+  private prefix = `${ROOT_PREFIX}-icon`
   constructor(props: IconProps) {
     super(props);
   }
