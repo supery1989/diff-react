@@ -63,6 +63,9 @@ export default class Select extends React.Component<SelectProps> {
 
   clear() {
     (this.refs.input as any).clear()
+    this.setState({
+      selected: {}
+    })
   }
 
   onSelect(value: any, label: any) {

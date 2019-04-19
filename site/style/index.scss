@@ -74,6 +74,10 @@ $prefix: '#{$root-prefix}';
       float: right;
       margin-right: 200px !important;
     }
+    &-search {
+      float: left;
+      margin-top: 14px !important;
+    }
   }
   &-footer {
     position: relative;

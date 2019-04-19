@@ -86,10 +86,12 @@ export default class Input extends React.Component<InputProps> {
   }
 
   clear() {
+    const { onChange } = this.props
     this.setState({
       showClose: false,
       value: '',
     })
+    onChange && onChange('')
   }
 
   focus() {
