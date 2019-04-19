@@ -43,9 +43,6 @@ export default class Loading extends React.Component<LoadingProps> {
 
   render() {
     const { loading, full, text, size, children, custom, ...rest } = this.props
-    if (!loading && !full) {
-      return null
-    }
     let cls;
     let _size;
     if (full) {
@@ -71,10 +68,12 @@ export default class Loading extends React.Component<LoadingProps> {
     }
     return (
       <View config = {{ ...rest, prefix: this.prefix, cls }}>
-        <div className={maskCls}>
-          {iconComp}
-          {text && <div className={`${this.prefix}-text`}>{text}</div>}
-        </div>
+        {(loading || full) && (
+          <div className={maskCls}>
+            {iconComp}
+            {text && <div className={`${this.prefix}-text`}>{text}</div>}
+          </div>
+        )}
         {!full && children}
       </View>
     )

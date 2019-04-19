@@ -45,7 +45,7 @@ const MENU_LISTS = [
     type: '时间日期',
     lists: [
       { key: 'datepicker', name: 'DatePicker 日期选择器'},
-      { key: 'datetimepicker', name: 'DateTimePicker 日期时间选择器', badge: '*5'},
+      { key: 'datetimepicker', name: 'DateTimePicker 日期时间选择器'},
       { key: 'monthpicker', name: 'MonthPicker 月份选择器'},
       { key: 'yearpicker', name: 'YearPicker 年份选择器'},
       { key: 'moment', name: 'Moment 时刻'},

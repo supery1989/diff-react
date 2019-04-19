@@ -8,14 +8,20 @@ import uuidv5 from 'uuid/v5'
 import Canvas from './canvas';
 import { MENU_LISTS_ARR, MENU_LISTS_TOTAL } from '../../site/layout/Menu'
 import Icon from 'components/icon'
+import Loading from 'components/loading'
 import './style.scss'
 
 export default class Markdown extends React.Component {
   static defaultProps: any
   components: any;
   renderer: any;
+  state: any
   constructor(props: any) {
-    super(props);
+    super(props)
+
+    this.state = {
+      loading: true
+    }
 
     this.components = new Map;
 
@@ -36,10 +42,19 @@ export default class Markdown extends React.Component {
   }
 
   componentDidUpdate() {
-    this.renderDOM();
+    this.renderPage();
   }
 
   renderDOM() {
+    setTimeout(() => {
+      this.renderPage()
+      this.setState({
+        loading: false
+      })
+    }, 0)
+  }
+
+  renderPage() {
     this.components.forEach((item: any, key: any) => {
       const div = document.getElementById(key);
       if (div instanceof HTMLElement) {
@@ -52,7 +67,7 @@ export default class Markdown extends React.Component {
         ReactDOM.render(component, div);
       }
     }
-    prism.highlightAll();
+    prism.highlightAll()
   }
 
   setPrevAndNext(title: string) {
@@ -104,15 +119,15 @@ export default class Markdown extends React.Component {
         }, this.props), p1));
 
         return `<div id=${id}></div>`;
-      }), { renderer: this.renderer });
-
+      }), { renderer: this.renderer })
+      const { loading } = this.state
       return (
-        <div>
+        <Loading loading={false} full={loading} text='正在加载'>
           <div dangerouslySetInnerHTML={{
             __html: html
           }} />
           {this.setPrevAndNext(document.title)}
-        </div>
+        </Loading>
       )
     } else {
       return <span />
