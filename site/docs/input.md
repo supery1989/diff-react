@@ -150,3 +150,4 @@ render() {
 | onBlur | 输入框失焦时的回调 | (event) => void |
 | onClick | 输入框点击时的回调 | (event) => void |
 | onClear | 输入框清空按钮点击时的回调 | (event) => void |
+| clear | 用于手动调用清空文本框内容 | () => void |

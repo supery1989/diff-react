@@ -25,6 +25,7 @@ export interface SelectProps {
   loading?: boolean
   notFoundText?: string
   value?: any
+  showArrow?: boolean
   onChange?: (value: any) => void
   remoteFn?: (value: any) => void
 }
@@ -35,7 +36,8 @@ export default class Select extends React.Component<SelectProps> {
   static OptionGroup: any
   static defaultProps = {
     placeholder: '请选择',
-    notFoundText: '无可匹配项'
+    notFoundText: '无可匹配项',
+    showArrow: true
   }
   state: any
   selectNode: any
@@ -59,10 +61,14 @@ export default class Select extends React.Component<SelectProps> {
     }
   }
 
+  clear() {
+    (this.refs.input as any).clear()
+  }
+
   onSelect(value: any, label: any) {
     let tempSelected: any;
     const { selected } = this.state
-    const { multiple } = this.props
+    const { multiple, filter } = this.props
     if (multiple) {
       const idx = selected.findIndex((item: any) => item.label === label)
       if (selected.length && idx !== -1) {
@@ -72,8 +78,13 @@ export default class Select extends React.Component<SelectProps> {
       }
       tempSelected = selected      
     } else {
-      tempSelected = { value, label }
+      if (filter) {
+        tempSelected = { value, label: value }
+      } else {
+        tempSelected = { value, label }
+      }
     }
+
     this.setState({
       selected: tempSelected,
       showOption: multiple ? true : false
@@ -211,14 +222,14 @@ export default class Select extends React.Component<SelectProps> {
       if (typeof(children) === 'object') {
         child = ''
         children.map((item: any) => {
-          if (String(item.props.children).indexOf(filterStr) !== -1) {
+          if (String(item.props.children).toLowerCase().indexOf(filterStr.toLowerCase()) !== -1) {
             child = `${String(item.props.children)},`
           }
         })
       } else {
         child = String(children)
       }
-      if (child.indexOf(filterStr) === -1) {
+      if ((child.toLowerCase()).indexOf(filterStr.toLowerCase()) === -1) {
         this.isEmpty[key] = 1
         if (filter) {
           const childTotal = React.Children.count(this.props.children)
@@ -240,10 +251,12 @@ export default class Select extends React.Component<SelectProps> {
   }
 
   renderSingle() {
-    const { disabled, filter, remote, clearable } = this.props
+    const { disabled, filter, remote, clearable, showArrow } = this.props
     const { showOption, placeholder, selected} = this.state
+    const stuffix = showArrow ? showOption ? 'caretup' : 'caretdown' : false
     return <Input
-      suffix={showOption ? 'caretup' : 'caretdown'}
+      ref='input'
+      suffix={stuffix}
       readOnly={filter || remote ? false : true}
       placeholder={placeholder}
       value={selected.label}
@@ -275,13 +288,15 @@ export default class Select extends React.Component<SelectProps> {
 
   renderMultiple() {
     const { showOption, placeholder, inputPos } = this.state
+    const { showArrow } = this.props
+    const stuffix = showArrow ? showOption ? 'caretup' : 'caretdown' : false
     return (
       <span>
         <div className={`${this.prefix}-tags`} ref={(node: any) => {this.tagsNode = node}} onClick={this.handleClick.bind(this)}>
           {this.renderTag()}
         </div>
         <Input
-          suffix={showOption ? 'caretup' : 'caretdown'}
+          suffix={stuffix}
           readOnly
           clearable={false}
           placeholder={placeholder}
@@ -312,7 +327,7 @@ export default class Select extends React.Component<SelectProps> {
 
   render() {
     const { children, multiple, line, ...rest } = this.props
-    const viewProps = omit(rest, ['placeholder', 'disabled', 'filter', 'getLabel', 'loading', 'remote', 'remoteFn', 'notFoundText', 'clearable', 'value'])
+    const viewProps = omit(rest, ['placeholder', 'disabled', 'filter', 'getLabel', 'loading', 'remote', 'remoteFn', 'notFoundText', 'clearable', 'value', 'showArrow'])
     const { showOption, innerPos } = this.state
     const cls = classnames({
       [`${this.prefix}-multiple`]: !!multiple

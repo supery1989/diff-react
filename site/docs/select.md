@@ -231,6 +231,7 @@ render() {
 | notFoundText | 当下拉列表为空时显示的内容 | string | - | 无可匹配项 |
 | clearable | 是否显示清空按钮 | boolean | - | true |
 | value | 下拉框的值 | number/string | - | - |
+| showArrow | 是否显示下拉箭头 | boolean | — | — |
 
 ### Select.OptionGroup Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
@@ -253,3 +254,4 @@ render() {
 |---------- |-------- |---------- |
  | onChange | 下拉框值变化回调，单选时回调参数为字符串，多选时回调参数为数组，支持label时参数是对象 | (value: any) => void |
 | remoteFn? | 远程搜索方法 | (value: any) => void |
+| clear | 用于手动调用清空文本框内容 | () => void |
