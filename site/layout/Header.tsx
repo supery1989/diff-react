@@ -30,7 +30,7 @@ export default class Header extends React.Component {
         </div>
         <Menu className='app-header-menu' direction='h'>
           <Menu.Item index='1'>首页</Menu.Item>
-          <Menu.Item index='2'>指南</Menu.Item>
+          <Menu.Item index='2'>快速上手</Menu.Item>
           <Menu.Item index='3'>组件</Menu.Item>
         </Menu>
       </div>

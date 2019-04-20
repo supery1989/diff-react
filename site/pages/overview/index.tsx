@@ -23,7 +23,7 @@ export default class Overview extends React.Component<OverviewProps> {
         {MENU_LISTS.map((list: any) => {
           return (
             <div key={uuid.v1()}>
-              <BlockHeader title={list.type} className='overview-subTitle' showBackground={false} />
+              <BlockHeader title={`${list.type} ${list.lists.length}`} className='overview-subTitle' showBackground={false} />
               {list.lists.map((menu: any) => {
                 return (
                   <Button className='overview-button' key={uuid.v1()} type={menu.badge ? 'danger' : 'primary'}><Link to={`/components/${menu.key}`}>{menu.name}</Link></Button>
