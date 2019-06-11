@@ -73,7 +73,7 @@ const MENU_LISTS = [
       { key: 'error', name: 'Error 错误'},
       { key: 'loading', name: 'Loading 加载'},
       { key: 'notification', name: 'Notification 通知' },
-      { key: 'popconfirm', name: 'Popconfirm 气泡确认框', badge: 'a99' },
+      { key: 'popconfirm', name: 'Popconfirm 气泡确认框' },
       { key: 'popover', name: 'Popover 弹出框' },
       { key: 'popup', name: 'Popup 对话框' },
       { key: 'toast', name: 'Toast 消息提示'},
