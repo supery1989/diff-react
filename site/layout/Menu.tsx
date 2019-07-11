@@ -61,6 +61,7 @@ const MENU_LISTS = [
       { key: 'card', name: 'Card 卡片'},
       { key: 'carousel', name: 'Carousel 走马灯', badge: '15'},
       { key: 'collapse', name: 'Collapse 折叠面板', badge: 'e99'},
+      { key: 'cropline', name: 'CropLine 文本裁剪'},
       { key: 'tag', name: 'Tag 标签'},
       { key: 'table', name: 'Table 表格' },
       { key: 'tooltip', name: 'Tooltip 文字提示'},

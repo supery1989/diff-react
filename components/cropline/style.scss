@@ -1,0 +1,15 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-crop-line';
+
+.#{$prefix} {
+  @include reset;
+  &-extra {
+    color: $primary-color;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
