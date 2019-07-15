@@ -16,6 +16,7 @@ const MENU_LISTS = [
   {
     type: '导航',
     lists: [
+      { key: 'affix', name: 'Affix 固钉' },
       { key: 'breadcrumb', name: 'Breadcrumb 面包屑'},
       { key: 'dropdown', name: 'Dropdown 下拉菜单'},
       { key: 'menu', name: 'Menu 导航菜单'},
