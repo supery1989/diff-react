@@ -1,0 +1,25 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-infinite-scroll';
+
+.#{$prefix} {
+  @include reset;
+  &-y {
+    overflow-y: auto;
+  }
+  &-loader {
+    height: 40px;
+    text-align: center;
+    color: $primary-color;
+    line-height: 40px;
+    background: $background-color;
+  }
+  &-end {
+    height: 40px;
+    text-align: center;
+    color: $gray-color;
+    line-height: 40px;
+    background: $background-color;
+  }
+}

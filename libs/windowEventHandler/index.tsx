@@ -3,7 +3,7 @@ import addEventListener from 'add-dom-event-listener'
 
 export interface WindowEventHandlerProps {
   // 需为id
-  target?: string
+  target?: string | HTMLDivElement
   name: string
   callback: () => void
 }
@@ -12,8 +12,12 @@ export default class WindowEventHandler extends React.Component<WindowEventHandl
   scrollEvent: any
 
   getTarget() {
-    if (this.props.target) {
-      return document.getElementById(this.props.target)
+    const { target } = this.props
+    if (target) {
+      if (typeof target === 'string') {
+        return document.getElementById(target)
+      }
+      return target
     } else {
       return window
     }
