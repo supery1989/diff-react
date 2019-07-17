@@ -63,6 +63,7 @@ const MENU_LISTS = [
       { key: 'carousel', name: 'Carousel 走马灯', badge: '15'},
       { key: 'collapse', name: 'Collapse 折叠面板', badge: 'e99'},
       { key: 'cropline', name: 'CropLine 文本裁剪'},
+      { key: 'imagepreview', name: 'ImagePreview 图片预览' },
       { key: 'infinitescroll', name: 'InfiniteScroll 无限滚动'},
       { key: 'tag', name: 'Tag 标签'},
       { key: 'table', name: 'Table 表格' },

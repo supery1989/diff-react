@@ -51,12 +51,12 @@ render() {
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | className | 容器类名 | string | — | — |
 | style | 指定样式 | object | — | — |
-| useWindow | 是否监听window上的滚动事件，如果传入false，则监听该DOM元素上的滚动事件 | boolean | @ | false |
-| hasMore | 是否还有更多数据加载 | boolean | @ | true |
-| initialLoad | 初始化时是否调用loadMore回调 | boolean | @ | false |
-| offset | 触发滚动加载的阈值 | number | @ | 20 |
-| loader | 加载时显示的内容 | string/React.ReactNode | @ | Loading组件 |
-| end | 加载结束时显示的内容 | string/React.ReactNode | @ | 没有更多数据了 |
+| useWindow | 是否监听window上的滚动事件，如果传入false，则监听该DOM元素上的滚动事件 | boolean | — | false |
+| hasMore | 是否还有更多数据加载 | boolean | — | true |
+| initialLoad | 初始化时是否调用loadMore回调 | boolean | — | false |
+| offset | 触发滚动加载的阈值 | number | — | 20 |
+| loader | 加载时显示的内容 | string/React.ReactNode | — | Loading组件 |
+| end | 加载结束时显示的内容 | string/React.ReactNode | — | 没有更多数据了 |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
