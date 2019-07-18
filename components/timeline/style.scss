@@ -1,0 +1,84 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-timeline';
+
+.#{$prefix} {
+  @include reset;
+  border-left: 4px solid $primary-color;
+  letter-spacing: 0.5px;
+  position: relative;
+  line-height: 1.4em;
+  list-style: none;
+  text-align: left;
+  margin-left: 150px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  &-item {
+    margin-bottom: 50px;
+    position: relative;
+    &::before, &-dot {
+      position: absolute;
+      display: block;
+      top: 0;
+    }
+    &::before {
+      left: -150px;
+      content: attr(data-date);
+      text-align: right;
+      width: 120px;
+    }
+    &-dot {
+      left: -7.5px;
+      background: $background-color;
+      height: 11px;
+      width: 11px;
+      top: 3px;
+      &-pred {
+        box-shadow: 0 0 0 4px $primary-color;
+        border-radius: 50%;
+      }
+      &-custom {
+        width: 20px;
+        height: 20px;
+        left: -10px;
+        top: 0;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+      height: 16px;
+    }
+    &-content {
+      border: 1px solid $border-color;
+      margin-left: 25px;
+      padding: 10px 15px;
+      background: $background-color;
+      border-radius: 5px;
+      position: relative;
+      top: -12px;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 14px;
+        width: 10px;
+        height: 10px;
+        left: -6px;
+        background: $background-color;
+        transform: rotate(-45deg);
+        border: 1px solid $border-color;
+        border-right-color: $background-color;
+        border-bottom-color: $background-color;
+      }
+    }
+    &-title {
+      font-size: $font-size-large;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    &-message {
+      font-size: $font-size;
+    }
+  }
+}

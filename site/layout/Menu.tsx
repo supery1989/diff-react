@@ -67,6 +67,7 @@ const MENU_LISTS = [
       { key: 'infinitescroll', name: 'InfiniteScroll 无限滚动'},
       { key: 'tag', name: 'Tag 标签'},
       { key: 'table', name: 'Table 表格' },
+      { key: 'timeline', name: 'Timeline 时间轴' },
       { key: 'tooltip', name: 'Tooltip 文字提示'},
     ]
   },
