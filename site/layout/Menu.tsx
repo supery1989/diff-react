@@ -75,6 +75,7 @@ const MENU_LISTS = [
     type: '反馈',
     lists: [
       { key: 'alert', name: 'Alert 警告'},
+      { key: 'drawer', name: 'Drawer 抽屉' },
       { key: 'error', name: 'Error 错误'},
       { key: 'loading', name: 'Loading 加载'},
       { key: 'notification', name: 'Notification 通知' },

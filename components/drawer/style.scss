@@ -1,0 +1,99 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-drawer';
+
+.#{$prefix} {
+  @include reset;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+  &-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    background: rgba(0,0,0,.6);
+  }
+  &-animate {
+    height: 100%;
+    position: fixed;
+  }
+  &-left {
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+  &-right {
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  &-top {
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+  &-bottom {
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  &-wrapper {
+    box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 0 46px 6px rgba(16, 22, 26, 0.2);
+    background-color: $background-color;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+  &-header {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    padding-left: 13px;
+    padding-right: 5px;
+    background-color: $background-color;
+    box-shadow: 0 1px 0 rgba(16, 22, 26, 0.15);
+    font-size: $font-size-large;
+    &-title {
+      margin: 0;
+      padding: 0;
+      flex: 1 1 auto;
+    }
+    &-icon {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+    &-close {
+      font-size: 24px;
+      float: right;
+      &:hover {
+        cursor: pointer;
+        color: $primary-color;
+      }
+    }
+  }
+  &-body {
+    flex: 1 1 auto;
+    overflow: auto;
+    line-height: 18px;
+    &-inner {
+      padding: 15px;
+    }
+  }
+  &-footer {
+    box-shadow: 0 -1px 0 rgba(16, 22, 26, 0.15);
+    min-height: 40px;
+    padding-left: 13px;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+  }
+}
