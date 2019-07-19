@@ -1,0 +1,52 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-placeholder';
+
+.#{$prefix} {
+  @include reset;
+  $background-color: #f2f2f2;
+  &-text {
+    &-row {
+      width: 100%;
+      height: 1em;
+      &-dashed {
+        display: flex;
+        &-seg {
+          box-sizing: border-box;
+        }
+        .#{$prefix}-shape {
+          width: 100%;
+          height: 1em;
+        }
+      }
+    }
+  }
+  &-circle {
+    border-radius: 50%;
+  }
+  &-text-block {
+    width: 100%;
+  }
+  &-richtext-block {
+    display: flex;
+  }
+  &-shape {
+    background: $background-color;
+    &-animate {
+      animation: $prefix 2s linear infinite;
+      background: linear-gradient( 90deg, rgba($background-color, 0.7), #e5e5e5, $background-color);
+      background-size: 300% 300%;
+    }
+  }
+  @keyframes #{$prefix} {
+    0%,
+    100% {
+      background-position: 0 50%;
+    }
+  
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}

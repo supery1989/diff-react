@@ -78,6 +78,7 @@ const MENU_LISTS = [
       { key: 'error', name: 'Error 错误'},
       { key: 'loading', name: 'Loading 加载'},
       { key: 'notification', name: 'Notification 通知' },
+      { key: 'placeholder', name: 'Placeholder 占位块' },
       { key: 'popconfirm', name: 'Popconfirm 气泡确认框' },
       { key: 'popover', name: 'Popover 弹出框' },
       { key: 'popup', name: 'Popup 对话框' },
