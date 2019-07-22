@@ -1,0 +1,67 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-list';
+
+.#{$prefix} {
+  @include reset;
+  font-size: $font-size;
+  line-height: $line-height;
+  color: $font-color;
+  box-sizing: border-box;
+  position: relative;
+  background-color: $background-color;
+  &-header, &-footer {
+    padding: 12px 18px;
+  }
+  &-header {
+    border-bottom: 1px solid $border-color;
+  }
+  &-border {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+  }
+  &-item {
+    border-bottom: 1px solid $border-color;
+    padding: 12px 18px;
+    &-active {
+      color: $primary-color;
+      background: $hover-background !important;
+    }
+    &-disabled {
+      cursor: not-allowed;
+      color: $gray-color;
+    }
+    &-href {
+      display: block;
+      text-decoration: none;
+      color: $font-color;
+      &:hover {
+        background: $hover-background !important;
+        text-decoration: underline;
+        cursor: pointer;
+        color: $primary-color;
+      }
+    }
+    &:last-child {
+      border-bottom: unset;
+    }
+  }
+  &-strip {
+    .#{$prefix}-item {
+      &:nth-child(2n) {
+        background: $gray-bg-color;
+      }
+    }
+  }
+  &-small {
+    .#{$prefix}-item, .#{$prefix}-header, .#{$prefix}-footer {
+      padding: 8px 16px;
+    }
+  }
+  &-large {
+    .#{$prefix}-item, .#{$prefix}-header, .#{$prefix}-footer {
+      padding: 16px 24px;
+    }
+  }
+}
