@@ -1,0 +1,109 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-split';
+
+.#{$prefix} {
+  @include reset;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  &-bar {
+    z-index: 1;
+    justify-content: center;
+    display: flex;
+    background: $gray-bg-color;
+    &::before, &::after {
+      content: '';
+      display: block;
+    }
+    &:hover {
+      transition: background-color 0.3s;
+      background: lighten($primary-color, 40%);
+    }
+    &.disable {
+      cursor: not-allowed !important;
+      &:hover {
+        background: $gray-bg-color;
+      }
+    }
+  }
+  &-line {
+    box-shadow: inset 0 0 0 0 !important;
+    background: transparent;
+    &::before {
+      box-shadow: inset 0 0 0 0 !important;
+    }
+    &::after {
+      display: none;
+    }
+  }
+  &-h > &-bar {
+    cursor: col-resize;
+    width: 5px;
+    flex-direction: column;
+    box-shadow: inset 1px 0 0 0 #d5d5d5, 1px 0 0 0 #d5d5d5;
+    &::before, &::after {
+      height: 3px;
+      width: 100%;
+      box-shadow: inset 0 1px 0 0 #d5d5d5, 0 1px 0 0 #d5d5d5;
+    }
+    &::before {
+      margin-top: -1px;
+    }
+    &::after {
+      margin-top: 3px;
+    }
+  }
+  &-h > &-line {
+    height: 100%;
+    &::before {
+      height: 100%;
+      width: 1px;
+      border-left: 1px solid $border-color;
+      margin-left: 2px;
+    }
+    &:hover {
+      &::before {
+        border-color: $primary-color;
+        border-left-style: dashed;
+      }
+    }
+  }
+  &-v {
+    flex-direction: column;
+  }
+  &-v > &-bar {
+    cursor: row-resize;
+    height: 5px;
+    align-items: center;
+    flex-direction: row;
+    box-shadow: inset 0 1px 0 0 #d5d5d5, 0 1px 0 0 #d5d5d5;
+    &::before, &::after {
+      height: 100%;
+      width: 3px;
+      box-shadow: inset 1px 0 0 0 #d5d5d5, 1px 0 0 0 #d5d5d5;
+    }
+    &::before {
+      margin-left: -1px;
+    }
+    &::after {
+      margin-left: 3px;
+    }
+  }
+  &-v > &-line {
+    width: 100%;
+    &::before {
+      width: 100%;
+      height: 0;
+      border-top: 1px solid #d5d5d5;
+      margin-top: 0;
+    }
+    &:hover {
+      &::before {
+        border-color: $primary-color;
+        border-top-style: dashed;
+      }
+    }
+  }
+}

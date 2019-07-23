@@ -9,8 +9,9 @@ const MENU_LISTS = [
   {
     type: '布局',
     lists: [
-      { key: 'grid', name: 'Grid 栅格'},
-      { key: 'layout', name: 'Layout 布局'},
+      { key: 'grid', name: 'Grid 栅格' },
+      { key: 'layout', name: 'Layout 布局' },
+      { key: 'split', name: 'Split 面板分割' },
     ]
   },
   {
