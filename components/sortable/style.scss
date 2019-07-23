@@ -1,0 +1,22 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-sortable';
+
+.#{$prefix} {
+  @include reset;
+  &-ghost {
+    background: $gray-bg-color;
+  }
+  &-chosen {
+    background: $primary-color;
+  }
+  &-drag {
+    background: $primary-color;
+  }
+  &-handle {
+    width: 20px;
+    height: 20px;
+    border: 1px solid red;
+  }
+}

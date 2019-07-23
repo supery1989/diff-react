@@ -67,6 +67,7 @@ const MENU_LISTS = [
       { key: 'imagepreview', name: 'ImagePreview 图片预览' },
       { key: 'infinitescroll', name: 'InfiniteScroll 无限滚动'},
       { key: 'list', name: 'List 列表' },
+      { key: 'sortable', name: 'Sortable 拖拽排序' },
       { key: 'tag', name: 'Tag 标签'},
       { key: 'table', name: 'Table 表格' },
       { key: 'timeline', name: 'Timeline 时间轴' },
