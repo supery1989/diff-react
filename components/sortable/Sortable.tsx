@@ -48,6 +48,13 @@ export default class Sortable extends React.Component<SortableProps> {
   }
   sortable: any
 
+  componentWillUnmount() {
+    if (this.sortable) {
+      this.sortable.destroy()
+      this.sortable = null
+    }
+  }
+
   initSortable(node: any) {
     if (!node) {
       return
