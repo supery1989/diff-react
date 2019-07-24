@@ -12,6 +12,14 @@ $prefix: '#{$root-prefix}';
     border-right: 1px solid #ddd;
     &-wrapper {
       overflow: hidden;
+      .app-slider-group-title {
+        height: 40px;
+        line-height: 40px;
+        color: #000;
+        font-weight: bold;
+        font-size: $font-size-large;
+        padding-left: 16px;
+      }
       .site-menu {
         border: unset;
         a {

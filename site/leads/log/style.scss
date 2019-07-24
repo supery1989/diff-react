@@ -1,0 +1,10 @@
+@import 'components/style/theme/index.scss';
+$prefix: 'lead';
+
+.#{$prefix} {
+  &-title {
+    font-size: 28px !important;
+    font-weight: bold !important;
+    margin-bottom: 20px !important;
+  }
+}
