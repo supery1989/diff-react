@@ -8,6 +8,8 @@ export interface IconProps {
   type?: string,
   spin?: boolean,
   onClick?: React.MouseEventHandler,
+  onMouseEnter?: React.MouseEventHandler,
+  onMouseLeave?: React.MouseEventHandler,
 }
 
 export default class Icon extends React.Component<IconProps> {
@@ -24,14 +26,14 @@ export default class Icon extends React.Component<IconProps> {
   }
 
   render() {
-    const { type, spin, ...rest } = this.props
+    const { type, spin, onMouseEnter, onMouseLeave, ...rest } = this.props
     const cls = {
       [`${this.prefix}-${type}`]: type,
       [`${this.prefix}-spin`]: spin
     }
     const viewProps = omit(rest, ['onClick'])
     return (
-      <View config={{...viewProps, prefix: this.prefix, cls}} onClick={this.handleClick} tag='i' />      
+      <View config={{...viewProps, prefix: this.prefix, cls}} onClick={this.handleClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} tag='i' />      
     )
   }
 }
