@@ -16,7 +16,8 @@ export default class Log extends React.Component<LogProps> {
       { time: '2019-07-19', message: 'drawer component 完成开发' },
       { time: '2019-07-22', message: 'list component 完成开发' },
       { time: '2019-07-23', message: 'sortable component, split component 完成开发' },
-      { time: '2019-07-24', message: '更新日志完成'}
+      { time: '2019-07-24', message: '更新日志完成'},
+      { time: '2019-07-25', message: 'carousel component 完成开发'},
     ]
     return (
       <div className='lead-wrapper'>

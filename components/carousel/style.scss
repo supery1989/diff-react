@@ -5,4 +5,101 @@ $prefix: '#{$root-prefix}-carousel';
 
 .#{$prefix} {
   @include reset;
+  overflow-x: hidden;
+  position: relative;
+  &-wrapper {
+    position: relative;
+  }
+  &-arrow {
+    &-left, &-right {
+      transition: .3s;
+      cursor: pointer;
+      font-size: 36px;
+      color: $background-color;
+      opacity: 0.4;
+      position: absolute;
+      top: 50%;
+      z-index: 10;
+      transform: translateY(-50%);
+      &:hover {
+        opacity: 1;
+      }
+    }
+    &-left {
+      left: 16px;
+    }
+    &-right {
+      right: 16px;
+    }
+  }
+  &-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    overflow: hidden;
+    z-index: 0;
+    &-animating {
+      transition: transform .4s ease-in-out;
+    }
+    &-card {
+      width: 50%;
+      transition: transform .4s ease-in-out;
+    }
+    &-stage {
+      cursor: pointer;
+      z-index: 1;
+    }
+    &-active {
+      z-index: 2;
+    }
+  }
+  &-indicator {
+    position: absolute;
+    list-style: none;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+    &-item {
+      display: inline-block;
+      background-color: transparent;
+      padding: 5px 4px;
+      cursor: pointer;
+    }
+    &-btn {
+      display: block;
+      opacity: .48;
+      width: 30px;
+      height: 2px;
+      background-color: #fff;
+      border: none;
+      padding: 0;
+    }
+    &-active {
+      .#{$prefix}-indicator-btn {
+        opacity: 1;
+      }
+    }
+    &-out {
+      bottom: 26px;
+      text-align: center;
+      position: static;
+      transform: none;
+      .#{$prefix}-indicator-btn {
+        background-color: #000;
+      }
+    }
+    &-dot {
+      .#{$prefix}-indicator-btn {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+    }
+  }
 }
