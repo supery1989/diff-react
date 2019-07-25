@@ -13,6 +13,11 @@ export default class Log extends React.Component<LogProps> {
   render() {
     document.title = this.title
     const data = [
+      { time: '2019-07-11', message: 'cropline component 完成开发' },
+      { time: '2019-07-15', message: 'affix component 完成开发' },
+      { time: '2019-07-15', message: 'InfiniteScroll component 完成开发' },
+      { time: '2019-07-17', message: 'imagepreview component 完成开发' },
+      { time: '2019-07-18', message: 'timeline component 完成开发' },
       { time: '2019-07-19', message: 'drawer component 完成开发' },
       { time: '2019-07-22', message: 'list component 完成开发' },
       { time: '2019-07-23', message: 'sortable component, split component 完成开发' },
