@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Link } from "react-router-dom"
 import uuid from 'uuid'
-import MENU_LISTS from './Menu'
+import MENU_LISTS, { COMPLETE_MENU_TOTAL, MENU_LISTS_TOTAL } from './Menu'
 import LEAD_LISTS from './Lead'
 import Menu from 'components/menu'
 
@@ -24,7 +24,7 @@ class Silder extends React.Component {
               )
             })}
           </Menu.SubMenu>
-          <Menu.SubMenu index='group02' title='组件'>
+          <Menu.SubMenu index='group02' title={`组件 (${COMPLETE_MENU_TOTAL}/${MENU_LISTS_TOTAL})`}>
             {MENU_LISTS.map((list: any, key: number) => {
               return (
                 <Menu.SubMenu key={uuid.v1()} index={String(key)} title={`${list.type} (${list.complete}/${list.total})`}>

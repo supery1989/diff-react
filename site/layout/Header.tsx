@@ -1,7 +1,7 @@
 import * as React from "react"
 import Menu from 'components/menu'
 import Select from 'components/select'
-import MENU_LISTS, { MENU_LISTS_TOTAL, COMPLETE_MENU_TOTAL } from './Menu'
+import MENU_LISTS from './Menu'
 
 export default class Header extends React.Component {
   handleToLink(key: string) {
@@ -25,9 +25,6 @@ export default class Header extends React.Component {
             }))
           })}
         </Select>
-        <div className='app-header-summary'>
-          <div>{COMPLETE_MENU_TOTAL} / {MENU_LISTS_TOTAL}</div>
-        </div>
         <Menu className='app-header-menu' direction='h'>
           <Menu.Item index='1'>首页</Menu.Item>
           <Menu.Item index='2'>快速上手</Menu.Item>
