@@ -5,4 +5,28 @@ $prefix: '#{$root-prefix}-collapse';
 
 .#{$prefix} {
   @include reset;
+  border: 1px solid $border-color;
+  border-radius: 0;
+  &-item {
+    &-header {
+      height: 43px;
+      line-height: 43px;
+      padding-left: 15px;
+      background-color: $background-color;
+      cursor: pointer;
+      border-bottom: 1px solid $border-color;
+      font-size: $font-size;
+      font-weight: bold;
+    }
+    &-icon {
+      margin-right: 8px;
+      transition: transform .3s;
+    }
+    &-content {
+      padding: 10px 15px;
+      font-size: $font-size;
+      background: $gray-bg-color;
+      border-bottom: 1px solid $border-color;
+    }
+  }
 }
