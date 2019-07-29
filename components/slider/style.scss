@@ -1,0 +1,99 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-slider';
+
+.#{$prefix} {
+  @include reset;
+  height: 4px;
+  margin: 13px 7px;
+  background-color: $gray-color;
+  border-radius: 3px;
+  position: relative;
+  font-size: $font-size-smaller;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  &-bar {
+    height: 4px;
+    background-color: $primary-color;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    position: absolute;
+  }
+  &-handle {
+    position: absolute;
+    z-index: 1;
+    margin-left: -7px;
+    &-btn {
+      width: 14px;
+      height: 14px;
+      background-color: $primary-color;
+      border-radius: 50%;
+      transition: transform .2s;
+      user-select: none;
+      margin-top: -6px;
+      &:hover {
+        transform: scale(1.5);
+        cursor: grab;
+      }
+    } 
+  }
+  &-mark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 0 1.6px rgba(16, 22, 26, 0.16);
+    top: 0px;
+    transform: translateX(-50%);
+    &-label {
+      margin-bottom: -50%;
+      margin-left: 3px;
+      padding: 0 3px;
+      position: absolute;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      cursor: pointer;
+      transform: translate(-50%, 50%);
+      color: rgba(0, 0, 0, 0.43);
+    }
+    &-no-marks {
+      display: none;
+    }
+  }
+  &-disabled {
+    .#{$prefix}-bar {
+      background: $border-color;
+    }
+    .#{$prefix}-handle-btn {
+      background-color: $border-color;
+    }
+    .#{$prefix}-handle-btn:hover {
+      cursor: not-allowed;
+    }
+  }
+  &-v {
+    height: 100%;
+    width: 4px;
+    margin: 7px 13px;
+    .#{$prefix}-bar {
+      width: 4px;
+      height: auto;
+    }
+    .#{$prefix}-handle-btn {
+      margin-left: 2px;
+    }
+    .#{$prefix}-mark {
+      left: 2px;
+    }
+    .#{$prefix}-mark-label {
+      transform: translate(0, -50%);
+      padding: 0;
+      margin-left: 12px;
+      margin-top: 2px;
+    }
+  }
+}

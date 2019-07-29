@@ -39,6 +39,7 @@ const MENU_LISTS = [
       { key: 'radio', name: 'Radio 单选框'},
       { key: 'rate', name: 'Rate 评分'},
       { key: 'select', name: 'Select 下拉框'},
+      { key: 'slider', name: 'Slider 滑块输入条' },
       { key: 'switch', name: 'Switch 开关'},
       { key: 'textarea', name: 'Textarea 文本域'},
     ]

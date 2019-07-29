@@ -8,6 +8,7 @@ export interface TooltipProps {
   className?: string
   wrapperClass?: string
   contentClass?: string
+  wrapperStyle?: object
   style?: object
   content?: string | React.ReactNode
   placement: 'leftTop' | 'left' | 'leftBottom' | 'topLeft' | 'top' | 'topRight' | 'rightTop' | 'right' | 'rightBottom' | 'bottomLeft' | 'bottom' | 'bottomRight'
@@ -228,7 +229,7 @@ export default class Tooltip extends React.Component<TooltipProps> {
   }
 
   render() {
-    const { content, children, placement, theme, wrapperClass, contentClass, ...rest } = this.props
+    const { content, children, placement, theme, wrapperClass, wrapperStyle, contentClass, ...rest } = this.props
     const viewProps = omit(rest, [
       'trigger',
       'show',
@@ -244,7 +245,7 @@ export default class Tooltip extends React.Component<TooltipProps> {
     const contentCls = classnames(`${this.prefix}-content`, contentClass)
     const events = this.getEvents()
     return (
-      <div className={wrapperCls} {...events}>
+      <div className={wrapperCls} style={wrapperStyle} {...events}>
         <div ref={this.refCbChild.bind(this)}>{children}</div>
         <View
           config={{ ...viewProps, prefix: this.prefix, cls, sty: popupStyles }}
