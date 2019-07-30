@@ -17,7 +17,7 @@ $prefix: '#{$root-prefix}-image-preview';
     top: 0;
     bottom: 0;
     z-index: 9999;
-    background: rgba(0,0,0,.6);
+    background: $mask-bg-color;
   }
   &-wrap {
     position: fixed;

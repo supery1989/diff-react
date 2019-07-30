@@ -16,8 +16,7 @@ $prefix: '#{$root-prefix}-popup';
     z-index: 1000;
   }
   .#{$prefix}-mask {
-    background: #000;
-    opacity: 0.5;
+    background: $mask-bg-color;
     z-index: 999;
   }
   .#{$prefix}-box {
