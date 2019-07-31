@@ -34,6 +34,8 @@ const MENU_LISTS = [
       { key: 'checkbox', name: 'Checkbox 复选框'},
       { key: 'colorpicker', name: 'ColorPicker 颜色选择器', badge: 'e99'},
       { key: 'editor', name: 'Editor 富文本编辑器'},
+      { key: 'field', name: 'Field 区域', badge: '1' },
+      { key: 'form', name: 'Form 表单', badge: '1' },
       { key: 'input', name: 'Input 输入框'},
       { key: 'numberinput', name: 'NumberInput 数字输入框'},
       { key: 'radio', name: 'Radio 单选框'},
@@ -42,6 +44,7 @@ const MENU_LISTS = [
       { key: 'slider', name: 'Slider 滑块输入条' },
       { key: 'switch', name: 'Switch 开关'},
       { key: 'textarea', name: 'Textarea 文本域'},
+      { key: 'transfer', name: 'Transfer 穿梭框', badge: 'e' },
       { key: 'upload', name: 'Upload 上传' },
     ]
   },
