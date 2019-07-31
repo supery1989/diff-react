@@ -54,6 +54,15 @@ export default class CropLine extends React.Component<CropLineProps> {
     }
   }
 
+  componentWillReceiveProps(nextProps: CropLineProps) {
+    if (this.props.text !== nextProps.text) {
+      this.setState({
+        original: nextProps.text,
+        noCrop: false
+      })
+    }
+  }
+
   getEllipsis() {
     return !this.state.noCrop ? this.props.ellipsis : ''
   }

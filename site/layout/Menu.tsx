@@ -42,6 +42,7 @@ const MENU_LISTS = [
       { key: 'slider', name: 'Slider 滑块输入条' },
       { key: 'switch', name: 'Switch 开关'},
       { key: 'textarea', name: 'Textarea 文本域'},
+      { key: 'upload', name: 'Upload 上传' },
     ]
   },
   {

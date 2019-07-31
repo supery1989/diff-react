@@ -1,0 +1,83 @@
+@import '../style/theme/index.scss';
+@import '../style/mixins/reset.scss';
+
+$prefix: '#{$root-prefix}-upload';
+
+.#{$prefix} {
+  @include reset;
+  width: 178px;
+  height: 178px;
+  border: 1px dashed $border-color;
+  cursor: pointer;
+  background: $background-color;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  &:hover {
+    border-color: $primary-color;
+  }
+  &-input {
+    display: none;
+  }
+  &-icon {
+    font-size: 32px;
+  }
+  &-disabled {
+    background: $gray-bg-color;
+    color: $gray-color;
+    .#{$prefix}-info, .#{$prefix}-icon {
+      color: $gray-color;
+    }
+    &:hover {
+      border-color: $border-color;
+      cursor: not-allowed;
+    }
+  }
+  &-image {
+    width: 100%;
+    outline: none;
+  }
+  &-actions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    &-mask {
+      background: $mask-bg-color;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      z-index: 2;
+      &:hover {
+        cursor: default;
+      }
+    }
+    &-delete, &-reload {
+      position: absolute;
+      font-size: $font-size-larger;
+      z-index: 3;
+      color: $primary-color;
+      top: 50%;
+      margin-top: -10px;
+      left: 50%;
+      margin-left: -30px;
+    }
+    &-delete {
+      margin-left: 10px;
+    }
+  }
+  &-inline {
+    height: 33px;
+    width: 298px;
+    justify-content: flex-start;
+    border-left: unset;
+  }
+  &-warning {
+    color: $error-color;
+  }
+}
