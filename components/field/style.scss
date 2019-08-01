@@ -5,4 +5,56 @@ $prefix: '#{$root-prefix}-field';
 
 .#{$prefix} {
   @include reset;
+  margin-bottom: 22px;
+  &::before {
+    display: table;
+    content: "";
+  }
+  &::after {
+    display: table;
+    content: "";
+    clear: both;
+  }
+  &-label {
+    text-align: right;
+    vertical-align: middle;
+    float: left;
+    font-size: $font-size;
+    color: $font-color;
+    line-height: 1;
+    padding: 11px 12px 11px 0;
+    box-sizing: border-box;
+    &-left {
+      text-align: left;
+    }
+    &-top {
+      float: none;
+      display: inline-block;
+      text-align: left;
+      padding: 0 0 10px;
+    }
+  }
+  &-content {
+    line-height: 36px;
+    position: relative;
+    font-size: $font-size;
+  }
+  &-required {
+    .#{$prefix}-label::before {
+      content: '*';
+      color: $error-color;
+      margin-right: 4px;
+      position: relative;
+      top: 3px;
+    }
+  }
+  &-error {
+    color: $error-color;
+    font-size: $font-size-smallest;
+    line-height: 1;
+    padding-top: 4px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
 }

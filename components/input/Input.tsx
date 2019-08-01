@@ -126,6 +126,9 @@ export default class Input extends React.Component<InputProps> {
     if (trim) {
       tempV = tempV.trim()
     }
+    if (tempV !== '' && !isNaN(Number(tempV))) {
+      tempV = Number(tempV)
+    }
     onChange && onChange(tempV)
   }
 

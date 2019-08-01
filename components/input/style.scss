@@ -143,4 +143,14 @@ $prefix: '#{$root-prefix}-input';
       }
     }
   }
+  &.is-error {
+    .#{$prefix} {
+      border-color: $error-color;
+      &:focus {
+        outline: 0;
+        border-color: $error-color;
+        box-shadow: unset;
+      }
+    }
+  }
 }
