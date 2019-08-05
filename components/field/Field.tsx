@@ -10,6 +10,7 @@ import Editor from 'components/editor'
 import NumberInput from 'components/number-input'
 import Rate from 'components/rate'
 import Select from 'components/select'
+import Switch from 'components/switch'
 import Transition from 'components/transition'
 
 export interface FieldProps {
@@ -166,6 +167,7 @@ export default class Field extends React.Component<FieldProps> {
   validate(trigger: string = '', cb?: Function) {
     const { fieldValue } = this.state
     const { required, label, type } = this.props
+    if (type === 'switch') return true
     let valid = true
     const checkValue = type === 'editor' ? this.tempValue : fieldValue
     this.setState({ validating: true, error: '' })
@@ -222,7 +224,7 @@ export default class Field extends React.Component<FieldProps> {
   }
 
   reset() {
-    if (this.props.type === 'editor') {
+    if (this.props.type === 'editor' || this.props.type === 'switch') {
       (this.refs.fieldNode as any).reset()
     } else if (this.props.type === 'select') {
       (this.refs.fieldNode as any).handleClear()
@@ -304,6 +306,9 @@ export default class Field extends React.Component<FieldProps> {
             })}
           </Select>
         )
+        break
+      case 'switch':
+        field = <Switch ref='fieldNode' checked={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
         break
       default:
         field = <Input value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />

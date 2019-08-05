@@ -22,6 +22,7 @@ render() {
       <Field type='numberinput' label='数字框' />
       <Field type='rate' label='评分' />
       <Field type='select' options={options} label='下拉框' />
+      <Field type='switch' label='开关' />
       <Field type='editor' label='富文本' />
       <Button type='primary'>提 交</Button>
       <Button onClick={this.reset.bind(this)}>重 置</Button>
@@ -55,6 +56,7 @@ render() {
       <Field type='numberinput' label='数字框' required />
       <Field type='rate' label='评分' required />
       <Field type='select' options={options} label='下拉框' required />
+      <Field type='switch' label='开关' required />
       <Field type='editor' label='富文本' required />
       <Button type='primary' onClick={this.submit.bind(this)}>提 交</Button>
       <Button onClick={this.reset.bind(this)}>重 置</Button>

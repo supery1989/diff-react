@@ -73,6 +73,10 @@ export default class Switch extends React.Component<SwitchProps> {
     this.node.blur()
   }
 
+  reset() {
+    this.setState({ checked: false })
+  }
+
   toggle() {
     if (this.props.disabled) {
       return
@@ -86,9 +90,6 @@ export default class Switch extends React.Component<SwitchProps> {
   }
 
   handelMouseUp(e: any) {
-    if (this.node) {
-      this.blur()
-    }
     if (this.props.onMouseUp) {
       this.props.onMouseUp(e)
     }
