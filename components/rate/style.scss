@@ -11,6 +11,9 @@ $prefix: '#{$root-prefix}-rate';
   font-style: normal;
   outline: none;
   font-size: 18px;
+  &.is-error {
+    border: 1px solid $error-color;
+  }
   &-star {
     margin: 0;
     padding: 0;

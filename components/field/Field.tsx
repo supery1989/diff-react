@@ -8,6 +8,7 @@ import Radio from 'components/radio'
 import Checkbox from 'components/checkbox'
 import Editor from 'components/editor'
 import NumberInput from 'components/number-input'
+import Rate from 'components/rate'
 import Transition from 'components/transition'
 
 export interface FieldProps {
@@ -167,7 +168,7 @@ export default class Field extends React.Component<FieldProps> {
     const checkValue = type === 'editor' ? this.tempValue : fieldValue
     this.setState({ validating: true, error: '' })
     if (checkValue === '' || checkValue === undefined || (checkValue === '<p></p>' && type === 'editor')) {
-      const txt = type === 'radio' || type === 'checkbox' ? '选择' : '输入'
+      const txt = type === 'radio' || type === 'checkbox' || type === 'rate' ? '选择' : '输入'
       const err = required ? `请${txt}${label}` : ''
       this.setState({ error: err })
       return false
@@ -251,7 +252,14 @@ export default class Field extends React.Component<FieldProps> {
   handleFieldChange(value: any) {
     const { getValue, type } = this.props
     if (type !== 'editor') {
-      this.setState({ fieldValue: value })
+      this.setState({
+        fieldValue: value
+      }, () => {
+        if (type === 'rate') {
+          this.validate('change')
+        }
+      })
+      
     } else {
       this.tempValue = value
       this.tempValue !== undefined && this.tempValue !== '<p></p>' && this.validate('change')
@@ -277,6 +285,9 @@ export default class Field extends React.Component<FieldProps> {
         break
       case 'numberinput':
         field = <NumberInput value={fieldValue} showType='count' onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
+        break
+      case 'rate':
+        field = <Rate allowHalf value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
         break
       default:
         field = <Input value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
