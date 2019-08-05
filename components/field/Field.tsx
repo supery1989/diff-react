@@ -9,6 +9,7 @@ import Checkbox from 'components/checkbox'
 import Editor from 'components/editor'
 import NumberInput from 'components/number-input'
 import Rate from 'components/rate'
+import Select from 'components/select'
 import Transition from 'components/transition'
 
 export interface FieldProps {
@@ -26,6 +27,7 @@ export interface FieldProps {
   type: string
   inline?: boolean
   getValue?: (value: any) => void
+  options?: any
 }
 
 export default class Field extends React.Component<FieldProps> {
@@ -168,7 +170,7 @@ export default class Field extends React.Component<FieldProps> {
     const checkValue = type === 'editor' ? this.tempValue : fieldValue
     this.setState({ validating: true, error: '' })
     if (checkValue === '' || checkValue === undefined || (checkValue === '<p></p>' && type === 'editor')) {
-      const txt = type === 'radio' || type === 'checkbox' || type === 'rate' ? '选择' : '输入'
+      const txt = type === 'radio' || type === 'checkbox' || type === 'rate' || type === 'select' ? '选择' : '输入'
       const err = required ? `请${txt}${label}` : ''
       this.setState({ error: err })
       return false
@@ -222,6 +224,8 @@ export default class Field extends React.Component<FieldProps> {
   reset() {
     if (this.props.type === 'editor') {
       (this.refs.fieldNode as any).reset()
+    } else if (this.props.type === 'select') {
+      (this.refs.fieldNode as any).handleClear()
     } else {
       this.setState({ fieldValue: this.initValue })
     }
@@ -258,8 +262,10 @@ export default class Field extends React.Component<FieldProps> {
         if (type === 'rate') {
           this.validate('change')
         }
+        if (type === 'select') {
+          value !== undefined && this.validate('change')
+        }
       })
-      
     } else {
       this.tempValue = value
       this.tempValue !== undefined && this.tempValue !== '<p></p>' && this.validate('change')
@@ -288,6 +294,16 @@ export default class Field extends React.Component<FieldProps> {
         break
       case 'rate':
         field = <Rate allowHalf value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
+        break
+      case 'select':
+        const { options } = this.props
+        field = (
+          <Select ref='fieldNode' value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props}>
+            {options.map((option: any, index: number) => {
+              return <Select.Option key={`select${index}`} value={option.value}>{option.label}</Select.Option>
+            })}
+          </Select>
+        )
         break
       default:
         field = <Input value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />

@@ -162,6 +162,22 @@ render() {
 ```
 :::
 
+### 下拉框
+
+::: demo
+```js
+render() {
+  const options = [
+    { label: '西瓜', value: 1 },
+    {label: '土豆', value: 2 }
+  ]
+  return (
+    <Field type='select' options={options} value={2} label='下拉框' />
+  )
+}
+```
+:::
+
 ### Field Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
@@ -175,8 +191,9 @@ render() {
 | rules | 表单域校验规则 | Array<object>下面有具体介绍 | — | — |
 | name | 表单域标识 | string | — | — |
 | value | 表单域的值，可用于设置默认值 | any | — | — |
-| type | 表单域的类型 | string | — | input |
+| type | 表单域的类型 | string | input/radio/checkbox/numberinput/rate/editor | input |
 | inline | 是否为行内模式 | boolean | — | false |
+| options | 用于下拉框、单选框、复选框等的配置 | opject | — | — |
 
 ### Field Events
 | 事件名称 | 说明 | 回调参数 |

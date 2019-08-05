@@ -96,4 +96,9 @@ $prefix: '#{$root-prefix}-select';
       }
     }
   }
+  &.is-error {
+    .#{$root-prefix}-input {
+      border-color: $error-color;
+    }
+  }
 }
