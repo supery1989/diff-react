@@ -4,13 +4,14 @@ import omit from 'omit.js'
 import PropTypes from 'prop-types'
 import View, { ROOT_PREFIX } from 'libs/view'
 import Input from 'components/input'
+import Radio from 'components/radio'
 import Transition from 'components/transition'
 
 export interface FieldProps {
   className?: string
   style?: object
   width?: number | string
-  labelWidth: number | string
+  labelWidth?: number | string
   labelPosition: 'left' | 'right' | 'top'
   label?: string | React.ReactNode
   required?: boolean
@@ -27,7 +28,6 @@ export default class Field extends React.Component<FieldProps> {
   private prefix = `${ROOT_PREFIX}-field`
   static defaultProps = {
     width: '100%',
-    labelWidth: 80,
     labelPosition: 'right',
     name: '',
     type: 'input'
@@ -41,7 +41,6 @@ export default class Field extends React.Component<FieldProps> {
   constructor(props: FieldProps) {
     super(props)
     this.state = {
-      value: null,
       validating: false,
       error: '',
       fieldValue: props.value
@@ -49,6 +48,7 @@ export default class Field extends React.Component<FieldProps> {
   }
 
   componentDidMount() {
+    this.parent() && this.parent().addField(this)
     const { value, getValue } = this.props
     this.initValue = value
     getValue && getValue(value)
@@ -155,13 +155,15 @@ export default class Field extends React.Component<FieldProps> {
     return result
   }
 
+  // todo callback或promise
   validate(trigger: string = '', cb?: Function) {
-    const { value } = this.state
+    const { fieldValue } = this.state
     const { required, label } = this.props
-    if (value === '') {
+    let valid = true
+    if (fieldValue === '' || fieldValue === undefined) {
       const err = required ? `请输入${label}` : ''
       this.setState({ error: err })
-      return
+      return false
     }
     let rules;
     if (trigger) {
@@ -176,8 +178,8 @@ export default class Field extends React.Component<FieldProps> {
       return true
     }
     this.setState({ validating: true, error: '' })
-    rules.every((rule: any) => {
-      if (!this.validateFn(rule, value)) {
+    valid = rules.every((rule: any) => {
+      if (!this.validateFn(rule, fieldValue)) {
         const { error } = this.state
         const err = error + `, ${rule.message}`
         this.setState({ error: err })
@@ -186,7 +188,7 @@ export default class Field extends React.Component<FieldProps> {
       return true
     })
     this.setState({ validating: false })
-    return
+    return valid
   }
 
   labelStyle() {
@@ -202,7 +204,7 @@ export default class Field extends React.Component<FieldProps> {
   contentStyle() {
     const sty: any = {}
     const { inline, labelPosition } = this.props
-    if (labelPosition === 'top' || inline || (this.parent() && (this.parent().props.labelPosition === 'top' || this.parent().props.inline))) return sty
+    if (labelPosition === 'top' || inline || (this.parent() && (this.parent().props.labelPosition === 'top' || this.parent().props.inline))) return { marginLeft: 0, clear: 'both' }
     const labelWidth = this.props.labelWidth || (this.parent() && this.parent().props.labelWidth)
     if (labelWidth) {
       sty.marginLeft = parseInt(labelWidth)
@@ -238,7 +240,7 @@ export default class Field extends React.Component<FieldProps> {
 
   handleFieldChange(value: any) {
     const { getValue } = this.props
-    this.setState({ value })
+    this.setState({ fieldValue: value })
     getValue && getValue(value)
   }
 
@@ -247,6 +249,9 @@ export default class Field extends React.Component<FieldProps> {
     const { fieldValue } = this.state
     let field: any
     switch(type) {
+      case 'radio':
+        field = <Radio.Group value={fieldValue} onChange={this.handleFieldChange.bind(this)}className={cls} {...props} />
+        break
       default:
         field = <Input value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
         break
@@ -256,19 +261,22 @@ export default class Field extends React.Component<FieldProps> {
 
   render() {
     const { error } = this.state
-    const { width, required, labelPosition, ...rest } = this.props
-    const viewProps = omit(rest, ['labelWidth', 'label', 'rules', 'name', 'getValue', 'value', 'type', 'inline'])
+    const { className, style, width, required, labelPosition, inline, ...rest } = this.props
+    const viewProps = omit(rest, ['labelWidth', 'label', 'rules', 'name', 'getValue', 'value', 'type', 'className', 'style'])
     const sty = { width }
+    const tempInline = inline || (this.parent() && this.parent().props.inline)
     const cls = classnames({
-      [`${this.prefix}-required`]: this.isRequired() || required
+      [`${this.prefix}-required`]: this.isRequired() || required,
+      [`${this.prefix}-inline`]: tempInline
     })
     const cls2 = classnames({
       ['is-error']: error
     })
-    const cls3 = classnames(`${this.prefix}-label`, `${this.prefix}-label-${labelPosition}`)
+    const reactLabelPosi = (labelPosition === 'top' || (this.parent() && this.parent().props.labelPosition === 'top')) ? 'top' : labelPosition
+    const cls3 = classnames(`${this.prefix}-label`, `${this.prefix}-label-${reactLabelPosi}`)
     const label = this.getLabel()
     return (
-      <View config={{...viewProps, prefix: this.prefix, sty, cls}} onChange={this.handleChange.bind(this)} onBlur={this.handleBlur.bind(this)}>
+      <View config={{...viewProps, className, style, prefix: this.prefix, sty, cls}} onChange={this.handleChange.bind(this)} onBlur={this.handleBlur.bind(this)}>
         {label && <label className={cls3} style={this.labelStyle()}>{label}</label>}
         <div className={`${this.prefix}-content`} style={this.contentStyle()}>
           {this.getField(cls2, viewProps)}

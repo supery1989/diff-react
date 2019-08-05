@@ -12,6 +12,7 @@ export interface ViewProps {
   onMouseLeave?: React.MouseEventHandler,
   onKeyDown?: React.MouseEventHandler,
   onMouseUp?: React.MouseEventHandler,
+  onSubmit?: () => void,
 }
 
 export const ROOT_PREFIX = 'diff'
@@ -69,6 +70,11 @@ export default class View extends React.Component<ViewProps>{
     onKeyDown && onKeyDown(e)
   }
 
+  onSubmit() {
+    const { onSubmit } = this.props
+    onSubmit && onSubmit()
+  }
+
   render() {
     const { config, tag, children } = this.props
     const { prefix, className, style, cls, sty, ...rest } = config
@@ -92,6 +98,7 @@ export default class View extends React.Component<ViewProps>{
         onChange={this.onChange}
         onBlur={this.onBlur}
         onFocus={this.onFocus.bind(this)}
+        onSubmit={this.onSubmit.bind(this)}
       >{children}</Comp>
     )
   }

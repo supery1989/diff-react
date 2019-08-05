@@ -26,6 +26,7 @@ export default class Log extends React.Component<LogProps> {
       { time: '2019-07-26', message: 'collapse component completed'},
       { tiem: '2019-07-29', message: 'slider component completed'},
       { tiem: '2019-07-31', message: 'upload component completed'},
+      { item: '2019-08-05', message: 'form component completed' },
     ]
     return (
       <div className='lead-wrapper'>

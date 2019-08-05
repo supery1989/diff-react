@@ -90,26 +90,44 @@ render() {
 ```
 :::
 
+### 单选框
+
+::: demo
+```js
+render() {
+  const options = [
+    { label: '西瓜', value: 1 },
+    {label: '土豆', value: 2 }
+  ]
+  return (
+    <Field type='radio' options={options} value={1} label='选择水果' />
+  )
+}
+```
+:::
+
 ### Field Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | className | 容器类名 | string | — | — |
 | style | 指定样式 | object | — | — |
-| width | 表单域宽度 | number/string | @ | 100% |
-| labelWidth | 表单域标签的宽度 | number/string | @ | 80 |
+| width | 表单域宽度 | number/string | — | 100% |
+| labelWidth | 表单域标签的宽度 | number/string | — | 80 |
 | labelPosition | 表单域标签的位置 | string | left/right/top | right |
-| label | 表单域标签 | string/React.ReactNode | @ | @ |
-| required | 是否为必填字段 | boolean | @ | false |
-| rules | 表单域校验规则 | Array<object>下面有具体介绍 | @ | @ |
-| name | 表单域标识 | string | @ | @ |
-| value | 表单域的值，可用于设置默认值 | any | @ | @ |
-| type | 表单域的类型 | string | @ | input |
-| inline | 是否为行内模式 | boolean | @ | false |
+| label | 表单域标签 | string/React.ReactNode | — | — |
+| required | 是否为必填字段 | boolean | — | false |
+| rules | 表单域校验规则 | Array<object>下面有具体介绍 | — | — |
+| name | 表单域标识 | string | — | — |
+| value | 表单域的值，可用于设置默认值 | any | — | — |
+| type | 表单域的类型 | string | — | input |
+| inline | 是否为行内模式 | boolean | — | false |
 
 ### Field Events
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
 | getValue | 获取表单的值 | (value) => void |
+| validate | 表单域验证方法 | () => boolean |
+| reset | 表单域重置函数 | () => void |
 
 ### Field type
 | 类型      | 说明          |
@@ -119,10 +137,10 @@ render() {
 ### rules 规则
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| trigger | 触发方式 | string | blur/change | @ |
-| type | 表单域类型，下面有说明 | string | @ | input |
-| message | 出错提示信息 | string | @ | @ |
-| rule | 定义的规则,type为regexp时为正则表达式,type为length时为最大长度,type为range时为[最小值, 最大值],type为custom时为自定义规则且返回布尔值的函数 | @ | @ | @ |
+| trigger | 触发方式 | string | blur/change | — |
+| type | 表单域类型，下面有说明 | string | — | input |
+| message | 出错提示信息 | string | — | — |
+| rule | 定义的规则,type为regexp时为正则表达式,type为length时为最大长度,type为range时为[最小值, 最大值],type为custom时为自定义规则且返回布尔值的函数 | — | — | — |
 
 ### rule type 内置类型
 | 类型      | 说明          |

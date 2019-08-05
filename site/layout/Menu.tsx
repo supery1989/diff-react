@@ -35,7 +35,7 @@ const MENU_LISTS = [
       { key: 'colorpicker', name: 'ColorPicker 颜色选择器', badge: 'e99'},
       { key: 'editor', name: 'Editor 富文本编辑器'},
       { key: 'field', name: 'Field 表单域', badge: '1' },
-      { key: 'form', name: 'Form 表单', badge: '1' },
+      { key: 'form', name: 'Form 表单' },
       { key: 'input', name: 'Input 输入框'},
       { key: 'numberinput', name: 'NumberInput 数字输入框'},
       { key: 'radio', name: 'Radio 单选框'},
