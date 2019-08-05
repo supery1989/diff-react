@@ -7,6 +7,7 @@ import Input from 'components/input'
 import Radio from 'components/radio'
 import Checkbox from 'components/checkbox'
 import Editor from 'components/editor'
+import NumberInput from 'components/number-input'
 import Transition from 'components/transition'
 
 export interface FieldProps {
@@ -166,7 +167,8 @@ export default class Field extends React.Component<FieldProps> {
     const checkValue = type === 'editor' ? this.tempValue : fieldValue
     this.setState({ validating: true, error: '' })
     if (checkValue === '' || checkValue === undefined || (checkValue === '<p></p>' && type === 'editor')) {
-      const err = required ? `请输入${label}` : ''
+      const txt = type === 'radio' || type === 'checkbox' ? '选择' : '输入'
+      const err = required ? `请${txt}${label}` : ''
       this.setState({ error: err })
       return false
     }
@@ -272,6 +274,9 @@ export default class Field extends React.Component<FieldProps> {
         break
       case 'editor':
         field = <Editor ref='fieldNode' value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
+        break
+      case 'numberinput':
+        field = <NumberInput value={fieldValue} showType='count' onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
         break
       default:
         field = <Input value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />

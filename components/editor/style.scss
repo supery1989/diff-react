@@ -17,4 +17,7 @@ $prefix: '#{$root-prefix}-editor';
       border-color: $disabled-color;
     } 
   }
+  &.is-error {
+    border-color: $error-color;
+  }
 }

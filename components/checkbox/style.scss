@@ -256,4 +256,7 @@ $prefix: '#{$root-prefix}-checkbox';
       }
     }
   }
+  &.is-error {
+    border: 1px solid $error-color;
+  }
 }

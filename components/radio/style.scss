@@ -206,6 +206,9 @@ $prefix: '#{$root-prefix}-radio';
   }
 }
 .#{$prefix}-group {
+  &.is-error {
+    border: 1px solid $error-color;
+  }
   .#{$prefix}-wrapper {
     margin-left: 15px;
     &:first-child {
