@@ -6,6 +6,7 @@ import View, { ROOT_PREFIX } from 'libs/view'
 import Input from 'components/input'
 import Radio from 'components/radio'
 import Checkbox from 'components/checkbox'
+import Editor from 'components/editor'
 import Transition from 'components/transition'
 
 export interface FieldProps {
@@ -38,6 +39,7 @@ export default class Field extends React.Component<FieldProps> {
   }
   state: any
   initValue: any
+  tempValue: any
 
   constructor(props: FieldProps) {
     super(props)
@@ -159,10 +161,11 @@ export default class Field extends React.Component<FieldProps> {
   // todo callback或promise
   validate(trigger: string = '', cb?: Function) {
     const { fieldValue } = this.state
-    const { required, label } = this.props
+    const { required, label, type } = this.props
     let valid = true
+    const checkValue = type === 'editor' ? this.tempValue : fieldValue
     this.setState({ validating: true, error: '' })
-    if (fieldValue === '' || fieldValue === undefined) {
+    if (checkValue === '' || checkValue === undefined || (checkValue === '<p></p>' && type === 'editor')) {
       const err = required ? `请输入${label}` : ''
       this.setState({ error: err })
       return false
@@ -180,7 +183,7 @@ export default class Field extends React.Component<FieldProps> {
       return true
     }
     valid = rules.every((rule: any) => {
-      if (!this.validateFn(rule, fieldValue)) {
+      if (!this.validateFn(rule, checkValue)) {
         const { error } = this.state
         const err = error + `, ${rule.message}`
         this.setState({ error: err })
@@ -214,7 +217,11 @@ export default class Field extends React.Component<FieldProps> {
   }
 
   reset() {
-    this.setState({ fieldValue: this.initValue })
+    if (this.props.type === 'editor') {
+      (this.refs.fieldNode as any).reset()
+    } else {
+      this.setState({ fieldValue: this.initValue })
+    }
   }
 
   getLabel() {
@@ -240,8 +247,14 @@ export default class Field extends React.Component<FieldProps> {
   }
 
   handleFieldChange(value: any) {
-    const { getValue } = this.props
-    this.setState({ fieldValue: value })
+    const { getValue, type } = this.props
+    if (type !== 'editor') {
+      this.setState({ fieldValue: value })
+    } else {
+      this.tempValue = value
+      this.tempValue !== undefined && this.tempValue !== '<p></p>' && this.validate('change')
+    }
+    
     getValue && getValue(value)
   }
 
@@ -256,6 +269,9 @@ export default class Field extends React.Component<FieldProps> {
       case 'checkbox':
         const val = fieldValue === undefined ? [] : fieldValue
         field = <Checkbox.Group values={val} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
+        break
+      case 'editor':
+        field = <Editor ref='fieldNode' value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
         break
       default:
         field = <Input value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />

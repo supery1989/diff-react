@@ -78,6 +78,12 @@ export default class Editor extends React.Component<EditorProps> {
     this.isLivinig = false
   }
 
+  reset() {
+    this.setState({
+      editorState: BraftEditor.createEditorState('')
+    })
+  }
+
   calcControls(props: EditorProps) {
     const controls: any[] =  props.controls || [
       'preview', 'fullscreen', 'separator',

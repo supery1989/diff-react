@@ -48,6 +48,7 @@ render() {
       <Field label='输入框' required />
       <Field type='radio' options={options} label='单选框' required />
       <Field type='checkbox' options={options} label='复选框' required />
+      <Field type='editor' label='富文本' required />
       <Button type='primary' onClick={this.submit.bind(this)}>提 交</Button>
       <Button onClick={this.reset.bind(this)}>重 置</Button>
     </Form>
