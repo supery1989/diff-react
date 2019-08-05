@@ -92,6 +92,8 @@ render() {
 
 ### 单选框
 
+表单域中单选框使用单选按钮组。
+
 ::: demo
 ```js
 render() {
@@ -101,6 +103,24 @@ render() {
   ]
   return (
     <Field type='radio' options={options} value={1} label='选择水果' />
+  )
+}
+```
+:::
+
+### 复选框
+
+表单域中使用复选按钮组，值为数组类型。
+
+::: demo
+```js
+render() {
+  const options = [
+    { label: '西瓜', value: 1 },
+    {label: '土豆', value: 2 }
+  ]
+  return (
+    <Field type='checkbox' options={options} value={[1]} label='选择水果' />
   )
 }
 ```

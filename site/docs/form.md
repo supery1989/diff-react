@@ -16,8 +16,9 @@ render() {
   ]
   return (
     <Form ref='form'>
-      <Field label='测试名称' />
-      <Field type='radio' options={options} label='选择水果' />
+      <Field label='输入框' />
+      <Field type='radio' options={options} label='单选框' />
+      <Field type='checkbox' options={options} label='复选框' />
       <Button type='primary'>提 交</Button>
       <Button onClick={this.reset.bind(this)}>重 置</Button>
     </Form>
@@ -44,8 +45,9 @@ render() {
   ]
   return (
     <Form ref='form'>
-      <Field label='测试名称' required />
-      <Field type='radio' options={options} label='选择水果' required />
+      <Field label='输入框' required />
+      <Field type='radio' options={options} label='单选框' required />
+      <Field type='checkbox' options={options} label='复选框' required />
       <Button type='primary' onClick={this.submit.bind(this)}>提 交</Button>
       <Button onClick={this.reset.bind(this)}>重 置</Button>
     </Form>

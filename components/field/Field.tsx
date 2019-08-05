@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import View, { ROOT_PREFIX } from 'libs/view'
 import Input from 'components/input'
 import Radio from 'components/radio'
+import Checkbox from 'components/checkbox'
 import Transition from 'components/transition'
 
 export interface FieldProps {
@@ -160,6 +161,7 @@ export default class Field extends React.Component<FieldProps> {
     const { fieldValue } = this.state
     const { required, label } = this.props
     let valid = true
+    this.setState({ validating: true, error: '' })
     if (fieldValue === '' || fieldValue === undefined) {
       const err = required ? `请输入${label}` : ''
       this.setState({ error: err })
@@ -177,7 +179,6 @@ export default class Field extends React.Component<FieldProps> {
       }
       return true
     }
-    this.setState({ validating: true, error: '' })
     valid = rules.every((rule: any) => {
       if (!this.validateFn(rule, fieldValue)) {
         const { error } = this.state
@@ -250,7 +251,11 @@ export default class Field extends React.Component<FieldProps> {
     let field: any
     switch(type) {
       case 'radio':
-        field = <Radio.Group value={fieldValue} onChange={this.handleFieldChange.bind(this)}className={cls} {...props} />
+        field = <Radio.Group value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
+        break
+      case 'checkbox':
+        const val = fieldValue === undefined ? [] : fieldValue
+        field = <Checkbox.Group values={val} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
         break
       default:
         field = <Input value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
