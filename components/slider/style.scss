@@ -14,6 +14,9 @@ $prefix: '#{$root-prefix}-slider';
   cursor: pointer;
   user-select: none;
   vertical-align: middle;
+  &.is-error {
+    background-color: $error-color;
+  }
   &-bar {
     height: 4px;
     background-color: $primary-color;

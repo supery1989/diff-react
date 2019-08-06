@@ -43,12 +43,22 @@ export default class Slider extends React.Component<SliderProps> {
   barWidth: number
   barOffsetLeft: number
   value: any
+  initValue: any
 
   constructor(props: SliderProps) {
     super(props)
+    this.initValue = props.value
     this.state = {
       value: (Array.isArray(props.value) ? props.value : [props.value]),
     }
+  }
+
+  reset() {
+    this.setState({
+      value: (Array.isArray(this.initValue) ? this.initValue : [this.initValue])
+    }, () => {
+      this.handleChange()
+    })
   }
 
   onHandleDown(index: number, e: any) {

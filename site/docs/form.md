@@ -15,7 +15,7 @@ render() {
     {label: '土豆', value: 2 }
   ]
   return (
-    <Form ref='form'>
+    <Form ref='form' labelWidth={100}>
       <Field label='输入框' />
       <Field type='radio' options={options} label='单选框' />
       <Field type='checkbox' options={options} label='复选框' />
@@ -23,6 +23,7 @@ render() {
       <Field type='rate' label='评分' />
       <Field type='select' options={options} label='下拉框' />
       <Field type='switch' label='开关' />
+      <Field type='slider' label='滑块输入条' />
       <Field type='textarea' label='文本域' />
       <Field type='editor' label='富文本' />
       <Button type='primary'>提 交</Button>
@@ -50,7 +51,7 @@ render() {
     {label: '土豆', value: 2 }
   ]
   return (
-    <Form ref='form'>
+    <Form ref='form' labelWidth={100}>
       <Field label='输入框' required />
       <Field type='radio' options={options} label='单选框' required />
       <Field type='checkbox' options={options} label='复选框' required />
@@ -58,6 +59,7 @@ render() {
       <Field type='rate' label='评分' required />
       <Field type='select' options={options} label='下拉框' required />
       <Field type='switch' label='开关' required />
+      <Field type='slider' label='滑块输入条' rules={[{type: 'range', rule: [10, 20], message: '所选范围不正确'}]} />
       <Field type='textarea' label='文本域' required />
       <Field type='editor' label='富文本' required />
       <Button type='primary' onClick={this.submit.bind(this)}>提 交</Button>

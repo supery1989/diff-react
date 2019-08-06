@@ -12,6 +12,7 @@ import Rate from 'components/rate'
 import Select from 'components/select'
 import Switch from 'components/switch'
 import Textarea from 'components/textarea'
+import Slider from 'components/slider'
 import Transition from 'components/transition'
 
 export interface FieldProps {
@@ -172,7 +173,7 @@ export default class Field extends React.Component<FieldProps> {
     let valid = true
     const checkValue = type === 'editor' ? this.tempValue : fieldValue
     this.setState({ validating: true, error: '' })
-    if (checkValue === '' || checkValue === undefined || (checkValue === '<p></p>' && type === 'editor')) {
+    if (required && type !== 'slider' && (checkValue === '' || checkValue === undefined || (checkValue === '<p></p>' && type === 'editor'))) {
       const txt = type === 'radio' || type === 'checkbox' || type === 'rate' || type === 'select' ? '选择' : '输入'
       const err = required ? `请${txt}${label}` : ''
       this.setState({ error: err })
@@ -194,7 +195,7 @@ export default class Field extends React.Component<FieldProps> {
       if (!this.validateFn(rule, checkValue)) {
         const { error } = this.state
         const err = error + `, ${rule.message}`
-        this.setState({ error: err })
+        this.setState({ error: err.substr(1) })
         return false
       }
       return true
@@ -225,7 +226,7 @@ export default class Field extends React.Component<FieldProps> {
   }
 
   reset() {
-    if (this.props.type === 'editor' || this.props.type === 'switch' || this.props.type === 'textarea') {
+    if (this.props.type === 'editor' || this.props.type === 'switch' || this.props.type === 'textarea' || this.props.type === 'slider') {
       (this.refs.fieldNode as any).reset()
     } else if (this.props.type === 'select') {
       (this.refs.fieldNode as any).handleClear()
@@ -262,7 +263,7 @@ export default class Field extends React.Component<FieldProps> {
       this.setState({
         fieldValue: value
       }, () => {
-        if (type === 'rate') {
+        if (type === 'rate' || type === 'slider') {
           this.validate('change')
         }
         if (type === 'select') {
@@ -313,6 +314,9 @@ export default class Field extends React.Component<FieldProps> {
         break
       case 'textarea':
         field = <Textarea ref='fieldNode' value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
+        break
+      case 'slider':
+        field = <Slider ref='fieldNode' value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
         break
       default:
         field = <Input value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
