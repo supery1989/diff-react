@@ -11,6 +11,7 @@ import NumberInput from 'components/number-input'
 import Rate from 'components/rate'
 import Select from 'components/select'
 import Switch from 'components/switch'
+import Textarea from 'components/textarea'
 import Transition from 'components/transition'
 
 export interface FieldProps {
@@ -224,7 +225,7 @@ export default class Field extends React.Component<FieldProps> {
   }
 
   reset() {
-    if (this.props.type === 'editor' || this.props.type === 'switch') {
+    if (this.props.type === 'editor' || this.props.type === 'switch' || this.props.type === 'textarea') {
       (this.refs.fieldNode as any).reset()
     } else if (this.props.type === 'select') {
       (this.refs.fieldNode as any).handleClear()
@@ -309,6 +310,9 @@ export default class Field extends React.Component<FieldProps> {
         break
       case 'switch':
         field = <Switch ref='fieldNode' checked={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
+        break
+      case 'textarea':
+        field = <Textarea ref='fieldNode' value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
         break
       default:
         field = <Input value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />

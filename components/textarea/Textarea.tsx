@@ -60,6 +60,15 @@ export default class Textarea extends React.Component<TextareaProps> {
     (this.textareaNode.refs as any).viewRef.blur()
   }
 
+  reset() {
+    (this.textareaNode.refs as any).viewRef.value = ''
+    this.setState({
+      value: ''
+    }, () => {
+      this.changeFn(this.state.value)
+    })
+  }
+
   resize() {
     const { autoSize, minRows, maxRows } = this.props
     if (autoSize) {
@@ -72,6 +81,10 @@ export default class Textarea extends React.Component<TextareaProps> {
 
   handleChange(e: any) {
     const value = e.target.value
+    this.changeFn(value)
+  }
+
+  changeFn(value: any) {
     const { onChange } = this.props
     const showClose = value ? true : false
     this.setState({

@@ -6,6 +6,7 @@ $prefix: '#{$root-prefix}-textarea';
 .#{$prefix}-wrapper {
   display: inline-block;
   position: relative;
+  width: 100%;
   .#{$prefix} {
     @include reset;
     width: 100%;
@@ -27,6 +28,9 @@ $prefix: '#{$root-prefix}-textarea';
       outline: 0;
       border-color: $primary-color;
       box-shadow: 0 0 0 2px rgba(24,144,255,0.2);
+    }
+    &.is-error {
+      border-color: $error-color;
     }
     &-disabled {
       background-color: $disabled-bg-color;
