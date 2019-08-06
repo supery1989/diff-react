@@ -48,7 +48,7 @@ export default class Upload extends React.Component<UploadProps> {
       showBtns: false,
       loading: false,
       showTip: false,
-      filename: '未选择任何文件'
+      filename: props.name || '未选择任何文件'
     }
   }
 

@@ -13,6 +13,7 @@ import Select from 'components/select'
 import Switch from 'components/switch'
 import Textarea from 'components/textarea'
 import Slider from 'components/slider'
+import Upload from 'components/upload'
 import Transition from 'components/transition'
 
 export interface FieldProps {
@@ -174,7 +175,7 @@ export default class Field extends React.Component<FieldProps> {
     const checkValue = type === 'editor' ? this.tempValue : fieldValue
     this.setState({ validating: true, error: '' })
     if (required && type !== 'slider' && (checkValue === '' || checkValue === undefined || (checkValue === '<p></p>' && type === 'editor'))) {
-      const txt = type === 'radio' || type === 'checkbox' || type === 'rate' || type === 'select' ? '选择' : '输入'
+      const txt = type === 'radio' || type === 'checkbox' || type === 'rate' || type === 'select' || type === 'upload' ? '选择' : '输入'
       const err = required ? `请${txt}${label}` : ''
       this.setState({ error: err })
       return false
@@ -257,25 +258,26 @@ export default class Field extends React.Component<FieldProps> {
     }, 0)
   }
 
-  handleFieldChange(value: any) {
+  handleFieldChange(value: any, file?: any) {
     const { getValue, type } = this.props
+    const tempValue = type === 'upload' ? file.name : value
     if (type !== 'editor') {
       this.setState({
-        fieldValue: value
+        fieldValue: tempValue
       }, () => {
-        if (type === 'rate' || type === 'slider') {
+        if (type === 'rate' || type === 'slider' || type === 'upload') {
           this.validate('change')
         }
         if (type === 'select') {
-          value !== undefined && this.validate('change')
+          tempValue !== undefined && this.validate('change')
         }
       })
     } else {
-      this.tempValue = value
+      this.tempValue = tempValue
       this.tempValue !== undefined && this.tempValue !== '<p></p>' && this.validate('change')
     }
     
-    getValue && getValue(value)
+    getValue && getValue(tempValue)
   }
 
   getField(cls: any, props: any) {
@@ -317,6 +319,9 @@ export default class Field extends React.Component<FieldProps> {
         break
       case 'slider':
         field = <Slider ref='fieldNode' value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
+        break
+      case 'upload':
+        field = <Upload name={fieldValue} type='inline' onError={this.handleFieldChange.bind(this)} className={cls} {...props} />
         break
       default:
         field = <Input value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />

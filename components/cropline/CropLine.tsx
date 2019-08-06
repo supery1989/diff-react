@@ -114,7 +114,7 @@ export default class CropLine extends React.Component<CropLineProps> {
 
   renderCropText() {
     const { extra, ...rest } = this.props
-    const viewProps = omit(rest, ['lines', 'ellipsis', 'extra', 'showInfo', 'text'])
+    const viewProps = omit(rest, ['lines', 'ellipsis', 'showInfo', 'text', 'infoTrigger'])
     const { content } = this.state
     const sty = { maxHeight: this.maxHeight, overflowY: 'hidden' }
     return (

@@ -15,6 +15,9 @@ $prefix: '#{$root-prefix}-upload';
   justify-content: center;
   align-items: center;
   position: relative;
+  &.is-error {
+    border-color: $error-color;
+  }
   &:hover {
     border-color: $primary-color;
   }

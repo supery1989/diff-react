@@ -24,6 +24,7 @@ render() {
       <Field type='select' options={options} label='下拉框' />
       <Field type='switch' label='开关' />
       <Field type='slider' label='滑块输入条' />
+      <Field type='upload' label='上传' />
       <Field type='textarea' label='文本域' />
       <Field type='editor' label='富文本' />
       <Button type='primary'>提 交</Button>
@@ -60,6 +61,7 @@ render() {
       <Field type='select' options={options} label='下拉框' required />
       <Field type='switch' label='开关' required />
       <Field type='slider' label='滑块输入条' rules={[{type: 'range', rule: [10, 20], message: '所选范围不正确'}]} />
+      <Field type='upload' label='上传' required />
       <Field type='textarea' label='文本域' required />
       <Field type='editor' label='富文本' required />
       <Button type='primary' onClick={this.submit.bind(this)}>提 交</Button>
