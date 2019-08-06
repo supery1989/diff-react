@@ -9,7 +9,7 @@ const LEAD_LISTS = [
   {
     type: '主题',
     lists: [
-      { key: 'colors', name: '色彩', badge: '1' },
+      { key: 'colors', name: '色彩' },
       { key: 'fonts', name: '字体', badge: '1' },
       { key: 'diy', name: '定制', badge: '1' },
     ]

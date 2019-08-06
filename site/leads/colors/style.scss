@@ -1,2 +1,27 @@
 @import 'components/style/theme/index.scss';
-$prefix: '#{$root-prefix}-lead-temp';
+$prefix: '#{$root-prefix}-lead-colors';
+
+.#{$prefix} {
+  &-block, &-block2 {
+    border: 1px solid $border-color;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+  }
+  &-color {
+    display: flex;
+    width: 160px;
+    height: 80px;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-direction: column;
+    line-height: 40px;
+  }
+  &-block2 {
+    .#{$prefix}-color {
+      color: #000;
+    }
+  }
+}
