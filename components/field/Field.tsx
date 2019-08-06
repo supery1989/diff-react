@@ -321,7 +321,17 @@ export default class Field extends React.Component<FieldProps> {
         field = <Slider ref='fieldNode' value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
         break
       case 'upload':
-        field = <Upload name={fieldValue} type='inline' onError={this.handleFieldChange.bind(this)} className={cls} {...props} />
+        field = <Upload name={fieldValue} type='inline' onSuccess={this.handleFieldChange.bind(this)} className={cls} {...props} />
+        break
+      case 'custom':
+        field = React.Children.map(this.props.children, (element: any, index: number) => {
+          return React.cloneElement(element, Object.assign({}, this.props, element.props, {
+            key: index,
+            value: fieldValue,
+            onChange: this.handleFieldChange.bind(this),
+            className: cls
+          }))
+        })
         break
       default:
         field = <Input value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
