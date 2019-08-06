@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Timeline from 'components/timeline'
+import { ROOT_PREFIX } from 'libs/view'
 import './style.scss'
 
 export interface LogProps {
@@ -8,6 +9,7 @@ export interface LogProps {
 }
 
 export default class Log extends React.Component<LogProps> {
+  // private prefix = `${ROOT_PREFIX}-lead-log`
   title = '更新日志'
 
   render() {
@@ -24,14 +26,14 @@ export default class Log extends React.Component<LogProps> {
       { time: '2019-07-24', message: '更新日志完成'},
       { time: '2019-07-25', message: 'carousel component completed'},
       { time: '2019-07-26', message: 'collapse component completed'},
-      { tiem: '2019-07-29', message: 'slider component completed'},
-      { tiem: '2019-07-31', message: 'upload component completed'},
-      { item: '2019-08-05', message: 'form component completed' },
-      { item: '2019-08-06', message: 'field component completed' },
+      { time: '2019-07-29', message: 'slider component completed'},
+      { time: '2019-07-31', message: 'upload component completed'},
+      { time: '2019-08-05', message: 'form component completed' },
+      { time: '2019-08-06', message: 'field component completed' },
     ]
     return (
-      <div className='lead-wrapper'>
-        <h2 className='lead-title'>{this.title}</h2>
+      <div className={`${ROOT_PREFIX}-lead-wrapper`}>
+        <h2 className={`${ROOT_PREFIX}-lead-title`}>{this.title}</h2>
         <Timeline data={data.reverse()} />
       </div>
     )

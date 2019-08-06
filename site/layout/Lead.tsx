@@ -3,6 +3,7 @@ const LEAD_LISTS = [
     type: '使用',
     lists: [
       { key: 'guides', name: '快速上手', badge: '1' },
+      { key: 'vscode', name: 'VS Code使用', badge: '1' },
     ]
   },
   {
