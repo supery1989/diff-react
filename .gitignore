@@ -1,4 +1,4 @@
-dist/
+dest/
 # Logs
 logs
 *.log

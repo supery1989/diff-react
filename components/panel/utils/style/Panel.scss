@@ -1,5 +1,5 @@
-@import 'components/style/theme/index.scss';
-@import 'components/style/mixins/reset.scss';
+@import '../../../style/theme/index.scss';
+@import '../../../style/mixins/reset.scss';
 
 $prefix1: '#{$root-prefix}-time-picker';
 $prefix2: '#{$root-prefix}-date-picker';
