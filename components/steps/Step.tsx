@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classnames from 'classnames'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 import Icon from 'components/icon'
 
 export interface StepProps {
@@ -19,7 +19,7 @@ export interface StepProps {
 }
 
 export default class Step extends React.Component<StepProps> {
-  private prefix = 'diff-step'
+  private prefix = `${ROOT_PREFIX}-step`
   static defaultProps = {
     stepStatus: 'wait',
     total: 0

@@ -3,7 +3,7 @@
 
 $prefix: '#{$root-prefix}-notification';
 
-.diff-notification-wrapper {
+.#{$prefix}-wrapper {
   position: fixed;
   z-index: 998;
   margin-top: -15px;

@@ -3,7 +3,7 @@
 
 $prefix: '#{$root-prefix}-toast';
 
-.diff-toast-wrapper {
+.#{$prefix}-wrapper {
   position: fixed;
   z-index: 998;
   left: 0;

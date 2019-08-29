@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 
 export interface StepsProps {
   className?: string,
@@ -14,7 +14,7 @@ export interface StepsProps {
 }
 
 export default class Steps extends React.Component<StepsProps> {
-  private prefix = 'diff-steps'
+  private prefix = `${ROOT_PREFIX}-steps`
   static Step: any
   static defaultProps = {
     current: 0,

@@ -17,7 +17,7 @@ $prefix: '#{$root-prefix}-back-top';
   &-button{
     margin: 0;
     display: inline-block;
-    &.diff-button-circle {
+    &.#{$root-prefix}-button-circle {
       display: flex;
       align-items: center;
       justify-content: center;

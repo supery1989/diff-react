@@ -1,4 +1,4 @@
-@import '../..//components/style/theme/index.scss';
+@import '../../components/style/theme/index.scss';
 
 .markdown-content {
   padding: 30px 50px;
@@ -225,19 +225,19 @@
   }
 }
 
-.diff-button {
+.#{$root-prefix}-button {
   margin-right: 15px;
 }
 .demo-dropdown {
-  .diff-button {
+  .#{$root-prefix}-button {
     margin-right: 0;
   }
-  .diff-dropdown {
+  .#{$root-prefix}-dropdown {
     margin-right: 15px;
   }
 }
-.diff-button-group {
-  .diff-button {
+.#{$root-prefix}-button-group {
+  .#{$root-prefix}-button {
     margin-right: 0;
   }
 }

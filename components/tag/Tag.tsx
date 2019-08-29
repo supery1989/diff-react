@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 import Icon from 'components/icon'
 
 export interface TagProps {
@@ -19,7 +19,7 @@ export interface TagProps {
 }
 
 export default class Tag extends React.Component<TagProps> {
-  private prefix = 'diff-tag'
+  private prefix = `${ROOT_PREFIX}-tag`
 
   static defaultProps = {
     type: 'default',

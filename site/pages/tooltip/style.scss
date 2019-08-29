@@ -1,8 +1,9 @@
+@import 'components/style/theme/index.scss';
 .demo-tooltip {
-  .diff-button {
+  .#{$root-prefix}-button {
     margin: 0px;
   }
-  .diff-tooltip-wrapper {
+  .#{$root-prefix}-tooltip-wrapper {
     margin: 10px;
   }
 }

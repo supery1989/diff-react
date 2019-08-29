@@ -2,7 +2,7 @@
 
 .demo-carousel-wrapper {
   text-align: center;
-  .diff-carousel-item {
+  .#{$root-prefix}-carousel-item {
     display: flex;
     align-items: center;
     justify-content: center;

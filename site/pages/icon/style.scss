@@ -1,3 +1,4 @@
+@import 'components/style/theme/index.scss';
 .demo-icon-lists {
   display: flex;
   flex-direction: row;
@@ -21,7 +22,7 @@
     span {
       margin-top: 10px;
     }
-    .diff-icon {
+    .#{$root-prefix}-icon {
       font-size: 30px;
       transition: transform .3s ease-in-out;
       will-change: transform;

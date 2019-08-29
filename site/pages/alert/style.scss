@@ -1,5 +1,6 @@
+@import 'components/style/theme/index.scss';
 .demo-alert {
-  .diff-alert {
+  .#{$root-prefix}-alert {
     margin-bottom: 20px;
   }
 }

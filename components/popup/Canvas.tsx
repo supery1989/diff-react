@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View from 'libs/view'
+import View, { ROOT_PREFIX } from 'libs/view'
 import Icon from 'components/icon'
 import Button from 'components/button'
 import { ButtonProps } from 'components/button/Button'
@@ -34,7 +34,7 @@ export interface CanvasProps {
 }
 
 export default class Canvas extends React.Component<CanvasProps> {
-  private prefix = 'diff-popup'
+  private prefix = `${ROOT_PREFIX}-popup`
 
   static defaultProps = {
     okBtnText: '确 定',
