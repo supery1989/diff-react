@@ -95,7 +95,7 @@ export default class SubMenu extends React.Component<SubMenuProps> {
       this.handlePopClick(event)
     }
     if (isInline) {
-      toggleExpand(specKey, index)
+      toggleExpand && toggleExpand(specKey, index)
     }
     onClick && onClick(insideKey, index)
     event.stopPropagation()
@@ -170,7 +170,7 @@ export default class SubMenu extends React.Component<SubMenuProps> {
       expandKeys,
       // onSubMenuClick: this.props.onSubMenuClick,
     }
-    if (component.type.name === 'SubMenu') {
+    if (component.type.displayName === 'SubMenu') {
       extraProps.expandKeys = expandKeys
       extraProps.toggleExpand = toggleExpand
       extraProps.expandSingle = expandSingle

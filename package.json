@@ -7,7 +7,6 @@
   "scripts": {
     "start": "cd build && webpack-dev-server",
     "site": "cd build && webpack --config webpack.prod.config.js",
-    "babel": "cd build/npm && babel ../../components --extensions '.tsx' --out-dir ../../testbuild",
     "gulp": "cd build && gulp"
   },
   "repository": {

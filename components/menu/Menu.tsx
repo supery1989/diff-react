@@ -9,7 +9,7 @@ export interface MenuProps {
   style?: object,
   direction?: 'v' | 'h',
   theme?: 'dark' | 'light',
-  mode?: 'inline' | 'popup',
+  mode: 'inline' | 'popup',
   eventType?: 'hover' | 'click',
   selectedKey?: string,
   inlineIndent?: number,
