@@ -15,7 +15,7 @@ export interface ViewProps {
   onSubmit?: () => void,
 }
 
-export const ROOT_PREFIX = 'diff'
+export const ROOT_PREFIX = 'dru'
 
 export default class View extends React.Component<ViewProps>{
   onClick = (e: any) => {

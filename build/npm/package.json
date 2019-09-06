@@ -1,0 +1,16 @@
+{
+  "name": "dru",
+  "version": "1.0.0",
+  "description": "react ui",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supery1989/diff-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/supery1989/diff-react/issues"
+  },
+  "homepage": "http://super-y.gitee.io/diff-react/#/components/home"
+}

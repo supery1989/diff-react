@@ -67,9 +67,14 @@ gulp.task('copy', function() {
     .pipe(copy('../dest/components'))
 })
 
+gulp.task('copy_doc', function() {
+  return gulp.src('npm/**')
+    .pipe(gulp.dest('../dest/'))
+})
+
 gulp.task('clean', function(cbf) {
   del(['../dest'], { force: true }, cbf)
 })
 
-// gulp.task('default', ['clean'])
-gulp.task('default', ['clean', 'compline_js', 'compline_js2', 'compline_js3', 'compline_css', 'compline_css2', 'copy'])
+// gulp.task('default', ['copy_doc'])
+gulp.task('default', ['clean', 'compline_js', 'compline_js2', 'compline_js3', 'compline_css', 'compline_css2', 'copy', 'copy_doc'])
