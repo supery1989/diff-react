@@ -68,7 +68,7 @@ gulp.task('copy', function() {
 })
 
 gulp.task('copy_doc', function() {
-  return gulp.src('npm/**')
+  return gulp.src('package/**')
     .pipe(gulp.dest('../dest/'))
 })
 
