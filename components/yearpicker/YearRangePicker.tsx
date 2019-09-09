@@ -1,8 +1,8 @@
 import * as React from 'react'
-import View from 'libs/view'
-import YearPicker from 'components/yearpicker'
-import Moment from 'components/moment'
-import RangePicker from 'components/panel/range/RangePicker'
+import View from '../../libs/view'
+import YearPicker from '../yearpicker'
+import Moment from '../moment'
+import RangePicker from '../panel/range/RangePicker'
 import { DateCommonProps, RangeCommonProps } from '../panel/utils/TimeBase'
 
 export interface YearRangeCommonProps extends DateCommonProps, RangeCommonProps {}

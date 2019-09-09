@@ -4,8 +4,8 @@ import classnames from 'classnames'
 import Popper from 'popper.js'
 import omit from 'omit.js'
 import OutsideClickHandler from 'react-outside-click-handler'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Transition from 'components/transition'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Transition from '../transition'
 
 export interface PopoverProps {
   className?: string

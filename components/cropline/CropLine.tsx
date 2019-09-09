@@ -1,7 +1,7 @@
 import * as React from 'react'
 import omit from 'omit.js'
-import Popover from 'components/popover'
-import View, { ROOT_PREFIX } from 'libs/view'
+import Popover from '../popover'
+import View, { ROOT_PREFIX } from '../../libs/view'
 
 export interface CropLineProps {
   className?: string

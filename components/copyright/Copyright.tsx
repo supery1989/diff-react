@@ -1,7 +1,7 @@
 import * as React from 'react'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Moment from 'components/moment'
-import Icon from 'components/icon'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Moment from '../moment'
+import Icon from '../icon'
 
 export interface CopyrightProps {
   className?: string

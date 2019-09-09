@@ -1,7 +1,7 @@
 import * as React from 'react'
 import omit from 'omit.js'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Popup from 'components/popup'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Popup from '../popup'
 
 export interface CopyProps {
   className?: string,

@@ -3,8 +3,8 @@ import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
 import View, { ROOT_PREFIX } from '../../libs/view'
-import Icon from 'components/icon'
-import CountDown from 'components/countdown'
+import Icon from '../icon'
+import CountDown from '../countdown'
 
 export interface ButtonProps {
   className?: string,

@@ -2,8 +2,8 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import marked from 'marked'
 import { transform } from 'babel-standalone'
-import Icon from 'components/icon'
-import Tooltip from 'components/tooltip'
+import Icon from '../../components/icon'
+import Tooltip from '../../components/tooltip'
 
 import Editor from '../editor'
 

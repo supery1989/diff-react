@@ -3,8 +3,8 @@ import classnames from 'classnames'
 import omit from 'omit.js'
 import addEventListener from 'add-dom-event-listener'
 import raf from 'raf'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Button from 'components/button'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Button from '../button'
 
 export interface BackTopProps {
   className?: string,

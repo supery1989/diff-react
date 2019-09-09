@@ -1,8 +1,8 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import { ICON_TYPE_MAP } from 'libs/utils'
-import Icon from 'components/icon'
+import { ICON_TYPE_MAP } from '../../libs/utils'
+import Icon from '../icon'
 
 export type CustomType = React.ReactElement<any>;
 

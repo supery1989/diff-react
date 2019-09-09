@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Icon from 'components/icon'
+import Icon from '../icon'
 
 export const FONT_SIZES = [10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 24, 26, 28, 30, 32, 36, 40, 44, 48, 56, 64, 72, 96, 120, 144]
 

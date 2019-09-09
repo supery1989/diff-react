@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import omit from 'omit.js'
 import { throttle } from 'throttle-debounce'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Icon from 'components/icon'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Icon from '../icon'
 
 export interface CarouselProps {
   className?: string

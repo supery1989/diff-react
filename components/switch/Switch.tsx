@@ -1,8 +1,8 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import Icon from 'components/icon'
-import View, { ROOT_PREFIX } from 'libs/view'
+import Icon from '../icon'
+import View, { ROOT_PREFIX } from '../../libs/view'
 
 export interface SwitchProps {
   className?: string,

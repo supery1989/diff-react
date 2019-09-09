@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { ROOT_PREFIX } from 'libs/view'
-import Popup from 'components/popup'
+import Popup from '../popup'
 
 export function setDom(prefix: string) {
   const dom = document.createElement('div')

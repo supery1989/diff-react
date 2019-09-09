@@ -2,10 +2,11 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Icon from 'components/icon'
-import Transition from 'components/transition'
-import { ICON_TYPE_MAP } from 'libs/utils'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import { ICON_TYPE_MAP } from '../../libs/utils'
+import Icon from '../icon'
+import Transition from '../transition'
+
 
 export interface AlertProps {
   className?: string,

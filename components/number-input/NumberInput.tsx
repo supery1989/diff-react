@@ -2,10 +2,10 @@ import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
 import Decimal from 'big.js'
-import { ROOT_PREFIX } from 'libs/view'
-import Input from 'components/input'
-import Icon from 'components/icon'
-import { InputProps } from 'components/input/Input'
+import { ROOT_PREFIX } from '../../libs/view'
+import Input from '../input'
+import Icon from '../icon'
+import { InputProps } from '../input/Input'
 
 export interface NumberInputProps extends InputProps {
   decimal: number

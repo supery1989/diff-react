@@ -14,8 +14,8 @@ import Table from 'braft-extensions/dist/table'
 import ColorPicker from 'braft-extensions/dist/color-picker'
 import CodeHighlighter from 'braft-extensions/dist/code-highlighter'
 import HeaderId from 'braft-extensions/dist/header-id'
-import Popup from 'components/popup'
-import { ROOT_PREFIX } from 'libs/view'
+import Popup from '../popup'
+import { ROOT_PREFIX } from '../../libs/view'
 import { FONT_SIZES, LINE_HEIGHTS, FONT_FAMILYS, PREVIEW_CONTROL } from './config'
 
 export interface EditorProps {

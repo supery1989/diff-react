@@ -2,9 +2,9 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View, { ROOT_PREFIX } from 'libs/view'
-import WindowEventHandler from 'libs/windowEventHandler'
-import Loading from 'components/loading'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import WindowEventHandler from '../../libs/windowEventHandler'
+import Loading from '../loading'
 
 export interface InfiniteScrollProps {
   className?: string

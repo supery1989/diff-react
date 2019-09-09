@@ -4,10 +4,10 @@ import omit from 'omit.js'
 import uuid from 'uuid'
 import AnimateHeight from 'react-animate-height'
 import OutsideClickHandler from 'react-outside-click-handler'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Icon from 'components/icon'
-import Menu from 'components/menu'
-import Button from 'components/button'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Icon from '../icon'
+import Menu from '../menu'
+import Button from '../button'
 
 export interface DropdownProps {
   className?: string,

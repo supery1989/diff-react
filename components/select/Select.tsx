@@ -6,10 +6,10 @@ import uuid from 'uuid'
 import { debounce } from 'throttle-debounce'
 import AnimateHeight from 'react-animate-height'
 import OutsideClickHandler from 'react-outside-click-handler'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Input from 'components/input'
-import Tag from 'components/tag'
-import Icon from 'components/icon'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Input from '../input'
+import Tag from '../tag'
+import Icon from '../icon'
 
 export interface SelectProps {
   className?: string

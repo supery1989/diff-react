@@ -7,8 +7,8 @@ import uuidv5 from 'uuid/v5'
 
 import Canvas from './canvas';
 import { MENU_LISTS_ARR, MENU_LISTS_TOTAL } from '../../site/layout/Menu'
-import Icon from 'components/icon'
-import Loading from 'components/loading'
+import Icon from '../../components/icon'
+import Loading from '../../components/loading'
 import './style.scss'
 
 export default class Markdown extends React.Component {

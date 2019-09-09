@@ -1,11 +1,11 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Icon from 'components/icon'
-import Button from 'components/button'
-import { ButtonProps } from 'components/button/Button'
-import Transition from 'components/transition'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Icon from '../icon'
+import Button from '../button'
+import { ButtonProps } from '../button/Button'
+import Transition from '../transition'
 
 export interface CanvasProps {
   className?: string,

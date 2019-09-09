@@ -1,10 +1,10 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Transition from 'components/transition'
-import Icon from 'components/icon'
-import WindowEventHandler from 'libs/windowEventHandler'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Transition from '../transition'
+import Icon from '../icon'
+import WindowEventHandler from '../../libs/windowEventHandler'
 
 export interface DrawerProps {
   className?: string

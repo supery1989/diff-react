@@ -1,9 +1,9 @@
 import * as React from 'react'
 import omit from 'omit.js'
-import Popover from 'components/popover'
-import Icon from 'components/icon'
-import Button from 'components/button'
-import View, { ROOT_PREFIX } from 'libs/view'
+import Popover from '../popover'
+import Icon from '../icon'
+import Button from '../button'
+import View, { ROOT_PREFIX } from '../../libs/view'
 
 export interface PopconfirmProps {
   className?: string

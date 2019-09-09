@@ -1,6 +1,6 @@
 import classnames from 'classnames'
-import Moment from 'components/moment'
-import { ROOT_PREFIX } from 'libs/view'
+import Moment from '../../moment'
+import { ROOT_PREFIX } from '../../../libs/view'
 import { FillValue } from './util'
 
 export function IsSelected(type: string, val: number, selected: any) {

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import omit from 'omit.js'
-import { ROOT_PREFIX } from 'libs/view'
-import Moment from 'components/moment'
+import { ROOT_PREFIX } from '../../../libs/view'
+import Moment from '../../moment'
 import { RangeCommonProps } from '../utils/TimeBase'
 
 export default class RangePicker<T> extends React.Component<RangeCommonProps> {

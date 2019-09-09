@@ -2,9 +2,9 @@ import * as React from 'react'
 import * as ReactDom from 'react-dom'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
-import { ROOT_PREFIX } from 'libs/view'
-import Checkbox from 'components/checkbox'
-import Icon from 'components/icon'
+import { ROOT_PREFIX } from '../../libs/view'
+import Checkbox from '../checkbox'
+import Icon from '../icon'
 import { TableProps } from './Table'
 
 export interface TableHeaderProps extends TableProps {

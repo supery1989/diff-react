@@ -2,11 +2,11 @@ import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
 import uuid from 'uuid'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Icon from 'components/icon'
-import Input from 'components/input'
-import Toast from 'components/toast'
-import Select from 'components/select'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Icon from '../icon'
+import Input from '../input'
+import Toast from '../toast'
+import Select from '../select'
 
 export interface PageProps {
   className?: string

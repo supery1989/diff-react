@@ -3,8 +3,8 @@ import classnames from 'classnames'
 import omit from 'omit.js'
 import AnimateHeight from 'react-animate-height'
 import OutsideClickHandler from 'react-outside-click-handler'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Icon from 'components/icon'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Icon from '../icon'
 import { GetExtraStyle, RenderCommonItem } from './util'
 
 export interface SubMenuProps {

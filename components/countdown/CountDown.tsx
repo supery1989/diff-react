@@ -1,7 +1,7 @@
 import * as React from 'react'
 import omit from 'omit.js'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Moment from 'components/moment'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Moment from '../moment'
 
 export interface CountDownProps {
   className?: string

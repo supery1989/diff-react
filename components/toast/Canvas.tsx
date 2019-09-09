@@ -1,7 +1,7 @@
 import * as React from 'react'
-import View from 'libs/view'
-import Transition from 'components/transition'
-import Icon from 'components/icon'
+import View from '../../libs/view'
+import Transition from '../transition'
+import Icon from '../icon'
 import Base from '../notification/Base'
 
 export type CustomType = React.ReactElement<any>;

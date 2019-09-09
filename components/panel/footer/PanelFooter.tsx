@@ -1,8 +1,8 @@
 import * as React from 'react'
 import omit from 'omit.js'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Button from 'components/button'
-import Icon from 'components/icon'
+import View, { ROOT_PREFIX } from '../../../libs/view'
+import Button from '../../button'
+import Icon from '../../icon'
 import './style.scss'
 
 export interface PanelFooterProps {

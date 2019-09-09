@@ -1,10 +1,10 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Icon from 'components/icon'
-import Tooltip from 'components/tooltip'
-import Popup from 'components/popup'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Icon from '../icon'
+import Tooltip from '../tooltip'
+import Popup from '../popup'
 
 export interface BlockHeaderProps {
   className?: string

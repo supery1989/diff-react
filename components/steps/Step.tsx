@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Icon from 'components/icon'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Icon from '../icon'
 
 export interface StepProps {
   className?: string,

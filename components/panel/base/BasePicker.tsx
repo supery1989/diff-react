@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { ROOT_PREFIX } from 'libs/view'
-import Moment from 'components/moment'
-import Input from 'components/input'
+import { ROOT_PREFIX } from '../../../libs/view'
+import Moment from '../../moment'
+import Input from '../../input'
 import { DateCommonProps } from '../utils/TimeBase'
 
 export interface BasePickerProps extends DateCommonProps {

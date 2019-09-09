@@ -1,8 +1,8 @@
 import * as React from 'react'
-import DatePicker from 'components/datepicker'
-import Moment from 'components/moment'
+import DatePicker from '../datepicker'
+import Moment from '../moment'
 import { DateCommonProps } from '../panel/utils/TimeBase'
-import TimePanel from 'components/panel/time/TimePanel'
+import TimePanel from '../panel/time/TimePanel'
 
 export interface DateTimePickerProps extends DateCommonProps {
   placeholder: string

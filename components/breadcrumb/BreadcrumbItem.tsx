@@ -2,8 +2,8 @@ import * as React from 'react'
 import { Link, HashRouter } from 'react-router-dom'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View, { ROOT_PREFIX } from 'libs/view'
-import Icon from 'components/icon'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import Icon from '../icon'
 
 export interface BreadcrumbItemProps {
   className?: string,
