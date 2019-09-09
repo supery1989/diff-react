@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import omit from 'omit.js'
 import * as sortableJS from 'sortablejs'
-import View, { ROOT_PREFIX } from 'libs/view'
+import View, { ROOT_PREFIX } from '../../libs/view'
 
 export interface SortableProps {
   className?: string

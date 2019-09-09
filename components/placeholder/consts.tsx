@@ -1,4 +1,4 @@
-import { ROOT_PREFIX } from 'libs/view'
+import { ROOT_PREFIX } from '../../libs/view'
 
 export const Prefix = `${ROOT_PREFIX}-placeholder`
 

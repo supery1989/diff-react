@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classnames from 'classnames'
-import View, { ROOT_PREFIX } from 'libs/view'
+import View, { ROOT_PREFIX } from '../../libs/view'
 
 export interface ColProps {
   className?: string,

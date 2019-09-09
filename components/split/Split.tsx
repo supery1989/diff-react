@@ -2,8 +2,8 @@ import * as React from 'react'
 import * as ReactDom from 'react-dom'
 import classnames from 'classnames'
 import omit from 'omit.js'
-import View, { ROOT_PREFIX } from 'libs/view'
-import WindowEventHandler from 'libs/windowEventHandler/index'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import WindowEventHandler from '../../libs/windowEventHandler/index'
 
 export interface SplitProps {
   className?: string

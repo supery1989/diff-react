@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { ICON_TYPE_MAP } from 'libs/utils'
+import { ICON_TYPE_MAP } from '../../libs/utils'
 import Canvas from './Canvas'
 
 function confirm(props: any) {
@@ -90,7 +90,7 @@ export default function Popup(props: any = {}, type: string) {
 }
 
 ['alert', 'confirm', 'success', 'warning', 'info', 'error'].forEach(type => {
-  Popup[type] = (options = {}) => {
+  Popup[type] = (options: any = {}) => {
     return Popup(options, type)
   }
 })

@@ -1,4 +1,4 @@
-import { ROOT_PREFIX } from 'libs/view'
+import { ROOT_PREFIX } from '../../libs/view'
 import { setDom, renderItem } from '../notification/func'
 import Canvas from './Canvas'
 

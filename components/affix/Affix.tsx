@@ -2,9 +2,9 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import omit from 'omit.js'
 import { throttle } from 'throttle-debounce'
-import View, { ROOT_PREFIX } from 'libs/view'
-import WindowEventHandler from 'libs/windowEventHandler'
-import GetViewSize from 'libs/getViewSize'
+import View, { ROOT_PREFIX } from '../../libs/view'
+import WindowEventHandler from '../../libs/windowEventHandler'
+import GetViewSize from '../../libs/getViewSize'
 
 export interface AffixProps {
   className?: string

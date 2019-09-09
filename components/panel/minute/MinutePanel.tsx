@@ -1,6 +1,6 @@
 import * as React from 'react'
 import omit from 'omit.js'
-import View, { ROOT_PREFIX } from 'libs/view'
+import View, { ROOT_PREFIX } from '../../../libs/view'
 import TimeCell from '../utils/TimeCell'
 import { GetCells } from '../utils/TimeBase'
 import PanelHeader from '../header/PanelHeader'

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classnames from 'classnames'
-import View from 'libs/view'
+import View from '../../libs/view'
 import { Prefix, Default_Props, DEFAULT_SEGMENTS } from './consts'
 
 export interface TextDashedProps {

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import omit from 'omit.js'
 import classnames from 'classnames'
-import View, { ROOT_PREFIX } from 'libs/view'
+import View, { ROOT_PREFIX } from '../../libs/view'
 import Radio from './Radio'
 
 export interface RadioGroupProps {

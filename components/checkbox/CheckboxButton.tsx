@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ROOT_PREFIX } from 'libs/view'
+import { ROOT_PREFIX } from '../../libs/view'
 import Checkbox from './Checkbox'
 
 export interface CheckboxGroupProps {

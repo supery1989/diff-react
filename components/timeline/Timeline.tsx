@@ -1,5 +1,5 @@
 import * as React from 'react'
-import View, { ROOT_PREFIX } from 'libs/view'
+import View, { ROOT_PREFIX } from '../../libs/view'
 import TimelineItem from './Item';
 
 export interface TimelineProps {

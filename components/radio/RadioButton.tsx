@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ROOT_PREFIX } from 'libs/view'
+import { ROOT_PREFIX } from '../../libs/view'
 import Radio from './Radio'
 
 export interface RadioGroupProps {

@@ -1,5 +1,5 @@
 import { setDom, renderItem } from './func'
-import { ROOT_PREFIX } from 'libs/view'
+import { ROOT_PREFIX } from '../../libs/view'
 import Canvas from './Canvas'
 
 export default function Notification(props: any = {}, type: string) {

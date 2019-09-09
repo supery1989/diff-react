@@ -2,7 +2,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import * as PropTypes from 'prop-types'
-import View, { ROOT_PREFIX } from 'libs/view'
+import View, { ROOT_PREFIX } from '../../libs/view'
 
 export interface LayoutProps {
   className?: string,

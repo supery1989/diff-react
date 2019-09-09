@@ -1,6 +1,6 @@
 
 import * as React from 'react'
-import View, { ROOT_PREFIX } from 'libs/view'
+import View, { ROOT_PREFIX } from '../../libs/view'
 
 interface FooterProps {
   className?: string,

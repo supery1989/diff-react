@@ -1,6 +1,6 @@
 import * as React from 'react'
 import omit from 'omit.js'
-import View from 'libs/view'
+import View from '../../libs/view'
 import { Prefix, Default_Props, DEFAULT_SEGMENTS } from './consts'
 import Text from './Text'
 import TextDashed from './TextDashed'

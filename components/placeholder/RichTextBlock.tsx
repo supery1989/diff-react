@@ -1,5 +1,5 @@
 import * as React from 'react'
-import View from 'libs/view'
+import View from '../../libs/view'
 import { Prefix, Default_Props } from './consts'
 import TextBlock from './TextBlock'
 import Circle from './Circle'
