@@ -25,6 +25,9 @@ $prefix: '#{$root-prefix}-menu';
     display: block;
     white-space: nowrap;
     transition: color .3s cubic-bezier(.645, .045, .355, 1),border-color .3s cubic-bezier(.645, .045, .355, 1),background .3s cubic-bezier(.645, .045, .355, 1),padding .15s cubic-bezier(.645, .045, .355, 1);
+    a {
+      transition: color .3s cubic-bezier(.645, .045, .355, 1),border-color .3s cubic-bezier(.645, .045, .355, 1);
+    }
   }
   &-v {
     box-shadow: 0 1px 2px $border-color;
@@ -44,10 +47,17 @@ $prefix: '#{$root-prefix}-menu';
         height: 40px;
         &:hover {
           color: $primary-color;
+          a {
+            color: $primary-color;
+          }
         }
         &-selected {
           color: $primary-color;
           background-color: lighten($primary-color, 35%);
+          a {
+            text-decoration: none;
+            color: $primary-color;
+          }
         }
         &-divided {
           border-top: 1px solid $gray-color;
@@ -116,6 +126,9 @@ $prefix: '#{$root-prefix}-menu';
         &-selected, &:hover {
           border-bottom: 2px solid $primary-color;
           color: $primary-color;
+          a {
+            color: $primary-color;
+          }
         }
         &-disabled {
           color: $disabled-color;
@@ -172,7 +185,13 @@ $prefix: '#{$root-prefix}-menu';
   &-dark {
     color: rgba(255,255,255,0.65);
     background: #001529;
+    a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+    }
     &.#{$prefix}-v {
+      box-shadow: unset;
+      border: unset;
       .#{$prefix}-inner {
         background-color: #000c17;
       }
@@ -180,9 +199,15 @@ $prefix: '#{$root-prefix}-menu';
         &-selected {
           color: $background-color;
           background-color: $primary-color;
+          a {
+            color: $background-color;
+          }
         }
         &:hover {
           color: $background-color;
+          a {
+            color: $background-color;
+          }
         }
       }
     }
