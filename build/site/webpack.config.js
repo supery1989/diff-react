@@ -12,11 +12,11 @@ module.exports = {
     // 'webpack-dev-server/client?http://localhost:9001',
     // 'webpack/hot/only-dev-server',
     'react-hot-loader/patch',
-    path.join(__dirname, '../site/index.tsx')
+    path.join(__dirname, '../../site/index.tsx')
   ], //入口
   output: { //出口
       filename: '[hash].bundle.js',
-      path: path.resolve(__dirname, '../dist'),
+      path: path.resolve(__dirname, '../../dist'),
       // publicPath: '../dist'
   },
   optimization: {
@@ -113,8 +113,8 @@ module.exports = {
   resolve: {
     extensions: ['.js','.jsx','.tsx'],
     alias: {
-      'libs': path.resolve(__dirname, "../libs"),
-      'components': path.resolve(__dirname, "../components")
+      'libs': path.resolve(__dirname, "../../libs"),
+      'components': path.resolve(__dirname, "../../components")
     },
   },
   plugins: [
@@ -122,8 +122,8 @@ module.exports = {
     //安装npm install --save-dev html-webpack-plugin
      new HtmlWebpackPlugin({
        title: '标题',//用于生成的HTML文档的标题
-       template: '../site/index.html', //默认index.html位置
-       favicon: '../site/assets/favicon.ico' //favicon.ico文件路径
+       template: '../../site/index.html', //默认index.html位置
+       favicon: '../../site/assets/favicon.ico' //favicon.ico文件路径
      }),
     //  new MiniCssExtractPlugin({
     //   filename: 'public/css/[name].[contenthash].css',

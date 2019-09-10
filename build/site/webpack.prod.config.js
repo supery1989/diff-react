@@ -11,11 +11,11 @@ module.exports = {
   devtool: 'hidden-source-map',
   entry: [
     'react-hot-loader/patch',
-    path.join(__dirname, '../site/index.tsx')
+    path.join(__dirname, '../../site/index.tsx')
   ], //入口
   output: { //出口
       filename: '[hash].bundle.js',
-      path: path.resolve(__dirname, '../dist'),
+      path: path.resolve(__dirname, '../../dist'),
       // publicPath: '../dist'
   },
   optimization: {
@@ -103,14 +103,14 @@ module.exports = {
   resolve: {
     extensions: ['.js','.jsx','.tsx'],
     alias: {
-      'libs': path.resolve(__dirname, "../libs"),
-      'components': path.resolve(__dirname, "../components")
+      'libs': path.resolve(__dirname, "../../libs"),
+      'components': path.resolve(__dirname, "../../components")
     },
   },
   plugins: [
     // 删除dist目录
     new CleanWebpackPlugin(['dist'], {
-      root: path.resolve(__dirname, '../'), // 根目录
+      root: path.resolve(__dirname, '../../'), // 根目录
       verbose: true, // 开启在控制台输出信息
       // Default: false - remove files
       dry: false
@@ -119,8 +119,8 @@ module.exports = {
     //安装npm install --save-dev html-webpack-plugin
     new HtmlWebpackPlugin({
       title: '标题',//用于生成的HTML文档的标题
-      template: '../site/index.html', //默认index.html位置
-      favicon: '../site/assets/favicon.ico' //favicon.ico文件路径
+      template: '../../site/index.html', //默认index.html位置
+      favicon: '../../site/assets/favicon.ico' //favicon.ico文件路径
     }),
     // 压缩css
     new OptimizeCssAssetsPlugin({
