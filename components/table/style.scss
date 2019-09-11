@@ -10,10 +10,13 @@ $prefix: '#{$root-prefix}-table';
   width: 100%;
   max-width: 100%;
   background-color: $td-background;
-  border: 1px solid $border-color;
+  border-top: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  border-right: 1px solid $border-color;
+  border-bottom: 0px solid $border-color;
   font-size: $font-size;
   color: $font-color;
-  border-bottom-width: 0;
+  // border-bottom-width: 0;
   &-sort-arrow {
     font-size: $font-size;
     margin-left: 5px;
@@ -217,5 +220,8 @@ $prefix: '#{$root-prefix}-table';
     position: absolute;
     left: 0;
     right: 0;
+  }
+  &-button {
+    line-height: normal;
   }
 }

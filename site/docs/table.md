@@ -512,6 +512,66 @@ render() {
 ```
 :::
 
+### 设置按钮
+
+::: demo
+```js
+handleClick(row) {
+  console.dir(row)
+}
+render() {
+  const columns = [
+    {
+      label: '姓名',
+      prop: 'name',
+      width: 150,
+    },
+    {
+      label: '年龄',
+      prop: 'age',
+      width: 160
+    },
+    {
+      label: '地址',
+      prop: 'address',
+    },
+    {
+      type: 'button',
+      btnConfig: {
+        type: 'danger',
+        onClick: (row) => {
+          this.handleClick(row)
+        }
+      },
+    },
+    {
+      type: 'button',
+    }
+  ];
+  const data = [
+    {
+      name: '张三',
+      age: '20',
+      address: '广州市天河区珠江新城001号',
+    },{
+      name: '李四',
+      age: '22',
+      address: '广州市天河区珠江新城002号',
+    },{
+      name: '赵五',
+      age: '24',
+      address: '广州市天河区珠江新城003号',
+    },
+  ]
+  return (
+    <div className="demo-table">
+      <Table columns={columns} data={data} />
+    </div>
+  )
+}
+```
+:::
+
 ### 单选
 
 ::: demo
@@ -768,7 +828,7 @@ render() {
 ### Table-column Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| type | 对应列的类型。如果设置了 selection 则显示多选框；如果设置了 index 则显示该行的索引（从 1 开始计算）；如果设置了 expand 则显示为一个可展开的按钮 | string | selection/index/expand | — |
+| type | 对应列的类型。如果设置了 select 则显示多选框；如果设置了 index 则显示该行的索引（从 1 开始计算）；如果设置了 expand 则显示为一个可展开的按钮 如果设置了 button 则显示为按钮，通过btnConfig来这是按钮属性 | string | select/index/expand/button | — |
 | label | 显示的标题 | string | — | — |
 | prop | 对应列内容的字段名 | string | — | — |
 | width | 对应列的宽度 | number | — | — |

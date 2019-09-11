@@ -82,6 +82,12 @@ export default class Table extends React.Component<TableProps> {
     this.barWidth = getScrollBarWidth()
   }
 
+  componentWillReceiveProps(nextProps: TableProps) {
+    if (this.props.data !== nextProps.data) {
+      this.updateHeight()
+    }
+  }
+
   // 获取左侧固定列
   getFixedColumns(columns: any[]) {
     let fixedColumns: any = []
@@ -170,19 +176,12 @@ export default class Table extends React.Component<TableProps> {
         const headerDom = ReactDom.findDOMNode(this.headerWrapper)
         headerHeight = (headerDom as HTMLElement).offsetHeight
       }
-      
       const bodyHeight = tableHeight - headerHeight
       const fixedBodyHeight = bodyHeight - (scrollX ? this.barWidth : 0)
       const bodyWrapperDom = ReactDom.findDOMNode(this.bodyWrapper);
       const bodyTableDom = (bodyWrapperDom as HTMLElement).firstChild;
       const scrollY = (bodyTableDom as HTMLElement).offsetHeight > bodyHeight
-      // const bodyHeight = tableHeight - headerHeight
-      // const fixedBodyHeight = bodyHeight - (scrollX ? this.barWidth : 0)
-      // const bodyWrapperDom = ReactDom.findDOMNode(this.bodyWrapper);
-      // const scrollY = (bodyWrapperDom as HTMLElement).offsetHeight > fixedBodyHeight
-      // let bodyWidth = this.state.bodyWidth
       if (scrollY && !scrollX) {
-        // bodyWidth = bodyWidth - this.barWidth;
         (tableElDom as HTMLElement).style.borderBottomWidth = '1px'
       }
       this.setState({
@@ -374,6 +373,9 @@ export default class Table extends React.Component<TableProps> {
         if (!column.width && (column.type === 'index' || column.type === 'select' || column.type === 'expand')) {
           column.width = 48
         }
+        if (!column.width && column.type === 'button') {
+          column.width = 72
+        }
         return <col width={column.width} style={{ width: column.width }} key={index} />
       })
     }
@@ -389,7 +391,6 @@ export default class Table extends React.Component<TableProps> {
         scrollY,
         barWidth: this.barWidth
       }
-      // width = this.state.bodyWidth + (scrollY ? this.barWidth : 0)
     }
     return (
       <div className={className} ref={this.bindRef(refName)}>

@@ -3,6 +3,7 @@ import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import { ROOT_PREFIX } from '../../libs/view'
 import Checkbox from '../checkbox'
+import Button from '../button'
 import Icon from '../icon'
 import { TableProps } from './Table'
 
@@ -52,6 +53,14 @@ export default class TableBody extends React.Component<TableBodyProps> {
   handleExpand(row: any) {
     const { table } = this.context
     table.toggleRowExpanded(row)
+  }
+
+  handleButtonClick(row: any, column: any) {
+    const { btnConfig } = column
+    if (btnConfig) {
+      const { onClick } = btnConfig
+      onClick && onClick(row)
+    }
   }
 
   renderBody(data: any, columns: any) {
@@ -122,6 +131,11 @@ export default class TableBody extends React.Component<TableBodyProps> {
           disabled={column.selectable && !column.selectable(row, rowIndex)}
           onChange={() => { this.context.table.toggleRowSelection(row, !isSelected) }}
         />
+      )
+    }
+    if (column.type === 'button') {
+      return (
+        <Button type='primary' size='small' className={`${this.prefix}-button`} {...column.btnConfig} onClick={this.handleButtonClick.bind(this, row, column)}>按钮</Button>
       )
     }
     if (column.render) {
