@@ -12,6 +12,8 @@ function initDate(date: any) {
         date = Number(date)
         date = new Date(date)
       }
+    } else if (date.indexOf('T') > -1 && date.indexOf('(') === -1 && date.indexOf('Z') > -1) {
+      date = new Date(date)
     }
   }
   return date
