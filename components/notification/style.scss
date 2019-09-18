@@ -27,13 +27,13 @@ $prefix: '#{$root-prefix}-notification';
   &-title {
     font-weight: 400;
     font-size: $font-size-large;
-    color: $gray-color;
+    color: $font-color;
     margin: 0;
   }
   &-message {
     font-size: $font-size;
     line-height: 21px;
-    color: #8391a5;
+    color: #666;
     text-align: justify;
   }
   &-has-icon {
@@ -72,7 +72,7 @@ $prefix: '#{$root-prefix}-notification';
     right: 5px;
     position: absolute;
     cursor: pointer;
-    color: #bfcbd9;
+    color: #666;
     font-size: $font-size-large;
     &:hover {
       color: $primary-color;

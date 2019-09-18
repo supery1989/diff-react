@@ -52,6 +52,14 @@ export default class Upload extends React.Component<UploadProps> {
     }
   }
 
+  componentWillReceiveProps(nextProps: UploadProps) {
+    if (this.props.name !== nextProps.name) {
+      this.setState({
+        filename: nextProps.name || '未选择任何文件'
+      })
+    }
+  }
+
   handleChange(e: any) {
     if (e.target instanceof HTMLInputElement) {
       const files = e.target.files

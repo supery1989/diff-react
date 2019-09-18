@@ -44,17 +44,17 @@ export default class Switch extends React.Component<SwitchProps> {
   }
 
   componentWillReceiveProps(nextProps: SwitchProps) {
-    if (nextProps.checked) {
+    if (this.props.checked !== nextProps.checked) {
       this.setState({
         checked: nextProps.checked,
       })
     }
-    if (nextProps.disabled) {
+    if (this.props.disabled !== nextProps.disabled) {
       this.setState({
         disabled: nextProps.disabled,
       })
     }
-    if (nextProps.loading) {
+    if (this.props.loading !== nextProps.loading) {
       this.setState({
         loading: nextProps.loading,
       })

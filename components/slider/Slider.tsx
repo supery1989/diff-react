@@ -53,6 +53,14 @@ export default class Slider extends React.Component<SliderProps> {
     }
   }
 
+  componentWillReceiveProps(nextProps: SliderProps) {
+    if (this.props.value !== nextProps.value) {
+      this.setState({
+        value: (Array.isArray(nextProps.value) ? nextProps.value : [nextProps.value])
+      })
+    }
+  }
+
   reset() {
     this.setState({
       value: (Array.isArray(this.initValue) ? this.initValue : [this.initValue])

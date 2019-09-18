@@ -48,6 +48,14 @@ export default class Textarea extends React.Component<TextareaProps> {
     }
   }
 
+  componentWillReceiveProps(nextProps: TextareaProps) {
+    if (this.props.value !== nextProps.value) {
+      this.setState({
+        value: nextProps.value
+      })
+    }
+  }
+
   componentDidMount() {
     this.resize()
   }

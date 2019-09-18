@@ -374,7 +374,7 @@ export default class Table extends React.Component<TableProps> {
           column.width = 48
         }
         if (!column.width && column.type === 'button') {
-          column.width = 72
+          column.width = 75
         }
         return <col width={column.width} style={{ width: column.width }} key={index} />
       })

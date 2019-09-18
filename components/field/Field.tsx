@@ -325,7 +325,7 @@ export default class Field extends React.Component<FieldProps> {
         break
       case 'custom':
         field = React.Children.map(this.props.children, (element: any, index: number) => {
-          return React.cloneElement(element, Object.assign({}, this.props, element.props, {
+          return React.cloneElement(element, Object.assign({}, ...props, element.props, {
             key: index,
             value: fieldValue,
             onChange: this.handleFieldChange.bind(this),

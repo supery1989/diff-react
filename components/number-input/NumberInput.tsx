@@ -34,6 +34,15 @@ export default class NumberInput extends React.Component<NumberInputProps> {
     }
   }
 
+  componentWillReceiveProps(nextProps: NumberInputProps) {
+    if (this.props.value !== nextProps.value) {
+      const temp = nextProps.value && nextProps.decimal ? new Decimal(nextProps.value).toFixed(nextProps.decimal) : nextProps.value
+      this.setState({
+        value: temp || ''
+      })
+    }
+  }
+
   isPotentialValue(value: string | number) {
     return value === '.' || value === '-' || value === '+'
   }

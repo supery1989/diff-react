@@ -74,6 +74,14 @@ export default class Editor extends React.Component<EditorProps> {
     setTimeout(this.setEditorContentAsync, 3000)
   }
 
+  componentWillReceiveProps(nextProps: EditorProps) {
+    if (this.props.value !== nextProps.value) {
+      this.setState({
+        editorState: BraftEditor.createEditorState(nextProps.value)
+      })
+    }
+  }
+
   componentWillUnmount () {
     this.isLivinig = false
   }

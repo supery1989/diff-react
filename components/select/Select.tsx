@@ -55,9 +55,18 @@ export default class Select extends React.Component<SelectProps> {
       innerPos: {},
       inputPos: {},
       filterStr: '',
+      value: props.value
     }
     if (props.multiple) {
       this.state.selected = []
+    }
+  }
+
+  componentWillReceiveProps(nextProps: SelectProps) {
+    if (this.props.value !== nextProps.value) {
+      this.setState({
+        value: nextProps.value
+      })
     }
   }
 
@@ -217,8 +226,8 @@ export default class Select extends React.Component<SelectProps> {
       this.isEmpty[key] = 1
       return null
     }
-    const { selected, filterStr } = this.state
-    const { multiple, filter, notFoundText, value } = this.props
+    const { selected, filterStr, value } = this.state
+    const { multiple, filter, notFoundText } = this.props
     if (filter) {
       const { children } =  component.props
       let child: any

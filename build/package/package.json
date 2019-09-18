@@ -1,6 +1,6 @@
 {
   "name": "dru",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react ui",
   "main": "index.js",
   "repository": {
@@ -19,6 +19,7 @@
     "braft-editor": "^2.2.9",
     "braft-extensions": "0.0.18",
     "classnames": "^2.2.6",
+    "draft-js-prism": "^1.0.6",
     "omit.js": "^1.0.0",
     "popper.js": "^1.14.7",
     "prop-types": "^15.6.2",

@@ -30,6 +30,13 @@ export default class Option extends React.Component<OptionProps> {
     }
   }
 
+  componentWillReceiveProps(nextProps: OptionProps) {
+    const {  value, children, onSelect, label } = this.props
+    if ((this.props.initValue !== nextProps.initValue) && (value === nextProps.initValue)) {
+      onSelect && onSelect(value, label || children)
+    }
+  }
+
   handleClick() {
     const { value, onSelect, children, label } = this.props
     onSelect && onSelect(value, label || children)
