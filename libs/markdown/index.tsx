@@ -16,6 +16,7 @@ export default class Markdown extends React.Component {
   components: any;
   renderer: any;
   state: any
+  isLead: boolean = false
   constructor(props: any) {
     super(props)
 
@@ -126,7 +127,7 @@ export default class Markdown extends React.Component {
           <div dangerouslySetInnerHTML={{
             __html: html
           }} />
-          {this.setPrevAndNext(document.title)}
+          {!this.isLead && this.setPrevAndNext(document.title)}
         </Loading>
       )
     } else {

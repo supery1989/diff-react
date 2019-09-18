@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 import App from './App';
 import './style/base.scss';
-// import './style/prism.css';
+import './style/prism.css';
 
 ReactDOM.render((
   <HashRouter>
