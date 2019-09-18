@@ -7,6 +7,17 @@ $prefix: '#{$root-prefix}-select';
   @include reset;
   width: 240px;
   position: relative;
+  .#{$root-prefix}-input {
+    cursor: pointer;
+    &-disabled {
+      cursor: not-allowed;
+    }
+  }
+  &-input-readonly {
+    .#{$root-prefix}-input {
+      cursor: default;
+    }
+  }
   &-inner {
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     color: $font-color;

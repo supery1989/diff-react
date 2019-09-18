@@ -266,17 +266,21 @@ export default class Select extends React.Component<SelectProps> {
     const { disabled, filter, remote, clearable, showArrow } = this.props
     const { showOption, placeholder, selected} = this.state
     const stuffix = showArrow ? showOption ? 'caretup' : 'caretdown' : false
+    const readOnly = filter || remote ? false : true
+    const cls = classnames(`${this.prefix}-input`, {
+      [`${this.prefix}-input-readonly`]: `${this.prefix}-input`
+    })
     return <Input
       ref='input'
       suffix={stuffix}
-      readOnly={filter || remote ? false : true}
+      readOnly={readOnly}
       placeholder={placeholder}
       value={selected.label}
       disabled={disabled}
       clearable={clearable}
       onClear={this.handleClear.bind(this)}
       onClick={this.handleClick.bind(this)}
-      className={`${this.prefix}-input`}
+      className={cls}
       onChange={debounce(100, this.handleInputChange.bind(this))}
     />
   }
