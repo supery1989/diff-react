@@ -52,7 +52,8 @@ export default class Menu extends React.Component<MenuProps> {
   componentWillReceiveProps(nextProps: MenuProps) {
     if (nextProps.selectedKey !== this.props.selectedKey) {
       this.setState({
-        defaultSelectedKey: nextProps.selectedKey
+        defaultSelectedKey: nextProps.selectedKey,
+        selectedKey: ''
       })
     }
     if (nextProps.collapsed !== this.props.collapsed) {
