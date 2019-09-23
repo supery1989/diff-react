@@ -64,6 +64,7 @@ export default class Select extends React.Component<SelectProps> {
 
   componentWillReceiveProps(nextProps: SelectProps) {
     if (this.props.value !== nextProps.value) {
+      this.clear()
       this.setState({
         value: nextProps.value
       })
