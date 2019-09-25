@@ -65,6 +65,14 @@ export default class Button extends React.Component<ButtonProps> {
     }
   }
 
+  componentWillReceiveProps(nextProps: ButtonProps) {
+    if (this.props.disabled !== nextProps.disabled) {
+      this.setState({
+        disabled: nextProps.disabled
+      })
+    }
+  }
+
   clickFn = (e: any) => {
     if (this.props.type === 'link') {
       if (this.props.href) {
