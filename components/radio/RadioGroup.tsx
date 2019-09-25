@@ -66,7 +66,7 @@ export default class RadioGroup extends React.Component<RadioGroupProps> {
   }
 
   render() {
-    const { value, children, options, direction, ...rest } = this.props
+    const { value, children, options, direction, buttonStyle, ...rest } = this.props
     const viewProps = omit(rest, ['onChange', 'disabled', 'fill', 'color', 'buttonStyle', 'circle'])
     const cls = classnames(`${this.prefix}-${direction}`)
     return (
