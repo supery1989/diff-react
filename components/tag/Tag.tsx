@@ -36,6 +36,19 @@ export default class Tag extends React.Component<TagProps> {
     }
   }
 
+  componentWillReceiveProps(nextProps: TagProps) {
+    if (this.state.checked !== nextProps.checked) {
+      this.setState({
+        checked: nextProps.checked
+      })
+    }
+    if (this.props.show !== nextProps.show) {
+      this.setState({
+        show: nextProps.show
+      })
+    }
+  }
+
   handleClose(e: any) {
     this.setState({
       show: false
