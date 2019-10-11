@@ -18,6 +18,7 @@ export interface PageProps {
   showPrev: boolean
   showNext: boolean
   showJumper?: boolean
+  pageSize: number
   pageSizes?: boolean | number[]
   small?: boolean
   // 只有一页时是否隐藏分页器
@@ -51,23 +52,23 @@ export default class Page extends React.Component<PageProps> {
       showNextBtn: false,
       prevBtnIconType: 'ellipsis',
       nextBtnIconType: 'ellipsis',
-      pageCount: Math.ceil(props.total / 10),
-      pageSize: 10
+      pageCount: Math.ceil(props.total / props.pageSize),
+      pageSize: props.pageSize
     }
   }
 
   componentWillReceiveProps(nextProps: PageProps) {
     if (this.props.total !== nextProps.total) {
       this.setState({
-        pageCount: Math.ceil(nextProps.total / 10),
+        pageCount: Math.ceil(nextProps.total / nextProps.pageSize),
       }, () => {
-        this.selected(this.state.active)
+        this.selected(this.state.active, false)
       })
     }
   }
 
   componentDidMount() {
-    this.selected(this.state.active)
+    this.selected(this.state.active, false)
   }
 
   setPages() {
@@ -96,7 +97,7 @@ export default class Page extends React.Component<PageProps> {
     return arr
   }
 
-  selected(page: number) {
+  selected(page: number, isLoad: boolean = true) {
     const { pagerCount, onChange } = this.props
     const { pageCount, pageSize } = this.state
     this.setState({
@@ -117,7 +118,7 @@ export default class Page extends React.Component<PageProps> {
         showNextBtn: showNext
       })
     })
-    onChange && onChange(page, pageSize)
+    isLoad && onChange && onChange(page, pageSize)
   }
 
   prevBtnEnter() {
@@ -196,6 +197,7 @@ export default class Page extends React.Component<PageProps> {
 
   sizeChange(value: any) {
     this.setState({
+      active: 1,
       pageSize: value,
       pageCount: Math.ceil(this.props.total / value)
     }, () => {
@@ -218,7 +220,7 @@ export default class Page extends React.Component<PageProps> {
   }
 
   renderPageSizes() {
-    const { pageSizes } = this.props
+    const { pageSizes, pageSize } = this.props
     if (pageSizes) {
       let sizes: any = null
       if (typeof pageSizes === 'boolean') {
@@ -229,7 +231,7 @@ export default class Page extends React.Component<PageProps> {
       if (sizes) {
         return (
           <li className={`${this.prefix}-sizes`}>
-            <Select style={{width: '100px'}} clearable={false} value={sizes[0]} onChange={this.sizeChange.bind(this)}>
+            <Select style={{width: '100px'}} clearable={false} value={pageSize} onChange={this.sizeChange.bind(this)}>
               {sizes.map((size: number, key: number) => {
                 return <Select.Option key={key} value={size} label={`${size} 条/页`} />
               })}

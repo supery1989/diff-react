@@ -59,7 +59,6 @@ state = {
 
 toggle() {
   const total = this.state.total > 10 ? 9 : 170
-  console.dir(total)
   this.setState({
     total
   })
@@ -85,7 +84,7 @@ render() {
   return (
     <div>
       <Page total={168} showTotal />
-      <Page total={168} showTotal={(total, range) => `${range[0]}-${range[1]}/${total}`} />
+      <Page pageSize={20} total={168} showTotal={(total, range) => `${range[0]}-${range[1]}/${total}`} />
     </div>
   )
 }
@@ -142,7 +141,7 @@ render() {
   return (
     <div>
       <div>已选择第 {this.state.page} 页,每页 {this.state.pageSize} 条</div>
-      <Page pageSizes total={170} onChange={this.handleChange.bind(this)} />
+      <Page pageSize={20} pageSizes total={170} onChange={this.handleChange.bind(this)} />
     </div>
   )
 }
@@ -160,6 +159,7 @@ white
 | showPrev | 是否显示上一页按钮 | boolean | - | true |
 | showNext | 是否显示下一页按钮 | boolean | - | true |
 | showJumper | 是否显示前往第几页 | boolean | - | false |
+| pageSize | 每页数量 | number | — | 10 |
 | pageSizes | 是否显示切换每页条数或者定义每页切换条数 | boolean/number[] | - | false |
 | small | 是否显示简洁模式 | boolean | - | false |
 | hideOnSinglePage | 只有一页时是否隐藏分页器 | boolean | - | false |
