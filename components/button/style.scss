@@ -133,6 +133,7 @@ $prefix: '#{$root-prefix}-button';
     background-color: transparent;
     border-color: transparent;
     color: #007bff;
+    padding: 0;
     &:hover{
       color: #0056b3;
       text-decoration: underline;
