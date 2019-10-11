@@ -138,6 +138,18 @@ render() {
 ```
 :::
 
+### 密码框
+
+::: demo
+```js
+render() {
+  return (
+    <Field labelWidth={100} type='password' label='数字输入框' />
+  )
+}
+```
+:::
+
 ### 数字输入框
 
 ::: demo
@@ -251,9 +263,10 @@ render() {
 | rules | 表单域校验规则 | Array<object>下面有具体介绍 | — | — |
 | name | 表单域标识 | string | — | — |
 | value | 表单域的值，可用于设置默认值 | any | — | — |
-| type | 表单域的类型 | string | input/radio/checkbox/numberinput/rate/editor/select/switch/textarea/slider/upload/custom | input |
+| type | 表单域的类型 | string | input/radio/checkbox/numberinput/rate/editor/select/switch/textarea/slider/upload/custom/password | input |
 | inline | 是否为行内模式 | boolean | — | false |
 | options | 用于下拉框、单选框、复选框等的配置 | opject | — | — |
+| info | 表单域输入提示信息 | string | — | — |
 
 ### Field Events
 | 事件名称 | 说明 | 回调参数 |

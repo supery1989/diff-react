@@ -19,6 +19,7 @@ render() {
       <Field label='输入框' />
       <Field type='radio' options={options} label='单选框' />
       <Field type='checkbox' options={options} label='复选框' />
+      <Field type='password' label='密码框' />
       <Field type='numberinput' label='数字框' />
       <Field type='rate' label='评分' />
       <Field type='select' options={options} label='下拉框' />
@@ -53,9 +54,10 @@ render() {
   ]
   return (
     <Form ref='form' labelWidth={100}>
-      <Field label='输入框' required />
+      <Field label='输入框' required info='必填项' />
       <Field type='radio' options={options} label='单选框' required />
       <Field type='checkbox' options={options} label='复选框' required />
+      <Field type='password' label='密码框' required />
       <Field type='numberinput' label='数字框' required />
       <Field type='rate' label='评分' required />
       <Field type='select' options={options} label='下拉框' required />

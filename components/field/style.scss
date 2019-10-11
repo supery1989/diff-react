@@ -50,7 +50,7 @@ $prefix: '#{$root-prefix}-field';
       top: 3px;
     }
   }
-  &-error {
+  &-error, &-info {
     color: $error-color;
     font-size: $font-size-smallest;
     line-height: 1;
@@ -58,6 +58,9 @@ $prefix: '#{$root-prefix}-field';
     position: absolute;
     top: 100%;
     left: 0;
+  }
+  &-info {
+    color: $font-color2;
   }
   &-inline {
     display: inline-block;

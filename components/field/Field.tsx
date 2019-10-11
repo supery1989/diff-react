@@ -32,6 +32,7 @@ export interface FieldProps {
   inline?: boolean
   getValue?: (value: any) => void
   options?: any
+  info?: string
 }
 
 export default class Field extends React.Component<FieldProps> {
@@ -295,6 +296,9 @@ export default class Field extends React.Component<FieldProps> {
       case 'editor':
         field = <Editor ref='fieldNode' value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
         break
+      case 'password':
+        field = <Input type='password' value={fieldValue} onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
+        break
       case 'numberinput':
         field = <NumberInput value={fieldValue} showType='count' onChange={this.handleFieldChange.bind(this)} className={cls} {...props} />
         break
@@ -342,7 +346,7 @@ export default class Field extends React.Component<FieldProps> {
 
   render() {
     const { error } = this.state
-    const { className, style, width, required, labelPosition, inline, ...rest } = this.props
+    const { className, style, width, required, labelPosition, inline, info, ...rest } = this.props
     const viewProps = omit(rest, ['labelWidth', 'label', 'rules', 'name', 'getValue', 'value', 'type', 'className', 'style'])
     const sty = { width }
     const tempInline = inline || (this.parent() && this.parent().props.inline)
@@ -361,6 +365,7 @@ export default class Field extends React.Component<FieldProps> {
         {label && <label className={cls3} style={this.labelStyle()}>{label}</label>}
         <div className={`${this.prefix}-content`} style={this.contentStyle()}>
           {this.getField(cls2, viewProps)}
+          {info && !error && <div className={`${this.prefix}-info`}>{info}</div>}
           <Transition type="fade" show={error} unmount init>
             <div className={`${this.prefix}-error`}>{error.substr(0)}</div>
           </Transition>
