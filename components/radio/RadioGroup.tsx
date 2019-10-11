@@ -54,6 +54,9 @@ export default class RadioGroup extends React.Component<RadioGroupProps> {
       if (!element) {
         return null
       }
+      if (typeof element.type === 'string') {
+        return React.cloneElement(element)
+      }
       return React.cloneElement(element, Object.assign({}, element.props, {
         checked: element.props.value === value,
         onChange: this.onChange.bind(this),
